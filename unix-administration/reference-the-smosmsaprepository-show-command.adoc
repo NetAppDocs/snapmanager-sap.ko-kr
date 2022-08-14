@@ -1,0 +1,91 @@
+---
+permalink: unix-administration/reference-the-smosmsaprepository-show-command.html 
+sidebar: sidebar 
+keywords: command, display, information, repository, smsap 
+summary: 이 명령은 리포지토리에 대한 정보를 표시합니다. 
+---
+= smbap repository show 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령은 리포지토리에 대한 정보를 표시합니다.
+
+
+
+== 구문
+
+[listing]
+----
+smsap repository show
+-repository
+-dbname repo_service_name
+-host repo_host
+-port repo_port
+-login -username repo_username
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* ``리포지터리 *’’
++
+리포지터리 다음에 나오는 옵션은 리포지터리의 데이터베이스 세부 사항을 지정합니다.
+
+* ``dbname_repo_service_name_*'
++
+리포지토리를 저장하는 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 SID를 사용합니다.
+
+* ``숙주_repo_host_*'
++
+리포지토리 데이터베이스가 실행되는 호스트 컴퓨터의 이름 또는 IP 주소를 지정합니다.
+
+* ``로그인 *’’
++
+리포지토리 로그인 세부 정보를 시작합니다.
+
+* ``username_repo_username_*'
++
+리포지토리를 저장하는 데이터베이스에 액세스하는 데 필요한 사용자 이름을 지정합니다.
+
+* ``포트 repo_port *’’
++
+리포지토리를 저장하는 데이터베이스에 액세스하는 데 사용되는 TCP 포트 번호를 지정합니다.
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== 명령 예
+
+다음 예제에서는 SLESDB 데이터베이스의 리포지토리에 대한 세부 정보를 보여 줍니다.
+
+[listing]
+----
+smsap repository show -repository -dbname SALESDB  -host server1
+-port 1521 -login -username admin
+Repository Definition:
+User Name: admin
+Host Name: server1
+Database Name: SALESDB
+Database Port: 1521
+Version: 28
+Hosts that have run operations using this repository: 2
+server2
+server3
+Profiles defined in this repository: 2
+GSF5A
+GSF3A
+Incomplete Operations: 0
+----

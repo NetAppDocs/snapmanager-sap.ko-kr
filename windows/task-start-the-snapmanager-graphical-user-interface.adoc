@@ -1,0 +1,31 @@
+---
+permalink: windows/task-start-the-snapmanager-graphical-user-interface.html 
+sidebar: sidebar 
+keywords: snapmanager, install, host, graphical, user, interface, gui, list, program, start 
+summary: '호스트에 SnapManager가 설치되어 있는 경우 프로그램 목록에서 프로그램을 선택하여 SnapManager용 그래픽 사용자 인터페이스(GUI)를 시작합니다.' 
+---
+= SnapManager GUI를 시작합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+호스트에 SnapManager가 설치되어 있는 경우 프로그램 목록에서 프로그램을 선택하여 SnapManager용 그래픽 사용자 인터페이스(GUI)를 시작합니다.
+
+
+
+== 필요한 것
+
+* SnapManager 서버가 시작되었는지 확인합니다.
+
+
+
+
+== 이 작업에 대해
+
+다음 방법 중 하나로 SnapManager GUI를 시작할 수 있습니다.
+
+* SnapManager 호스트에서 * 시작 * > * 모든 프로그램 * > * NetApp * > * SnapManager for SAP * > * SMSAP GUI 시작 * 을 클릭합니다.
+* SnapManager가 호스트에 설치되어 있지 않은 경우 SnapManager 구성 요소를 다운로드하고 GUI를 시작하는 Java Web Start를 사용합니다.
+

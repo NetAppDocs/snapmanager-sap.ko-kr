@@ -1,0 +1,33 @@
+---
+permalink: unix-administration/concept-prerequisites-for-data-protection.html 
+sidebar: sidebar 
+keywords: aware, certain, consideration, perform, data, protection 
+summary: 데이터 보호를 수행하기 위한 특정 고려 사항을 알고 있어야 합니다. 
+---
+= 데이터 보호를 수행할 때의 고려 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+데이터 보호를 수행하기 위한 특정 고려 사항을 알고 있어야 합니다.
+
+* 2차 시스템에서 클론 또는 복원 작업을 수행하려면 네임스페이스에 대상 볼륨을 마운트하고 제대로 내보내야 합니다.
+* 값을 ' * off * '로 설정하여 SnapDrive 설정 파라미터 'check-export-permission-nfs-clone'을 비활성화해야 합니다.
++
+NetApp Support 사이트의 SnapDrive for UNIX 문서에는 'check-export-permission-nfs-clone' 매개 변수에 대한 추가 정보가 포함되어 있습니다.
+
+* 2차 스토리지 시스템에서 요청된 2차 스토리지 볼륨에 대해 SnapMirror 관계를 구성해야 합니다.
+* 7-Mode에서 운영 중인 Data ONTAP에 대해 2차 스토리지 시스템에서 요청된 2차 스토리지 qtree에 대한 SnapVault 관계를 구성해야 합니다.
+* Clustered Data ONTAP에 대해 SnapVault 사후 스크립트를 사용하는 경우 사용자 정의 SnapMirror 레이블에 대한 정책과 규칙을 정의해야 합니다.
++
+SnapVault 사후 스크립트는 클러스터링된 Data ONTAP 볼륨과 SnapMirror 관계 유형 DP 및 XDP를 지원합니다. NetApp Support 사이트의 ONTAP 문서에는 SnapMirror 및 SnapVault 구성에 대한 정보가 포함되어 있습니다.
+
+* NAS 환경에서는 'SnapDrive config set -mgmtd path_management_path management_path management_path management_path datapath_path_' 명령을 사용하여 운영 및 보조 NAS 데이터 경로를 구성해야 합니다.
++
+예를 들어, ``SnapDrive config set -mgmtd path f3050-197-91 f3050-197-91 f3050-197-91 f3050-220-91*'가 관리 경로이고, 여기서 'f3050-197-91'은 데이터 경로입니다.
+
+
+
+http://mysupport.netapp.com/["NetApp Support 사이트에 문서화"^]

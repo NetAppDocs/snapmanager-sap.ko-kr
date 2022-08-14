@@ -1,0 +1,21 @@
+---
+permalink: windows/task-purge-history-of-snapmanager-operation.html 
+sidebar: sidebar 
+keywords: delete, history, snapmanager, operation, detail 
+summary: 더 이상 기록 세부 정보가 필요하지 않은 경우 SnapManager 작업 기록을 삭제할 수 있습니다. 
+---
+= SnapManager 작업 기록을 삭제합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+더 이상 기록 세부 정보가 필요하지 않은 경우 SnapManager 작업 기록을 삭제할 수 있습니다.
+
+.단계
+. SnapManager 작업 기록을 삭제하려면 다음 명령을 입력합니다.
++
+"* smssap history purge -profile {_-name_,_profile_name__profile_name1_,_profile_name2_]|_all_-repository-login[-password_repo_password_] -username_repo_username_-dbname_-host_repo_operation_verbose_operation_name1_operation
+
+

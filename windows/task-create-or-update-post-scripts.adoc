@@ -1,0 +1,31 @@
+---
+permalink: windows/task-create-or-update-post-scripts.html 
+sidebar: sidebar 
+keywords: create, post, script, default, install, directory, plugin, update 
+summary: 새 사후 스크립트를 만들거나 default_install_directory\plugins\backup\create\post에서 사용 가능한 스크립트를 사용할 수 있습니다. 
+---
+= 사후 스크립트를 만들거나 업데이트합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+새 사후 스크립트를 만들거나 'default_install_directory'\plugins\backup\create\post에서 사용할 수 있는 스크립트를 사용할 수 있습니다.
+
+
+
+== 이 작업에 대해
+
+SnapManager 작업의 컨텍스트 내에서 스크립트를 실행할 수 있도록 특정 방식으로 스크립트를 구성해야 합니다. 예상 작업, 사용 가능한 입력 매개 변수 및 반환 코드 규칙을 기반으로 스크립트를 만듭니다.
+
+.단계
+. 새 스크립트를 만들거나 사용 가능한 샘플 스크립트를 사용합니다.
+. 필요에 따라 함수, 변수 및 매개 변수를 수정하거나 포함시킵니다.
+. 사용자 정의 스크립트를 저장합니다.
+. 후처리 작업 사양 XML 파일에 스크립트 이름과 필수 입력을 추가하거나 올바른 스크립트 및 입력 매개변수를 선택하여 GUI에서 입력을 제공합니다.
++
+
+NOTE: 작업 사양 XML 파일에 보조 저장소 세부 정보를 제공할 필요가 없습니다.
+
+

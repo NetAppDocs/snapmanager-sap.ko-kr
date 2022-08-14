@@ -1,0 +1,19 @@
+---
+permalink: windows/concept-introduction-to-data-protection-in-snapmanager.html 
+sidebar: sidebar 
+keywords: snapmanager, support, data, protection, protect, backup, secondary, tertiary, storage, system, snapmirror, snapvault, relationship, source, destination, volume 
+summary: SnapManager는 데이터 보호를 지원하여 2차 또는 3차 스토리지 시스템의 백업을 보호합니다. 소스 볼륨과 타겟 볼륨 간의 SnapMirror 및 SnapVault 관계를 설정해야 합니다. 
+---
+= SnapManager의 데이터 보호 소개
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 데이터 보호를 지원하여 2차 또는 3차 스토리지 시스템의 백업을 보호합니다. 소스 볼륨과 타겟 볼륨 간의 SnapMirror 및 SnapVault 관계를 설정해야 합니다.
+
+
+NOTE: BR * Tools를 사용하여 생성된 백업은 SAP용 SnapManager를 사용하여 보호할 수 없습니다.
+
+CLI(Command-Line Interface)와 GUI(그래픽 사용자 인터페이스)의 사후 백업 스크립트를 사용하여 운영 스토리지 시스템의 백업을 보호할 수 있습니다.

@@ -1,0 +1,36 @@
+---
+permalink: unix-administration/concept-introduction-to-data-protection-in-snapmanager.html 
+sidebar: sidebar 
+keywords: snapmanager, data, protection, backup, secondary, tertiary, storage, system, snapmirror, snapvault, relationship, destination, volume 
+summary: SnapManager는 데이터 보호를 지원하여 2차 또는 3차 스토리지 시스템의 백업을 보호합니다. 소스 볼륨과 타겟 볼륨 간의 SnapMirror 및 SnapVault 관계를 설정해야 합니다. 
+---
+= SnapManager의 데이터 보호 소개
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 데이터 보호를 지원하여 2차 또는 3차 스토리지 시스템의 백업을 보호합니다. 소스 볼륨과 타겟 볼륨 간의 SnapMirror 및 SnapVault 관계를 설정해야 합니다.
+
+7-Mode에서 운영되는 Data ONTAP을 사용하는 경우 SnapManager은 OnCommand Unified Manager(Protection Manager)와 통합되어 정책 기반의 데이터 보호를 제공합니다. 이렇게 하면 Protection Manager의 스토리지 또는 백업 관리자가 생성한 SnapVault 또는 SnapMirror 정책을 사용하여 운영 스토리지 시스템의 SnapManager 백업을 보조 스토리지 시스템 또는 3차 스토리지 시스템으로 복제할 수 있습니다. 운영 스토리지의 보존은 프로파일 생성 중에 정의된 보존 및 백업 생성 중에 태그가 지정된 보존 클래스에 따라 SnapManager에 의해 제어됩니다. 보조 스토리지 백업 보존은 Protection Manager에 정의된 정책에 의해 제어됩니다.
+
+Clustered Data ONTAP을 사용하는 경우 SnapManager 3.4에서 데이터 보호를 위한 _SnapManager_cDOT_Mirror_및_SnapManager_cDOT_Vault_정책을 제공합니다. 프로필을 만드는 동안 clustered Data ONTAP CLI 또는 System Manager를 사용하여 설정된 SnapMirror 또는 SnapVault 관계에 따라 이러한 정책을 선택할 수 있습니다. 백업을 생성할 때 보호를 설정할 프로파일을 선택하면 백업이 보조 스토리지 시스템으로 보호됩니다.
+
+
+NOTE: BR * Tools를 사용하여 생성된 백업은 SAP용 SnapManager를 사용하여 보호할 수 없습니다.
+
+Data ONTAP 3.3.1 with clustered SnapManager을 사용하는 경우 프로파일을 생성하는 동안 선택된 사후 스크립트를 사용하여 백업이 보호됩니다. 이러한 프로파일을 사용하려면 SnapManager 3.4로 업그레이드한 후 다음 작업을 수행해야 합니다.
+
+* 프로파일을 업데이트하여 _SnapManager_cDOT_Mirror_또는_SnapManager_cDOT_Vault_policy를 선택하고 데이터 보호에 사용된 사후 스크립트를 삭제해야 합니다.
+* 프로필을 use_SnapManager_cDOT_Vault_policy로 업데이트한 후 기존 백업 일정을 삭제하고 새 일정을 작성하여 백업에 대한 SnapVault 레이블을 지정해야 합니다.
+* 사후 스크립트를 선택하지 않고 SnapManager 3.1.1에서 프로필을 생성한 경우, 데이터 보호를 활성화하려면 프로필을 업데이트하여 _SnapManager_cDOT_Mirror_or_SnapManager_cDOT_Vault_policy를 선택해야 합니다.
+
+
+
+NOTE: SnapManager 3.3.1 사후 스크립트를 사용하여 미러링 또는 저장된 보조 스토리지 시스템에 백업이 있는 경우, SnapManager 3.4를 사용하여 복원 또는 클론 복제에 해당 백업을 사용할 수 없습니다.
+
+Clustered Data ONTAP을 사용하는 경우 SnapManager 3.4.2는 소스 볼륨에서 다중 보호 관계(SnapMirror 및 SnapVault)를 지원합니다. 볼륨당 SnapMirror 관계 하나와 SnapVault 관계 하나만 지원됩니다. 각각 '_SnapManager_cDOT_Mirror_'와 '_SnapManager_cDOT_Vault_' 정책이 선택된 별도의 프로파일을 작성해야 합니다.
+
+
+NOTE: Unix 5.3.2 이상용 SnapDrive는 다중 보호 정책을 사용해야 합니다.

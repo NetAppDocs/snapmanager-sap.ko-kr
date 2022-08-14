@@ -1,0 +1,48 @@
+---
+permalink: unix-administration/task-clone-databases-from-backups.html 
+sidebar: sidebar 
+keywords: clone, database, backup, create, command, cloning 
+summary: clone create 명령을 사용하여 백업에서 데이터베이스를 복제할 수 있습니다. 
+---
+= 백업에서 데이터베이스 클론 생성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"clone create" 명령을 사용하여 백업에서 데이터베이스를 복제할 수 있습니다.
+
+* 이 작업에 대한 정보 *
+
+먼저 데이터베이스에 대한 클론 지정 파일을 생성해야 합니다. SnapManager는 이 사양 파일의 정보를 기반으로 클론을 생성합니다.
+
+데이터베이스를 복제한 후 클라이언트 컴퓨터의 "tnsnames.ora" 파일을 새로 복제된 데이터베이스 연결 정보로 업데이트할 수 있습니다. tnsnames.ora 파일은 전체 데이터베이스 정보를 지정하지 않고 Oracle 인스턴스에 연결하는 데 사용됩니다. SnapManager는 tnsnames.ora 파일을 업데이트하지 않습니다.
+
+'-include-with-online-backups'로 만든 프로파일을 사용하는 경우 SnapManager는 항상 아카이브 로그 파일을 포함한 백업을 생성합니다. SnapManager에서는 전체 데이터베이스 백업만 복제할 수 있습니다.
+
+SnapManager(3.2 이상)를 사용하면 데이터 파일과 아카이브 로그 파일이 포함된 백업을 복제할 수 있습니다.
+
+아카이브 로그를 외부 위치에서 사용할 수 있는 경우 클론 생성 중에 외부 위치를 지정하여 복제된 데이터베이스를 정합성 보장 상태로 복구할 수 있습니다. Oracle에서 외부 위치에 액세스할 수 있는지 확인해야 합니다. 아카이브 로그 전용 백업의 클론 생성은 지원되지 않습니다.
+
+아카이브 로그 백업이 온라인 부분 백업과 함께 생성되지만 이 백업을 사용하여 데이터베이스 클론을 생성할 수는 없습니다.
+
+독립 실행형 데이터베이스에만 외부 아카이브 로그 파일 위치에서 데이터베이스 백업을 복제할 수 있습니다.
+
+복구 실패 때문에 외부 아카이브 로그 파일 위치를 사용하여 RAC(Real Application Clusters) 데이터베이스의 온라인 데이터베이스 백업 복제가 실패합니다. 이는 Oracle 데이터베이스가 데이터베이스 백업 클론 생성 중에 외부 아카이브 로그 위치에서 복구를 위해 아카이브 로그 파일을 찾고 적용하는 데 실패하기 때문입니다.
+
+'-dump' 옵션을 선택적 매개 변수로 지정하여 클론 생성 작업에 성공하거나 실패한 후 덤프 파일을 수집할 수 있습니다.
+
+* 아카이브 로그 백업 없이 데이터 파일 백업 클로닝 *
+
+데이터 파일 백업에 아카이브 로그 백업이 포함되지 않은 경우 SnapManager for SAP는 백업 중에 기록된 SCN(시스템 변경 번호)을 기반으로 데이터베이스를 복제합니다. 복제된 데이터베이스를 복구할 수 없는 경우 SnapManager for SAP가 계속해서 데이터베이스를 복제하고 마지막으로 클론을 생성하더라도 "스레드 <number>의 아카이브된 로그 파일 및 복구를 완료하기 위해 필요한 변경 <scn>필요" 오류 메시지가 표시됩니다.
+
+아카이브 로그 백업을 포함하지 않고 데이터 파일 백업을 사용하여 클론을 생성할 경우 SnapManager는 백업 중에 기록된 마지막 아카이브 로그 SCN이 될 때까지 복제된 데이터베이스를 복구합니다.
+
+.단계
+. 클론 사양 파일을 생성합니다.
+. 클론을 생성하려면 다음 명령을 입력합니다.
++
+"* smssap clone create-backup-label_backup_name_-newsid_new_sid_-label_clone_label_-profile_name_-clonespec_full_path_to_clonespecfile_[-taskspec_taskspec_][-recover-from-location]_path1[,<path2>...]_]_]_]
+
+

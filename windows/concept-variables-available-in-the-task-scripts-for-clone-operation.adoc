@@ -1,0 +1,119 @@
+---
+permalink: windows/concept-variables-available-in-the-task-scripts-for-clone-operation.html 
+sidebar: sidebar 
+keywords: snapmanager, context, information, form, environment, variable, clone, operation, perform, example, script, original, host, database, backup 
+summary: SnapManager는 수행되는 클론 작업과 관련된 환경 변수의 형태로 컨텍스트 정보를 제공합니다. 예를 들어, 스크립트는 원래 호스트의 이름, 클론 데이터베이스의 이름 및 백업 레이블을 검색할 수 있습니다. 
+---
+= 클론 작업을 위해 작업 스크립트에서 사용할 수 있는 변수입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 수행되는 클론 작업과 관련된 환경 변수의 형태로 컨텍스트 정보를 제공합니다. 예를 들어, 스크립트는 원래 호스트의 이름, 클론 데이터베이스의 이름 및 백업 레이블을 검색할 수 있습니다.
+
+다음 표에는 스크립트에 사용할 수 있는 환경 변수가 나와 있습니다.
+
+|===
+| 변수 | 설명 | 형식 
+
+
+ a| 
+'_sm_original_sid_'
+ a| 
+원본 데이터베이스의 SID입니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_original_host_'
+ a| 
+원래 데이터베이스와 연결된 호스트 이름입니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_original_os_user_'
+ a| 
+원래 데이터베이스의 OS 소유자입니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_original_os_group_'
+ a| 
+원래 데이터베이스의 OS 그룹입니다
+ a| 
+문자열
+
+
+
+ a| 
+'_SM_TARGET_SID_'
+ a| 
+클론 데이터베이스의 SID입니다
+ a| 
+문자열
+
+
+
+ a| 
+'_SM_TARGET_HOST_'
+ a| 
+클론 데이터베이스와 연결된 호스트 이름입니다
+ a| 
+문자열
+
+
+
+ a| 
+'_SM_TARGET_OS_USER_'
+ a| 
+클론 데이터베이스의 OS 소유자입니다
+ a| 
+문자열
+
+
+
+ a| 
+'_SM_TARGET_OS_GROUP _'
+ a| 
+클론 데이터베이스의 OS 그룹입니다
+ a| 
+문자열
+
+
+
+ a| 
+'_SM_TARGET_DB_PORT_'
+ a| 
+대상 데이터베이스의 포트입니다
+ a| 
+정수
+
+
+
+ a| 
+'_SM_TARGET_GLOBAL_DB_NAME_'
+ a| 
+대상 데이터베이스의 전역 데이터베이스 이름입니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_backup_label_'
+ a| 
+클론에 사용되는 백업의 레이블입니다
+ a| 
+문자열
+
+|===

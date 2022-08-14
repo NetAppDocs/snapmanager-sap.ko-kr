@@ -1,0 +1,19 @@
+---
+permalink: windows/concept-why-you-should-prune-archive-log-files.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, enable, delete, archive, log, file, system, back, up 
+summary: SnapManager for SAP를 사용하면 이미 백업된 활성 파일 시스템에서 아카이브 로그 파일을 삭제할 수 있습니다. 
+---
+= 보관 로그 파일을 제거해야 하는 이유
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager for SAP를 사용하면 이미 백업된 활성 파일 시스템에서 아카이브 로그 파일을 삭제할 수 있습니다.
+
+정리 기능을 사용하면 SnapManager에서 고유한 아카이브 로그 파일의 백업을 만들 수 있습니다. 백업 보존 정책과 함께 정리 작업을 수행하면 백업이 제거될 때 아카이브 로그 공간이 확보됩니다.
+
+
+NOTE: 아카이브 로그 파일에 대해 FRA(Flash Recovery Area)가 활성화된 경우 아카이브 로그 파일을 정리할 수 없습니다. 플래시 복구 영역에서 아카이브 로그 위치를 지정하는 경우 'archive_log_dest' 매개 변수에서 아카이브 로그 위치도 지정해야 합니다.

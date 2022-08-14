@@ -1,0 +1,66 @@
+---
+permalink: unix-administration/reference-the-smosmsapclone-list-command.html 
+sidebar: sidebar 
+keywords: command, list, clone, database, profile, smsap 
+summary: 이 명령은 지정된 프로필에 대한 데이터베이스 클론을 나열합니다. 
+---
+= smsap 클론 목록 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령은 지정된 프로필에 대한 데이터베이스 클론을 나열합니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap clone list
+-profile _profile_name_
+-delimiter _character_
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* ``프로파일_프로파일_이름_*'
++
+프로파일과 연결된 클론 목록을 지정합니다. 프로파일에는 데이터베이스의 식별자와 기타 데이터베이스 정보가 들어 있습니다.
+
+* ``구분 기호_문자_*'
++
+이 매개 변수를 지정하면 명령은 지정된 문자로 구분된 각 행의 특성을 나열합니다.
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+'''
+
+
+== 명령 예
+
+다음 예에서는 sales1 프로필의 데이터베이스 복제본을 보여 줍니다.
+
+[listing]
+----
+smsap clone list -profile SALES1 -verbose
+----
+[listing]
+----
+ID Status SID Host Label Comment
+-------- ------- ----- ------- ---------- -------
+8ab...01 SUCCESS hsdbc server1 back1clone test comment
+----
+'''

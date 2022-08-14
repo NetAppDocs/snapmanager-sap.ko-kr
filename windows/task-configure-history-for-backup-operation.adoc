@@ -1,0 +1,34 @@
+---
+permalink: windows/task-configure-history-for-backup-operation.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, enable, maintain, history, operation, cli, gui, history, operation, report, configure 
+summary: SnapManager for SAP를 사용하면 SnapManager CLI 또는 GUI에서 SnapManager 작업 기록을 유지할 수 있습니다. SnapManager 작업의 기록을 보고서로 볼 수 있습니다. 
+---
+= SnapManager 작업에 대한 기록을 구성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager for SAP를 사용하면 SnapManager CLI 또는 GUI에서 SnapManager 작업 기록을 유지할 수 있습니다. SnapManager 작업의 기록을 보고서로 볼 수 있습니다.
+
+.단계
+. SnapManager 작업 기록을 구성하려면 다음 명령을 입력합니다.
++
+``smssap history set -profile {-name,_profile_name_[_profile_name1_,_profile_name2_]|_-all_-repository-login[-password_password_] - username_repo_username_-dbname_ -host_repo_host_ -port_operation_weekly_retain_operation
+
+
+
+[listing]
+----
+
+        smsap
+history set -profile -name PROFILE1 -operation -operations backup -retain -daily 6 -verbose
+----
+[listing]
+----
+
+        smsap
+history set -profile -name PROFILE1 -operation -all -retain -weekly 3 -verbose
+----

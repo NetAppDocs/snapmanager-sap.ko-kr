@@ -1,0 +1,21 @@
+---
+permalink: windows/task-viewing-a-list-of-snapmanager-history-operation-as-a-report.html 
+sidebar: sidebar 
+keywords: view, history, snapmanager, operation, report, base, retention, setting, list 
+summary: 특정 또는 모든 SnapManager 작업의 기록을 보존 설정에 따라 보고서로 볼 수 있습니다. 
+---
+= SnapManager 작업 기록 목록 보기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+특정 또는 모든 SnapManager 작업의 기록을 보존 설정에 따라 보고서로 볼 수 있습니다.
+
+.단계
+. SnapManager 기록 작업 목록을 보려면 다음 명령을 입력합니다.
++
+smsap history list -profile {-name,profile_name [profile_name1,profile_name2] | -all-repository-login[-passwordbpo_password] -usernamerepo_username -dbname -hstrepo_host -portrepo_port} -operation {-operation_name [operation_name1] -verbose_name1
+
+

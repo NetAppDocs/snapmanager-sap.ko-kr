@@ -1,0 +1,50 @@
+---
+permalink: unix-administration/task-restore-backup-using-single-file-snaprestore.html 
+sidebar: sidebar 
+keywords: restore, backup, single, file, snaprestore, sfsr, method, restoring 
+summary: 'SFSR(Single File SnapRestore) 방법을 사용하여 백업을 복원할 수 있습니다.' 
+---
+= 단일 파일 SnapRestore를 사용하여 백업을 복구합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SFSR(Single File SnapRestore) 방법을 사용하여 백업을 복원할 수 있습니다.
+
+.단계
+. SnapManager 그래픽 사용자 인터페이스(GUI)에서 프로파일을 만듭니다.
+. GUI를 사용하여 데이터베이스를 백업합니다.
+. 클러스터 서비스 그룹에서 Oracle 및 NFS(Network File System) 서비스 그룹의 연결을 해제하고 고정합니다.
+. sapdrive.conf 파일에서 '_#secure-communication-between-cluster-nodes_'를 ' * on *'으로 설정하여 호스트와 UNIX용 SnapDrive 간에 SSH(Secure Shell)가 구성되었는지 확인합니다.
+. SnapManager GUI에서 '--alllogs'를 사용하여 전체 백업 복원 및 복구를 수행합니다.
+. 서비스 그룹을 고정 해제하고 다시 클러스터 서비스 그룹에 연결합니다.
++
+
+NOTE: 이 구성은 UNIX용 SnapDrive 4.1.1 D2 및 UNIX용 SnapDrive 4.2를 사용하는 경우에만 적용됩니다.
+
++
+한 복구 작업 다음에 다른 복구 작업이 수행되면 백업 스냅샷 복사본 생성이 실패할 수 있습니다. SFSR이 완료될 수 있는 지정된 시간 내에 연속적인 복구 작업을 실행하는 경우 SAP용 SnapManager에서 스냅샷 복사본 생성 오류가 발생합니다.
+
++
+스냅샷 복사본 생성 오류를 방지하려면 SFSR이 진행 중인 기간 이후에 복구 작업을 수행해야 합니다.
+
++
+이를 위해 스토리지 시스템 CLI(Command-Line Interface)에서 다음 명령을 입력하여 LUN 클론 분할 프로세스 상태를 확인합니다.
+
++
+' * rsh_filernname_lun clone split status_lun-name_ * '
+
++
+[listing]
+----
+
+Sample Output:
+/vol/delaware_760gb/lun700gb (64% complete)..
+----
++
+
+NOTE: VBSR(볼륨 기반 SnapRestore)은 SFRAC 및 VCS 환경의 Veritas 스택을 실행하는 Solaris 호스트에서 지원되지 않습니다.
+
+

@@ -1,0 +1,52 @@
+---
+permalink: unix-administration/reference-the-smosmsapsystem-verify-command.html 
+sidebar: sidebar 
+keywords: command, confirm, component, environment, require, run, snapmanager, smsap 
+summary: 이 명령은 SnapManager를 실행하는 데 필요한 환경의 모든 구성 요소가 올바르게 설정되었는지 확인합니다. 
+---
+= smsap system verify 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령은 SnapManager를 실행하는 데 필요한 환경의 모든 구성 요소가 올바르게 설정되었는지 확인합니다.
+
+
+
+== 구문
+
+[listing]
+----
+smsap system verify
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== system verify 명령의 예
+
+다음 예에서는 'msap system verify' 명령어를 사용한다.
+
+[listing]
+----
+smsap system verify
+SMSAP-13505 [INFO ]: Snapdrive verify passed.
+SMSAP-13037 [INFO ]: Successfully completed operation: System Verify
+SMSAP-13049 [INFO ]: Elapsed Time: 0:00:00.559
+Operation Id [N4f4e910004b36cfecee74c710de02e44] succeeded.
+----

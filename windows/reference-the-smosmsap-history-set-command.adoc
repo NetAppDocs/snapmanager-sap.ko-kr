@@ -1,0 +1,96 @@
+---
+permalink: windows/reference-the-smosmsap-history-set-command.html 
+sidebar: sidebar 
+keywords: run, history, set, command, configure, operation, smsap 
+summary: history set 명령을 실행하여 기록을 보려는 작업을 구성할 수 있습니다. 
+---
+= smssap history set 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+history set 명령을 실행하여 이력을 조회하고자 하는 동작을 설정할 수 있다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap history set
+-profile {-name profile_name [profile_name1, profile_name2] | -all
+-repository
+-login [password repo_password]
+-username repo_username
+-host repo_host
+-dbname repo_dbname
+-port repo_port}
+-operation {-operations operation_name [operation_name1, operation_name2] | -all}
+-retain
+{-count retain_count | -daily daily_count | -monthly monthly_count | -weekly weekly_count}
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* '*'- profile_profile_'
++
+프로파일의 이름을 지정합니다. 이름은 최대 30자까지 지정할 수 있으며 호스트 내에서 고유해야 합니다.
+
+* * ``리포지토리’ *
++
+프로필을 저장하는 데이터베이스의 세부 정보를 지정합니다.
+
+* * ``dbname_repo_dbname_' *
++
+프로필을 저장하는 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 시스템 식별자를 사용할 수 있습니다.
+
+* '*'-host_repo_host_'
++
+저장소 데이터베이스가 있는 호스트의 이름 또는 IP 주소를 지정합니다.
+
+* * ``로그인’
++
+리포지토리 로그인 세부 정보를 지정합니다.
+
+* * ``username_repo_username_' *
++
+리포지토리 데이터베이스에 액세스하는 데 필요한 사용자 이름을 지정합니다.
+
+* '*'-port_repo_port_'
++
+리포지토리 데이터베이스에 액세스하는 데 사용되는 TCP(Transmission Control Protocol) 포트 번호를 지정합니다.
+
+* * '- operation {-operations_operation_name_[operation_name1, operation_name2]|-all' *
++
+기록을 구성할 SnapManager 작업을 지정합니다.
+
+* * ``보존{-countretain_count|-dailyDAY_count|-monthly-monthly_count|-weekly_count}' *
++
+백업 생성, 백업 확인, 복구 및 클론 생성 작업의 보존 클래스를 지정합니다. 보존 클래스는 작업 수, 일 수, 주 또는 월을 기준으로 설정됩니다.
+
+* ``조용한’
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* * '-verbose' *
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== 명령 예
+
+다음 예에서는 백업 작업에 대한 정보를 표시합니다.
+
+[listing]
+----
+smsap history set -profile -name PROFILE1 -operation -operations backup -retain -daily 6
+-verbose
+----

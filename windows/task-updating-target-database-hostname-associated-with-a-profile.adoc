@@ -1,0 +1,63 @@
+---
+permalink: windows/task-updating-target-database-hostname-associated-with-a-profile.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, provide, ability, update, host, name, target, database, profile, updating, associate 
+summary: 'SAP용 SnapManager\(3.2 이상\)에서는 SnapManager 프로필에 있는 대상 데이터베이스의 호스트 이름을 업데이트할 수 있습니다.' 
+---
+= 프로파일과 연결된 타겟 데이터베이스 호스트 이름을 업데이트합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SAP용 SnapManager(3.2 이상)는 SnapManager 프로필에서 타겟 데이터베이스의 호스트 이름을 업데이트하는 기능을 제공합니다.
+
+* 로컬 사용자의 홈 디렉토리는 프로파일 대 리포지토리 매핑을 알고 있어야 합니다.
+* SnapManager 그래픽 사용자 인터페이스(GUI) 세션을 닫아야 합니다.
+
+
+CLI만 사용하여 새 호스트 이름으로 프로필을 업데이트할 수 있습니다.
+
+* 프로파일에서 타겟 데이터베이스 호스트 이름을 변경할 수 없는 시나리오 *
+
+프로파일에서 타겟 데이터베이스 호스트 이름을 변경할 수 없는 시나리오는 다음과 같습니다.
+
+* SnapManager GUI를 사용하여 타겟 데이터베이스 호스트 이름 변경
+* 프로파일의 타겟 데이터베이스 호스트 이름을 업데이트한 후 리포지토리 데이터베이스의 롤백
+* 단일 명령을 실행하여 새 타겟 데이터베이스 호스트 이름에 대한 여러 프로파일을 업데이트합니다
+* SnapManager 작업이 실행 중일 때 타겟 데이터베이스 호스트 이름을 변경합니다
+
+
+
+NOTE: 프로필에서 타겟 데이터베이스 호스트 이름을 업데이트하면 대상 데이터베이스 호스트 이름만 변경됩니다. 프로파일에 설정된 다른 모든 구성 매개 변수가 유지됩니다.
+
+타겟 데이터베이스 호스트 이름을 업데이트한 후에는 새 호스트에서 클론 또는 마운트된 백업을 사용할 수 없는 경우 백업을 삭제하거나 마운트 해제할 수 없습니다. 이러한 시나리오에서는 새 호스트에서 SnapManager 작업을 실행하면 이전 호스트에서 장애가 발생할 뿐만 아니라 오래된 항목도 발생합니다. SnapManager 작업을 수행하려면 프로필 업데이트를 사용하여 이전 호스트 이름으로 되돌려야 합니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+ssmap profile update -profileprofile[-profile-passwordprofile_password] [-database-dbnamedb_dbname -hostdb_host[-siddb_sid][-login-usernamedb_username -passedb_password]][{-rman_subsciderm-subscidation] subscidemetyptnemetm -substationname] viderman_substationdurename][-substationdurename] durename=substationemetm-substationemetm-subscidename] durename]([nemetary-subscidename].emetm-substationemetm-subscreage.durename][-subscidelm-substationemetm-substationemetm-substationemail][-subscidelm-subscidename][-subscidelm-subscreage.emetm-subscidation.emetm-substationemetm-sub
+
++
+이 명령의 다른 옵션은 다음과 같습니다.
+
++
+[-force] [-nop프롬프트]
+
++
+|===
+| 원하는 작업 | 그러면... 
+
+
+ a| 
+* 대상 데이터베이스 호스트 이름 변경 *
+ a| 
+hostnew_db_host를 지정합니다
+
+|===
+. 프로파일의 대상 데이터베이스 호스트 이름을 보려면 다음 명령을 입력합니다.
++
+'스맵 프로필 쇼'
+
+

@@ -1,0 +1,47 @@
+---
+permalink: unix-administration/task-split-a-clone-on-a-primary-or-secondary-storage.html 
+sidebar: sidebar 
+keywords: clone, split, complete, metadata, remove, repository, primary, secondary, storage, delete, free 
+summary: 클론 분할 명령을 사용하여 클론을 분할할 수 있습니다. 클론 분할이 완료되면 클론 메타데이터가 리포지토리 데이터베이스에서 제거되고 클론과 연결된 백업은 삭제하거나 해제할 수 있습니다. 
+---
+= 운영 또는 보조 스토리지에서 클론 분할
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"clone split" 명령을 사용하여 클론을 분할할 수 있습니다. 클론 분할이 완료되면 클론 메타데이터가 리포지토리 데이터베이스에서 제거되고 클론과 연결된 백업은 삭제하거나 해제할 수 있습니다.
+
+* 이 작업에 대한 정보 *
+
+분할 작업이 성공적으로 완료된 후에 생성된 새 프로필은 분할 클론을 관리하는 데 사용됩니다. 새 프로필은 SnapManager의 다른 기존 프로파일과 같습니다. 이 프로파일을 사용하여 백업, 복원 및 클론 작업을 수행할 수 있습니다.
+
+또한 새 프로필에 대한 이메일 알림을 구성할 수도 있습니다. 이렇게 하면 데이터베이스 관리자가 프로파일을 사용하여 수행된 데이터베이스 작업의 상태에 대한 알림을 받을 수 있습니다.
+
+
+NOTE: SnapManager는 FlexClone에 대해서만 분할 작업을 지원합니다.
+
+분할 작업이 실패하면 실패 이유와 함께 적절한 오류 메시지가 표시됩니다. 여러 작업의 상태도 작업 로그에 표시됩니다. 예를 들면 다음과 같습니다.
+
+[listing]
+----
+--[ INFO] The following operations were completed:
+Clone Split : Success
+Profile Create : Failed
+Clone Detach : Success
+----
+필요에 따라 클론 분할 작업에 성공하거나 실패한 후 덤프 파일을 수집할 수 있습니다.
+
+
+NOTE: "clone split" 명령을 입력한 후에는 클론 분할 작업이 시작될 때까지 SnapManager 서버를 중지해서는 안 됩니다.
+
+
+NOTE: SnapManager는 Oracle 계정(osaccount 및 osgroup)에 대한 값을 제공하지 않더라도 프로필을 생성합니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap clone split -profile_clone -profile_ -host_hostname_[-label_clone -label_label_| -id_clone -id_] -split -label_split -operation -label_comment_comment_new -profile_profile -name -name -name -dbname_recidpo_password_username_username_username_record_username_username_username_username_username_username_username_username_username_username_username_username_record_username_username_username_password_username_name -spin_name -spin_name -spin_password_name -spin_password_name -spin_name -spin_name -spin_name -spin_password_name -name -spin_username_username_username_username_username_username_password_password_password_username_username_name -sin_username_username_name [-DAILY_COUNT_-osgroup_osgroup_[-retain[-hourly-count_n_][-duration_m_]][-daily-count_n_][-duration_m_]] subject_profile pattern[-duration_n_] subject_synthose_profile] subject_protection][-duration_snapm_name] subject_subject_subject_subject_subject_subject_subject_protect] subject_subject_subject_protect]]subject_profile]]subject_protect]]subject_subject_protect][-duration_subject_subject_subject_subject_name]email]]email]]subject_protect][-subject_subject_subject_subject_subject_subject_subject_protect]]subject_subject_protect]]subject_subject
+
+

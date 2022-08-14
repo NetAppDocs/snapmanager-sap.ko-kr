@@ -1,0 +1,22 @@
+---
+permalink: windows/concept-supported-general-configurations.html 
+sidebar: sidebar 
+keywords: install, snapmanager, general, configuration, requirement, support 
+summary: SnapManager를 설치하기 전에 일반 구성 요구 사항을 알아야 합니다. 
+---
+= 지원되는 일반 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 설치하기 전에 일반 구성 요구 사항을 알아야 합니다.
+
+SnapManager는 다음과 같은 일반 구성을 지원합니다.
+
+* 단일 호스트가 단일 스토리지 시스템에 접속되어 있는 클러스터링되지 않은 구성입니다
+* 호스트당 SnapManager 서버 인스턴스 1개
+
+
+SnapManager에서 지원하는 모든 스토리지 유형 및 버전에 대한 자세한 내용은 SnapManager 및 SnapDrive 호환성 매트릭스 를 참조하십시오.

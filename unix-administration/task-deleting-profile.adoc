@@ -1,0 +1,25 @@
+---
+permalink: unix-administration/task-delete-profile.html 
+sidebar: sidebar 
+keywords: delete, profile, successful, backup, current, operation, free, backup, deleting 
+summary: 현재 다른 작업에 사용된 성공적인 백업이 포함되지 않은 경우 프로파일을 삭제할 수 있습니다. 확보되거나 삭제된 백업이 포함된 프로필을 삭제할 수 있습니다. 
+---
+= 프로파일을 삭제합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+현재 다른 작업에 사용된 성공적인 백업이 포함되지 않은 경우 프로파일을 삭제할 수 있습니다. 확보되거나 삭제된 백업이 포함된 프로필을 삭제할 수 있습니다.
+
+. 'smsap profile delete -profileprofile[-quiet | -verbose]' 명령을 입력한다
++
+클론 분할에 대해 생성된 새 프로파일을 삭제할 수 있습니다. 삭제하는 동안 을(를) 삭제하면 프로필을 삭제할 수 없습니다. 경고 메시지가 SnapManager 명령줄 인터페이스에 표시됩니다.
+
+
+
+[listing]
+----
+smsap profile delete -profile AUTO-REVEN
+----

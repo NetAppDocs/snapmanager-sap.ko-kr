@@ -1,0 +1,85 @@
+---
+permalink: unix-administration/concept-backup-types-and-the-number-of-snapshot-copies.html 
+sidebar: sidebar 
+keywords: backup, type, full, partial, snapshot, copies, copy, snapmanager, backup, tablespace, file 
+summary: '백업 유형(전체 또는 부분)은 SnapManager에서 생성되는 스냅샷 복사본의 수에 영향을 줍니다. 전체 백업의 경우 SnapManager는 각 볼륨의 스냅샷 복사본을 생성하고 부분 백업의 경우 SnapManager는 각 테이블스페이스 파일의 스냅샷 복사본을 생성합니다.' 
+---
+= 백업 유형 및 스냅샷 복사본 수
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백업 유형(전체 또는 부분)은 SnapManager에서 생성되는 스냅샷 복사본의 수에 영향을 줍니다. 전체 백업의 경우 SnapManager는 각 볼륨의 스냅샷 복사본을 생성하고 부분 백업의 경우 SnapManager는 각 테이블스페이스 파일의 스냅샷 복사본을 생성합니다.
+
+
+NOTE: Data ONTAP은 볼륨당 최대 255개의 스냅샷 복사본을 생성할 수 있도록 제한합니다. 각 백업이 여러 개의 스냅샷 복사본으로 구성되어 있는 많은 수의 백업을 유지하도록 SnapManager를 구성한 경우에만 이 최대값에 도달할 수 있습니다.
+
+볼륨당 Snapshot 복사본의 최대 제한에 도달하지 않도록 하면서 적절한 백업 풀을 유지하려면 더 이상 필요하지 않은 백업을 제거해야 합니다. 특정 백업 빈도에 대한 특정 임계값에 도달한 후 성공적인 백업을 제거하도록 SnapManager 보존 정책을 구성할 수 있습니다. 예를 들어 SnapManager에서 4개의 일일 백업을 성공적으로 생성한 후 SnapManager는 전날에 생성된 일일 백업을 제거합니다.
+
+다음 표에서는 SnapManager가 백업 유형을 기반으로 스냅샷 복사본을 생성하는 방법을 보여 줍니다. 테이블의 예에서는 데이터베이스 Z에 두 개의 볼륨이 있고 각 볼륨에는 두 개의 테이블스페이스(TS1 및 TS2)가 있으며 각 테이블스페이스에는 두 개의 데이터베이스 파일('ts1.data1, ts1.data2, TS2.data1' 및 'TS2.data2')이 포함되어 있다고 가정합니다.
+
+다음 표에는 두 가지 유형의 백업에서 서로 다른 수의 스냅샷 복사본이 어떻게 생성되는지를 보여 줍니다.
+
+SnapManager는 테이블스페이스 수준 대신 볼륨 수준에서 스냅샷 복사본을 생성하며, 일반적으로 생성해야 하는 스냅샷 복사본의 수를 줄입니다.
+
+
+NOTE: 두 백업 모두 로그 파일의 스냅샷 복사본도 생성합니다.
+
+[cols="1a,1a,1a,1a,1a"]
+|===
+| 데이터베이스의 볼륨 | 테이블스페이스 TS1(데이터베이스 파일 2개 포함) | 테이블스페이스 TS2(데이터베이스 파일 2개 포함) | Snapshot 복사본이 생성되었습니다 | 총 스냅샷 복사본 수입니다 
+
+
+ a| 
+/vol/VolA 를 참조하십시오
+ a| 
+TS1.data1
+ a| 
+TS2.data1
+ a| 
+볼륨당 1개
+ a| 
+2
+
+
+
+ a| 
+/vol/VolB 를 참조하십시오
+ a| 
+TS1.data2
+ a| 
+TS2.data2
+ a| 
+볼륨당 1개
+
+|===
+[cols="1a,1a,1a,1a,1a"]
+|===
+| 데이터베이스의 볼륨 | 테이블스페이스 TS1(데이터베이스 파일 2개 포함) | 테이블스페이스 TS2(데이터베이스 파일 2개 포함) | Snapshot 복사본이 생성되었습니다 | 총 스냅샷 복사본 수입니다 
+
+
+ a| 
+/vol/VolA 를 참조하십시오
+ a| 
+TS1.data1
+ a| 
+TS2.data1
+ a| 
+파일당 2개
+ a| 
+4
+
+
+
+ a| 
+/vol/VolB 를 참조하십시오
+ a| 
+TS1.data2
+ a| 
+TS2.data2
+ a| 
+파일당 2개
+
+|===

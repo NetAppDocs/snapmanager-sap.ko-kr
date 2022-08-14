@@ -1,0 +1,56 @@
+---
+permalink: windows/task-use-post-processing-task-specification-to-mirror-volumes.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, enable, script, mirror, volume, backup, operation, windows, environment, post-process, task, specification 
+summary: SnapManager for SAP를 사용하면 Windows 환경에서 백업 작업이 발생한 후 스크립트를 사용하여 볼륨을 미러링할 수 있습니다. 
+---
+= 사후 처리 작업 사양을 사용하여 볼륨을 미러링합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager for SAP를 사용하면 Windows 환경에서 백업 작업이 발생한 후 스크립트를 사용하여 볼륨을 미러링할 수 있습니다.
+
+.단계
+. 작업 사양 XML 파일을 만듭니다.
+. XML 파일에서 스크립트 이름을 입력 매개 변수로 입력합니다.
+. 작업 사양 XML 파일을 저장합니다.
+. 다음 명령을 사용하여 데이터베이스를 보조 스토리지에 대한 보호 백업을 생성합니다.
++
+보호된 백업을 생성하는 동안 -'taskspec' 옵션 뒤에 저장된 작업 사양 XML 파일의 전체 경로를 제공해야 합니다.
+
++
+예: smsapbackup create-profile test_profile -full-online-taskspec "C:\\mirror\\mirror.xml"
+
+
+
+다음 예제는 7-Mode에서 작동하는 Data ONTAP를 사용하는 경우 후처리 작업 사양 구조를 보여줍니다.
+
+[listing]
+----
+#     <post-tasks>
+#               <task>
+#                   <name>Mirror the backup</name>
+#                    <description>Mirror the backup</description>
+#               </task>
+#             <post-tasks>
+----
+다음 예에서는 clustered Data ONTAP을 사용하는 경우 후처리 작업 사양 구조를 보여 줍니다.
+
+[listing]
+----
+# <task-specification>
+#              <post-tasks>
+#                  <task>
+#                   <name>"Vault the backup for cDOT"</name>
+#                    <parameter>
+#                    <name>SNAPSHOT_LABEL</name>
+#                   <value>TST</value>
+#                    </parameter>
+#                  </task>
+#                </post-tasks>
+#              </task-specification>
+#            </preposttask-specification>
+----

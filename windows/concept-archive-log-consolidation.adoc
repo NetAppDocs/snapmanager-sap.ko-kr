@@ -1,0 +1,14 @@
+---
+permalink: windows/concept-archive-log-consolidation.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, consolidate, archive, log, backup, file, identify, identifies, consolidation 
+summary: 'SAP용 SnapManager(3.2 이상)는 아카이브 로그 파일의 최소 백업 수를 유지하기 위해 아카이브 로그 백업을 통합합니다. SAP용 SnapManager는 다른 백업의 하위 집합인 아카이브 로그 파일이 포함된 백업을 식별하고 해제합니다.' 
+---
+= 아카이브 로그 통합
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SAP용 SnapManager(3.2 이상)는 아카이브 로그 파일의 최소 백업 수를 유지하기 위해 아카이브 로그 백업을 통합합니다. SAP용 SnapManager는 다른 백업의 하위 집합인 아카이브 로그 파일이 포함된 백업을 식별하고 해제합니다.

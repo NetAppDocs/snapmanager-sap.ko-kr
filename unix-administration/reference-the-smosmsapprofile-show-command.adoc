@@ -1,0 +1,85 @@
+---
+permalink: unix-administration/reference-the-smosmsapprofile-show-command.html 
+sidebar: sidebar 
+keywords: run, profile, show, command, display, information, smsap 
+summary: profile show 명령을 실행하여 프로파일에 대한 정보를 표시할 수 있습니다. 
+---
+= smssap profile show 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+profile show 명령을 실행하여 프로파일에 대한 정보를 표시할 수 있습니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap profile show
+-profile _profile_name_
+[-quiet | -verbose]]
+----
+
+
+== 매개 변수
+
+* ``프로파일_프로파일_이름_*'
++
+프로파일의 이름을 지정합니다. 이 이름은 최대 30자까지 지정할 수 있으며 호스트 내에서 고유해야 합니다.
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== 예
+
+다음 예에서는 프로필의 세부 정보를 보여 줍니다.
+
+[listing]
+----
+smsap profile show -profile TEST_RBAC_DP_PROTECT
+Profile name: TEST_RBAC_DP_PROTECT
+Comment:
+Target database:
+  Database name: racb
+  SID: racb1
+  Host: saal
+  Port: 1521
+  Username: sys
+  Password: ********
+Repository:
+  Database name: smsaprep
+  SID: smsaprep
+  Host: elbe.rtp.org.com
+  Port: 1521
+  Username: smsapsaal
+  Password: ********
+RMAN:
+  Use RMAN via control file
+Oracle user account: oracle
+Oracle user group: dba
+Snapshot Naming:
+  Pattern: smsap_{profile}_{db-sid}_{scope}_{mode}_{smid}
+  Example: smsap_test_rbac_dp_protect_racb1_f_h_1_8abc01e915a55ac50115a55acc8d0001_0
+Protection:
+  Dataset: smsap_saal_racb
+  Protection policy: Back up
+  Conformance status: CONFORMANT
+Local backups to retain:
+  Hourly: 4 copies
+  Daily: 7 day(s)
+  Weekly: 4 week(s)
+  Monthly: 12 month(s)
+----

@@ -1,0 +1,14 @@
+---
+permalink: unix-administration/concept-restoring-protected-backups-from-secondary-storage.html 
+sidebar: sidebar 
+keywords: restore, backup, protect, secondary, storage, primary, restoring, 
+summary: 보조 스토리지에서 보호된 백업을 복원할 수 있습니다. 그러나 백업이 운영 스토리지에도 있는 경우에는 보조 스토리지에서 백업을 복원할 수 없습니다. 
+---
+= 보조 스토리지에서 보호된 백업 복원
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+보조 스토리지에서 보호된 백업을 복원할 수 있습니다. 그러나 백업이 운영 스토리지에도 있는 경우에는 보조 스토리지에서 백업을 복원할 수 없습니다.

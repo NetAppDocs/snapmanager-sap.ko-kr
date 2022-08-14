@@ -1,0 +1,66 @@
+---
+permalink: windows/reference-where-to-go-for-more-information.html 
+sidebar: sidebar 
+keywords: information, task, install, snapmanager 
+summary: SnapManager 설치 및 사용과 관련된 기본 작업에 대한 정보를 찾을 수 있습니다. 
+---
+= 자세한 정보
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager 설치 및 사용과 관련된 기본 작업에 대한 정보를 찾을 수 있습니다.
+
+|===
+| 문서화 | 설명 
+
+
+ a| 
+SnapManager 설명 페이지입니다
+ a| 
+이 페이지에서는 SnapManager에 대한 정보, 온라인 설명서 포인터 및 소프트웨어를 다운로드할 수 있는 SnapManager 다운로드 페이지 링크를 제공합니다.
+
+
+
+ a| 
+_7-Mode_용 Data ONTAP SAN 구성 가이드
+ a| 
+이 문서는 에서 확인할 수 있습니다 http://mysupport.netapp.com/["NetApp 지원"^].
+
+이 문서는 SAN 환경에서 시스템을 설정하기 위한 요구 사항에 대한 최신 정보가 들어 있는 동적인 온라인 문서입니다. 스토리지 시스템 및 호스트 플랫폼, 케이블 연결 문제, 스위치 문제 및 구성에 대한 최신 정보를 제공합니다.
+
+
+
+ a| 
+SnapManager 및 SnapDrive 호환성 매트릭스
+ a| 
+이 문서는 의 상호 운용성 섹션에서 확인할 수 있습니다 http://mysupport.netapp.com/matrix["상호 운용성 매트릭스 툴"^].
+
+이 문서는 SnapManager 및 해당 플랫폼 요구 사항에 대한 최신 정보를 포함하는 동적 온라인 문서입니다.
+
+
+
+ a| 
+SnapManager 릴리즈 노트
+ a| 
+이 문서는 SnapManager와 함께 제공됩니다. 에서 복사본을 다운로드할 수도 있습니다 http://mysupport.netapp.com/["NetApp 지원"^].
+
+이 문서에는 구성을 원활하게 실행하는 데 필요한 최신 정보가 포함되어 있습니다.
+
+
+
+ a| 
+NetApp 호스트 연결 및 지원 키트 문서
+ a| 
+http://mysupport.netapp.com/["NetApp 지원"^].
+
+
+
+ a| 
+호스트 운영 체제 및 데이터베이스 정보
+ a| 
+이 문서에서는 호스트 운영 체제 및 데이터베이스 소프트웨어에 대한 정보를 제공합니다.
+
+|===

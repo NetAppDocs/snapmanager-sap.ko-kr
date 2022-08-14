@@ -1,0 +1,27 @@
+---
+permalink: windows/task-issue-commands-from-an-alternate-host.html 
+sidebar: sidebar 
+keywords: issue, cli, command, host, database, snapmanager, route, alternate 
+summary: 데이터베이스 호스트가 아닌 호스트에서 CLI 명령을 실행할 수 있으며 SnapManager는 사용자가 입력하는 명령을 적절한 호스트로 라우팅합니다. 
+---
+= 대체 호스트에서 명령을 실행합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+데이터베이스 호스트가 아닌 호스트에서 CLI 명령을 실행할 수 있으며 SnapManager는 사용자가 입력하는 명령을 적절한 호스트로 라우팅합니다.
+
+
+
+== 이 작업에 대해
+
+시스템이 올바른 호스트에 작업을 디스패치하려면 먼저 작업에 대한 프로필을 찾을 위치를 알아야 합니다. 이 절차에서 시스템은 로컬 호스트의 사용자 홈 디렉토리에 있는 파일의 리포지토리 매핑 정보에 대한 프로파일을 유지합니다.
+
+.단계
+. 로컬 사용자의 홈 디렉토리에 작업 요청을 라우팅할 수 있도록 프로파일과 리포지토리 간 매핑을 표시하려면 다음 명령을 입력합니다.
++
+"* smssap profile sync-repository-dbname_repo_dbname_-host_repo_host_-port_repo_port_-login-username_repo_username_[-quiet|-verbose] *
+
+

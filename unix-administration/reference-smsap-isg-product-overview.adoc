@@ -1,0 +1,47 @@
+---
+permalink: unix-administration/reference-smsap-isg-product-overview.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, automate, simplify, simplifies, complex, manual, time-consuming, backup, recovery, cloning, clone, database, ontap, snapmirror, snapvault, ontap, disk 
+summary: SnapManager for SAP는 데이터베이스의 백업, 복구 및 클론 복제와 관련된 복잡하고 시간이 많이 소요되는 수동 프로세스를 자동화 및 단순화합니다. SnapManager with ONTAP SnapMirror 기술을 사용하여 다른 볼륨에 백업 복사본을 만들고 ONTAP SnapVault 기술을 사용하여 백업을 디스크에 효율적으로 아카이브할 수 있습니다. 
+---
+= 제품 개요
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager for SAP는 데이터베이스의 백업, 복구 및 클론 복제와 관련된 복잡하고 시간이 많이 소요되는 수동 프로세스를 자동화 및 단순화합니다. SnapManager with ONTAP SnapMirror 기술을 사용하여 다른 볼륨에 백업 복사본을 만들고 ONTAP SnapVault 기술을 사용하여 백업을 디스크에 효율적으로 아카이브할 수 있습니다.
+
+SnapManager는 OnCommand Unified Manager와 SAP의 BR * Tools와 통합되어 정책 기반 데이터 관리를 수행하고, 정기적인 데이터베이스 백업을 예약 및 생성하고, 데이터 손실 또는 재해 발생 시 이러한 백업에서 데이터를 복원하는 데 필요한 툴을 제공합니다.
+
+또한 SnapManager는 Oracle RAC(Real Application Clusters) 및 Oracle RMAN(Recovery Manager)과 같은 기본 Oracle 기술과 통합되어 백업 정보를 보존합니다. 이러한 백업은 나중에 블록 레벨 복구 또는 테이블스페이스 시점 복구 작업에서 사용할 수 있습니다.
+
+
+
+== SnapManager 하이라이트
+
+SnapManager는 UNIX 호스트의 데이터베이스와 백 엔드에 Snapshot, SnapRestore 및 FlexClone 기술을 원활하게 통합합니다 관리 기능을 위한 CLI(명령줄 인터페이스)뿐만 아니라 사용하기 쉬운 UI(사용자 인터페이스)도 제공합니다.
+
+SnapManager를 사용하면 다음과 같은 데이터베이스 작업을 수행하고 데이터를 효율적으로 관리할 수 있습니다.
+
+* 운영 또는 2차 스토리지에서 공간 효율적인 백업 생성
++
+SnapManager를 사용하면 데이터 파일과 아카이브 로그 파일을 개별적으로 백업할 수 있습니다.
+
+* 백업 예약
+* 파일 기반 또는 볼륨 기반 복원 작업을 사용하여 전체 또는 부분 데이터베이스 복원
+* 백업에서 아카이브 로그 파일을 검색, 마운트 및 적용하여 데이터베이스 복구
+* 아카이브 로그의 백업만 생성할 때 아카이브 로그 대상에서 아카이브 로그 파일 잘라내기
+* 고유한 아카이브 로그 파일이 포함된 백업만 보존하여 최소 수의 아카이브 로그 백업을 자동으로 유지합니다
+* 작업 세부 정보 추적 및 보고서 생성
+* 백업이 유효한 블록 형식이고 백업된 파일이 손상되지 않았는지 확인하기 위해 백업을 확인하는 중입니다
+* 데이터베이스 프로파일에 대해 수행된 작업 기록을 유지 관리합니다
++
+프로파일에는 SnapManager에서 관리할 데이터베이스에 대한 정보가 들어 있습니다.
+
+* 운영 또는 2차 스토리지에서 공간 효율적인 백업 클론 생성
++
+SnapManager를 사용하면 데이터베이스의 클론을 분할할 수 있습니다.
+
+

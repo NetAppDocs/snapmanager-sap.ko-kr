@@ -1,0 +1,102 @@
+---
+permalink: unix-administration/task-customize-e-mail-subject-for-a-new-profile.html 
+sidebar: sidebar 
+keywords: customize, email, subject, profile, create, customizing 
+summary: 새 프로필을 만들 때 이메일 제목을 사용자 지정할 수 있습니다. 
+---
+= 새 프로필에 대한 이메일 제목을 사용자 지정합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+새 프로필을 만들 때 이메일 제목을 사용자 지정할 수 있습니다.
+
+{profile}_\{operation-name}_\{db-sid}_\{db-host}_\{start-date}_\{end-date}_\{status} 패턴을 사용하거나 원하는 텍스트를 입력하여 이메일 제목을 사용자 지정할 수 있습니다.
+
+[cols="1a,3a,2a"]
+|===
+| 변수 이름 | 설명 | 예제 값 
+
+
+ a| 
+'_profile_'
+ a| 
+데이터베이스 작업에 사용되는 프로파일 이름입니다
+ a| 
+PROF1
+
+
+
+ a| 
+'_operation-name _'
+ a| 
+데이터베이스 작업 이름입니다
+ a| 
+백업, 데이터 백업, 데이터 및 아카이브 로그 백업
+
+
+
+ a| 
+'_db-sid_'
+ a| 
+데이터베이스의 SID입니다
+ a| 
+DB1
+
+
+
+ a| 
+'_db-host_'
+ a| 
+호스트 서버의 이름입니다
+ a| 
+호스트 A
+
+
+
+ a| 
+'_start-date_'
+ a| 
+mmdd:hh:ss yyyy 형식의 데이터베이스 작업 시작 시간입니다
+ a| 
+2012년 4월 27일 21:00:45 PST
+
+
+
+ a| 
+'_end-date_'
+ a| 
+mmdd:hh:ss yyyy 형식의 데이터베이스 작업 종료 시간입니다
+ a| 
+2012년 4월 27일 21:10:45 PST
+
+
+
+ a| 
+'_status_'
+ a| 
+데이터베이스 작업 상태입니다
+ a| 
+성공
+
+|===
+변수에 값을 제공하지 않으면 SnapManager에서 다음 오류 메시지를 표시합니다: "ising value(s)-subject."
+
+. 다음 명령을 입력합니다.
++
+"* smssap profile create -profile_profile_[-profile-profile-password -password_profile_password_] -repository -dbname_repo_service_name_-host_repo_host_-port -login -username_repo_username_ -database -dbname_db_db_username__username_username_username_username_name] -sid_username_name -sid_name [-daily [-count_n_] [-duration_m_] [-weekly [-count_n_] [-duration_m_] [-duration_m_] [-duration_n_]] [-comment_comment_comment_] [-snapname -pattern_pattern_subject] [-protection -policy_policy_policy_policy_name] subject_subject_subject_name] [-subject_subject_subject=email_subject_subject_subject_name
+
+
+
+'''
+다음은 이메일 제목 패턴을 보여 주는 예입니다.
+
+[listing]
+----
+
+smsap profile create -profile sales1 -profile-password admin1 -repository -dbname repo2 -host 10.72.197.133 -port 1521 -login -username admin2 -database -dbname DB1 -host 10.72.197.142 -sid DB1
+-osaccount oracle -osgroup dba -profile-notification -success -email admin@org.com -subject {profile}_{operation-name}_{db-sid}_{db-host}_{start-date}_{end-date}_{status}
+----
+'''

@@ -1,0 +1,54 @@
+---
+permalink: unix-administration/reference-the-smosmsap-storage-list-command.html 
+sidebar: sidebar 
+keywords: run, storage, list, command, display, system, profile, smsap 
+summary: storage list 명령을 실행하여 특정 프로파일과 연결된 스토리지 시스템 목록을 표시할 수 있습니다. 
+---
+= smsap storage list 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+'Storage list' 명령을 실행하여 특정 프로파일과 연결된 스토리지 시스템 목록을 표시할 수 있습니다.
+
+
+
+== 구문
+
+[listing]
+----
+smsap storage list
+-profile profile
+----
+
+
+== 매개 변수
+
+* '* - 프로파일 프로파일 프로파일 * '
++
+프로파일의 이름을 지정합니다. 이름은 최대 30자까지 지정할 수 있으며 호스트 내에서 고유해야 합니다.
+
+
+
+'''
+
+
+== 예
+
+다음 예에서는 mjullian 프로필과 연결된 스토리지 시스템을 표시합니다.
+
+[listing]
+----
+smsap storage list -profile mjullian
+----
+[listing]
+----
+
+Sample Output:
+Storage Controllers
+--------------------
+FAS3020-RTP07OLD
+----
+'''

@@ -1,0 +1,27 @@
+---
+permalink: windows/task-verify-the-environment.html 
+sidebar: sidebar 
+keywords: verify, environment, snapdrive, snapmanager, set, up, correct 
+summary: 환경을 확인하여 SnapDrive 및 SnapManager가 올바르게 설정되었는지 확인할 수 있습니다. 
+---
+= 환경을 확인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+환경을 확인하여 SnapDrive 및 SnapManager가 올바르게 설정되었는지 확인할 수 있습니다.
+
+
+
+== 필요한 것
+
+필요한 필수 구성 요소를 다운로드, 설치 및 설정합니다. SnapManager가 설치되어 있고 호스트 서버가 실행 중인지 확인합니다.
+
+.단계
+. SnapDrive가 설치되어 있고 루트 계정에서 실행할 수 있는지 확인하려면 다음 명령을 실행합니다.
++
+``smssap 시스템 확인*’
+
+

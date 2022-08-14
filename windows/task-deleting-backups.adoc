@@ -1,0 +1,30 @@
+---
+permalink: windows/task-deleting-backups.html 
+sidebar: sidebar 
+keywords: delete, backup, free, space, occupy, remove, snapshot, copies, copy, volume, deleting 
+summary: 백업을 더 이상 필요로 하지 않을 때 삭제해야 하므로 해당 백업이 차지하는 공간이 확보됩니다. 백업을 제거하면 볼륨당 255개의 스냅샷 복사본의 제한에 도달할 수 있는 가능성이 줄어듭니다. 
+---
+= 백업을 삭제하는 중입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백업을 더 이상 필요로 하지 않을 때 삭제해야 하므로 해당 백업이 차지하는 공간이 확보됩니다. 백업을 제거하면 볼륨당 255개의 스냅샷 복사본의 제한에 도달할 수 있는 가능성이 줄어듭니다.
+
+* 클론을 생성하는 데 백업이 사용되지 않았는지 확인해야 합니다.
+
+
+보존 클래스를 변경하지 않고 무제한 유지되는 백업을 삭제할 수 있습니다.
+
+백업 삭제 작업이 성공하거나 실패한 후에 덤프 파일을 선택적으로 수집할 수 있습니다.
+
+아카이브 로그 백업을 삭제하려면 아카이브 로그 백업에 대해 설정된 보존 기간을 확인해야 합니다. 아카이브 로그 백업이 보존 기간 내에 있고 복구된 데이터베이스 복구에 아카이브 로그 파일이 필요한 경우 아카이브 로그 백업을 삭제할 수 없습니다.
+
+. 'msap operation list -profileprofile_name -dump -quiet -verbose' 명령을 입력하여 작업이 완료되었는지 확인합니다
+. 백업을 삭제하려면 ''smsap backup delete -profile profile_name[-label label[data|-archivelogs]|-ided|-all][-force][-quiet|-verbose]' 명령을 입력합니다
++
+강제 옵션을 사용하여 백업을 강제로 제거합니다. 불완전한 작업이 있는 백업을 강제로 제거하면 백업이 일관되지 않은 상태가 될 수 있습니다.
+
+

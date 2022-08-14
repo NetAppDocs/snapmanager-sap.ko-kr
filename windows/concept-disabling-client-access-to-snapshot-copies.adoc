@@ -1,0 +1,28 @@
+---
+permalink: windows/concept-disabling-client-access-to-snapshot-copies.html 
+sidebar: sidebar 
+keywords: storage, system, volume, nfs, protocol, sap, data, back up, tools, disable, client, snapshot, copies, copy, disable 
+summary: NFS 프로토콜을 사용하고 BR * Tools를 사용하여 백업된 SAP 데이터가 포함된 스토리지 시스템 볼륨의 경우 해당 볼륨의 스냅샷 복사본에 대한 클라이언트 액세스를 해제해야 합니다. 클라이언트 액세스가 활성화된 경우 BR * Tools는 이전 백업을 포함하는 숨겨진 .snapshot 디렉토리의 백업을 생성하려고 시도합니다. 
+---
+= 스냅샷 복사본에 대한 클라이언트 액세스 사용 안 함
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NFS 프로토콜을 사용하고 BR * Tools를 사용하여 백업된 SAP 데이터가 포함된 스토리지 시스템 볼륨의 경우 해당 볼륨의 스냅샷 복사본에 대한 클라이언트 액세스를 해제해야 합니다. 클라이언트 액세스가 활성화된 경우 BR * Tools는 이전 백업을 포함하는 숨겨진 .snapshot 디렉토리의 백업을 생성하려고 시도합니다.
+
+클라이언트 액세스를 해제하려면 다음 방법 중 하나를 사용합니다.
+
+* Data ONTAP 사용: Data ONTAP 명령줄 인터페이스를 사용하여 다음 명령을 입력합니다. "vol options volume_name nosnapdir on" 여기서 volume_name은 SAP 데이터가 포함된 볼륨의 이름입니다(예: "/vol/falls_sap_cer9i_data1")
+* FilerView 사용: FilerView 그래픽 사용자 인터페이스를 사용하여 액세스를 비활성화하려면 볼륨의 스냅샷 복사본이 이미 있어야 합니다.
++
+.. FilerView 왼쪽 창에서 * 볼륨 * > * 스냅샷 * > * 관리 * 를 선택합니다.
+.. 스냅샷 관리 페이지의 볼륨 열에서 볼륨 이름을 클릭합니다.
+.. 스냅샷 구성 페이지에서 스냅샷 디렉터리 표시 확인란의 선택을 취소하고 * 적용 * 을 클릭합니다
+
+
+
+
+스냅샷 복사본에 대한 클라이언트 액세스를 사용하지 않도록 설정하는 방법에 대한 자세한 내용은 사용 중인 Data ONTAP 버전에 대한 _Data ONTAP 데이터 보호 온라인 백업 및 복구 가이드_의 스냅샷 관리 장을 참조하십시오.

@@ -1,0 +1,14 @@
+---
+permalink: unix-administration/task-database-restore-from-backup.html 
+sidebar: sidebar 
+keywords: active, content, payroll, database, accidentally, lost, destroy, snapmanager, netapp, management, console, data, protection, capability, support, restoration, local, backup, secondary, storage 
+summary: 급여 데이터베이스의 액티브 콘텐츠가 실수로 손실되거나 폐기된 경우 SnapManager 및 NetApp 관리 콘솔 데이터 보호 기능은 로컬 백업 또는 보조 스토리지에서 해당 데이터의 복원을 지원합니다. 
+---
+= 백업에서 데이터베이스 복원
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+급여 데이터베이스의 액티브 콘텐츠가 실수로 손실되거나 폐기된 경우 SnapManager 및 NetApp 관리 콘솔 데이터 보호 기능은 로컬 백업 또는 보조 스토리지에서 해당 데이터의 복원을 지원합니다.

@@ -1,0 +1,26 @@
+---
+permalink: windows/concept-what-snapmanager-for-oraclefor-sap-is.html 
+sidebar: sidebar 
+keywords: snapmanager, tools, perform, policy-driven, data, management, schedule, create, database, backup, restore, primary, storage, post-process, sap 
+summary: SnapManager는 정책 기반 데이터 관리를 수행하고, 정기적인 데이터베이스 백업을 예약 및 생성하고, 데이터 손실 또는 재해 발생 시 이러한 백업에서 데이터를 복원하고, 데이터베이스 클론을 생성하는 데 필요한 툴을 제공합니다. 사후 처리 스크립트를 사용하여 운영 스토리지에 백업을 생성하고 보조 스토리지에 보호된 백업을 생성할 수 있습니다. 
+---
+= SnapManager for SAP가 무엇인지
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 정책 기반 데이터 관리를 수행하고, 정기적인 데이터베이스 백업을 예약 및 생성하고, 데이터 손실 또는 재해 발생 시 이러한 백업에서 데이터를 복원하고, 데이터베이스 클론을 생성하는 데 필요한 툴을 제공합니다. 사후 처리 스크립트를 사용하여 운영 스토리지에 백업을 생성하고 보조 스토리지에 보호된 백업을 생성할 수 있습니다.
+
+SnapManager는 최신 데이터베이스 릴리즈와 통합할 때 NetApp 기술을 활용합니다. SnapManager은 다음과 같은 NetApp 애플리케이션 및 기술과 통합됩니다.
+
+* SnapDrive는 스토리지 프로비저닝 작업을 자동화하고 오류 없이 호스트와 동일한 스토리지 Snapshot 복사본을 생성하는 프로세스를 간소화합니다.
+* Snapshot(Data ONTAP의 기능)은 데이터베이스의 시점 복사본을 생성합니다.
+* SnapVault(Data ONTAP의 라이센스 기능)는 디스크 기반 백업을 활용하여 데이터베이스의 안정적이고 오버헤드가 낮은 백업 및 복구를 수행합니다.
+* SnapMirror(Data ONTAP의 라이센스 기능)는 글로벌 네트워크에서 데이터베이스 데이터를 빠르고 단순하고 안정적이고 비용 효율적인 방법으로 복제합니다.
+* SnapRestore(Data ONTAP의 라이센스 기능)는 용량 또는 파일 수에 관계없이 몇 초 만에 전체 데이터베이스를 복구합니다.
+* FlexClone(Data ONTAP의 라이센스 기능)을 사용하면 스냅샷 백업에서 빠르고 공간 효율적인 데이터베이스 클론을 생성할 수 있습니다.
+
+
+SnapManager는 SAN(FC 및 iSCSI) 프로토콜에서 작동합니다.

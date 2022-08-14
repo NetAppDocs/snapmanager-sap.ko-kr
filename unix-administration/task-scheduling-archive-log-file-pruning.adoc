@@ -1,0 +1,76 @@
+---
+permalink: unix-administration/task-schedule-archive-log-file-pruning.html 
+sidebar: sidebar 
+keywords: create, backup, schedule, pruning, prune, archive, log, file, scheduling 
+summary: 백업을 생성할 때 지정된 시간에 아카이브 로그 파일을 정리하도록 예약할 수 있습니다. 
+---
+= 아카이브 로그 파일 잘라내기 예약
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백업을 생성할 때 지정된 시간에 아카이브 로그 파일을 정리하도록 예약할 수 있습니다.
+
+* 이 작업에 대한 정보 *
+
+SnapManager를 사용하면 활성 파일 시스템에서 주기적으로 아카이브 로그 파일을 정리할 수 있습니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+``smssap schedule create-profile_profile_name_{[-full{-online|-offline|-auto}[-retain[-hourly|-daily|-weekly|-monthly|-limited][-verify]|[-data[-files_[_files_]]|[-tablespaces_[_-tablespaces_]] 자동 오프라인 |{archived-weekly-line]{archivine-weekly-comment]{archivine-weekly-comment-weekly_offline]{archine-offline-comment]{archine-weekly_offline] {-exclude-dest_path1_[,[_path2_] [-exclude-dest_path1_[_, path2_]] [-prunelogs{-all |-untiling_unilegots _ |- before {-date_yyyy_mm-mm_dd HH:mm_ss_months_months_months - months_months_months_start_monthays_months_months_months_months_months_months_months_months - months_months_time_start_time_time_time_time_montheays_time_time_time_time | start_time <yyyy-mm-dd HH:MM>_} - runasuser_-runasuser_[-force] [-quiet|-verbose] *
+
++
+[cols="2a,4a"]
+|===
+| 원하는 작업 | 그러면... 
+
+
+ a| 
+* 보관 로그 파일 정리 예약 *
+ a| 
+다음 옵션을 지정합니다.
+
+** 아카이브 로그 파일 정리 스케줄을 지정하려면 -prunelogs를 사용합니다
+** 아카이브 로그 대상에서 아카이브 로그 파일을 정리하려면 -prune-dest를 사용합니다
+
+
+
+
+ a| 
+* 스케줄 이름을 포함시키십시오 *
+ a| 
+schedule-name 옵션을 지정합니다.
+
+
+
+ a| 
+* 특정 시간 간격으로 아카이브 로그 파일 정리 예약 *
+ a| 
+'interval' 옵션을 지정하고 다음 간격 클래스에 따라 아카이브 로그 파일을 정리해야 하는지 여부를 지정합니다.
+
+** ``매시간’’’
+** ``매일’’
+** ``매주’’’
+** `-monthly'
+** ``한시간에만’’
+
+
+
+
+ a| 
+* 스케줄 작업에 대한 설명을 추가합니다 *
+ a| 
+설명 문자열 뒤에 '-schedule-comment' 옵션을 지정합니다.
+
+
+
+ a| 
+* 스케줄 작업의 시작 시간을 지정합니다 *
+ a| 
+yyyy-mm-dd hh:mm 형식으로 '-start-time' 옵션을 지정합니다.
+
+|===
+

@@ -1,0 +1,29 @@
+---
+permalink: windows/task-restoring-backups-from-an-alternate-location.html 
+sidebar: sidebar 
+keywords: restore, alternate, location, data, file, intermediate, system, active, restoring, backup 
+summary: 대체 위치에서 복원하여 중간 파일 시스템에서 활성 파일 시스템으로 데이터 파일을 복구할 수 있습니다. 
+---
+= 대체 위치에서 백업을 복원합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+대체 위치에서 복원하여 중간 파일 시스템에서 활성 파일 시스템으로 데이터 파일을 복구할 수 있습니다.
+
+* 복구 사양 XML 파일을 만들고 사용할 복원 방법의 유형을 지정합니다.
+
+
+smbap 백업 복원 명령을 사용하여 생성한 복원 사양 XML 파일을 지정하여 대체 위치에서 백업을 복원할 수 있습니다.
+
+. 다음 명령을 입력합니다.
++
+smsap backup restore-profileprofile-labellabel-complete-alllogs-restorrestorespec
+
+
+
+* 관련 정보 *
+
+xref:reference-the-smosmsapbackup-restore-command.adoc[smsap 백업 복원 명령]

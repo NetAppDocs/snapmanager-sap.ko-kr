@@ -1,0 +1,90 @@
+---
+permalink: unix-administration/reference-troubleshooting-snapdrive-issues.html 
+sidebar: sidebar 
+keywords: common, issue, snapmanager, snapdrive, troubleshooting, product 
+summary: SnapDrive 제품에서 SnapManager를 사용할 때 일반적으로 발생할 수 있는 몇 가지 문제가 있습니다. 
+---
+= SnapDrive 문제 해결
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive 제품에서 SnapManager를 사용할 때 일반적으로 발생할 수 있는 몇 가지 문제가 있습니다.
+
+먼저 문제가 SAP용 SnapManager 또는 SnapDrive와 관련이 있는지 확인해야 합니다. SnapDrive 오류인 경우 SAP용 SnapManager에서 다음과 유사한 오류 메시지를 표시합니다.
+
+[listing]
+----
+SMSAP-12111: Error executing snapdrive command "<snapdrive command>": <snapdrive error>
+----
+다음은 SnapDrive 오류 메시지의 예이며, 여기서 'smSAP-12111'은 SnapManager 오류 번호입니다. 0001-770 번호 지정 체계는 UNIX용 SnapDrive 오류를 나타냅니다.
+
+[listing]
+----
+SMSAP-12111: Error executing snapdrive command
+"/usr/sbin/snapdrive snap restore -file
+/mnt/pathname/ar_anzio_name_10gR2_arrac1/data/undotbs02.dbf -snapname pathname.company.com:
+/vol/ar_anzio_name_10gR2_arrac1:
+TEST_ARRAC1_YORKTOW_arrac12_F_C_0_8abc01b20f9ec03d010f9ec06bee0001_0": 0001-770
+Admin error: Inconsistent number of files returned when listing contents of
+/vol/ar_anzio_name_10gR2_arrac1/.snapshot/
+TEST_ARRAC1_YORKTOW_arrac12_F_C_0_8abc01b20f9ec03d010f9ec06bee0001_0/data
+on filer pathname.
+----
+다음은 LUN 검색, 구성 문제 및 공간과 관련된 UNIX용 SnapDrive 오류 메시지의 가장 일반적인 내용입니다. 이러한 오류가 발생하면 _SnapDrive 설치 및 관리 안내서_의 문제 해결 장을 참조하십시오.
+
+[cols="3a,1a"]
+|===
+| 증상 | 설명 
+
+
+ a| 
+''0001-136 관리자 오류: 파일러에 로그온할 수 없습니다. <filer>에 대한 사용자 이름 및/또는 암호를 설정하십시오.
+ a| 
+초기 SnapDrive 구성
+
+
+
+ a| 
+'0001-382 Admin error: Multipathing rescan failed.'(0001-382 관리자 오류
+ a| 
+LUN 검색 오류입니다
+
+
+
+ a| 
+' 0001-462 관리자 오류: <LUN>:spd5: 장치를 중지할 수 없습니다. 장치 사용 중.
+ a| 
+LUN 검색 오류입니다
+
+
+
+ a| 
+''0001-476 관리자 오류: 연결된 장치를 찾을 수 없습니다... 0001-710 관리자 오류: LUN의 OS 새로 고침이 실패했습니다...
+ a| 
+LUN 검색 오류입니다
+
+
+
+ a| 
+''0001-680 관리자 오류: 호스트 OS는 LUN 생성 또는 연결을 허용하기 위해 내부 데이터를 업데이트해야 합니다. 'SnapDrive config prepare LUNs'를 사용하거나 이 정보를 수동으로 업데이트하십시오
+ a| 
+LUN 검색 오류입니다
+
+
+
+ a| 
+'0001-817 관리자 오류: 볼륨 클론을 생성하지 못했습니다... : FlexClone Not licensed'(라이센스가 없습니다
+ a| 
+초기 SnapDrive 구성
+
+
+
+ a| 
+''0001-878 관리자 오류: HBA 도우미를 찾을 수 없습니다. LUN 관련 명령이 실패해야 합니다
+ a| 
+LUN 검색 오류입니다
+
+|===

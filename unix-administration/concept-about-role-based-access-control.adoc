@@ -1,0 +1,65 @@
+---
+permalink: unix-administration/concept-about-role-based-access-control.html 
+sidebar: sidebar 
+keywords: role-based, access, control, rbac, control, access, snapmanager, operation, administrator, environment, role 
+summary: '역할 기반 액세스 제어(RBAC)를 사용하여 SnapManager 작업에 대한 액세스 권한이 있는 사용자를 제어할 수 있습니다. 관리자는 RBAC를 사용하여 역할을 정의하고 이러한 역할에 사용자를 할당하여 사용자 그룹을 관리할 수 있습니다. RBAC가 이미 설정되어 있는 환경에서 SnapManager RBAC를 사용할 수 있습니다.' 
+---
+= 역할 기반 액세스 제어에 대해 설명합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+역할 기반 액세스 제어(RBAC)를 사용하여 SnapManager 작업에 대한 액세스 권한이 있는 사용자를 제어할 수 있습니다. 관리자는 RBAC를 사용하여 역할을 정의하고 이러한 역할에 사용자를 할당하여 사용자 그룹을 관리할 수 있습니다. RBAC가 이미 설정되어 있는 환경에서 SnapManager RBAC를 사용할 수 있습니다.
+
+RBAC에는 다음과 같은 구성 요소가 포함되어 있습니다.
+
+* 리소스: 데이터베이스를 구성하는 데이터 파일이 들어 있는 볼륨 및 LUN입니다.
+* 기능: 리소스에 대해 수행할 수 있는 작업의 유형입니다.
+* 사용자: 권한을 부여하는 사람.
+* 역할: 리소스에 허용되는 리소스 및 기능 집합입니다. 이러한 기능을 수행해야 하는 사용자에게 특정 역할을 할당합니다.
+
+
+SnapDrive에서 RBAC를 사용합니다. 그런 다음 Operations Manager 웹 그래픽 사용자 인터페이스 또는 명령줄 인터페이스에서 역할별 특정 기능을 구성할 수 있습니다. RBAC 점검은 DataFabric Manager 서버에서 수행됩니다.
+
+다음 표에는 Operations Manager에 설정된 몇 가지 역할 및 일반적인 작업이 나와 있습니다.
+
+[cols="1a,3a"]
+|===
+| 역할 | 일반적인 작업 
+
+
+ a| 
+SAP Basis 관리자
+ a| 
+* 호스트에 상주하는 Oracle 데이터베이스 생성, 유지 관리 및 모니터링
+* 데이터베이스 백업 예약 및 생성
+* 백업이 유효하고 복원할 수 있는지 확인
+* 데이터베이스 클론 생성
+
+
+
+
+ a| 
+서버 관리자
+ a| 
+* 스토리지 시스템 및 애그리게이트 설정
+* 볼륨 모니터링으로 여유 공간 확보
+* 사용자의 요청에 따라 스토리지 용량 할당
+* 재해 복구 미러링 구성 및 모니터링
+
+
+
+
+ a| 
+스토리지 설계자
+ a| 
+* 스토리지에 대한 아키텍처 의사 결정
+* 스토리지 용량 확장 계획
+* 재해 복구 전략 계획
+* 팀 구성원에게 역량 위임
+
+
+|===
+RBAC가 사용 중인 경우(운영 관리자가 설치되어 있고 SnapDrive에서 RBAC가 설정되어 있는 경우) 스토리지 관리자는 데이터베이스 파일에 대한 모든 볼륨 및 스토리지 시스템에 RBAC 권한을 할당해야 합니다.

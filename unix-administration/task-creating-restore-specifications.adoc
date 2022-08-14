@@ -1,0 +1,106 @@
+---
+permalink: unix-administration/task-create-restore-specifications.html 
+sidebar: sidebar 
+keywords: restore, specification, file, xml, original, alternate, location, file, restore, snapmanager, specification, location, creating, create 
+summary: 복구 사양 파일은 파일을 복원할 수 있는 원본 및 대체 위치가 포함된 XML 파일입니다. SnapManager는 이 사양 파일을 사용하여 지정된 위치에서 파일을 복원합니다. 
+---
+= 복구 사양을 생성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+복구 사양 파일은 파일을 복원할 수 있는 원본 및 대체 위치가 포함된 XML 파일입니다. SnapManager는 이 사양 파일을 사용하여 지정된 위치에서 파일을 복원합니다.
+
+* 이 작업에 대한 정보 *
+
+텍스트 편집기를 사용하여 복원 사양 파일을 만들 수 있습니다. 파일에 .xml 확장명을 사용해야 합니다.
+
+.단계
+. 텍스트 파일을 엽니다.
+. 다음을 입력합니다.
++
+"*<restore-specification xmlns="http://www.netapp.com">*`[]
+
+. 다음 예에 표시된 형식을 사용하여 파일 매핑 정보를 입력합니다.
++
+[listing]
+----
+<file-mapping>
+    <original-location>/path/dbfilename.dbf</original-location>
+    <alternate-location>/path/dbfilename1.dbf</alternate-location>
+</file-mapping>
+----
++
+파일 매핑은 파일이 복원되는 위치를 지정합니다. 원래 위치는 백업 시 액티브 파일 시스템의 파일 위치입니다. 대체 위치는 파일이 복원되는 위치입니다.
+
+. 예제에 표시된 형식을 사용하여 마운트된 파일 시스템 매핑 정보를 입력합니다.
++
+[listing]
+----
+<mountpoint-mapping>
+     <original-location>/path/db_name</original-location>
+     <snapname>snapname</snapname>
+     <alternate-location>/path/vaultlocation</alternate-location>
+</mountpoint-mapping>
+<mountpoint-mapping>
+     <original-location>+DiskGroup_1</original-location>
+     <snapname>snapname</snapname>
+     <alternate-location>+DiskGroup_2</alternate-location>
+</mountpoint-mapping>
+----
++
+마운트 지점은 디렉토리 경로 "/mnt/myfs/"를 참조합니다. 마운트 지점 매핑은 파일이 복구되는 마운트 지점을 지정합니다. 원래 위치는 백업 시 액티브 파일 시스템에 있는 마운트 지점의 위치입니다. 대체 위치는 원래 위치의 파일이 복원되는 마운트 위치입니다. '_snapname_'은 원본 파일이 백업된 스냅샷 복사본의 이름입니다.
+
++
+
+NOTE: 스냅샷 복사본 이름은 단일 백업 작업(예: 데이터 파일의 경우 한 번, 로그의 경우 한 번)에서 동일한 파일 시스템을 여러 번 사용할 수 있으므로 필수 구성 요소입니다.
+
+. 다음 예에 표시된 형식을 사용하여 원시 디바이스 매핑 태그 및 위치를 입력합니다.
++
+[listing]
+----
+<raw-device-mapping>
+     <original-location>/path/raw_device_name</original-location>
+     <alternate-location>/path/raw_device_name</alternate-location>
+</raw-device-mapping>
+----
++
+원시 디바이스 매핑은 원시 디바이스가 복원되는 위치를 지정합니다.
+
+. 다음을 입력합니다.
++
+"*</restore-specification>*"
+
+. 파일을 .xml 파일로 저장하고 설정을 닫습니다.
+
+
+
+
+== 복원 사양 예
+
+다음 예에서는 복구 사양 구조를 보여 줍니다.
+
+[listing]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<restore-specification xmlns="http://www.netapp.com">
+<!-- "Restore from file(s)" -->
+     <file-mapping>
+          <original-location>/mnt/pathname/dbname/users01.dbf</original-location>
+          <alternate-location>/mnt/vault/users01.dbf</alternate-location>
+     </file-mapping>
+<!-- "Restore from host mounted file system(s)" -->
+     <mountpoint-mapping>
+          <original-location>/mnt/pathname/dbname/fs</original-location>
+          <snapname>Snapshotname</snapname>
+          <alternate-location>/mnt/vaultlocation</alternate-location>
+     </mountpoint-mapping>
+<!-- "Restore from raw device" -->
+     <raw-device-mapping>
+          <original-location>/pathname/devicename</original-location>
+          <alternate-location>/pathname/devicename</alternate-location>
+     </raw-device-mapping>
+</restore-specification>
+----

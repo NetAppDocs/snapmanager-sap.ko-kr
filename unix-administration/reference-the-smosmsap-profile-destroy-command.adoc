@@ -1,0 +1,60 @@
+---
+permalink: unix-administration/reference-the-smosmsap-profile-destroy-command.html 
+sidebar: sidebar 
+keywords: command, delete, split, clone, database, profile, snapmanager, process, smsap, destroy 
+summary: '이 명령은 클론 분할 프로세스 중에 SnapManager에서 생성한 프로파일과 함께 분할 클론(데이터베이스)을 삭제합니다.' 
+---
+= smsap 프로파일 destroy 명령입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령은 클론 분할 프로세스 중에 SnapManager에서 생성한 프로파일과 함께 분할 클론(데이터베이스)을 삭제합니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap profile destroy
+-profile _profile_
+[-host _hostname_\]
+[-quiet | -verbose\]]
+----
+
+
+== 매개 변수
+
+* '*-profile_profile_ *'
++
+클론 분할 프로세스가 성공한 후 SnapManager에서 생성하는 프로파일을 지정합니다.
+
+* '*-host_hostname_ *'
++
+분할 클론이 존재하는 호스트 이름을 지정합니다.
+
+* ``조용한’’’
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '*-verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+'''
+
+
+== 명령 예
+
+다음 예제에서는 sales1이라는 이름의 프로필을 삭제합니다.
+
+[listing]
+----
+smsap profile destroy -profile SALES1
+----
+'''

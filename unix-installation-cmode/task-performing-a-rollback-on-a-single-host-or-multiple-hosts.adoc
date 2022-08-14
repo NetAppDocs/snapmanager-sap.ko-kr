@@ -1,0 +1,79 @@
+---
+permalink: unix-installation-cmode/task-perform-a-rollback-on-a-single-host-or-multiple-hosts.html 
+sidebar: sidebar 
+keywords: perform, rollback, single, multiple, snapmanager, server, host, command-line, interface, cli 
+summary: 'CLI(Command-Line Interface)를 사용하여 단일 또는 여러 SnapManager 서버 호스트에서 롤백을 수행할 수 있습니다.' 
+---
+= 단일 호스트 또는 여러 호스트에 대해 롤백을 수행합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+CLI(Command-Line Interface)를 사용하여 단일 또는 여러 SnapManager 서버 호스트에서 롤백을 수행할 수 있습니다.
+
+
+
+== 필요한 것
+
+롤백을 수행하기 위한 모든 필수 구성 요소가 완료되었는지 확인해야 합니다.
+
+.단계
+. 단일 호스트에서 롤백을 수행하려면 다음 명령을 입력합니다.
++
+'* smsap 리포지토리 롤백 - restrepository-dbname_repo_service_name_-host_repo_host_-login-username_repo_username_-port_repo_port_-rollbackhost_host_with_target_database_ *'
+
++
+* 예 *
+
++
+다음 예에서는 hostA에 마운트된 모든 타겟 데이터베이스와 저장소 호스트인 repo_host에 있는 repoA라는 저장소 데이터베이스를 롤백하는 명령을 보여 줍니다.
+
++
+[listing]
+----
+
+smsap repository rollback
+    -repository
+      -dbname repoA
+      -host repo_host
+      -login
+       -username repouser
+       -port 1521
+     -rollbackhost hostA
+----
+. 여러 호스트에서 롤백을 수행하려면 다음 명령을 입력합니다.
++
+'* smsap 리포지토리 롤백 - restrepository-dbname_repo_service_name_-host_repo_host_-login-username_repo_username_-port_repo_port_-rollbackhost_with_target_database1_,_host_with_target_database2_'
+
++
+
+NOTE: 여러 호스트의 경우 쉼표로 구분된 호스트 이름을 입력하고 쉼표와 다음 호스트 이름 사이에 공백이 없는지 확인합니다.
+
++
+RAC(Real Application Clusters) 구성을 사용하는 경우 모든 RAC 관련 호스트를 수동으로 롤백해야 합니다. '-allhosts'를 사용하여 모든 호스트의 롤백을 수행할 수 있습니다.
+
++
+* 예 *
+
++
+다음 예에서는 호스트, hostA, hostB 및 리포지토리 호스트, repo_host에 있는 repoA라는 저장소 데이터베이스에 마운트된 모든 대상 데이터베이스를 롤백하는 명령을 보여 줍니다.
+
++
+[listing]
+----
+
+smsap repository rollback
+    -repository
+      -dbname repoA
+      -host repo_host
+      -login
+       -username repouser
+       -port 1521
+     -rollbackhost hostA,hostB
+----
++
+호스트의 타겟 데이터베이스 프로파일과 연결된 호스트, 프로필, 스케줄, 백업 및 클론이 이전 리포지토리로 되돌아갑니다.
+
+

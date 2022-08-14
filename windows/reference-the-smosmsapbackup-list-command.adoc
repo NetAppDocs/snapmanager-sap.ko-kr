@@ -1,0 +1,73 @@
+---
+permalink: windows/reference-the-smosmsapbackup-list-command.html 
+sidebar: sidebar 
+keywords: run, backup, list, command, display, information, profile, information, retention, class, protection, smsap, status 
+summary: 백업 목록 명령을 실행하여 보존 클래스 및 보호 상태에 대한 정보를 포함하여 프로필에 백업에 대한 정보를 표시할 수 있습니다. 
+---
+= smsap 백업 목록 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"backup list" 명령을 실행하여 보존 클래스 및 보호 상태에 대한 정보를 포함한 백업 정보를 프로필에 표시할 수 있습니다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap backup list
+-profile profile_name
+-delimiter character
+[-data | -archivelogs | -all]
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* '*'- profile_profile_name_'
++
+백업을 나열할 프로파일을 지정합니다. 프로파일에는 데이터베이스의 식별자와 기타 데이터베이스 정보가 들어 있습니다.
+
+* * ``구분 기호_문자_' *
++
+각 행을 별도의 줄에 표시합니다. 행의 특성은 지정된 문자로 구분됩니다.
+
+* * ``데이터’
++
+데이터 파일을 지정합니다.
+
+* ``archivelogs’
++
+아카이브 로그 파일을 지정합니다.
+
+* ``조용한’
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* * '-verbose' *
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다. 백업 ID를 표시하려면 -verbose 옵션을 포함합니다.
+
+
+
+
+
+== 예
+
+다음 예에서는 sales1 프로필에 대한 백업을 보여 줍니다.
+
+[listing]
+----
+smsap backup list -profile SALES1 -verbose
+Start Date          Status  Scope  Mode    Primary  Label      Retention   Protection
+------------------- ------- ------ ------- -------- -----      --------    ----------
+2007-08-10 14:12:31 SUCCESS FULL   ONLINE  EXISTS   backup2    HOURLY      NOT REQUESTED
+2007-08-05 12:08:37 SUCCESS FULL   ONLINE  EXISTS   backup4    UNLIMITED   NOT REQUESTED
+2007-08-04 22:03:09 SUCCESS FULL   ONLINE  EXISTS   backup6    UNLIMITED   NOT REQUESTED
+----

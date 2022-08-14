@@ -1,0 +1,36 @@
+---
+permalink: unix-administration/task-view-clone-split-estimate.html 
+sidebar: sidebar 
+keywords: clone, split, estimate, help, total, free, space, available, aggregate, database, view 
+summary: 클론 분할 추정치는 애그리게이트에서 사용할 수 있는 총 여유 공간, 클론과 원래 데이터베이스 간에 공유되는 공간 및 클론에서 단독으로 사용되는 공간을 파악하는 데 도움이 됩니다. 또한 기본 클론이 생성된 날짜 및 시간과 클론의 기간을 확인할 수 있습니다. 이 추정치를 기준으로 클론을 분할할 것인지 여부를 결정합니다. 
+---
+= 클론 분할 추정치 보기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+클론 분할 추정치는 애그리게이트에서 사용할 수 있는 총 여유 공간, 클론과 원래 데이터베이스 간에 공유되는 공간 및 클론에서 단독으로 사용되는 공간을 파악하는 데 도움이 됩니다. 또한 기본 클론이 생성된 날짜 및 시간과 클론의 기간을 확인할 수 있습니다. 이 추정치를 기준으로 클론을 분할할 것인지 여부를 결정합니다.
+
+* 이 작업에 대한 정보 *
+
+클론 분할 추정치를 보려면 원래 클론의 프로파일 이름과 클론 작업의 레이블 또는 GUID를 입력해야 합니다. 클론이 다른 호스트에 있는 경우 호스트 이름을 지정할 수 있습니다.
+
+.단계
+. 클론 분할 추정치를 보려면 다음 명령을 입력합니다.
++
+"* smssap clone split-estimate-profile_profile_[-host_hostname_][-label_clone-label_|-id_clone-id_][-quiet|-verbose] *
+
+
+
+'''
+다음 예에서는 클론 분할 스토리지 추정에 대한 명령을 보여 줍니다.
+
+[listing]
+----
+
+					smsap clone split-estimate
+-profile p1 -label clone_test_label
+----
+'''

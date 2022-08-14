@@ -1,0 +1,45 @@
+---
+permalink: windows/task-consolidate-archive-log-backups.html 
+sidebar: sidebar 
+keywords: snapmanager, consolidate, archivelog-only, archive, log, backup, duplicate, consolidation 
+summary: SnapManager는 중복 아카이브 전용 백업을 확보하여 백업을 수행할 때마다 아카이브 전용 백업을 통합합니다. 기본적으로 통합은 활성화되어 있습니다. 
+---
+= 아카이브 로그 백업을 통합합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 중복 아카이브 전용 백업을 확보하여 백업을 수행할 때마다 아카이브 전용 백업을 통합합니다. 기본적으로 통합은 활성화되어 있습니다.
+
+
+
+== 이 작업에 대해
+
+SnapManager는 다른 백업에 아카이브 로그 파일이 있는 아카이브 전용 백업을 식별하고 고유한 아카이브 로그 파일을 사용하여 아카이브 전용 백업의 최소 수를 유지할 수 있도록 합니다.
+
+archivelog 전용 백업이 통합에 의해 확보되면 아카이브 로그 보존 기간을 기준으로 이러한 백업이 삭제됩니다.
+
+아카이브 로그 통합 중에 데이터베이스가 종료 또는 마운트 해제 상태에 있으면 SnapManager는 데이터베이스를 마운트 상태로 변경합니다.
+
+아카이브 로그 파일의 백업 또는 보존에 실패하면 통합이 수행되지 않습니다. 아카이브 전용 백업의 통합은 성공적인 백업과 성공적인 정리 작업 후에만 수행됩니다.
+
+.단계
+. archivelog 전용 백업의 통합을 활성화하려면 구성 매개 변수 "consolidation"을 수정하고 SnapManager 구성 파일(smsap.config)에서 값을 "true"로 설정합니다.
++
+매개 변수가 설정되면 archivelog 전용 백업이 통합됩니다.
+
++
+새로 생성된 아카이브 전용 백업에 이전 아카이브 전용 백업에 동일한 아카이브 로그 파일이 포함되어 있으면 이전의 아카이브 로그 전용 백업이 해제됩니다.
+
++
+
+NOTE: SnapManager는 데이터 파일 백업과 함께 생성된 아카이브 로그 백업을 통합하지 않습니다. SnapManager는 아카이브 전용 백업을 통합합니다.
+
++
+
+NOTE: SnapManager는 사용자가 아카이브 로그 대상에서 아카이브 로그 파일을 수동으로 삭제하거나 아카이브 로그 파일이 손상되어 백업을 포함할 수도 있는 경우에도 아카이브 로그 백업을 통합합니다.
+
+. 보관 로그 백업의 통합을 비활성화하려면 설정 매개변수 '통합'을 수정하고 SnapManager 구성 파일(smsap.config)에서 이 값을 'false'로 설정합니다.
+

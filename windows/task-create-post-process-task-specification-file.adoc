@@ -1,0 +1,23 @@
+---
+permalink: windows/task-create-post-process-task-specification-file.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, create, post-process, task-specification, xml, file, operation, snapmirror, snapvault, post-script, backup, secondary, storage 
+summary: SnapManager를 사용하면 SnapMirror 또는 SnapVault 사후 스크립트를 포함하는 백업 작업을 위한 후처리 작업 사양 XML 파일을 생성할 수 있습니다. 스크립트를 사용하여 보조 스토리지에 백업을 미러링 또는 저장할 수 있습니다. 
+---
+= 후처리 작업 사양 파일을 작성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 SnapMirror 또는 SnapVault 사후 스크립트를 포함하는 백업 작업을 위한 후처리 작업 사양 XML 파일을 생성할 수 있습니다. 스크립트를 사용하여 보조 스토리지에 백업을 미러링 또는 저장할 수 있습니다.
+
+.단계
+. 새 XML 파일을 엽니다.
++
+이 예제 작업 사양 XML 파일은 ddefault_install_directory\\plugins\examples에서 확인할 수 있습니다.
+
+. 스크립트 이름을 입력 매개 변수로 추가합니다.
+. 작업 사양 XML 파일을 저장합니다.
+

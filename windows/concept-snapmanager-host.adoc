@@ -1,0 +1,24 @@
+---
+permalink: windows/concept-snapmanager-host.html 
+sidebar: sidebar 
+keywords: snapmanager, host, windows, server, netapp, product 
+summary: SnapManager 호스트는 Windows 서버이며 다른 NetApp 제품도 실행됩니다. 
+---
+= SnapManager 호스트
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager 호스트는 Windows 서버이며 다른 NetApp 제품도 실행됩니다.
+
+SnapManager 호스트는 다음 제품과 함께 설치됩니다.
+
+* Windows용 SnapDrive
+* Host Utilities(호스트 유틸리티)
+
+
+SnapManager 호스트는 서비스로 실행됩니다.
+
+SnapManager 호스트는 또한 SAP BR * Tools에 사용되는 backint 인터페이스도 지원합니다.

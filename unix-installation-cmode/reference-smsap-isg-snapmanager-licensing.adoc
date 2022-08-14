@@ -1,0 +1,85 @@
+---
+permalink: unix-installation-cmode/reference-smsap-isg-snapmanager-licensing.html 
+sidebar: sidebar 
+keywords: snapmanager, license, storage, system, license, require, enable, operation, license, per-server, database, per-storage 
+summary: SnapManager 작업을 활성화하려면 SnapManager 라이센스와 여러 스토리지 시스템 라이센스가 필요합니다. SnapManager 라이센스는 두 가지 라이센스 모델, 즉 SnapManager 라이센스가 각 데이터베이스 호스트에 있는 서버당 라이센스 모델과 SnapManager 라이센스가 스토리지 시스템에 상주하는 스토리지당 시스템 라이센스 모델로 제공됩니다. 
+---
+= SnapManager 라이센스
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager 작업을 활성화하려면 SnapManager 라이센스와 여러 스토리지 시스템 라이센스가 필요합니다. SnapManager 라이센스는 두 가지 라이센스 모델, 즉 각 데이터베이스 호스트에 SnapManager 라이센스가 있는 _Per-server 라이센스_ 및 스토리지 시스템에 SnapManager 라이센스가 있는 _Per-storage 시스템 라이센스_ 에서 사용할 수 있습니다.
+
+SnapManager 라이센스 요구 사항은 다음과 같습니다.
+
+|===
+| 라이센스 | 설명 | 필요한 경우 
+
+
+ a| 
+SnapManager 서버당
+ a| 
+특정 데이터베이스 호스트에 대한 호스트 측 라이센스입니다. 라이센스는 SnapManager가 설치된 데이터베이스 호스트에만 필요합니다. 스토리지 시스템에 SnapManager 라이센스가 필요하지 않습니다.
+ a| 
+SnapManager 호스트에서 서버당 라이센스를 사용할 때는 운영 및 2차 스토리지 시스템에 SnapManager 라이센스가 필요하지 않습니다.
+
+
+
+ a| 
+SnapManager 스토리지당 시스템
+ a| 
+모든 수의 데이터베이스 호스트를 지원하는 스토리지 측 라이센스 데이터베이스 호스트에서 서버당 라이센스를 사용하지 않는 경우에만 필요합니다.
+ a| 
+지원합니다.
+
+
+
+ a| 
+SnapRestore
+ a| 
+SnapManager에서 데이터베이스를 복원할 수 있도록 하는 필수 라이센스입니다.
+ a| 
+운영 및 2차 스토리지 시스템에서 원격 검증을 수행하려면 SnapMirror 대상 시스템에 필요합니다.
+
+SnapVault 대상 시스템에서 원격 검증을 수행하고 백업에서 복원하는 데 필요합니다.
+
+
+
+ a| 
+플랙스클론
+ a| 
+데이터베이스 클론 생성을 위한 선택적 라이센스입니다.
+ a| 
+운영 및 2차 스토리지 시스템. 백업에서 클론을 생성할 때 SnapVault 대상 시스템에 필요합니다.
+
+
+
+ a| 
+SnapMirror를 참조하십시오
+ a| 
+대상 스토리지 시스템에 백업을 미러링하는 선택적 라이센스.
+ a| 
+지원합니다.
+
+
+
+ a| 
+SnapVault
+ a| 
+대상 스토리지 시스템에 백업을 보관하기 위한 선택적 라이센스.
+ a| 
+지원합니다.
+
+
+
+ a| 
+프로토콜
+ a| 
+사용되는 프로토콜에 따라 NFS, iSCSI 또는 FC 라이센스가 필요합니다.
+ a| 
+지원합니다. 소스 볼륨을 사용할 수 없는 경우 데이터를 제공하는 SnapMirror 대상 시스템에 필요합니다.
+
+|===

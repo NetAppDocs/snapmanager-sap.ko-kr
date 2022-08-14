@@ -1,0 +1,92 @@
+---
+permalink: windows/reference-sample-database-volume-layouts.html 
+sidebar: sidebar 
+keywords: refer, sample, database, volume, layout, configure 
+summary: 데이터베이스 구성에 대한 도움말은 샘플 데이터베이스 볼륨 레이아웃을 참조하십시오. 데이터베이스 볼륨 레이아웃 예 
+---
+= 데이터베이스 볼륨 레이아웃 예
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+데이터베이스 구성에 대한 도움말은 샘플 데이터베이스 볼륨 레이아웃을 참조할 수 있습니다.
+
+
+
+== 단일 인스턴스 데이터베이스
+
+|===
+| 파일 형식 | 볼륨 이름 | 파일 형식 전용 볼륨입니다 | 자동 스냅샷 복사본 
+
+
+ a| 
+Oracle 바이너리
+ a| 
+orabin_'_host name _'
+ a| 
+예
+ a| 
+켜짐
+
+
+
+ a| 
+데이터 파일
+ a| 
+oradata_"_sid_"
+ a| 
+예
+ a| 
+꺼짐
+
+
+
+ a| 
+임시 데이터 파일
+ a| 
+토혈 _'_sid_'
+ a| 
+예
+ a| 
+꺼짐
+
+
+
+ a| 
+제어 파일
+ a| 
+oracntrl01_"_sid_"(멀티플렉싱됨)
+
+oracntrl02_"_sid_"(멀티플렉싱됨)
+ a| 
+예
+ a| 
+꺼짐
+
+
+
+ a| 
+다시 실행 로그
+ a| 
+oralog01_"_sid_"(멀티플렉싱됨)
+
+oralog02_'_sid_'(멀티플렉싱됨)
+ a| 
+예
+ a| 
+꺼짐
+
+
+
+ a| 
+아카이브 로그
+ a| 
+oraarch_"_sid_"
+ a| 
+예
+ a| 
+꺼짐
+
+|===

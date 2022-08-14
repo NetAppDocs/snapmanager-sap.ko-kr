@@ -1,0 +1,37 @@
+---
+permalink: windows/concept-maintaining-history-of-snapmanager-operations.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, enable, maintain, history, operation, associate, single, multiple, profile, command-line, interface, cli, graphical, user, interface, gui, report, audit, compliance, purpose 
+summary: 'SnapManager for SAP를 사용하면 단일 프로파일 또는 여러 프로파일과 연결된 SnapManager 작업 기록을 유지할 수 있습니다. SnapManager CLI(명령줄 인터페이스) 또는 GUI(그래픽 사용자 인터페이스)에서 기록을 유지 관리할 수 있습니다. 작업 내역을 보고서로 보고 감사 규정 준수를 위해 보고서를 사용할 수 있습니다.' 
+---
+= SnapManager 작업 내역 유지
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager for SAP를 사용하면 단일 프로파일 또는 여러 프로파일과 연결된 SnapManager 작업 기록을 유지할 수 있습니다. SnapManager CLI(명령줄 인터페이스) 또는 GUI(그래픽 사용자 인터페이스)에서 기록을 유지 관리할 수 있습니다. 작업 내역을 보고서로 보고 감사 규정 준수를 위해 보고서를 사용할 수 있습니다.
+
+다음 SnapManager 작업에 대한 기록을 유지할 수 있습니다.
+
+* 백업 생성
+* 백업 검증
+* 백업 복원
+* 클론 생성
+
+
+SnapManager 작업에 대한 기록 정보는 보존에 따라 유지됩니다. 지원되는 각 SnapManager 작업에 대해 서로 다른 보존 클래스를 구성할 수 있습니다.
+
+다음은 할당할 수 있는 몇 가지 보존 클래스입니다.
+
+* 일 수입니다
+* 주 수입니다
+* 개월 수입니다
+* 작업 수
+
+
+보존에 따라 SnapManager는 기록을 자동으로 삭제합니다. SnapManager 작업의 기록을 수동으로 제거할 수도 있습니다. 프로파일을 삭제 또는 삭제하면 해당 프로파일과 관련된 모든 기록 정보가 삭제됩니다.
+
+
+NOTE: 호스트 롤백 후에는 기록 세부 정보를 보거나 기록 유지 관리를 위해 구성된 프로필과 관련된 기록 관련 작업을 수행할 수 없습니다.

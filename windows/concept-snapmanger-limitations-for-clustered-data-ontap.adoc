@@ -1,0 +1,22 @@
+---
+permalink: windows/concept-snapmanger-limitations-for-clustered-data-ontap.html 
+sidebar: sidebar 
+keywords: limitation, functionalities, functionality, snapmanager, operation, cluster, data, ontap 
+summary: Clustered Data ONTAP을 사용하는 경우 일부 기능 및 SnapManager 작업에 대한 제한 사항을 알아야 합니다. 
+---
+= Clustered Data ONTAP의 SnapManager 제한
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Clustered Data ONTAP을 사용하는 경우 일부 기능 및 SnapManager 작업에 대한 제한 사항을 알아야 합니다.
+
+Clustered Data ONTAP에서 SnapManager을 사용하는 경우 다음 기능이 지원되지 않습니다.
+
+* 스토리지 가상 머신(SVM)용 RDM(Raw Device Mapping) LUN(Logical Unit Number)
+* 한 LUN이 7-Mode에서 작동하는 Data ONTAP와 다른 LUN이 실행 중인 clustered Data ONTAP 시스템에 속한 데이터베이스입니다
+* SAP용 SnapManager는 clustered Data ONTAP에서 지원하지 않는 SVM의 마이그레이션을 지원하지 않습니다
+* SAP용 SnapManager는 clustered Data ONTAP 8.2.1 기능을 지원하지 않으므로 볼륨 및 qtree에 대해 다른 엑스포트 정책을 지정할 수 없습니다
+

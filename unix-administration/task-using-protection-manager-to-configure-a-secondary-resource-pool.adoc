@@ -1,0 +1,47 @@
+---
+permalink: unix-administration/task-use-protection-manager-to-configure-a-secondary-resource-pool.html 
+sidebar: sidebar 
+keywords: support, backup, database, secondary, storage, administrator, protection, manager, organize, snapvault, license, resource, pool 
+summary: 보조 스토리지에 데이터베이스 백업을 지원하기 위해 스토리지 관리자는 Protection Manager를 사용하여 SnapVault 보조 라이센스로 설정된 보조 스토리지 시스템을 백업용 리소스 풀로 구성합니다. 
+---
+= Protection Manager를 사용하여 보조 리소스 풀을 구성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+보조 스토리지에 데이터베이스 백업을 지원하기 위해 스토리지 관리자는 Protection Manager를 사용하여 SnapVault 보조 라이센스로 설정된 보조 스토리지 시스템을 백업용 리소스 풀로 구성합니다.
+
+* 필요한 것 *
+
+이상적인 경우, 리소스 풀의 스토리지 시스템은 백업의 대상으로 수용 가능성의 측면에서 상호 교환이 가능합니다. 예를 들어, 급여 데이터베이스에 대한 보호 전략을 수립할 때 스토리지 관리자는 동일한 리소스 풀에 적합한 성능 및 서비스 품질 수준이 유사한 2차 스토리지 시스템을 식별했습니다.
+
+리소스 풀에 할당하려는 스토리지 시스템에서 사용되지 않는 공간의 애그리게이트를 이미 생성했습니다. 이렇게 하면 백업을 포함할 충분한 공간이 확보됩니다.
+
+.단계
+. Protection Manager의 NetApp 관리 콘솔로 이동합니다.
+. 메뉴 모음에서 * 데이터 * > * 리소스 풀 * 을 클릭합니다.
++
+리소스 풀 창이 나타납니다.
+
+. 추가 * 를 클릭합니다.
++
+리소스 풀 추가 마법사가 시작됩니다.
+
+. 마법사의 단계를 완료하여 * padb_backup_resource * 리소스 풀을 생성합니다.
++
+다음 설정을 사용합니다.
+
++
+** 이름: *paydb-backup_resource*를 사용합니다
+** 공간 임계값(기본값 사용):
++
+*** 공간 활용률 임계값: 활성화됨
+*** 리소스 풀의 거의 꽉 참 임계값: 80%
+*** 전체 임계값(리소스 풀의 경우): 90%
+
+
+
+
+

@@ -1,0 +1,57 @@
+---
+permalink: windows/reference-the-smosmsap-history-operation-show-command.html 
+sidebar: sidebar 
+keywords: command, enable, view, history, snapmanager, operation, associate, profile, smsap, operation-show 
+summary: 이 명령을 사용하면 프로필과 관련된 특정 SnapManager 작업의 기록을 볼 수 있습니다. 
+---
+= sap history operation-show 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령을 사용하면 프로필과 관련된 특정 SnapManager 작업의 기록을 볼 수 있습니다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap history operation-show
+-profile profile
+{-label label | -id id}
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* '*'- profile_profile_'
++
+프로파일의 이름을 지정합니다. 이 이름은 최대 30자까지 지정할 수 있으며 호스트 내에서 고유해야 합니다.
+
+* * ``label_label|-iDID_' *
++
+기록을 보려는 SnapManager 작업 ID 또는 레이블을 지정합니다.
+
+* ``조용한’
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* * '-verbose' *
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== 명령 예
+
+[listing]
+----
+smsap history operation-show -profile PROFILE1 -label backup1 -verbose
+----

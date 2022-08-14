@@ -1,0 +1,63 @@
+---
+permalink: unix-administration/reference-the-smosmsap-storage-rename-command.html 
+sidebar: sidebar 
+keywords: command, update, name, ip, address, storage, system, smsap 
+summary: 이 명령은 스토리지 시스템의 이름 또는 IP 주소를 업데이트합니다. 
+---
+= smsap storage rename 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령은 스토리지 시스템의 이름 또는 IP 주소를 업데이트합니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap storage rename
+-profile _profile_ -oldname _old_storage_name_ -newname _new_storage_name_
+[-quiet | -verbose\]]
+----
+
+
+== 매개 변수
+
+* '*-profile_profile_ *'
++
+프로파일의 이름을 지정합니다. 이 이름은 최대 30자까지 지정할 수 있으며 호스트 내에서 고유해야 합니다.
+
+* '*-oldname_old_storage_name_ *'
++
+스토리지 시스템의 이름을 바꾸기 전에 스토리지 시스템의 IP 주소 또는 이름을 지정합니다. 'smsap storage list' 명령어를 실행할 때 표시되는 스토리지 시스템의 IP 주소 또는 이름을 입력해야 한다.
+
+* '*-newname_new_storage_name_ *'
++
+스토리지 시스템의 이름을 바꾼 후 스토리지 시스템의 IP 주소 또는 이름을 지정합니다.
+
+* ``조용한’’’
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '*-verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+'''
+
+
+== 예
+
+다음 예에서는 'smsap storage rename' 명령을 사용하여 스토리지 시스템의 이름을 바꿉니다.
+
+[listing]
+----
+smsap storage rename -profile mjullian -oldname lech -newname hudson -verbose
+----
+'''

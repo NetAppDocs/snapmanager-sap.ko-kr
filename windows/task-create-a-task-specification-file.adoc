@@ -1,0 +1,92 @@
+---
+permalink: windows/task-create-a-task-specification-file.html 
+sidebar: sidebar 
+keywords: create, task, specification, file, graphical, user, interface, gui, command-line, interface, cli, text, editor, preprocess, post-process, backup, restore, operation 
+summary: '그래픽 사용자 인터페이스(GUI), 명령줄 인터페이스(CLI) 또는 텍스트 편집기를 사용하여 작업 사양 파일을 만들 수 있습니다. 이러한 파일은 백업, 복원 또는 클론 작업의 전처리 또는 사후 처리 작업을 수행하는 데 사용됩니다.' 
+---
+= 작업 사양 파일을 작성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+그래픽 사용자 인터페이스(GUI), 명령줄 인터페이스(CLI) 또는 텍스트 편집기를 사용하여 작업 사양 파일을 만들 수 있습니다. 이러한 파일은 백업, 복원 또는 클론 작업의 전처리 또는 사후 처리 작업을 수행하는 데 사용됩니다.
+
+.단계
+. GUI, CLI 또는 텍스트 편집기를 사용하여 작업 사양 파일을 작성합니다.
++
+* 예 *
+
++
+다음 샘플 작업 사양 파일의 구조를 기반으로 사양 파일을 만들 수 있습니다.
+
++
+[listing]
+----
+
+<task-specification>
+  <pre-tasks>
+				<task>
+      <name>name</name>
+      <parameter>
+          <name>name</name>
+          <value>value</value>
+       </parameter>
+    </task>
+  </pre-tasks>
+  <post-tasks>
+    <task>
+      <name>name</name>
+      <parameter>
+          <name>name</name>
+          <value>value</value>
+       </parameter>
+    </task>
+  </post-tasks>
+</task-specification>
+----
+. 스크립트 이름을 입력합니다.
+. 매개 변수 이름과 매개 변수에 할당된 값을 입력합니다.
+. 올바른 설치 디렉터리에 XML 파일을 저장합니다.
+
+
+
+
+== 작업 사양 예
+
+[listing]
+----
+
+  <task-specification>
+    <pre-tasks>
+      <task>
+        <name>clone cleanup</name>
+        <description>pre tasks for cleaning up the target system</description>
+        </task>
+    </pre-tasks>
+    <post-tasks>
+      <task>
+        <name>SystemCopy follow-up activities</name>
+        <description>SystemCopy follow-up activities</description>
+        <parameter>
+          <name>SCHEMAOWNER</name>
+          <value>SAMSR3</value>
+        </parameter>
+      </task>
+      <task>
+        <name>Oracle Users for OS based DB authentication</name>
+        <description>Oracle Users for OS based DB authentication</description>
+        <parameter>
+          <name>SCHEMAOWNER</name>
+          <value>SAMSR3</value>
+        </parameter>
+        <parameter>
+          <name>ORADBUSR_FILE</name>
+
+										<value\>E:\\mnt\\sam\\oradbusr.sql</value\>
+        </parameter>
+      </task>
+      </post-tasks>
+  </task-specification>
+----

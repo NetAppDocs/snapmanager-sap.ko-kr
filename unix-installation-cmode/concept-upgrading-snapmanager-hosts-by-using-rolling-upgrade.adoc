@@ -1,0 +1,38 @@
+---
+permalink: unix-installation-cmode/concept-upgrading-snapmanager-hosts-by-using-rolling-upgrade.html 
+sidebar: sidebar 
+keywords: roll, upgrade, enable, host, stagger, host-by-host, manner, support, snapmanager 
+summary: SnapManager 3.1에서는 호스트를 시차를 두고 호스트별로 업그레이드할 수 있는 롤링 업그레이드 방식이 지원됩니다. 
+---
+= 롤링 업그레이드를 사용하여 SnapManager 호스트 업그레이드
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager 3.1에서는 호스트를 시차를 두고 호스트별로 업그레이드할 수 있는 롤링 업그레이드 방식이 지원됩니다.
+
+SnapManager 3.0 이하 버전에서는 모든 호스트를 동시에 업그레이드할 수 있었습니다. 이로 인해 업그레이드 작업 중에 모든 SnapManager 호스트와 예약된 작업의 다운타임이 발생했습니다.
+
+롤링 업그레이드는 다음과 같은 이점을 제공합니다.
+
+* 한 번에 하나의 호스트만 업그레이드되므로 SnapManager 성능이 향상됩니다.
+* 다른 호스트를 업그레이드하기 전에 한 SnapManager 서버 호스트에서 새 기능을 테스트하는 기능입니다.
+
+
+
+NOTE: CLI(Command-Line Interface)를 통해서만 롤링 업그레이드를 수행할 수 있습니다.
+
+image::../media/scrn_en_drw_rollupgrade_architecture.gif[SCRN en drw 롤업그레이드 아키텍처]
+
+롤링 업그레이드가 성공적으로 완료된 후 SnapManager 호스트, 프로필, 일정, 백업, 타겟 데이터베이스의 프로파일과 연결된 클론은 이전 SnapManager 버전의 저장소 데이터베이스에서 새 버전의 저장소 데이터베이스로 마이그레이션됩니다. 이전 SnapManager 버전에서 만든 프로필, 일정, 백업 및 클론을 사용하여 수행한 작업에 대한 세부 정보는 이제 새 버전의 저장소 데이터베이스에서 사용할 수 있습니다. user.config 파일의 기본 설정값을 사용하여 GUI를 시작할 수 있습니다. 이전 버전의 SnapManager의 user.config 파일에 설정된 값은 고려되지 않는다.
+
+업그레이드된 SnapManager 서버가 업그레이드된 리포지토리 데이터베이스와 통신할 수 있습니다. 업그레이드되지 않은 호스트는 이전 버전의 SnapManager 리포지토리를 사용하여 대상 데이터베이스를 관리할 수 있으므로 이전 버전에서 사용할 수 있는 기능을 사용할 수 있습니다.
+
+
+NOTE: 롤링 업그레이드를 수행하기 전에 리포지토리 데이터베이스 아래의 모든 호스트를 해결할 수 있는지 확인해야 합니다. 호스트 해결 방법에 대한 자세한 내용은 UNIX_용 _SnapManager 관리 가이드 의 문제 해결 섹션을 참조하십시오.
+
+* 관련 정보 *
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP12481453["UNIX용 SnapManager 3.4.1 SAP 관리 가이드"^]

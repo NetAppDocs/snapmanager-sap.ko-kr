@@ -1,0 +1,92 @@
+---
+permalink: windows/reference-the-smosmsapbackup-unmount-command.html 
+sidebar: sidebar 
+keywords: run, backup, unmount, command, smsap 
+summary: 백업 마운트 해제 명령을 실행하여 백업을 마운트 해제할 수 있습니다. 
+---
+= sap 백업 마운트 해제 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+'backup unmount' 명령을 실행하여 백업을 마운트 해제할 수 있습니다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap backup unmount
+-profile profile_name
+[-label label [-data | -archivelogs] | [-id id]
+[-force]
+[-dump]
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* '*'- profile_profile_name_'
++
+백업을 마운트 해제할 프로필을 지정합니다. 프로파일에는 데이터베이스의 식별자와 기타 데이터베이스 정보가 들어 있습니다.
+
+* * ``id_id_' *
++
+지정된 GUID를 사용하여 백업을 마운트 해제합니다. GUID는 백업을 생성할 때 SnapManager에 의해 생성됩니다. 'smsap backup list' 명령을 사용하여 각 백업의 GUID를 표시할 수 있습니다.
+
+* '*'-label_label_'
++
+지정된 레이블을 사용하여 백업을 마운트 해제합니다.
+
+* * ``데이터’
++
+데이터 파일을 지정합니다.
+
+* ``archivelogs’
++
+아카이브 로그 파일을 지정합니다.
+
+* * ``덤프’
++
+마운트 해제 작업이 성공하거나 실패한 후 덤프 파일을 수집합니다.
+
+* * ``힘’ *
++
+백업과 관련된 리소스를 해제하는 데 문제가 있는 경우에도 백업을 마운트 해제합니다. SnapManager는 백업을 마운트 해제하고 관련 리소스를 정리하려고 시도합니다. 로그에 마운트 해제 작업이 성공한 것으로 표시되지만 로그에 오류가 있는 경우 수동으로 리소스를 정리해야 할 수 있습니다.
+
+* ``조용한’
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* * '-verbose' *
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== 예
+
+다음은 마운트 해제 작업의 예입니다.
+
+[listing]
+----
+# smsap backup unmount -label test -profile SALES1 -verbose
+----
+[listing]
+----
+[INFO ]: SMSAP-13051: Process PID=9788
+[INFO ]: SMSAP-13036: Starting operation Backup Unmount on host hadley.domain.private
+[INFO ]: SMSAP-13036: Starting operation Backup Unmount on host hadley.domain.private
+[INFO ]: SMSAP-13046: Operation GUID 8abc015738849a3d0138849a43900001 starting on Profile FAS_P1
+[INFO ]: SD-00031: Beginning to disconnect filesystem(s) [C:\SnapManager_auto_mounts\H-2012071400592312_0, C:\SnapManager_auto_mounts\I-2012071400592328_0].
+[INFO ]: SD-00032: Finished disconnecting filesystem(s) [C:\SnapManager_auto_mounts\H-2012071400592312_0, C:\SnapManager_auto_mounts\I-2012071400592328_0].
+[INFO ]: SMSAP-13048: Backup Unmount Operation Status: SUCCESS
+[INFO ]: SMSAP-13049: Elapsed Time: 0:07:26.754
+----

@@ -1,0 +1,28 @@
+---
+permalink: unix-administration/task-view-status-of-clone-split-process.html 
+sidebar: sidebar 
+keywords: view, progress, split, start, process, clone 
+summary: 시작한 분할 프로세스의 진행 상황을 볼 수 있습니다. 
+---
+= 클론 분할 프로세스의 상태를 봅니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+시작한 분할 프로세스의 진행 상황을 볼 수 있습니다.
+
+.단계
+. 클론 분할 프로세스의 진행률을 보려면 다음 명령을 입력합니다.
++
+"* smssap clone split-status-profile_profile_[-host_hostname_][-label_split-label_|-id_split-id_][-quiet|-verbose] *
+
+
+
+'''
+[listing]
+----
+smsap clone split-status -profile p1 -id 8abc01ec0e78f3e2010e78f3fdd00001
+----
+'''

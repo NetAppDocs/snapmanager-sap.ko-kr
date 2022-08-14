@@ -1,0 +1,320 @@
+---
+permalink: unix-administration/task-create-database-backups.html 
+sidebar: sidebar 
+keywords: create, backup, entire, database, portion, tablespace, data, file, control, creating 
+summary: 테이블스페이스, 데이터 파일 또는 제어 파일을 포함하여 전체 데이터베이스 또는 데이터베이스 부분에 대한 백업을 생성할 수 있습니다. 
+---
+= 데이터베이스 백업을 생성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+테이블스페이스, 데이터 파일 또는 제어 파일을 포함하여 전체 데이터베이스 또는 데이터베이스 부분에 대한 백업을 생성할 수 있습니다.
+
+* 이 작업에 대한 정보 *
+
+SnapManager는 NFS, Veritas 등 다양한 호스트 측 스토리지 스택 전반에서 데이터베이스에 대한 스냅샷 복사본 기능을 제공합니다.
+
+
+NOTE: RAC(Real Application Clusters) 구성의 경우 SnapManager는 프로파일의 호스트 측에서 백업을 수행합니다.
+
+관리자는 Oracle RMAN에 백업을 등록할 수도 있습니다. 이 기능을 사용하면 RMAN을 사용하여 블록 같은 더욱 세분화된 수준까지 데이터베이스를 복원 및 복구할 수 있습니다.
+
+프로파일을 정의하는 동안 해당 프로파일 백업에서 생성되는 스냅샷 복사본의 이름을 사용자 지정할 수 있습니다. 예를 들어, 의 접두사 문자열을 삽입할 수 있습니다
+
+' * Hops * '
+
+높은 작업 백업을 나타냅니다.
+
+백업에서 생성된 스냅샷 복사본의 고유 이름을 정의할 뿐만 아니라 백업 자체에 대한 고유 레이블을 생성할 수도 있습니다. 백업을 생성할 때는 백업 이름을 지정하는 것이 좋습니다. 이렇게 하면 '-label' 매개 변수를 사용하여 백업 이름을 쉽게 식별할 수 있습니다. 이 이름은 특정 프로파일 내에서 생성된 모든 백업에 대해 고유해야 합니다. 이름에는 문자, 숫자, 밑줄(_) 및 하이픈(-)을 사용할 수 있습니다. 하이픈으로 시작할 수 없습니다. 레이블은 대/소문자를 구분합니다. 운영 체제 환경 변수, 시스템 날짜, 백업 유형 등의 정보를 추가할 수 있습니다.
+
+레이블을 지정하지 않으면 SnapManager에서는 범위가 전체 또는 부분이고 모드가 오프라인, 온라인 또는 자동인 '_scope_mode_DateString_' 형식으로 기본 레이블 이름을 만듭니다(cold의 경우 c, hot의 경우 h, 자동의 경우 a).
+
+SnapManager 3.4에서는 SnapManager에서 생성된 기본 백업 레이블을 재정의하여 사용자 고유의 백업 레이블을 제공할 수 있습니다. 반드시 'override.default.backup.pattern` 파라미터 값을 TRUE로 설정하고 'new.default.backup.pattern` 파라미터에 새 백업 레이블을 지정해야 합니다. 백업 레이블 패턴에는 데이터베이스 이름, 프로필 이름, 범위, 모드 및 호스트 이름과 같은 키워드를 포함할 수 있으며, 이 키워드는 밑줄로 구분해야 합니다. 예: 'new.default.backup.pattern=_dbname_profile_hostname_scope_mode_.`
+
+
+NOTE: 타임스탬프는 생성된 레이블의 끝에 자동으로 포함됩니다.
+
+설명을 입력할 때 공백과 특수 문자를 포함할 수 있습니다. 반대로 레이블을 입력할 때는 공백이나 특수 문자를 포함하지 마십시오.
+
+각 백업에 대해 SnapManager는 32자의 16진수 문자열인 GUID를 자동으로 생성합니다. GUID를 확인하려면 '-verbose' 옵션을 사용하여 'backup list' 명령을 실행해야 합니다.
+
+데이터베이스가 온라인 또는 오프라인 상태일 때 데이터베이스의 전체 백업을 만들 수 있습니다. SnapManager에서 온라인 또는 오프라인 여부에 관계없이 데이터베이스 백업을 처리하도록 하려면 '-auto' 옵션을 사용해야 합니다.
+
+백업을 생성하는 동안 기록 정리를 사용하도록 설정하고 프로필에서 요약 알림을 활성화한 경우 두 개의 개별 이메일이 트리거됩니다. 한 이메일은 백업 작업용으로, 다른 한 이메일은 가지치기를 위해 사용됩니다. 이러한 이메일에 포함된 백업 이름과 백업 ID를 비교하여 이러한 e-메일을 서로 연관시킬 수 있습니다.
+
+데이터베이스가 종료 상태일 때 콜드 백업을 생성할 수 있습니다. 데이터베이스가 마운트된 상태인 경우 데이터베이스를 종료 상태로 변경하고 오프라인 백업(콜드 백업)을 수행합니다.
+
+SnapManager(3.2 이상)를 사용하면 아카이브 로그 파일을 데이터 파일과 별도로 백업할 수 있으므로 아카이브 로그 파일을 효율적으로 관리할 수 있습니다.
+
+아카이브 로그 백업을 별도로 생성하려면 '-separate-archivelog-backups' 옵션을 사용하여 새 프로파일을 만들거나 기존 프로파일을 업데이트하여 아카이브 로그 백업을 분리해야 합니다. 프로파일을 사용하여 다음 SnapManager 작업을 수행할 수 있습니다.
+
+* 아카이브 로그 백업을 생성합니다.
+* 아카이브 로그 백업을 삭제합니다.
+* 아카이브 로그 백업을 마운트합니다.
+* 아카이브 로그 백업을 비울 수 있습니다.
+
+
+백업 옵션은 프로파일 설정에 따라 다릅니다.
+
+* 분리되지 않은 프로파일을 사용하여 아카이브 로그 백업을 별도로 수행하면 다음을 수행할 수 있습니다.
++
+** 전체 백업을 생성합니다.
+** 부분 백업을 생성합니다.
+** 아카이브 로그 파일에 대해 백업할 아카이브 로그 대상을 지정합니다.
+** 백업에서 제외할 아카이브 로그 대상을 지정합니다.
+** 보관 로그 대상에서 보관 로그 파일을 삭제하기 위한 잘라내기 옵션을 지정합니다.
+
+
+* 분리된 프로파일을 사용하여 아카이브 로그 백업을 수행하면 다음을 수행할 수 있습니다.
++
+** 데이터 파일 전용 백업을 생성합니다.
+** 아카이브 전용 백업을 생성합니다.
+** 데이터 파일 전용 백업을 생성하는 동안 온라인 데이터 파일에만 클론을 생성하기 위한 백업과 함께 아카이브 로그 백업을 포함합니다.
++
+SnapManager GUI에서 * 프로파일 생성 * 마법사의 * 프로파일 설정 * 페이지에 데이터 파일과 함께 아카이브 로그 백업을 포함시킨 경우, 또한 * 백업 생성 * 마법사에서 * Archivelogs * 옵션을 선택하지 않은 경우 SnapManager는 항상 모든 온라인 백업에 대한 데이터 파일과 함께 아카이브 로그 백업을 생성합니다.
+
++
+이러한 경우 SnapManager CLI에서 SnapManager 구성 파일에 지정된 제외 대상을 제외하고 백업에 대한 모든 아카이브 로그 대상을 고려할 수 있습니다. 그러나 이러한 아카이브 로그 파일을 정리할 수는 없습니다. 그러나 '-archivelogs' 옵션을 사용하여 아카이브 로그 파일 대상을 지정하고 SnapManager CLI에서 아카이브 로그 파일을 정리할 수는 있습니다.
+
++
+'-auto' 옵션을 사용하여 백업을 생성하고 '--archivelogs' 옵션을 지정하면 SnapManager는 백업의 현재 상태를 기준으로 온라인 또는 오프라인 백업을 생성합니다.
+
++
+*** SnapManager는 데이터베이스가 오프라인일 때 오프라인 백업을 생성하고 백업에 아카이브 로그 파일을 포함하지 않습니다.
+*** SnapManager는 데이터베이스가 온라인 상태일 때 아카이브 로그 파일을 포함한 온라인 백업을 생성합니다.
+
+
+** archivelogs 전용 백업을 생성하는 동안 다음을 수행합니다.
++
+*** 아카이브 전용 백업과 함께 백업할 아카이브 로그 대상을 지정합니다
+*** 아카이브 로그 전용 백업에서 제외할 아카이브 로그 대상을 지정합니다
+*** 보관 로그 대상에서 보관 로그 파일을 삭제하기 위한 잘라내기 옵션을 지정합니다
+
+
+
+
+* * 지원되지 않는 시나리오 *
++
+** 오프라인 데이터 파일 전용 백업과 함께 아카이브 전용 백업을 생성할 수 없습니다.
+** 아카이브 로그 파일이 백업되지 않은 경우 아카이브 로그 파일을 정리할 수 없습니다.
+** 아카이브 로그 파일에 대해 FRA(Flash Recovery Area)가 활성화된 경우 아카이브 로그 파일을 정리할 수 없습니다.
++
+플래시 복구 영역에서 아카이브 로그 위치를 지정하는 경우 'archive_log_dest' 매개 변수에서 아카이브 로그 위치도 지정해야 합니다.
+
+
+
+
+
+포함된 아카이브 로그 백업을 사용하여 온라인 데이터 파일 백업에 대한 레이블을 지정하면 데이터 파일 백업에 레이블이 적용되고 아카이브 로그 백업에 '(_logs)'가 접미사로 추가됩니다. 이 접미사는 SnapManager 구성 파일에서 'suffix.backup.label.with.logs' 매개 변수를 변경하여 구성할 수 있습니다.
+
+예를 들어, 값을 'suffix.backup.label.with.logs=arc'로 지정하여 _logs 기본값을 '_arc'로 변경할 수 있습니다.
+
+백업에 포함할 아카이브 로그 대상을 지정하지 않은 경우 SnapManager는 데이터베이스에 구성된 모든 아카이브 로그 대상을 포함합니다.
+
+대상 중 하나에 아카이브 로그 파일이 없는 경우 SnapManager는 이러한 파일이 다른 아카이브 로그 대상에서 사용 가능할 경우에도 누락된 아카이브 로그 파일 전에 생성된 모든 아카이브 로그 파일을 건너뜁니다.
+
+아카이브 로그 백업을 생성하는 동안 백업에 포함할 아카이브 로그 파일 대상을 지정해야 하며, 아카이브 로그 파일을 항상 백업에서 누락된 파일 외에 포함하도록 구성 매개 변수를 설정할 수 있습니다.
+
+
+NOTE: 기본적으로 이 구성 매개 변수는 누락된 파일 외에 모든 아카이브 로그 파일을 포함하도록 ' * TRUE * '로 설정됩니다. 아카이브 로그 잘라내기 스크립트를 사용하거나 아카이브 로그 대상에서 아카이브 로그 파일을 수동으로 삭제하는 경우 이 매개 변수를 사용하지 않도록 설정하면 SnapManager에서 아카이브 로그 파일을 건너뛰고 백업을 계속 진행할 수 있습니다.
+
+SnapManager는 아카이브 로그 백업에 대해 다음 SnapManager 작업을 지원하지 않습니다.
+
+* 아카이브 로그 백업의 클론을 생성합니다
+* 아카이브 로그 백업을 복원합니다
+* 아카이브 로그 백업을 확인합니다
+
+
+SnapManager는 또한 플래시 복구 영역 대상에서 아카이브 로그 파일 백업을 지원합니다.
+
+. 다음 명령을 입력합니다.
++
+``smssap backup create-profile_name_{[-full{-online|-offline|-auto}[-retain {-hourly|-daily|-weekly|-monthly|-limited}][-verify]|[-data[- files_[_files_[_files_]]]|[-tablespaces_[_- tablespaces_- weekly_offline_date-offline_date-offline}] autonline-date-date-date-date-date-date-online]] 자동 보존 [-archivelogs [-label_label_] [-comment_comment_comment_] [-snapvaultlabel_snapvault_label_ label_] [-protect|-protectnow | -destpath1 [,[_path2_]] [-exclude-dest_dest_pathop_days] vunes [cn_cunnil.days] v.{cn_cn_monays]{HH_monthunnil_monthunes]{cn_monays]{cunes_monthunnil.days]{cunes_unes_unes]{cn|cunes_uncomes_monays]{HH_unn
+
++
+[cols="1a,3a"]
+|===
+| 원하는 작업 | 그러면... 
+
+
+ a| 
+* SnapManager_cDOT_Vault_protection policy * 를 사용하여 보조 스토리지에 백업을 생성합니다
+ a| 
+'-snapvaultlabel'을 지정합니다.
+
+SnapVault 관계를 값으로 설정하는 동안 SnapMirror 정책 규칙에 지정된 SnapMirror 레이블을 제공해야 합니다.
+
+
+
+ a| 
+* SnapManager가 온라인 또는 오프라인 상태 중 어느 것을 처리할 수 있도록 허용하기보다는 온라인 또는 오프라인 데이터베이스의 백업을 수행할지 여부를 지정합니다
+ a| 
+오프라인 데이터베이스의 백업을 하려면 -offline을 지정합니다.
+
+온라인 데이터베이스의 백업을 하려면 -online을 지정합니다.
+
+이 옵션을 사용하면 '-auto' 옵션을 사용할 수 없습니다.
+
+
+
+ a| 
+* 온라인 또는 오프라인 여부에 관계없이 SnapManager에서 데이터베이스 백업을 처리하도록 할지 여부를 지정합니다. *
+ a| 
+'-auto' 옵션을 지정합니다. 이 옵션을 사용하면 '--offline' 또는 '-online' 옵션을 사용할 수 없습니다.
+
+
+
+ a| 
+* 특정 파일의 부분 백업을 수행할지 여부를 지정합니다 *
+ a| 
+'-data-files' 옵션을 지정한 다음 쉼표로 구분된 '_files_'를 나열합니다. 예를 들어 옵션 뒤에 파일 이름을 F1, F2, f3으로 나열합니다.
+
+UNIX에서 부분 데이터 파일 백업을 생성하는 예
+
+[listing]
+----
+smsap backup create -profile nosep -data -files /user/user.dbf -online
+-label partial_datafile_backup -verbose
+----
+
+
+ a| 
+* 특정 테이블스페이스의 부분 백업을 수행할지 여부를 지정합니다 *
+ a| 
+'-data-tablespaces' 옵션을 지정한 다음 쉼표로 구분된 '_tablespaces_'를 나열합니다. 예를 들어 ts1, TS2, TS3를 옵션 뒤에 사용합니다.
+
+SnapManager는 읽기 전용 테이블스페이스의 백업을 지원합니다. 백업을 생성하는 동안 SnapManager는 읽기 전용 테이블 공간을 읽기-쓰기로 변경합니다. 백업을 생성한 후 테이블스페이스가 읽기 전용으로 변경됩니다.
+
+부분 테이블스페이스 백업을 생성하는 예
+
+[listing]
+----
+smsap backup create -profile nosep -data -tablespaces tb2 -online -label partial_tablespace_bkup -verbose
+----
+
+
+ a| 
+* 각 백업에 대해 고유한 레이블을 생성할 것인지 여부를 full_hot_mybackup_label * 형식으로 지정합니다
+ a| 
+Linux의 경우 다음 예를 입력할 수 있습니다.
+
+[listing]
+----
+smsap backup create -profile targetdb1_prof1
+-label full_hot_my_backup_label -online -full  -verbose
+----
+
+
+ a| 
+* 데이터 파일과 별도로 아카이브 로그 파일의 백업을 생성할지 여부를 지정합니다 *
+ a| 
+다음 옵션 및 변수를 지정합니다.
+
+** '-archivelogs'는 아카이브 로그 파일의 백업을 만듭니다.
+** '-backup-dest'는 백업할 아카이브 로그 파일 대상을 지정합니다.
+** '-exclude-dest'는 제외할 보관 로그 대상을 지정합니다.
+** '-label'은 아카이브 로그 파일 백업의 레이블을 지정합니다.
+** '-Protect'는 아카이브 로그 백업을 보호합니다.
+
+
+
+NOTE: '-backup-dest' 옵션이나 '-exclude-dest' 옵션을 제공해야 합니다.
+
+이 두 옵션을 백업과 함께 제공하면 "백업 옵션을 잘못 지정했습니다."라는 오류 메시지가 표시됩니다. backup-dest, exclude-dest 중 하나를 지정합니다
+
+UNIX에서 아카이브 로그 파일 백업을 별도로 생성하는 예
+
+[listing]
+----
+smsap backup create -profile nosep -archivelogs -backup-dest /mnt/archive_dest_2/ -label archivelog_bkup -verbose
+----
+
+
+ a| 
+* 데이터 파일과 아카이브 로그 파일의 백업을 함께 생성할지 여부를 지정합니다. *
+ a| 
+다음 옵션 및 변수를 지정합니다.
+
+** 데이터 파일을 지정하는 '-data' 옵션입니다.
+** 아카이브 로그 파일을 지정하는 '-archivelogs' 옵션입니다. UNIX에서 데이터 파일과 아카이브 로그 파일을 함께 백업하는 예
++
+[listing]
+----
+
+smsap backup create -profile nosep -data -online -archivelogs -backup-dest  mnt/archive_dest_2 -label data_arch_backup
+-verbose
+----
+
+
+
+
+ a| 
+* 백업을 생성하는 동안 아카이브 로그 파일을 정리할지 여부를 지정합니다 *
+ a| 
+다음 옵션 및 변수를 지정합니다.
+
+** '-prunelogs'는 보관 로그 대상에서 보관 로그 파일을 삭제하도록 지정합니다.
++
+*** '-ALL'은 보관 로그 대상에서 모든 보관 로그 파일을 삭제하도록 지정합니다.
+*** '-until-scn_until-scn_'은 지정된 SCN이 될 때까지 보관 로그 파일을 삭제하도록 지정합니다.
+*** '-until-date_yyyy-mm-dd:HH:MM:ss_'는 지정된 시간까지 아카이브 로그 파일을 삭제하도록 지정합니다.
+*** '-before' 옵션은 지정된 기간(일, 월, 주, 시간) 이전에 아카이브 로그 파일을 삭제하도록 지정합니다.
+*** "-prune-destprune__dest1, [prune_dest2_"은 백업을 생성하는 동안 아카이브 로그 대상에서 아카이브 로그 파일을 삭제하도록 지정합니다.
+
+
+
+
+
+NOTE: 아카이브 로그 파일에 대해 FRA(Flash Recovery Area)가 활성화된 경우 아카이브 로그 파일을 정리할 수 없습니다.
+
+UNIX에서 백업을 생성하는 동안 모든 아카이브 로그 파일을 정리하는 예
+
+[listing]
+----
+smsap backup create -profile nosep
+ -archivelogs -label archive_prunebackup1 -backup-dest /mnt/arc_1,/mnt/arc_2  -prunelogs -all -prune-dest /mnt/arc_1,/mnt/arc_2 -verbose
+----
+
+
+ a| 
+* 백업에 대한 설명을 추가할지 여부를 지정합니다 *
+ a| 
+설명 문자열 뒤에 -comment를 지정합니다.
+
+
+
+ a| 
+* 데이터베이스가 현재 * 에 있는 상태에 관계없이 데이터베이스를 백업하도록 지정한 상태로 강제 설정할 것인지 여부를 지정합니다
+ a| 
+'-force' 옵션을 지정합니다.
+
+
+
+ a| 
+* 백업을 생성할 때 동시에 백업을 검증할지 여부를 지정합니다
+ a| 
+'-verify' 옵션을 지정합니다.
+
+
+
+ a| 
+* 데이터베이스 백업 작업 후에 덤프 파일을 수집할지 여부를 지정합니다 *
+ a| 
+백업 생성 명령의 끝에 '-dump' 옵션을 지정합니다.
+
+|===
+
+
+'''
+
+
+== 예
+
+[listing]
+----
+smsap backup create -profile targetdb1_prof1 -full -online -force  -verify
+----
+'''

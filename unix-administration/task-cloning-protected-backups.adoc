@@ -1,0 +1,48 @@
+---
+permalink: unix-administration/task-clone-protected-backups.html 
+sidebar: sidebar 
+keywords: snapmanager, clone, copy, backup, protect, cloning 
+summary: SnapManager를 사용하여 보호된 백업 복사본을 복제할 수 있습니다. 
+---
+= 클론 보호 백업
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하여 보호된 백업 복사본을 복제할 수 있습니다.
+
+* 필요한 것 *
+
+클론용으로 선택된 호스트는 동일한 스토리지 프로토콜(예: SAN 또는 NAS)을 사용하여 보조 스토리지에 액세스할 수 있어야 합니다.
+
+'-from-secondary' 옵션을 사용하여 보조 스토리지에서 클론을 생성할 것을 지정할 수 있습니다.
+
+* 이 작업에 대한 정보 *
+
+'-from-secondary' 옵션을 지정할 때마다 '-copy-id' 옵션을 지정해야 합니다. 보조 스토리지 시스템에 둘 이상의 백업이 있는 경우 -copy -id 옵션을 사용하여 클론 복제에 사용할 보조 스토리지의 백업 복사본을 지정합니다.
+
+
+NOTE: 7-Mode에서 작동하는 Data ONTAP를 사용하는 경우 '-copy-id' 옵션에 유효한 값을 지정해야 합니다. 그러나 clustered Data ONTAP을 사용하는 경우에는 '-copy-id' 옵션이 필요하지 않습니다.
+
+보조 스토리지 시스템에서 보호된 백업의 클론을 삭제하지 못할 수 있습니다. 이 문제는 운영 스토리지 시스템과 보조 스토리지 시스템의 시스템 시간이 동기화되지 않은 경우에 발생합니다.
+
+.단계
+. 보호된 백업 복사본의 클론 생성:
++
+'* smssap clone create-backup-label_backup_name_-newsid_new_sid_-label_clone_label_-profile_profile_name_-clonespec_full_path_to_clonespecfile_-from-secondary-copy -id_id_*'
+
+
+
+'''
+
+
+== 예
+
+[listing]
+----
+smsap clone create -label testdb_clone_clstest
+-profile sys_db_finance -from-secondary -copy-id 3042 sys_db_finance_sept_08
+----
+'''

@@ -1,0 +1,32 @@
+---
+permalink: unix-administration/concept-details-of-the-target-database.html 
+sidebar: sidebar 
+keywords: example, integrate, database, protection, payroll, example, detail, target 
+summary: 이 통합 데이터베이스 보호 예에서는 급여 데이터베이스 보호에 대해 설명합니다. 이 예에서는 다음 데이터가 사용됩니다. 
+---
+= 대상 데이터베이스의 세부 정보입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 통합 데이터베이스 보호 예에서는 급여 데이터베이스 보호에 대해 설명합니다. 이 예에서는 다음 데이터가 사용됩니다.
+
+애틀랜타에 본사를 둔 3,000명의 회사, TechCo의 데이터베이스 관리자(DBA)는 운영 급여 데이터베이스(PAYDB)의 일관된 백업을 만들어야 합니다. 운영 스토리지와 보조 스토리지에 백업하기 위한 보호 전략에서는 DBA와 스토리지 관리자가 함께 협력하여 운영 스토리지의 Oracle 데이터베이스를 로컬로 그리고 원격 위치의 보조 스토리지로 백업해야 합니다.
+
+* * 프로필 정보 *
++
+SnapManager에서 프로파일을 만들 때 다음 데이터가 필요합니다.
+
++
+** 데이터베이스 이름: P01
+** 호스트 이름: prod01.sample.com
+** 데이터베이스 ID: P01
+** 프로파일 이름: P01_backup
+** 연결 모드: 데이터베이스 인증
+** 스냅샷 명명 체계: "_smsap_hostname_dbsid_smssapprofile_scope_mode_smid_"("smsap_prod01.sample.com_p01_p01_backup_f_h_x" 변환)
+** repository user:<sid> rep. p01rep 로 변환됩니다.
+
+
+

@@ -1,0 +1,108 @@
+---
+permalink: windows/reference-the-smosmsap-notification-updatesummarynotification-command.html 
+sidebar: sidebar 
+keywords: run, notification, update-summary-notification, command, enable, summary, repository, database, smsap 
+summary: notification update-summary-notification 명령을 실행하여 저장소 데이터베이스에 대한 요약 알림을 활성화할 수 있습니다. 
+---
+= smssap notification update-summary-notification 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+'notification update-summary-notification' 명령을 실행하여 리포지터리 데이터베이스에 대한 요약 알림을 활성화할 수 있다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap notification update-summary-notification
+-repository
+-port repo_port
+-dbname  repo_service_name
+-host repo_host
+-login -username repo_username
+-email email-address1,email-address2
+-subject subject-pattern
+-frequency
+[-daily –time daily_time |
+-hourly –time hourly_time |
+-monthly –time monthly_time -date [1|2|3|...|31] |
+-weekly  –time weekly_time -day [1|2|3|4|5|6|7]]
+-profiles profile1,profile2
+-notification-host notification-host
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* * ``리포지토리’ *
++
+리포지토리 데이터베이스의 세부 정보를 지정합니다.
+
+* '*'-port_repo_port_'
++
+리포지토리 데이터베이스에 액세스하는 데 사용되는 TCP 포트 번호를 지정합니다.
+
+* * ``dbname_repo_service_name_'
++
+리포지토리 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 시스템 식별자를 사용할 수 있습니다.
+
+* '*'-host_repo_host_'
++
+저장소 데이터베이스가 있는 호스트의 이름 또는 IP 주소를 지정합니다.
+
+* * ``로그인’
++
+리포지토리 로그인 세부 정보를 지정합니다. 이는 선택 사항입니다. 지정되지 않은 경우 SnapManager는 기본적으로 OS 인증 연결 모드로 설정됩니다.
+
+* * ``username_repo_username_' *
++
+리포지토리 데이터베이스에 액세스하는 데 필요한 사용자 이름을 지정합니다.
+
+* * ``이메일_이메일 주소1, 이메일 주소2_'
++
+받는 사람의 전자 메일 주소를 지정합니다.
+
+* ``subject_subject-pattern_'
++
+이메일 제목 패턴을 지정합니다.
+
+* * ``빈도{-daily--time_daily_time_|-hourly--time_hourly_time_|- monthly--time_monthly_time-date_{1|2|3...|31}|- weekly- time_weekly_time-day_{1|2|3|4|5|6|7}" *
++
+e-메일 알림을 받을 일정 유형 및 일정 시간을 지정합니다.
+
+* * ``profiles_profile1,Profile2_'
++
+이메일 알림이 필요한 프로필 이름을 지정합니다.
+
+* * ``notification-host_notification-host_' *
++
+요약 알림 e-메일을 받는 사람에게 보내는 SnapManager 서버 호스트를 지정합니다. 알림 호스트에 대한 호스트 이름 또는 IP 주소를 제공할 수 있습니다. 호스트 IP 또는 호스트 이름을 업데이트할 수도 있습니다.
+
+* ``조용한’
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* * '-verbose' *
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== 예
+
+다음 예제에서는 저장소 데이터베이스에 대한 요약 알림을 설정합니다.
+
+[listing]
+----
+
+smsap notification update-summary-notification –repository –port 1521 –dbname repo2 –host 10.72.197.133 –login –username oba5 –email admin@org.com –subject success –frequency -daily -time 19:30:45 –profiles sales1
+----

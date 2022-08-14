@@ -1,0 +1,30 @@
+---
+permalink: windows/task-add-new-profile-to-summary-notification.html 
+sidebar: sidebar 
+keywords: configure, summary, email, notification, repository, database, profile, command, add 
+summary: 저장소 데이터베이스에 대한 요약 전자 메일 알림을 구성한 후 요약 알림 명령을 사용하여 요약 알림에 새 프로필을 추가할 수 있습니다. 
+---
+= 요약 e-메일 알림에 새 프로필을 추가합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+리포지터리 데이터베이스에 대한 요약 e-메일 알림을 구성한 후 '요약 알림' 명령을 사용하여 요약 알림에 새 프로파일을 추가할 수 있습니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap profile create -profile_profile_name_[-profile-password_profile_password_] -repository -dbname_repo_service_name_-host_repo_host_-port_port_-login -username_repo_username_username_name_username_username_ -hourly_username_username_username_username_username] -host_ssid_username count_n_] [-duration_m_] [-weekly-count_n_] [-duration_m_] [-monthly-count_n_] [-duration_m_]] [-comment_comment_] [-snapname-pattern_pattern_] [[]] [-summary-notification] *
+
++
+이 명령의 다른 옵션은 다음과 같습니다.
+
++
+['-force']
+
++
+['quiet'|'-verbose']
+
+

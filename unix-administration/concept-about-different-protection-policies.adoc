@@ -1,0 +1,111 @@
+---
+permalink: unix-administration/concept-about-different-protection-policies.html 
+sidebar: sidebar 
+keywords: policies, policy, protect, backup, secondary, tertiary, storage, system, protection 
+summary: 다른 정책을 선택하여 2차 또는 3차 스토리지 시스템의 백업을 보호할 수 있습니다. 
+---
+= 서로 다른 보호 정책에 대해 설명합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+다른 정책을 선택하여 2차 또는 3차 스토리지 시스템의 백업을 보호할 수 있습니다.
+
+7-Mode에서 작동하는 Data ONTAP를 사용 중이고 SnapManager가 Protection Manager와 통합된 경우에는 프로파일을 생성하는 동안 다음 보호 정책 중 하나를 선택해야 합니다. Protection Manager의 Management Console은 데이터 세트에 대한 보호 정책을 구성하는 템플릿을 제공합니다. 재해 복구 보호 정책이 SnapManager 사용자 인터페이스에 나열되어 있어도 이러한 정책은 지원되지 않습니다.
+
+[cols="1a,3a"]
+|===
+| 정책 | 설명 
+
+
+ a| 
+백업하다
+ a| 
+SnapVault 또는 SnapMirror를 사용하여 데이터 세트를 운영 스토리지에서 2차 스토리지로 로컬로 백업할 수도 있습니다.
+
+
+
+ a| 
+백업 후 미러
+ a| 
+SnapVault 또는 SnapMirror를 사용하여 데이터 세트를 운영 스토리지에서 2차 스토리지로 백업한 다음 SnapMirror 파트너에게 미러링합니다.
+
+
+
+ a| 
+로컬 스냅샷 복사본만 제공됩니다
+ a| 
+데이터 세트는 운영 스토리지의 로컬 Snapshot 복사본만 사용합니다.
+
+
+
+ a| 
+대칭 복사
+ a| 
+SnapMirror를 사용하여 데이터 세트가 운영 스토리지에서 보조 스토리지로 미러링됩니다.
+
+
+
+ a| 
+미러 및 백업
+ a| 
+SnapMirror를 사용하여 데이터 세트를 운영 스토리지에서 2차 스토리지로 미러링한 다음 SnapVault 또는 SnapMirror를 사용하여 2차 스토리지에 백업합니다.
+
+
+
+ a| 
+대칭 복사 및 대칭 복사
+ a| 
+데이터 세트는 2개의 서로 다른 SnapMirror 파트너에 있는 운영 스토리지에서 보조 스토리지로 미러링됩니다.
+
+
+
+ a| 
+미러, 백업
+ a| 
+SnapMirror를 사용하여 데이터 세트를 운영 스토리지에서 2차 스토리지로 미러링한 다음 SnapVault 또는 SnapMirror를 사용하여 3차 스토리지로 백업합니다.
+
+
+
+ a| 
+거울, 거울, 거울
+ a| 
+SnapMirror를 사용하여 데이터 세트를 운영 스토리지에서 2차 스토리지로 미러링한 다음 추가 SnapMirror 파트너에게 미러링됩니다.
+
+
+
+ a| 
+보호 기능 없음
+ a| 
+데이터 세트에는 어떠한 종류의 Snapshot 복사본, 백업 또는 미러 복사본 보호가 없습니다.
+
+
+
+ a| 
+원격 백업만
+ a| 
+스토리지 시스템의 데이터는 SnapVault 또는 SnapMirror를 사용하여 보조 스토리지에 원격으로 백업됩니다. 라이센스가 부여된 애플리케이션은 운영 스토리지에서 로컬 백업을 수행하지 않습니다. 이 보호 정책은 오픈 시스템 SnapVault가 설치된 타사 시스템에 적용할 수 있습니다.
+
+|===
+Clustered Data ONTAP을 사용하는 경우 프로파일을 생성하는 동안 다음 보호 정책 중 하나를 선택해야 합니다.
+
+[cols="1a,1a"]
+|===
+| 정책 | 설명 
+
+
+ a| 
+SnapManager_cDOT_미러
+ a| 
+백업을 미러링합니다.
+
+
+
+ a| 
+SnapManager_cDOT_Vault를 누릅니다
+ a| 
+백업 볼트.
+
+|===

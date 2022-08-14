@@ -1,0 +1,211 @@
+---
+permalink: windows/reference-the-smosmsapprofile-create-command.html 
+sidebar: sidebar 
+keywords: run, profile, create, command, database, repository, smsap 
+summary: profile create 명령을 실행하여 리포지토리에 데이터베이스의 프로필을 만들 수 있습니다. 이 명령을 실행하기 전에 데이터베이스를 마운트해야 합니다. 
+---
+= smssap profile create 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"profile create" 명령을 실행하여 리포지터리에 데이터베이스의 프로필을 만들 수 있습니다. 이 명령을 실행하기 전에 데이터베이스를 마운트해야 합니다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap profile create
+-profile profile
+[-profile-password profile_password]
+-repository
+-dbname repo_service_name
+-host repo_host
+-port repo_port
+-login -username repo_username
+-database
+-dbname db_dbname
+-host db_host
+[-sid  db_sid]
+[-login
+[-username db_username -password db_password -port db_port]
+]
+[-rman {-controlfile | {-login
+-username  rman_username -password  rman_password}
+-tnsname  rman_tnsname}}]
+
+
+[-retain
+[-hourly [-count n] [-duration m]]
+[-daily [-count n] [-duration m]]
+[-weekly [-count n] [-duration m]]
+[-monthly [-count n] [-duration m]]]]
+-comment comment
+-snapname-pattern pattern
+[]
+[-summary-notification]
+[-notification
+[-success
+-email email_address1,email_address2
+-subject subject_pattern]
+[-failure
+-email email_address1,email_address2
+-subject subject_pattern]
+[-separate-archivelog-backups
+-retain-archivelog-backups
+-hours hours |
+-days days |
+-weeks weeks |
+-months months
+[]
+[-include-with-online-backups | -no-include-with-online-backups]]
+[-dump]
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* '*'- profile_profile_'
++
+프로파일의 이름을 지정합니다. 이 이름은 최대 30자까지 지정할 수 있으며 호스트 내에서 고유해야 합니다.
+
+* * ``profile-password_profile_password_' *
++
+프로파일의 암호를 지정합니다.
+
+* * ``리포지토리’ *
++
+리포지터리 다음에 나오는 옵션은 프로파일을 저장하는 데이터베이스의 세부 사항을 지정합니다.
+
+* * ``dbname_repo_service_name_'
++
+프로필을 저장하는 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 SID를 사용합니다.
+
+* '*'-host_repo_host_'
++
+리포지토리 데이터베이스가 실행되는 호스트 컴퓨터의 이름 또는 IP 주소를 지정합니다.
+
+* * ``sid_db_sid_' *
++
+프로파일이 설명하는 데이터베이스의 시스템 식별자를 지정합니다. 기본적으로 SnapManager에서는 데이터베이스 이름을 시스템 식별자로 사용합니다. 시스템 식별자가 데이터베이스 이름과 다른 경우 '-sid' 옵션을 사용하여 지정해야 합니다.
+
+* * ``로그인’
++
+리포지토리 로그인 세부 정보를 지정합니다.
+
+* * ``username_repo_username_' *
++
+리포지토리 데이터베이스에 액세스하는 데 필요한 사용자 이름을 지정합니다.
+
+* '*'-port_repo_port_'
++
+리포지토리 데이터베이스에 액세스하는 데 사용되는 TCP 포트 번호를 지정합니다.
+
+* * ``데이터베이스’
++
+프로필에 설명된 데이터베이스의 세부 정보를 지정합니다. 이 데이터베이스는 백업, 복원 또는 클론이 생성될 데이터베이스입니다.
+
+* * ``dbname_db_dbname_' *
++
+프로파일이 설명하는 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 시스템 식별자를 사용할 수 있습니다.
+
+* * ``host_db_host db_host_' *
++
+데이터베이스가 실행되는 호스트 컴퓨터의 이름 또는 IP 주소를 지정합니다.
+
+* * ``로그인’
++
+데이터베이스 로그인 정보를 지정합니다.
+
+* * ``username_db_username_' *
++
+프로파일이 설명하는 데이터베이스에 액세스하는 데 필요한 사용자 이름을 지정합니다.
+
+* * ``password_db_password_' *
++
+프로필에 설명된 데이터베이스에 액세스하는 데 필요한 암호를 지정합니다.
+
+* '*'- port_db_port_'
++
+프로파일이 설명하는 데이터베이스에 액세스하는 데 사용되는 TCP 포트 번호를 지정합니다.
+
+* * ``hourly[-hourly[-count n][-duration m][-daily[-count n][-duration m]][-weekly[-count n][-duration m]][-monthly[-count n][-duration m]]]' *
++
+보존 클래스의 보존 기간(시간별, 일별, 주별, 월별)과 함께 보존 수의 두 가지 중 하나 또는 둘 모두를 사용하는 백업의 보존 정책을 지정합니다.
+
++
+각 보존 클래스에 대해 보존 수 또는 보존 기간 중 하나 또는 둘 모두를 지정할 수 있습니다. 기간은 클래스의 단위(예: 시간별 시간, 일별 일)입니다. 예를 들어, 사용자가 일일 백업에 대해 보존 기간을 7로 지정하면 보존 수가 0이므로 SnapManager는 프로파일에 대한 일일 백업 수를 제한하지 않지만 SnapManager는 7일 전에 생성된 일일 백업을 자동으로 삭제합니다.
+
+* '*'- comment_comment_'
++
+프로파일 도메인을 설명하는 프로파일에 대한 설명을 지정합니다.
+
+* * ``snapname-pattern_pattern_'
++
+스냅샷 복사본의 명명 패턴을 지정합니다. 또한 모든 스냅샷 복사본 이름에 고가용성 작업에 대한 HOPS와 같은 사용자 지정 텍스트를 포함할 수도 있습니다. 프로파일을 만들거나 프로파일을 만든 후에 스냅샷 복사본 명명 패턴을 변경할 수 있습니다. 업데이트된 패턴은 아직 생성되지 않은 스냅샷 복사본에만 적용됩니다. 존재하는 스냅샷 복사본에는 이전 Snapname 패턴이 유지됩니다. 패턴 텍스트에 여러 변수를 사용할 수 있습니다.
+
+* '*'-summary-notification'
++
+새 프로필에 대해 요약 e-메일 알림을 사용하도록 지정합니다.
+
+* * ``notification-success-email_email_address1,이메일 주소2_-subject_subject_pattern_' *
++
+SnapManager 작업이 성공할 때 받는 사람이 전자 메일을 받을 수 있도록 새 프로필에 대해 전자 메일 알림을 사용하도록 지정합니다. 이메일 알림을 보낼 이메일 주소 또는 이메일 주소를 하나 이상 입력하고 새 프로필에 대한 이메일 제목 패턴을 입력해야 합니다.
+
++
+새 프로필에 사용자 지정 제목 텍스트를 포함할 수도 있습니다. 프로필을 만들거나 프로필을 만든 후에 제목 텍스트를 변경할 수 있습니다. 업데이트된 제목은 전송되지 않은 이메일에만 적용됩니다. 이메일 제목에 여러 변수를 사용할 수 있습니다.
+
+* * ``notification-failure-email_email_address1,이메일 주소2_-subject_subject_pattern_' *
++
+SnapManager 작업이 실패할 때 수신자가 이메일을 수신할 수 있도록 새 프로필에 대해 이메일 알림 활성화 를 사용하도록 지정합니다. 이메일 알림을 보낼 이메일 주소 또는 이메일 주소를 하나 이상 입력하고 새 프로필에 대한 이메일 제목 패턴을 입력해야 합니다.
+
++
+새 프로필에 사용자 지정 제목 텍스트를 포함할 수도 있습니다. 프로필을 만들거나 프로필을 만든 후에 제목 텍스트를 변경할 수 있습니다. 업데이트된 제목은 전송되지 않은 이메일에만 적용됩니다. 이메일 제목에 여러 변수를 사용할 수 있습니다.
+
+* * ``별개인 아카이브 백업’’
++
+아카이브 로그 백업이 데이터 파일 백업과 분리되도록 지정합니다. 프로파일을 만드는 동안 제공할 수 있는 선택적 매개 변수입니다. 이 옵션을 사용하여 백업을 분리한 후 데이터 파일만 백업 또는 아카이브 로그 전용 백업을 수행할 수 있습니다.
+
+* * ``retain-archivelog-backups-hours_hours_|-days_days_|-weeks_weeks_|-months_months_" *
++
+아카이브 로그 백업이 아카이브 로그 보존 기간(시간별, 일별, 주별, 월별)을 기준으로 보존되도록 지정합니다.
+
+* ``조용한’
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* * '-verbose' *
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+* * ``include-with-online-backups' *
++
+아카이브 로그 백업이 온라인 데이터베이스 백업과 함께 포함되도록 지정합니다.
+
+* '*'-no-include-with-online-backups'
++
+아카이브 로그 백업이 온라인 데이터베이스 백업과 함께 포함되지 않도록 지정합니다.
+
+* * ``덤프’
++
+성공적인 프로필 생성 작업 후에 덤프 파일이 수집되도록 지정합니다.
+
+
+
+
+
+== 예
+
+다음 예에서는 시간별 보존 정책 및 e-메일 알림을 사용하여 프로필을 생성하는 방법을 보여 줍니다.
+
+[listing]
+----
+smsap profile create -profile test_rbac -profile-password netapp -repository -dbname SMSAPREP -host hostname.org.com -port 1521 -login -username smsaprep -database -dbname RACB -host saal -sid racb1 -login -username sys -password netapp -port 1521 -rman -controlfile -retain -hourly -count 30 -verbose
+Operation Id [8abc01ec0e78ebda010e78ebe6a40005] succeeded.
+----

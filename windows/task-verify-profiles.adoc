@@ -1,0 +1,21 @@
+---
+permalink: windows/task-verify-profiles.html 
+sidebar: sidebar 
+keywords: verify, exist, profile, set, up, correct, snapmanager, environment, verifies, database, accessible 
+summary: 기존 프로필이 올바르게 설정되었는지 확인할 수 있습니다. 프로파일을 확인할 때 SnapManager는 지정한 프로파일의 환경을 확인하고 프로파일이 설정되어 있고 이 프로파일의 데이터베이스에 액세스할 수 있는지 확인합니다. 
+---
+= 프로필을 확인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+기존 프로필이 올바르게 설정되었는지 확인할 수 있습니다. 프로파일을 확인할 때 SnapManager는 지정한 프로파일의 환경을 확인하고 프로파일이 설정되어 있고 이 프로파일의 데이터베이스에 액세스할 수 있는지 확인합니다.
+
+.단계
+. 프로파일이 올바르게 설정되었는지 확인하려면 다음 명령을 입력합니다.
++
+'* smssap profile verify-profile_profile_name_*'
+
+

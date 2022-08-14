@@ -1,0 +1,33 @@
+---
+permalink: unix-administration/concept-restoring-a-backup-to-a-different-host.html 
+sidebar: sidebar 
+keywords: brrestore, smsap, restore, command, backup, brbackup, different, host, snapmanager, restoring 
+summary: brrestore 또는 smsap restore 명령을 사용하여 BRBACKUP에서 만든 백업을 다른 호스트에서 복원할 수 있습니다. 새 호스트에서 SnapManager for SAP도 실행 중이어야 합니다. 
+---
+= 다른 호스트에 백업 복구
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+brrestore 또는 smsap restore 명령을 사용하여 BRBACKUP에서 만든 백업을 다른 호스트에서 복원할 수 있습니다. 새 호스트에서 SnapManager for SAP도 실행 중이어야 합니다.
+
+
+
+== SnapManager 프로필을 사용할 수 있도록 설정합니다
+
+brrestore를 실행하려면 새 호스트에서 원래 호스트의 SnapManager 프로필을 사용할 수 있도록 해야 합니다. 다음 단계를 완료합니다.
+
+* 리포지토리에 대한 자격 증명 설정: 새 호스트가 원본 백업에 사용되는 SnapManager 리포지토리에 액세스할 수 있도록 하려면 'smsap 자격 증명 세트' 명령을 사용합니다.
+* 프로파일 자격 증명 설정: 새 호스트가 원본 백업에 사용되는 SnapManager 프로파일에 액세스할 수 있도록 하려면 'smsap 자격 증명 세트' 명령을 사용합니다.
+* 새 호스트에 프로필 로드: 'smsap profile sync' 명령을 사용하여 새 호스트에 SnapManager 프로필 정보를 로드합니다.
+
+
+
+
+== brrestore를 실행합니다
+
+원래 호스트의 원래 스토리지와 동일한 경로를 사용하여 새 호스트에 새 스토리지를 구성합니다.
+
+'brrestore' 명령을 사용하여 백업을 새 호스트로 복구합니다. 기본적으로 파일은 원래 경로 위치로 복원됩니다. brrestore 명령의 '-m' 옵션을 사용하여 복구된 파일의 대체 경로를 지정할 수 있습니다. brrestore에 대한 자세한 내용은 SAP 설명서를 참조하십시오.

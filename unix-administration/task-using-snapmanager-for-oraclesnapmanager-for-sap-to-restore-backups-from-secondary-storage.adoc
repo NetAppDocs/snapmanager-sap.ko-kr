@@ -1,0 +1,41 @@
+---
+permalink: unix-administration/task-use-snapmanager-for-oraclesnapmanager-for-sap-to-restore-backups-from-secondary-storage.html 
+sidebar: sidebar 
+keywords: administrator, restore, protect, backup, secondary, storage, copy, data, back, primary, snapmanager 
+summary: 관리자는 보조 스토리지에서 보호된 백업을 복원할 수 있으며 데이터를 기본 스토리지로 다시 복사할 방법을 선택할 수 있습니다. 
+---
+= SnapManager for SAP를 사용하여 보조 스토리지에서 백업을 복원합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+관리자는 보조 스토리지에서 보호된 백업을 복원할 수 있으며 데이터를 기본 스토리지로 다시 복사할 방법을 선택할 수 있습니다.
+
+* 필요한 것 *
+
+백업을 복원하기 전에 백업 속성을 확인하고 백업이 운영 스토리지 시스템에서 해제되고 보조 스토리지에서 보호되는지 확인합니다.
+
+.단계
+. SAP용 SnapManager 리포지토리 트리에서 복원할 백업을 마우스 오른쪽 단추로 클릭하고 * 복원 * 을 선택합니다.
+. 복원 및 복구 마법사 시작 페이지에서 * 다음 * 을 클릭합니다.
+. Restore Configuration Information 페이지에서 * Complete Datafile/Tablespace Restore with Control Files * 를 클릭합니다.
+. 필요한 경우 * 데이터베이스 종료 허용 * 을 클릭하고 * 다음 * 을 클릭합니다.
++
+SnapManager 필요한 경우 데이터베이스 상태를 변경합니다. 예를 들어, 데이터베이스가 오프라인이고 온라인 상태가 되어야 하는 경우 SnapManager는 데이터베이스를 온라인 상태로 만듭니다.
+
+. 복구 구성 정보 페이지에서 * 모든 로그 * 를 클릭합니다. 그런 다음 * 다음 * 을 클릭합니다.
++
+SnapManager는 데이터베이스를 마지막 트랜잭션으로 복원 및 복구하고 필요한 모든 로그를 적용합니다.
+
+. Restore Source Location Configuration 페이지에서 보호된 백업 소스의 ID를 선택하고 * Next * 를 클릭합니다.
+. 볼륨 복원 구성 정보 페이지에서 * 볼륨 복원 시도 * 를 클릭하여 볼륨 복원을 시도합니다.
+. 파일 기반 복원으로 폴백 * 을 클릭합니다.
++
+이렇게 하면 볼륨 복원 방법을 완료할 수 없는 경우 SnapManager에서 파일 기반 복원 방법을 사용할 수 있습니다.
+
+. 빠른 복원에 대한 적격성 검사 및 필수 및 재정의 검사에 대한 정보를 보려면 * Preview * 를 클릭합니다.
+. 작업 수행 페이지에서 제공한 정보를 확인하고 * 복원 * 을 클릭합니다.
+. 프로세스에 대한 세부 정보를 보려면 * 공정 세부 정보 * 를 클릭합니다.
+

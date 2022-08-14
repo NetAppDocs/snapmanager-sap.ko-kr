@@ -1,0 +1,18 @@
+---
+permalink: windows/task-verifying-the-snapmanager-windows-host-server-status.html 
+sidebar: sidebar 
+keywords: server, run, execute, command, initiate, snapmanager, operation, verify, status, host 
+summary: 명령을 실행하거나 SnapManager 작업을 시작하려면 서버가 실행 중이어야 합니다. 작업을 수행하기 전에 서버의 상태를 확인해야 합니다. 
+---
+= SnapManager 호스트 서버 상태를 확인하는 중입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+명령을 실행하거나 SnapManager 작업을 시작하려면 서버가 실행 중이어야 합니다. 작업을 수행하기 전에 서버의 상태를 확인해야 합니다.
+
+. 서비스 창에서 SnapManager 3.3 forSAP 를 선택합니다.
+. 상태 열에서 상태를 봅니다.
+

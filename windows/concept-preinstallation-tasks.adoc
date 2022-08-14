@@ -1,0 +1,35 @@
+---
+permalink: windows/concept-preinstallation-tasks.html 
+sidebar: sidebar 
+keywords: install, snapmanager, sap, additional, task, environment, perform, operate, system, database, version, preinstallation 
+summary: SAP용 SnapManager를 설치하기 전에 몇 가지 추가 작업을 수행하여 환경을 설정해야 합니다. 수행해야 하는 작업은 운영 체제와 사용할 데이터베이스 버전에 따라 다릅니다. 
+---
+= 사전 설치 작업
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SAP용 SnapManager를 설치하기 전에 몇 가지 추가 작업을 수행하여 환경을 설정해야 합니다. 수행해야 하는 작업은 운영 체제와 사용할 데이터베이스 버전에 따라 다릅니다.
+
+* 적절한 패치를 사용하여 라이센스가 있는 운영 체제를 설치합니다.
+* 운영 체제 및 Oracle 데이터베이스의 언어를 영어로 설정합니다.
++
+예를 들어 Oracle 데이터베이스의 언어를 영어로 설정하려면 "NLS_LANG=American_America.WE8MSWIN1252"를 지정합니다. 언어를 설정하는 방법에 대한 자세한 내용은 _Troubleshooting SnapManager for SAP_섹션을 참조하십시오.
+
+* 모든 스토리지 시스템에서 SnapRestore 및 FC(Fibre Channel), iSCSI(Internet Small Computer System Interface)와 같은 지원되는 프로토콜에 대해 활성화된 라이센스를 사용하여 Data ONTAP를 설치합니다.
+* Oracle 데이터베이스 11.2.0.2 및 11.2.0.3을 사용하는 경우 다음 Oracle 패치를 설치합니다.
++
+** 13413167(Windows 32비트)
+** Windows 64비트용 13555974
+
+
+* SAP BR * Tools를 설치합니다.
+
+
+* 관련 정보 *
+
+http://support.netapp.com/NOW/products/interoperability/["NetApp 상호 운용성 매트릭스"^]
+
+http://media.netapp.com/documents/tr-3823.pdf["SnapManager for SAP 모범 사례"^]

@@ -1,0 +1,44 @@
+---
+permalink: windows/concept-what-user-authentication-is.html 
+sidebar: sidebar 
+keywords: snapmanager, authenticate, user, operate, system, os, login, host, server, enable, password, smo, credential, smsap, set 
+summary: 'SnapManager는 SnapManager 서버가 실행 중인 호스트에서 운영 체제(OS) 로그인을 사용하여 사용자를 인증합니다. 작업 시 암호 프롬프트를 통해 또는 SMO 자격 증명을 사용하여 사용자 인증을 활성화할 수 있습니다. 작업 시 암호 프롬프트를 통해 또는 smsap 자격 증명 집합을 사용하여 사용자 인증을 활성화할 수 있습니다.' 
+---
+= 사용자 인증이란 무엇입니까
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 SnapManager 서버가 실행 중인 호스트에서 운영 체제(OS) 로그인을 사용하여 사용자를 인증합니다. 작업 시 암호 프롬프트를 통해 또는 SMO 자격 증명을 사용하여 사용자 인증을 활성화할 수 있습니다. 작업 시 암호 프롬프트를 통해 또는 'msap 자격 증명 세트'를 사용하여 사용자 인증을 활성화할 수 있습니다.
+
+사용자 인증 요구 사항은 작업이 수행되는 위치에 따라 다릅니다.
+
+* SnapManager 클라이언트가 SnapManager 호스트와 동일한 서버에 있는 경우 OS 자격 증명을 통해 인증됩니다.
++
+SnapManager 서버가 실행 중인 호스트에 이미 로그인했으므로 암호를 묻는 메시지가 표시되지 않습니다.
+
+* SnapManager 클라이언트와 SnapManager 서버가 서로 다른 호스트에 있는 경우 SnapManager는 두 OS 자격 증명을 모두 사용하여 사용자를 인증해야 합니다.
++
+SnapManager 사용자 자격 증명 캐시에 OS 자격 증명을 저장하지 않은 경우 SnapManager에서 작업에 대한 암호를 묻는 메시지를 표시합니다. 'msap credentials set-host' 명령을 입력하면 OS 자격 증명을 SnapManager 자격 증명 캐시 파일에 저장하므로 SnapManager에서 작업에 대한 암호를 묻지 않습니다.
+
+
+
+SnapManager 서버로 인증된 사용자는 유효한 사용자로 간주됩니다. 모든 작업에 대한 유효 사용자는 작업이 실행되는 호스트의 유효한 사용자 계정이어야 합니다. 예를 들어 클론 작업을 실행하는 경우 클론의 대상 호스트에 로그인할 수 있어야 합니다.
+
+
+NOTE: SnapManager for SAP는 LDAP 및 ADS와 같은 중앙 Active Directory 서비스에서 생성된 사용자에게 권한을 부여하는 데 실패할 수 있습니다. 인증이 실패하지 않도록 하려면 구성 가능한 "auth.disableServerAuthorization"을 * true * 로 설정해야 합니다.
+
+효과적인 사용자는 다음과 같은 방법으로 자격 증명을 관리할 수 있습니다.
+
+* 필요에 따라 SnapManager 사용자 자격 증명 파일에 사용자 자격 증명을 저장하도록 SnapManager를 구성할 수 있습니다.
++
+기본적으로 SnapManager는 호스트 자격 증명을 저장하지 않습니다. 예를 들어 원격 호스트에서 액세스해야 하는 사용자 지정 스크립트가 있는 경우 이 옵션을 변경할 수 있습니다. 원격 클론 작업은 원격 호스트에 대한 사용자의 로그인 자격 증명이 필요한 SnapManager 작업의 예입니다. SnapManager가 SnapManager 사용자 자격 증명 캐시에서 사용자 호스트 로그인 자격 증명을 기억하도록 하려면 'smsap.config' 파일에서 'host.credentials.persist' 속성을 * true * 로 설정합니다.
+
+* 리포지토리에 대한 사용자 액세스를 승인할 수 있습니다.
+* 프로파일에 대한 사용자 액세스 권한을 부여할 수 있습니다.
+* 모든 사용자 자격 증명을 볼 수 있습니다.
+* 모든 리소스(호스트, 리포지토리 및 프로필)에 대한 사용자 자격 증명을 지울 수 있습니다.
+* 개별 리소스(호스트, 리포지토리 및 프로필)에 대한 자격 증명을 삭제할 수 있습니다.
+

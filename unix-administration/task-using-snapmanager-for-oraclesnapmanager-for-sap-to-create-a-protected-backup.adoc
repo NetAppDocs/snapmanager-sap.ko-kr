@@ -1,0 +1,51 @@
+---
+permalink: unix-administration/task-use-snapmanager-for-oraclesnapmanager-for-sap-to-create-a-protected-backup.html 
+sidebar: sidebar 
+keywords: create, creating, backup, example, dba, select, full, set, secondary, storage, local, protection-enabled, profile, transfer, protection, policy 
+summary: 이 예에 대한 백업을 생성할 때 DBA는 전체 백업을 생성하고 백업 옵션을 설정하며 보조 스토리지에 대한 보호를 선택합니다. 백업은 로컬 스토리지에서 처음 만들어지지만 이 백업은 보호 설정 프로파일을 기반으로 하기 때문에 보호 관리자에 정의된 보호 정책의 스케줄에 따라 보조 스토리지로 전송됩니다. 
+---
+= SnapManager for SAP를 사용하여 보호 백업을 생성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 예에 대한 백업을 생성할 때 DBA는 전체 백업을 생성하고 백업 옵션을 설정하며 보조 스토리지에 대한 보호를 선택합니다. 백업은 처음에 로컬 스토리지에 수행되지만 이 백업은 보호 설정 프로파일을 기반으로 하기 때문에 Protection Manager에 정의된 보호 정책의 스케줄에 따라 보조 스토리지로 전송됩니다.
+
+.단계
+. SAP용 SnapManager 클라이언트로 이동합니다.
+. SnapManager 리포지토리 트리에서 백업할 데이터베이스가 포함된 프로필을 마우스 오른쪽 버튼으로 클릭하고 * 백업 * 을 선택합니다.
++
+SnapManager for SAP 백업 마법사가 시작됩니다.
+
+. 를 입력합니다
++
+``생산_급여*'
+
++
+레이블로 사용합니다.
+
+. 를 입력합니다
++
+(* 운영 급여 1월 19일 백업 *)
+
++
+을 클릭합니다.
+
+. 만들려는 백업 유형으로 * Auto * 를 선택합니다.
++
+이렇게 하면 SnapManager에서 온라인 또는 오프라인 백업을 수행할지 여부를 결정할 수 있습니다.
+
+. 백업 빈도로 * Daily * 또는 * Weekly * 를 선택합니다.
+. 백업이 Oracle에 유효한 형식인지 확인하려면 * Verify backup * 옆의 확인란을 선택합니다.
++
+이 작업에서는 Oracle DBVERIFY를 사용하여 블록 형식과 구조를 확인합니다.
+
+. 데이터베이스의 상태를 적절한 모드(예: 열려 있는 상태에서 마운트된 모드)로 강제 설정하려면 * 필요한 경우 데이터베이스 시작 또는 종료 허용 * 을 선택하고 * 다음 * 을 클릭합니다.
+. 데이터베이스, 테이블스페이스 또는 백업할 데이터 파일 페이지에서 * 전체 백업 * 을 선택하고 * 다음 * 을 클릭합니다.
+. 보조 스토리지에서 백업을 보호하려면 * 백업 보호 * 를 선택하고 * 다음 * 을 클릭합니다.
+. 작업 수행 페이지에서 입력한 정보를 확인하고 * 백업 * 을 클릭합니다.
+. 진행 페이지에서 백업 생성 진행률 및 결과를 확인합니다.
+. 작업의 세부 정보를 보려면 * Operation Details * 를 클릭합니다.
+

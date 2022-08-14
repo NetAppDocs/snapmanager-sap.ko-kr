@@ -1,0 +1,100 @@
+---
+permalink: unix-administration/task-use-snapmanager-for-oraclesnapmanager-for-sap-to-create-the-database-profile-and-assign-a-protection-policy.html 
+sidebar: sidebar 
+keywords: create, profile, snapmanager, sap, enable, protection, assign, policy, protection, backup 
+summary: SnapManager for SAP에서 프로필을 생성하고, 프로필에서 보호를 설정하고, 보호 정책을 할당하여 보호된 백업을 생성해야 합니다. 
+---
+= SnapManager for SAP를 사용하여 데이터베이스 프로필을 생성하고 보호 정책을 할당합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager for SAP에서 프로필을 생성하고, 프로필에서 보호를 설정하고, 보호 정책을 할당하여 보호된 백업을 생성해야 합니다.
+
+* 이 작업에 대한 정보 *
+
+프로필에는 자격 증명, 백업 설정 및 백업에 대한 보호 설정을 비롯하여 관리 중인 데이터베이스에 대한 정보가 포함되어 있습니다. 프로파일을 만든 후에는 작업을 수행할 때마다 데이터베이스 세부 정보를 지정할 필요가 없습니다. 프로필은 하나의 데이터베이스만 참조할 수 있지만 둘 이상의 프로파일에서 동일한 데이터베이스를 참조할 수 있습니다.
+
+.단계
+. SAP용 SnapManager 클라이언트로 이동합니다.
+. 리포지토리 트리에서 호스트를 마우스 오른쪽 버튼으로 클릭하고 * 프로파일 생성 * 을 선택합니다.
+. 프로파일 구성 정보 * 페이지에서 프로파일 세부 정보를 입력하고 * 다음 * 을 클릭합니다.
++
+* 예 *
+
++
+다음 정보를 입력할 수 있습니다.
+
++
+** 프로파일 이름: P01_backup
+** 프로파일 암호: payroll123
+** 설명: 생산 급여 데이터베이스
+
+
+. 데이터베이스 구성 정보 * 페이지에서 데이터베이스 세부 정보를 입력하고 * 다음 * 을 클릭합니다.
++
+* 예 *
+
++
+다음 정보를 입력할 수 있습니다.
+
++
+** 데이터베이스 이름: P01
+** 데이터베이스 SID: P01
+** 데이터베이스 호스트: 기본값을 수락합니다. 저장소 트리의 호스트에서 프로파일을 만들기 때문에 SnapManager는 호스트 이름을 표시합니다.
+** Oracle 사용자 계정(ora<sid>의 경우): orapayrolldb를 나타내는 호스트 계정
+** 호스트 그룹 - Oracle 그룹: DBA를 나타냅니다
+
+
+. 데이터베이스 연결 정보 * 페이지에서 * 데이터베이스 인증 사용 * 을 클릭하여 사용자가 데이터베이스 정보를 사용하여 인증할 수 있도록 합니다.
+. 데이터베이스 연결 정보를 입력하고 * 다음 * 을 클릭합니다.
++
+* 예 *
+
++
+다음 정보를 입력할 수 있습니다.
+
++
+** SySDBA 관리자 권한이 있는 사용자 이름: sys. 관리 권한이 있는 시스템 데이터베이스 관리자를 나타냅니다
+** 암호(SYSDBA 암호): Oracle
+** 데이터베이스 호스트에 연결할 포트: 1527
+
+
+. 스냅샷 명명 정보 페이지에서 변수를 선택하여 이 프로파일과 연결된 스냅샷의 명명 규칙을 지정합니다.
++
+'_smid_' 변수는 고유한 스냅샷 식별자를 만듭니다.
+
++
+다음을 수행합니다.
+
++
+.. 변수 토큰 * 목록에서 '_UserText_'를 선택하고 * 추가 * 를 클릭합니다.
+.. 호스트 이름으로 _prod01.sample.com__` 를 입력하고 * OK * 를 클릭합니다.
+.. Format(형식) 상자에서 smsap 바로 뒤에 호스트 이름이 나타날 때까지 * left * 를 클릭합니다.
+.. 다음 * 을 클릭합니다.
+
+
++
+"_smsap_hostname_smssapprofile_dbsid_scope_mode_smid_"의 스냅샷 명명 규칙은 "smsap_prpd01.sample.com_P01_BACKUP_P01_f_a_x" (여기서 "f"는 전체 백업을 나타내고 "a"는 자동 모드를 나타내고 "x"는 고유한 SMID를 나타냅니다).
+
+. Protection Manager 보호 정책 * 을 선택합니다.
++
+Protection Manager 보호 정책 * 을 사용하면 NetApp 관리 콘솔을 사용하여 구성한 보호 정책을 선택할 수 있습니다.
+
+. NetApp 관리 콘솔에서 검색한 보호 정책의 보호 정책으로 * TechCo Payroll Data:Backup * 을 선택하고 * Next * 를 클릭합니다.
+. Perform Operation * 페이지에서 정보를 확인하고 * Create * 를 클릭합니다.
+. 프로파일 생성 작업 및 볼륨 기반 복원 자격 정보에 대한 정보를 보려면 * 작업 세부 정보 * 를 클릭합니다.
+
+
+결과 *
+
+* 데이터베이스 프로필에 NetApp Management Console 보호 정책을 할당하면 자동으로 NetApp Management Console 오퍼레이터가 볼 수 있는 규정을 준수하지 않는 데이터 세트가 생성됩니다. 이러한 데이터 세트는 이름 규칙 smssap_<hostname>_<profilename> 또는 이 예에서는 smsap_prod01.sample.com_P01_BACKUP 으로 표시됩니다.
+* 프로파일이 볼륨 복원("빠른 복원"이라고도 함)에 적합하지 않으면 다음과 같은 현상이 발생합니다.
++
+** 결과* 탭은 프로파일 생성이 성공하고 작업 중에 경고가 발생했음을 나타냅니다.
+** 작업 세부 정보 * 탭에는 프로파일이 빠른 복원을 수행할 수 없는 이유를 설명하는 경고 로그가 포함되어 있습니다.
+
+
+

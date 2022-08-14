@@ -1,0 +1,24 @@
+---
+permalink: unix-administration/task-clone-with-rac-databases.html 
+sidebar: sidebar 
+keywords: clone, rac, database, cloning 
+summary: RAC 데이터베이스를 비 RAC 데이터베이스에 복제하거나 비 RAC 데이터베이스에 클론한 다음 RAC 데이터베이스로 변경할 수 있습니다. 
+---
+= RAC 데이터베이스를 사용하여 클론 복제
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+RAC 데이터베이스를 비 RAC 데이터베이스에 복제하거나 비 RAC 데이터베이스에 클론한 다음 RAC 데이터베이스로 변경할 수 있습니다.
+
+.단계
+. RAC 데이터베이스를 복제하려면 다음 명령을 입력합니다.
++
+'* smssap clone create-backup-label_backup_label_-profile_profile_name_-newsid_new_sid_-clonespec_full_path_to_clonespec_file_-verbose * '
+
+. 클론이 생성된 비 RAC 데이터베이스를 RAC 데이터베이스로 변경하려면 파일 이름을 '_initclone_SID.ora_'에서 '_initclone_local_instance_SID.ora_'로 변경합니다.
+. 이름이 바뀐 파일을 편집하여 매개 변수 'cluster.database'를 '_true_'로 설정합니다. RAC 데이터베이스 정보
+. 클론 생성된 RAC 데이터베이스를 srvctl에 등록합니다.
+

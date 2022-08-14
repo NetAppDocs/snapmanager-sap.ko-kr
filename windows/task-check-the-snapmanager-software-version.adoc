@@ -1,0 +1,18 @@
+---
+permalink: windows/task-check-the-snapmanager-software-version.html 
+sidebar: sidebar 
+keywords: version, product, run, local, host, command, check, snapmanager, software 
+summary: version 명령을 실행하여 로컬 호스트에서 실행 중인 제품의 버전을 확인할 수 있습니다. 
+---
+= SnapManager 소프트웨어 버전을 확인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+sion 명령을 실행하여 로컬 호스트에서 실행 중인 제품의 버전을 확인할 수 있습니다.
+
+.단계
+. SnapManager 버전을 확인하려면 'smsap version' 명령어를 입력한다
+

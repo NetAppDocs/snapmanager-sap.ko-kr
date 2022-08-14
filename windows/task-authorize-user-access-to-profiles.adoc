@@ -1,0 +1,21 @@
+---
+permalink: windows/task-authorize-user-access-to-profiles.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, set, password, unauthorized, access, authorize, profile 
+summary: SnapManager를 사용하면 무단 액세스를 방지하기 위해 프로필에 대한 암호를 설정할 수 있습니다. 
+---
+= 프로파일에 대한 액세스를 승인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 무단 액세스를 방지하기 위해 프로필에 대한 암호를 설정할 수 있습니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap 자격 증명 세트 -profile-name_profile_name_[-password_password_] *
+
+

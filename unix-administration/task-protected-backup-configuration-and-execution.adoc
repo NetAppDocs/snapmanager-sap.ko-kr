@@ -1,0 +1,14 @@
+---
+permalink: unix-administration/task-protected-backup-configuration-and-execution.html 
+sidebar: sidebar 
+keywords: configure, snapmanager, protection, manager, support, database, backup, secondary, administrator, coordinate, action, protect, configuration, execution 
+summary: 보조 스토리지에 대한 데이터베이스 백업을 지원하도록 SnapManager 및 Protection Manager를 구성해야 합니다. 데이터베이스 관리자와 스토리지 관리자가 작업을 조정해야 합니다. 
+---
+= 보호된 백업 구성 및 실행
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+보조 스토리지에 대한 데이터베이스 백업을 지원하도록 SnapManager 및 Protection Manager를 구성해야 합니다. 데이터베이스 관리자와 스토리지 관리자가 작업을 조정해야 합니다.

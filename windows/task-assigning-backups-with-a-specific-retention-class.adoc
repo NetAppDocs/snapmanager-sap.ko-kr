@@ -1,0 +1,21 @@
+---
+permalink: windows/task-assigning-backups-with-a-specific-retention-class.html 
+sidebar: sidebar 
+keywords: dba, retention, class, hourly, daily, weekly, monthly, backup, eligible, assign 
+summary: 'DBA는 특정 보존 클래스(시간별, 일별, 주별 또는 월별)를 백업에 할당할 수 있습니다. 특정 보존 클래스를 할당하면 이 변경 사항에 따라 수행되는 백업이 삭제될 수 있습니다.' 
+---
+= 특정 보존 클래스로 백업 할당
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+DBA는 특정 보존 클래스(시간별, 일별, 주별 또는 월별)를 백업에 할당할 수 있습니다. 특정 보존 클래스를 할당하면 이 변경 사항에 따라 수행되는 백업이 삭제될 수 있습니다.
+
+.단계
+. 특정 백업 보존 클래스를 할당하려면 다음 명령을 입력합니다.
++
+'msap backup update-profileprofile_name{-labellabel [data|-archivelogs]|-iDID} - Retain [-hourly|-daily|-weekly|-monthly]'
+
+

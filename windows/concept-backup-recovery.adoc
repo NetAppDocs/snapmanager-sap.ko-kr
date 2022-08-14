@@ -1,0 +1,23 @@
+---
+permalink: windows/concept-backup-recovery.html 
+sidebar: sidebar 
+keywords: snapmanager, perform, restore, recover, operation, backup 
+summary: SnapManager에서는 복원 및 복구 작업을 동시에 수행해야 합니다. 복구 작업을 수행한 다음 나중에 SnapManager 복구 작업을 수행할 수 없습니다. 
+---
+= 백업 복구
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager에서는 복원 및 복구 작업을 동시에 수행해야 합니다. 복구 작업을 수행한 다음 나중에 SnapManager 복구 작업을 수행할 수 없습니다.
+
+SnapManager 3.2 이하에서는 SnapManager를 사용하여 백업을 복원 및 복구하거나 SnapManager를 사용하여 백업을 복원하고 Oracle RMAN(Recovery Manager)과 같은 다른 툴을 사용하여 데이터를 복구할 수 있습니다. SnapManager는 RMAN에 백업을 등록할 수 있기 때문에 RMAN을 사용하여 블록과 같은 더욱 세분화된 세분화된 수준까지 데이터베이스를 복구 및 복구할 수 있습니다. 이와 같은 통합 기능은 스냅샷 복사본의 속도 및 공간 효율성과 RMAN을 사용한 복구 기능의 제어 수준을 완벽하게 결합한 것입니다.
+
+
+NOTE: 데이터베이스를 사용하려면 먼저 데이터베이스를 복구해야 합니다. 모든 도구나 스크립트를 사용하여 데이터베이스를 복구할 수 있습니다.
+
+SAP용 SnapManager 3.2부터 SnapManager를 사용하면 아카이브 로그 백업을 사용하여 데이터베이스 백업을 자동으로 복원할 수 있습니다. 아카이브 로그 백업을 외부 위치에서 사용할 수 있는 경우에도 SnapManager는 외부 위치의 아카이브 로그 백업을 사용하여 데이터베이스 백업을 복원합니다.
+
+새 데이터 파일이 데이터베이스에 추가되는 경우 새 백업을 즉시 수행하는 것이 좋습니다. 또한 새 데이터 파일이 추가되기 전에 수행된 백업을 복원하고 새 데이터 파일이 추가된 후 특정 시점으로 복구하려고 하면 데이터 파일을 생성할 수 없기 때문에 자동 Oracle 복구 프로세스가 실패할 수 있습니다. 백업 후에 추가된 데이터 파일을 복구하는 프로세스는 Oracle 설명서를 참조하십시오.

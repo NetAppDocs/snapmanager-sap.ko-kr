@@ -1,0 +1,30 @@
+---
+permalink: windows/task-mount-backups.html 
+sidebar: sidebar 
+keywords: snapmanager, automatic, handle, mount, backup, host, available, scenario, tools, oracle, recovery, manager, rman, file 
+summary: 'SnapManager는 호스트에서 사용할 수 있도록 백업 마운트를 자동으로 처리합니다. Oracle RMAN(Recovery Manager)과 같은 외부 툴을 사용하여 백업의 파일에 액세스하는 시나리오에서도 백업을 마운트할 수 있습니다.' 
+---
+= 백업을 마운트합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 호스트에서 사용할 수 있도록 백업 마운트를 자동으로 처리합니다. Oracle RMAN(Recovery Manager)과 같은 외부 툴을 사용하여 백업의 파일에 액세스하는 시나리오에서도 백업을 마운트할 수 있습니다.
+
+
+
+== 이 작업에 대해
+
+'msap backup mount' 명령은 백업을 구성하는 스냅샷 복사본이 마운트된 경로 목록을 표시합니다.
+
+
+NOTE: 백업 마운트 작업에 성공하거나 실패한 후 덤프 파일을 선택적으로 수집할 수 있습니다.
+
+.단계
+. 백업을 마운트하려면 다음 명령을 입력합니다.
++
+"* smssap 백업 마운트 -profile_profile_name__label_[data|- archivelogs]|- id_id_}[-host_- host_][-dump][-quiet|- verbose] *
+
+

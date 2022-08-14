@@ -1,0 +1,25 @@
+---
+permalink: unix-administration/task-use-snapmanager-for-oraclesnapmanager-for-sapto-confirm-backup-protection.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, backup, associate, profile, enable, protection, view, retention, class, daily, weekly 
+summary: 'SnapManager for SAP를 사용하면 프로필과 연결된 백업 목록을 보고, 백업이 보호 대상으로 설정되었는지 여부를 확인하고, 보존 클래스(이 예에서는 매일 또는 매주)를 볼 수 있습니다.' 
+---
+= SAP용 SnapManager를 사용하여 백업 보호를 확인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager for SAP를 사용하면 프로필과 연결된 백업 목록을 보고, 백업이 보호 대상으로 설정되었는지 여부를 확인하고, 보존 클래스(이 예에서는 매일 또는 매주)를 볼 수 있습니다.
+
+* 이 작업에 대한 정보 *
+
+처음에는 이 예제의 새 백업이 보호 예약으로 표시되지만 아직 보호되지 않은 것으로 표시됩니다(SnapManager 그래픽 사용자 인터페이스 및 backup show 명령 출력에서). 스토리지 관리자가 백업이 보조 스토리지에 복사되었는지 확인한 후 SnapManager는 그래픽 사용자 인터페이스 및 백업 목록 명령 모두에서 백업 보호 상태를 "보호되지 않음"에서 "보호됨"으로 변경합니다.
+
+. SAP용 SnapManager 클라이언트로 이동합니다.
+. SnapManager 리포지토리 트리에서 프로필을 확장하여 해당 백업을 표시합니다.
+. Backups/Clones * 탭을 클릭합니다.
+. 보고서 창에서 * 백업 세부 정보 * 를 선택합니다.
+. 보호 열을 보고 상태가 "보호됨"인지 확인합니다.
+

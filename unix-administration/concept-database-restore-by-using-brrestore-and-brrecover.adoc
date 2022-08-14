@@ -1,0 +1,27 @@
+---
+permalink: unix-administration/concept-database-restore-by-using-brrestore-and-brrecover.html 
+sidebar: sidebar 
+keywords: brrestore, brrecover, backup, brbackup, database, restore 
+summary: brrestore 및 brrecover 명령은 BRBACKUP을 사용하여 생성된 백업에서만 작동합니다. 
+---
+= brrestore 및 brrecover를 사용하여 데이터베이스를 복원합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+brrestore 및 brrecover 명령은 BRBACKUP을 사용하여 생성된 백업에서만 작동합니다.
+
+brrestore 및 brrecover 명령에 대한 구체적인 지침과 구문은 SAP 설명서를 참조하십시오.
+
+SnapManager 프로필 이름이 SAP 데이터베이스 시스템 식별자와 다른 경우 SnapManager 프로필 이름이 포함된 매개 변수 파일의 이름을 지정해야 합니다. 다음 방법 중 하나를 사용하여 이 작업을 수행할 수 있습니다.
+
+* BRBACKUP 명령에 -r 옵션을 사용하여 백업 유틸리티 매개변수 파일('initSID.utl')을 지정합니다.
+* BR * Tools 초기화 파일('initSID.sap')에 파라미터 파일을 지정합니다.
+
+
+
+NOTE: 'BRBACKUP'을 사용하여 생성된 백업(데이터 파일, 제어 파일 또는 온라인 redo 로그 파일)은 'msap restore' 명령을 사용하여 2차 또는 3차 스토리지 시스템에서 복구할 수 있습니다. 그러나 SAP 로그 파일, 커널 파일, Sap_DIR과 함께 BRBACKUP을 사용하고 brrestore를 사용하여 복원하여 요청 전송 등의 다른 SAP 구성 파일을 백업하는 것이 좋습니다.
+
+'.utl' 파일에 '_fast=override_'(데이터베이스 시스템 식별자와 다른 프로파일 이름을 지정하는 파일)를 지정하여 ' brrestore'를 사용하여 볼륨 기반의 빠른 복구에 대한 검사를 재정의할 수 있습니다.

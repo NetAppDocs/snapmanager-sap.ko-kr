@@ -1,0 +1,70 @@
+---
+permalink: unix-administration/concept-general-layout-and-configuration.html 
+sidebar: sidebar 
+keywords: recommend, general, database, layout, storage, configuration, help, avoid, issue, relate, disk, group, file, type, tablespace 
+summary: 권장되는 일반 데이터베이스 레이아웃 및 스토리지 구성을 파악하면 디스크 그룹, 파일 유형 및 테이블스페이스와 관련된 문제를 방지할 수 있습니다. 
+---
+= 권장되는 일반 데이터베이스 레이아웃 및 스토리지 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+권장되는 일반 데이터베이스 레이아웃 및 스토리지 구성을 파악하면 디스크 그룹, 파일 유형 및 테이블스페이스와 관련된 문제를 방지할 수 있습니다.
+
+* 데이터베이스에 둘 이상의 SAN 파일 시스템 또는 볼륨 관리자 유형의 파일을 포함하지 마십시오.
++
+데이터베이스를 구성하는 모든 파일은 동일한 유형의 파일 시스템에 있어야 합니다.
+
+* SnapManager에는 4K 블록 크기의 배수도 필요합니다.
+* "oratab" 파일에 데이터베이스 시스템 식별자를 포함합니다.
++
+관리될 각 데이터베이스에 대해 'oratab' 파일에 항목을 포함합니다. SnapManager는 'oratab' 파일을 사용하여 어떤 Oracle 홈을 사용할 것인지 결정합니다.
+
+
+
+새 볼륨 기반 복원 또는 전체 디스크 그룹 복원을 활용하려면 파일 시스템 및 디스크 그룹과 관련된 다음 지침을 고려하십시오.
+
+* 데이터 파일이 포함된 디스크 그룹은 다른 유형의 파일을 포함할 수 없습니다.
+* 데이터 파일 디스크 그룹의 LUN(Logical Unit Number)은 스토리지 볼륨의 유일한 객체여야 합니다.
+
+
+다음은 볼륨 분리를 위한 몇 가지 지침입니다.
+
+* 한 데이터베이스의 데이터 파일만 볼륨에 있어야 합니다.
+* 데이터베이스 바이너리, 데이터 파일, 온라인 redo 로그 파일, 아카이빙된 redo 로그 파일, 제어 파일 등 각 파일 분류에 대해 별도의 볼륨을 사용해야 합니다.
+* SnapManager는 임시 데이터베이스 파일을 백업하지 않으므로 임시 데이터베이스 파일을 위한 별도의 볼륨을 생성할 필요가 없습니다.
+
+
+SAP는 Oracle 데이터베이스 설치에 표준 레이아웃을 사용합니다. 이 레이아웃에서 SAP는 Oracle 제어 파일의 복사본을 "E:\Oracle\SID\origlogA, E:\Oracle\SID\origlogB" 및 "E:\Oracle\SID\sapdata1 파일 시스템"에 배치합니다.
+
+sapdata1 파일 시스템의 제어 파일은 제어 파일과 데이터 파일을 별도의 볼륨으로 분리하기 위한 SnapManager 요구 사항과 충돌하므로 신속한 복원 기능을 위해 조정해야 합니다.
+
+
+NOTE: BR * Tools 백업에는 Oracle 설치의 DBS 하위 디렉토리에 있는 Oracle 및 SAP 프로파일이 포함되므로 Oracle 설치는 스토리지에 있어야 합니다.
+
+새 설치의 경우 SAPINST를 사용하여 제어 파일의 위치를 수정하고 일반적으로 sapdata1 파일 시스템에 있는 제어 파일을 데이터 파일과 동일한 볼륨에 있지 않은 파일 시스템으로 이동할 수 있습니다. (SAPINST는 SAP 시스템 설치를 위해 SAP가 제공하는 도구입니다.)
+
+그러나 이미 설치된 시스템의 경우 SnapManager를 사용하여 신속하게 복구할 수 있도록 파일 시스템에서 제어 파일을 이동해야 합니다. 데이터 파일이 없는 볼륨에 새 파일 시스템을 생성하고 제어 파일을 해당 파일 시스템으로 이동한 다음 이전 파일 시스템에서 새 파일 시스템의 디렉토리로 심볼 링크를 생성하여 이 작업을 수행할 수 있습니다. 데이터베이스 오류를 방지하려면 제어 파일을 이동할 때 SAP 및 Oracle 데이터베이스를 중지해야 합니다.
+
+수정하기 전에 제어 파일이 포함된 sapdata1 디렉토리에 있는 파일 목록은 다음과 같을 수 있습니다.
+
+[listing]
+----
+hostname:/
+#  ls -l /oracle/SID/sapdata1/cntrl
+-rw-r----- 1 orasid  dba  9388032 Jun 19 01:51 cntrlSID.dbf
+----
+수정 후 리스팅은 다음과 같이 표시될 수 있습니다.
+
+[listing]
+----
+hostname:/
+# ls -sl /oracle/SID/sapdata1
+0 lrwxrwxrwx 1 root root 19 2008-08-06 14:55 cntrl -> /oracle/SID/control
+0 -rw-r--r-- 1 root root 0 2008-08-06 14:57 data01.dbf
+
+# ls -sl /oracle/SID/control
+0 -rw-r--r-- 1 root root 0 2008-08-06 14:56 cntrlSID.dbf
+----

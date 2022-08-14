@@ -1,0 +1,100 @@
+---
+permalink: windows/task-integrating-with-sap-br-tools.html 
+sidebar: sidebar 
+keywords: sap, br, tools, oracle, database, administration, brarchive, brbackup, brconnect, brrecover, rerestore, brspace, brtools, backint, interface, integrate, integrating 
+summary: 'SAP BR\ * 도구는 Oracle 데이터베이스 관리용 SAP 도구(예: brarchive, BRBACKUP, BRCONNECT, brrecover, brrestore, BRSPACE 및 BRTools는 SnapManager for SAP에서 제공하는 backint 인터페이스를 사용합니다. SAP BR\ * Tools를 통합하려면 BR\ * Tools 디렉토리에서 backint 파일이 설치된 <SnapManager for SAP 설치 디렉토리\>\\NetApp\\SnapManager for SAP\\bin으로 연결되는 링크를 만들어야 합니다.' 
+---
+= SAP BR * Tools와의 통합
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Oracle 데이터베이스 관리를 위한 SAP 도구가 포함된 SAP BR * Tools(예: brarchive, BRBACKUP, BRCONNECT) brrecover, brrestore, BRSPACE 및 BRTools는 SnapManager for SAP에서 제공하는 backint 인터페이스를 사용합니다. SAP BR * Tools를 통합하려면 BR * Tools 디렉토리에서 <SnapManager for SAP 설치 디렉토리>\NetApp\SnapManager for SAP\bin으로 연결해야 합니다. 여기서 backint 파일이 설치됩니다.
+
+* SAP BR * Tools가 설치되어 있는지 확인해야 합니다.
++
+.. BR * Tools 디렉토리에서 각 SAP 인스턴스에 대한 C:\Program Files\NetApp\SnapManager for SAP\bin\backint 파일에 대한 링크를 생성합니다.
++
+
+NOTE: 새 버전의 SnapManager를 설치할 때 링크가 새 backint 인터페이스 버전을 가리키도록 파일을 복사하는 대신 링크를 사용해야 합니다.
+
+.. BR * Tools 명령을 실행하는 사용자의 자격 증명을 설정합니다.
++
+운영 체제 사용자는 SAP 인스턴스의 백업 및 복원을 지원하기 위해 SAP 저장소, 프로필 및 서버용 SnapManager의 자격 증명이 필요합니다.
+
+.. 다른 프로파일 이름을 지정하십시오.
++
+기본적으로 SnapManager는 BR * Tools에서 명령을 처리할 때 SAP 시스템 식별자와 동일한 이름의 프로파일을 사용합니다. 이 시스템 식별자가 사용자 환경에서 고유하지 않으면 initSID.utl SAP 초기화 파일을 수정하고 매개 변수를 생성하여 올바른 프로필을 지정합니다. initSID.utl 파일이 %ORACLE_HOME%\database에 있습니다.
+
++
+샘플 initSID.utl 파일은 다음과 같습니다.
+
++
+[listing]
+----
+# Backup Retention policy.
+# Specifies the retention / lifecycle of backups on the filer.
+#
+----------------------------------------------------------------------
+----------
+# Default Value: daily
+# Valid Values: unlimited/hourly/daily/weekly/monthly
+# retain = daily
+# Enabling Fast Restore.
+#
+----------------------------------------------------------------------
+----------
+# Default Value: fallback
+# Valid Values: fallback/off
+#
+# fast = fallback
+# profile_name = SID_BRTOOLS
+----
++
+
+NOTE: 매개 변수 이름은 항상 소문자로 지정되며 주석에는 숫자 기호(#)가 있어야 합니다.
+
+.. 다음 단계를 수행하여 initSID.sap BR * Tools 구성 파일을 편집합니다.
++
+... initSID.sap 파일을 엽니다.
+... 백업 유틸리티 매개 변수 파일 정보가 포함된 섹션을 찾습니다.
++
+[listing]
+----
+# backup utility parameter file
+# default: no parameter file
+# util_par_file =
+----
+... initSID.utl 파일을 포함하도록 마지막 줄을 편집합니다.
++
+[listing]
+----
+# backup utility parameter file
+# default: no parameter file
+# util_par_file = initSID.utl
+----
+
+
+.. 다음 단계를 수행하여 연결을 완료합니다.
++
+이 단계는 운영 체제(OS) 버전에 따라 다를 수 있습니다.
+
++
+... 호스트 시스템에 관리자로 로그인합니다.
+... 시작 * > * 제어판 * > * 시스템 * > * 고급 * > * 환경 * 을 클릭합니다.
+... path * 변수를 편집하여 설치 디렉터리 \NetApp\SnapManager for SAP\bin을 추가합니다
+
+
+
+
+
+
+backint register -SLD 명령을 실행하여 SLD(시스템 가로 디렉터리)에 backint 인터페이스를 등록합니다.
+
+* 관련 정보 *
+
+xref:reference-the-backint-register-sld-command.adoc[backint register-SLD 명령]
+
+xref:concept-using-br-tools-with-snapmanager-for-sap.adoc[SAP용 SnapManager와 함께 BR * Tools 사용]

@@ -1,0 +1,64 @@
+---
+permalink: windows/concept-snapmanager-security.html 
+sidebar: sidebar 
+keywords: perform, snapmanager, operation, credential, govern, authentication, maintain, security 
+summary: 적절한 자격 증명이 있는 경우에만 SnapManager 작업을 수행할 수 있습니다. SnapManager의 보안은 사용자 인증에 의해 관리됩니다. 
+---
+= SnapManager의 보안 유지 방법
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+적절한 자격 증명이 있는 경우에만 SnapManager 작업을 수행할 수 있습니다. SnapManager의 보안은 사용자 인증에 의해 관리됩니다.
+
+SnapManager는 암호 프롬프트를 통해 또는 사용자 자격 증명을 설정하여 사용자 인증을 요청하여 보안을 유지합니다. 유효 사용자는 SnapManager 서버를 통해 인증되고 승인됩니다.
+
+SnapManager 자격 증명과 사용자 인증은 SnapManager 3.0과 크게 다릅니다.
+
+* 3.0 이전 버전의 SnapManager에서는 SnapManager를 설치할 때 임의의 서버 암호를 설정합니다. SnapManager 서버를 사용하려는 사용자는 SnapManager 서버 암호가 필요합니다. SnapManager 서버 암호는 'msap credentials set-host' 명령을 사용하여 사용자 자격 증명에 추가해야 합니다.
+* SnapManager(3.0 이상)에서 SnapManager 서버 암호가 개별 OS(사용자 운영 체제) 인증으로 대체되었습니다. 호스트와 동일한 서버에서 클라이언트를 실행하지 않는 경우 SnapManager 서버는 OS 사용자 이름 및 암호를 사용하여 인증을 수행합니다. OS 암호를 묻는 메시지를 표시하지 않으려면 'smsap credentials set -host' 명령을 사용하여 SnapManager 사용자 자격 증명 캐시에 데이터를 저장할 수 있습니다.
++
+
+NOTE: 'msap credentials set-host' 명령은 'msap.config' 파일의 'host.credentials.persist' 속성이 * true * 로 설정된 경우 사용자의 자격 증명을 기억합니다.
+
+
+
+* 예 *
+
+user1과 User2는 Prof2 라는 프로파일을 공유합니다. user2는 Host1에 대한 액세스 권한 없이 Host1에서 database1의 백업을 수행할 수 없습니다. user1은 Host3에 대한 액세스 권한이 없으면 데이터베이스를 Host3에 복제할 수 없습니다.
+
+다음 표에서는 사용자에게 할당된 여러 가지 사용 권한에 대해 설명합니다.
+
+|===
+| 권한 유형 | 사용자1 | 사용자2 
+
+
+ a| 
+호스트 암호
+ a| 
+호스트1, 호스트2
+ a| 
+호스트2, 호스트3
+
+
+
+ a| 
+리포지토리 암호
+ a| 
+Repo1(재포부1
+ a| 
+Repo1(재포부1
+
+
+
+ a| 
+프로파일 암호
+ a| 
+ProF1, Prof2
+ a| 
+고급 2
+
+|===
+User1과 User2에 공유 프로파일이 없는 경우 User1이 Host1과 Host2라는 호스트에 대한 권한을 가지고 있고 User2가 Host2라는 호스트에 대한 권한을 가지고 있다고 가정합니다. user2는 호스트1에서 "섬프"와 "시스템 확인"과 같은 비프로파일 명령도 실행할 수 없습니다.

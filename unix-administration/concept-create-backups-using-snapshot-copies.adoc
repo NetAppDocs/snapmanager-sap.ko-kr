@@ -1,0 +1,30 @@
+---
+permalink: unix-administration/concept-create-backups-using-snapshot-copies.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, primary, local, storage, secondary, remote, protection, policies, policy, postprocessing, script, create, backup, snapshot, copies, copy 
+summary: 'SnapManager를 사용하면 보호 정책 또는 후처리 스크립트를 사용하여 기본(로컬) 스토리지뿐만 아니라 보조(원격) 스토리지에도 백업을 생성할 수 있습니다.' 
+---
+= 스냅샷 복사본을 사용하여 백업을 생성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 보호 정책 또는 후처리 스크립트를 사용하여 기본(로컬) 스토리지뿐만 아니라 보조(원격) 스토리지에도 백업을 생성할 수 있습니다.
+
+스냅샷 복사본으로 생성된 백업은 데이터베이스의 가상 복사본이며 데이터베이스와 동일한 물리적 미디어에 저장됩니다. 따라서 백업 작업에 소요되는 시간이 단축되며 전체 D2D 백업보다 훨씬 적은 공간이 필요합니다. SnapManager를 사용하여 다음을 백업할 수 있습니다.
+
+* 모든 데이터 파일, 아카이브 로그 파일 및 제어 파일
+* 선택한 데이터 파일 또는 테이블스페이스, 모든 아카이브 로그 파일 및 제어 파일
+
+
+SnapManager 3.2 이상을 사용하면 다음을 선택적으로 백업할 수 있습니다.
+
+* 모든 데이터 파일 및 제어 파일
+* 선택한 데이터 파일 또는 테이블스페이스와 제어 파일을 함께 사용합니다
+* 로그 파일을 보관합니다
+
+
+
+NOTE: 데이터 파일, 아카이브 로그 파일 및 제어 파일은 서로 다른 스토리지 시스템, 스토리지 시스템 볼륨 또는 LUN(Logical Unit Number)에 위치할 수 있습니다. 동일한 볼륨 또는 LUN에 여러 개의 데이터베이스가 있는 경우에도 SnapManager를 사용하여 데이터베이스를 백업할 수 있습니다.

@@ -1,0 +1,27 @@
+---
+permalink: windows/reference-unable-to-restore-rac-database-from-one-of-the-rac-nodes-where-the-profile-was-not-created.html 
+sidebar: sidebar 
+keywords: oracle, rac, environment, node, cluster, restore, backup, operation, fail, profile 
+summary: 두 노드가 동일한 클러스터에 속하는 Oracle RAC 환경에서 백업이 생성된 노드와 다른 노드에서 복구 작업을 시도하면 복구 작업이 실패합니다. 
+---
+= 프로파일이 생성되지 않은 RAC 노드 중 하나에서 RAC 데이터베이스를 복원할 수 없습니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+두 노드가 동일한 클러스터에 속하는 Oracle RAC 환경에서 백업이 생성된 노드와 다른 노드에서 복구 작업을 시도하면 복구 작업이 실패합니다.
+
+예를 들어 노드 A에서 백업을 생성하고 노드 B에서 복구를 시도하면 복구 작업이 실패합니다.
+
+* 해야 할 일 *
+
+노드 B에서 복구 작업을 수행하기 전에 노드 B에서 다음을 수행하십시오.
+
+.단계
+. 리포지토리를 추가합니다.
+. 'mo profile sync' 명령을 실행하여 프로필을 동기화한다.
+. 'mo credential set' 명령을 실행하여 복구 작업에 사용할 프로파일의 자격 증명을 설정합니다.
+. 'mo profile update' 명령을 실행하여 새 호스트 이름과 해당 SID를 추가하도록 프로파일을 업데이트합니다.
+

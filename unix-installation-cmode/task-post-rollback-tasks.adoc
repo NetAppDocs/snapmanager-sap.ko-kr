@@ -1,0 +1,39 @@
+---
+permalink: unix-installation-cmode/task-post-rollback-tasks.html 
+sidebar: sidebar 
+keywords: perform, additional, step, rollback, repository, database, downgrade, snapmanager, schedule, version, post, tasks 
+summary: 리포지토리 데이터베이스를 롤백하고 SnapManager 호스트를 SnapManager 3.2에서 SnapManager 3.0으로 다운그레이드한 후 몇 가지 추가 단계를 수행하여 이전 버전의 리포지토리 데이터베이스에서 만든 일정을 확인해야 합니다. 
+---
+= 롤백 작업 후
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+리포지토리 데이터베이스를 롤백하고 SnapManager 호스트를 SnapManager 3.2에서 SnapManager 3.0으로 다운그레이드한 후 몇 가지 추가 단계를 수행하여 이전 버전의 리포지토리 데이터베이스에서 만든 일정을 확인해야 합니다.
+
+.단계
+. 'cd/opt/netapp/smsap/리포지토리'로 이동합니다.
++
+리포지터리 디렉터리에는 각 리포지토리에 대한 두 개의 파일이 포함될 수 있습니다. 숫자 기호(#)가 있는 파일 이름은 SnapManager 3.1 이상을 사용하여 만들고 하이픈(-)이 있는 파일 이름은 SnapManager 3.0을 사용하여 만듭니다.
+
++
+* 예 *
+
++
+파일 이름은 다음과 같습니다.
+
++
+** repos일시적인 # SMSAP300a # SMSAPREPO1 # 10.72.197.141 # 1521
+** 공변소-공변소1-10.72.197.141-1521
+
+
+. 파일 이름의 숫자 기호(#)를 하이픈(-)으로 바꿉니다.
++
+* 예 *
+
++
+숫자 기호(#)가 있는 파일 이름에는 하이픈(-): repos일시적인 -SMSAP300a-SMSAPREPO1-10.72.197.141-1521이 포함되어 있습니다
+
+

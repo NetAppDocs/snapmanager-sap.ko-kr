@@ -1,0 +1,96 @@
+---
+permalink: windows/task-installing-snapmanager-for-oracle-snapmanager-for-sap.html 
+sidebar: sidebar 
+keywords: install, snapmanager, host, database, manage, instance, host, sap 
+summary: 관리할 데이터베이스가 하나 이상 있는 호스트에 SnapManager를 설치할 수 있습니다. 호스트당 하나의 SnapManager 인스턴스만 설치할 수 있습니다. 
+---
+= SAP용 SnapManager 설치
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+관리할 데이터베이스가 하나 이상 있는 호스트에 SnapManager를 설치할 수 있습니다. 호스트당 하나의 SnapManager 인스턴스만 설치할 수 있습니다.
+
+* 필요한 사전 설치 작업을 완료해야 합니다.
+* 최신 SnapManager 설치 패키지를 다운로드해야 합니다.
+* 모든 타겟 호스트에 적절한 버전의 Windows용 SnapDrive를 설치 및 구성해야 합니다.
++
+Windows용 SnapDrive 설치 및 구성에 대한 자세한 내용은 _SnapDrive for Windows 설치 및 관리 가이드_를 참조하십시오.
+
++
+.. SnapManager 설치 파일을 두 번 클릭합니다.
++
+|===
+| 운영 체제가... | 그 다음에... 
+
+
+ a| 
+Windows x86
+ a| 
+netapp.smsap.windows-x86-version.exe
+
+
+
+ a| 
+Windows x64
+ a| 
+netapp.smsap.windows-x64-version.exe
+
+|===
++
+다음 메시지가 표시됩니다. 게시자를 확인할 수 없습니다. 이 소프트웨어를 실행하시겠습니까?
+
+.. 확인 * 을 클릭합니다.
+.. 소개 창에서 * 다음 * 을 클릭합니다.
+.. 설치 폴더 선택 창에서 * 다음 * 을 클릭하여 기본 설치 위치를 적용하거나 새 위치를 선택합니다.
++
+기본 위치는 C:\Program Files\NetApp\SnapManager for SAP입니다.
+
+.. 메뉴 사용 가능 여부 창에서 * 다음 * 을 클릭합니다.
+.. 서비스 속성 지정 창에서 Windows 서비스의 계정 및 암호 정보를 입력합니다.
++
+지정된 계정은 다음 그룹의 구성원이어야 합니다.
+
++
+*** 스토리지 시스템의 로컬 관리 그룹입니다
+*** 로컬 관리자의 그룹입니다
+*** ORA_DBA 그룹 재부팅 후 서비스를 자동으로 시작할지 아니면 수동으로 시작해야 할지 지정할 수 있습니다.
+
+
+.. 사전 설치 요약 창에서 * 설치 * 를 클릭합니다.
+.. 설치 완료 창에서 * 다음 * 을 클릭합니다.
+.. 중요 정보 창에서 * 완료 * 를 클릭하여 설치 프로그램을 종료합니다.
+
+
+
+
+설치를 완료한 후 설치가 성공적으로 완료되었는지 확인할 수 있습니다.
+
+. SnapManager 서버를 시작합니다.
++
+.. Windows 서비스 창에서 SAP*용 NetApp SnapManager 버전을 선택합니다.
+.. 왼쪽 패널에서 * 시작 * 을 클릭합니다.
+
+
+. SnapManager 시스템이 올바르게 실행 중인지 확인합니다.
++
+.. 시작 * > * 프로그램 * > * NetApp * > * SnapManager for SAP * > * SMSAP 명령줄 인터페이스(CLI) * 를 클릭합니다.
+.. CLI(Command-Line Interface)에서 'msap system verify' 명령어를 입력한다. Operation ID number Succeeded 메시지가 출력된다.
+
+
++
+number 작업 ID 번호입니다.
+
+
+
+* 관련 정보 *
+
+xref:concept-preparing-to-install-snapmanager-for-oraclesnapmanager-for-sap.adoc[SAP용 SnapManager 설치 준비 중]
+
+xref:concept-preinstallation-tasks.adoc[사전 설치 작업]
+
+xref:task-downloading-snapmanager-for-oraclesnapmanager-for-sap-installation-package.adoc[SnapManager for SAP 설치 패키지를 다운로드합니다]
+
+http://mysupport.netapp.com/["NetApp Support 사이트 관련 문서: mysupport.netapp.com"]

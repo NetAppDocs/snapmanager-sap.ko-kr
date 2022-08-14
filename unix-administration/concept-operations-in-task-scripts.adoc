@@ -1,0 +1,72 @@
+---
+permalink: unix-administration/concept-operations-in-task-scripts.html 
+sidebar: sidebar 
+keywords: pretask, post-task, script, create, follow, standard, snapmanager, sap, plug-in, structure, operation, task 
+summary: 생성한 사전 작업 또는 사후 작업 스크립트는 SAP용 표준 SnapManager 플러그인 구조를 따라야 합니다. 
+---
+= 작업 스크립트의 작업입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+생성한 사전 작업 또는 사후 작업 스크립트는 SAP용 표준 SnapManager 플러그인 구조를 따라야 합니다.
+
+사전 작업 스크립트와 사후 작업 스크립트에는 다음 작업이 포함되어야 합니다.
+
+* 확인합니다
+* 설명
+* 실행
+
+
+이러한 작업 중 하나가 사전 작업 또는 사후 작업 스크립트에 지정되지 않은 경우 스크립트가 무효화됩니다.
+
+사전 작업 스크립트 또는 사후 작업 스크립트에 대한 'smsap plugin check' 명령을 실행하면 반환된 상태 값이 0이 아니므로 스크립트의 반환된 상태에 오류가 표시됩니다.
+
+[cols="1a,4a"]
+|===
+| 작동 | 설명 
+
+
+ a| 
+확인합니다
+ a| 
+SnapManager 서버는 플러그인 스크립트에 대한 실행 권한이 시스템에 있는지 확인하기 위해 "plugin.sh -check" 명령을 실행합니다. 원격 시스템에 대한 파일 권한 검사를 포함할 수도 있습니다.
+
+
+
+ a| 
+설명
+ a| 
+SnapManager 서버는 "plugin.sh -tec" 명령을 실행하여 스크립트에 대한 정보를 얻고 사양 파일에서 제공하는 요소와 일치시킵니다. 플러그인 스크립트에는 다음 설명 정보가 포함되어야 합니다.
+
+* S_PI_NAME: 스크립트 이름. 이 매개 변수의 값을 입력해야 합니다.
+* S_PI_DESCRIPTION: 대본 목적에 대한 설명 이 매개 변수의 값을 입력해야 합니다.
+* 'S_PI_CONTEXT': 스크립트가 실행되어야 하는 컨텍스트(예: root 또는 orasid). 이 매개 변수의 값을 입력해야 합니다.
+* S_PI_TIMEOUT: SnapManager가 스크립트가 처리를 완료하고 실행을 종료할 때까지 대기해야 하는 최대 시간(밀리초)입니다. 이 매개 변수의 값을 입력해야 합니다.
+* 'S_PI_PARAMETER': 플러그인 스크립트가 처리를 수행하는 데 필요한 하나 이상의 사용자 정의 매개 변수입니다. 각 매개 변수는 새 출력 줄에 나열되어야 하며 매개 변수의 이름과 설명을 포함해야 합니다. 스크립트가 처리를 완료하면 환경 변수에 의해 매개 변수 값이 스크립트에 제공됩니다.
+
+
+다음은 Followup_activities 스크립트의 샘플 출력입니다.
+
+[listing]
+----
+plugin.sh - describe
+
+SM_PI_NAME:Followup_activities
+SM_PI_DESCRIPTION:this script contains follow-up activities to be executed after the clone create
+operation.
+SM_PI_CONTEXT:root
+SM_PI_TIMEOUT:60000
+SM_PI_PARAMETER:SCHEMAOWNER:Name of the database schema owner.
+Command complete.
+----
+
+
+ a| 
+실행
+ a| 
+SnapManager 서버는 plugin.sh -execute 명령을 실행하여 스크립트를 실행합니다.
+
+|===

@@ -1,0 +1,253 @@
+---
+permalink: windows/concept-variables-available-in-the-task-scripts-for-backup-operation.html 
+sidebar: sidebar 
+keywords: snapmanager, provide, context, information, environment, variable, relate, backup, operation, perform, example, original, host, retention, policy, label, script 
+summary: SnapManager는 수행 중인 백업 작업과 관련된 환경 변수의 형태로 컨텍스트 정보를 제공합니다. 예를 들어 스크립트는 원래 호스트의 이름, 보존 정책의 이름 및 백업 레이블을 검색할 수 있습니다. 
+---
+= 백업 작업에 대한 작업 스크립트에서 사용할 수 있는 변수입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 수행 중인 백업 작업과 관련된 환경 변수의 형태로 컨텍스트 정보를 제공합니다. 예를 들어 스크립트는 원래 호스트의 이름, 보존 정책의 이름 및 백업 레이블을 검색할 수 있습니다.
+
+다음 표에는 스크립트에 사용할 수 있는 환경 변수가 나와 있습니다.
+
+|===
+| 변수 | 설명 | 형식 
+
+
+ a| 
+'_sm_operation_ID_'
+ a| 
+현재 작업의 ID를 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_profile_name_'
+ a| 
+사용된 프로파일의 이름을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_sid_'
+ a| 
+데이터베이스의 시스템 식별자를 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_host_'
+ a| 
+데이터베이스의 호스트 이름을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_os_user_'
+ a| 
+데이터베이스의 운영 체제(OS) 소유자를 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_os_group_'
+ a| 
+데이터베이스의 OS 그룹을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_backup_type_'
+ a| 
+백업 유형을 지정합니다(온라인, 오프라인 또는 자동).
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_backup_label_'
+ a| 
+백업의 레이블을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_SM_BACKUP_ID_'
+ a| 
+백업의 ID를 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_backup_retention_'
+ a| 
+보존 기간을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_backup_profile_'
+ a| 
+이 백업에 사용되는 프로파일을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_allow_database_shutdown_'
+ a| 
+데이터베이스를 시작하거나 종료할 것인지 지정합니다.필요한 경우 명령줄 인터페이스에서 -force 옵션을 사용할 수 있습니다.
+ a| 
+부울
+
+
+
+ a| 
+'_sm_backup_scope_'
+ a| 
+백업 범위(전체 또는 부분)를 지정합니다.
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_target_filer_name_'
+ a| 
+타겟 스토리지 시스템 이름을 지정합니다
+
+[NOTE]
+====
+스토리지 시스템을 두 개 이상 사용하는 경우 스토리지 시스템 이름은 쉼표로 구분해야 합니다.
+
+==== a| 
+문자열
+
+
+
+ a| 
+'_SM_TARGET_VOLUME_NAME_'
+ a| 
+타겟 볼륨 이름을 지정합니다
+
+[NOTE]
+====
+타겟 볼륨 이름 앞에 스토리지 디바이스 이름(예: SM_TARGET_파일러_NAME/SM_TARGET_VOLUME_NAME)이 붙어야 합니다.
+
+==== a| 
+문자열
+
+
+
+ a| 
+'_sm_host_file_system_'
+ a| 
+호스트 파일 시스템을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_snapshot_names_'
+ a| 
+스냅샷 목록을 지정합니다
+
+[NOTE]
+====
+스냅샷 복사본의 이름 앞에는 스토리지 시스템 이름과 볼륨 이름이 붙어야 합니다. 스냅샷 복사본의 이름은 쉼표로 구분됩니다.
+
+==== a| 
+문자열 배열
+
+
+
+ a| 
+'_sm_archive_logs_directory_'
+ a| 
+아카이브 로그 디렉터리를 지정합니다
+
+[NOTE]
+====
+아카이브 로그가 둘 이상의 디렉토리에 있는 경우 해당 디렉토리의 이름은 쉼표로 구분됩니다.
+
+==== a| 
+문자열 배열
+
+
+
+ a| 
+'_sm_redo_logs_directory_'
+ a| 
+REDO 로그 디렉터리를 지정합니다
+
+[NOTE]
+====
+REDO 로그가 둘 이상의 디렉토리에 있으면 해당 디렉토리의 이름은 쉼표로 구분됩니다.
+
+==== a| 
+문자열 배열
+
+
+
+ a| 
+'_sm_control_files_directory_'
+ a| 
+제어 파일 디렉터리를 지정합니다
+
+[NOTE]
+====
+제어 파일이 둘 이상의 디렉터리에 있는 경우 해당 디렉터리의 이름은 쉼표로 구분됩니다.
+
+==== a| 
+문자열 배열
+
+
+
+ a| 
+'_sm_data_files_directory_'
+ a| 
+데이터 파일 디렉터리를 지정합니다
+
+[NOTE]
+====
+데이터 파일이 둘 이상의 디렉터리에 있는 경우 해당 디렉터리의 이름은 쉼표로 구분됩니다.
+
+==== a| 
+문자열 배열
+
+
+
+ a| 
+'_user_defined_'
+ a| 
+사용자가 정의한 추가 매개 변수를 지정합니다. 정책으로 사용되는 플러그인에는 사용자 정의 매개 변수를 사용할 수 없습니다.
+ a| 
+사용자 정의
+
+|===

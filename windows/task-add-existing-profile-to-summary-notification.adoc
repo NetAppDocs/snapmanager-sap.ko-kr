@@ -1,0 +1,21 @@
+---
+permalink: windows/task-add-existing-profile-to-summary-notification.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, add, exist, profile, summary, email, notification, updating, update 
+summary: SnapManager를 사용하면 해당 프로필을 업데이트하는 동안 요약 이메일 알림에 기존 프로필을 추가할 수 있습니다. 
+---
+= 요약 e-메일 알림에 기존 프로필을 추가합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 해당 프로필을 업데이트하는 동안 요약 이메일 알림에 기존 프로필을 추가할 수 있습니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap profile update -profile_profile_name_[-profile-password_profile_password_] -repository -dbname_repo_service_name_-host_repo_host_-port_port_-login -username_repo_username_username_name_username_username_name_daily_username_username_username_username_ssid_username_username_username_username_username_username_username_username_username_username_name] -host_ssilly_name count_n_] [-duration_m_] [-weekly-count_n_] [-duration_m_] [-monthly-count_n_] [-duration_m_]] [-comment_comment_] [-snapname-pattern_pattern_] [[]] [-summary-notification] *
+
+

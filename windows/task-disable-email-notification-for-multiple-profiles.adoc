@@ -1,0 +1,35 @@
+---
+permalink: windows/task-disable-email-notification-for-multiple-profiles.html 
+sidebar: sidebar 
+keywords: enable, summary, email, notification, multiple, profile, disable, alert 
+summary: 여러 프로필에 대한 요약 전자 메일 알림을 사용하도록 설정한 후 더 이상 전자 메일 알림을 받지 않도록 설정할 수 있습니다. 
+---
+= 여러 프로필에 대한 이메일 알림을 비활성화합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+여러 프로필에 대한 요약 전자 메일 알림을 사용하도록 설정한 후 더 이상 전자 메일 알림을 받지 않도록 설정할 수 있습니다.
+
+
+
+== 이 작업에 대해
+
+SnapManager를 사용하면 프로파일로 실행된 데이터베이스 작업에 대한 요약 e-메일 알림을 비활성화할 수 있습니다. SnapManager CLI에서 notification remove-summary-notification 명령을 입력하여 여러 프로필에 대한 요약 e-메일 알림과 e-메일 알림이 필요하지 않은 리포지토리 데이터베이스의 이름을 비활성화합니다.
+
+.단계
+. 리포지토리 데이터베이스의 여러 프로필에 대한 요약 알림을 비활성화하려면 다음 명령을 입력합니다.
++
+'* smssap notification remove-summary-notification-repository-port_-dbname_repo_service_name_-host_repo_host_-login-username_repo_username_ *'
+
+
+
+다음 예에서는 저장소 데이터베이스의 여러 프로필에 대해 비활성화된 요약 알림을 보여 줍니다.
+
+[listing]
+----
+
+smsap notification remove-summary-notification –repository –port 1521 –dbname repo2 –host 10.72.197.133 –login –username oba5
+----

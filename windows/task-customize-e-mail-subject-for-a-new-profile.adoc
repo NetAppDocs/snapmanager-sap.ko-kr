@@ -1,0 +1,95 @@
+---
+permalink: windows/task-customize-e-mail-subject-for-a-new-profile.html 
+sidebar: sidebar 
+keywords: customize, email, subject, profile, create, cusomtizing 
+summary: 새 프로필을 만들 때 이메일 제목을 사용자 지정할 수 있습니다. 
+---
+= 새 프로필에 대한 이메일 제목을 사용자 지정합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+새 프로필을 만들 때 이메일 제목을 사용자 지정할 수 있습니다.
+
+
+
+== 이 작업에 대해
+
+{profile}_\{operation-name}_\{db-sid}_\{db-host}_\{start-date}_\{end-date}_\{status} 패턴을 사용하거나 원하는 텍스트를 입력하여 이메일 제목을 사용자 지정할 수 있습니다.
+
+|===
+| 변수 이름 | 설명 | 예제 값 
+
+
+ a| 
+프로필
+ a| 
+데이터베이스 작업에 사용되는 프로파일 이름입니다
+ a| 
+PROF1
+
+
+
+ a| 
+연산명
+ a| 
+데이터베이스 작업 이름입니다
+ a| 
+백업, 데이터 백업, 데이터 및 아카이브 로그 백업
+
+
+
+ a| 
+'db-sid'입니다
+ a| 
+데이터베이스의 SID입니다
+ a| 
+DB1
+
+
+
+ a| 
+'db-host'입니다
+ a| 
+호스트 서버의 이름입니다
+ a| 
+호스트 A
+
+
+
+ a| 
+'시작일자'
+ a| 
+mmdd:hh:ss yyyy 형식의 데이터베이스 작업 시작 시간입니다
+ a| 
+2012년 4월 27일 21:00:45 PST
+
+
+
+ a| 
+종료 날짜
+ a| 
+mmdd:hh:ss yyyy 형식의 데이터베이스 작업 종료 시간입니다
+ a| 
+2012년 4월 27일 21:10:45 PST
+
+
+
+ a| 
+'상태'
+ a| 
+데이터베이스 작업 상태입니다
+ a| 
+성공
+
+|===
+변수에 값을 제공하지 않으면 SnapManager에서 다음 오류 메시지를 표시합니다: Mising value(s)-subject(값 표시).
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap profile create -profile_profile_[-profile-profile-password -password -password -dbname_repo_service_name_-host_repo_host_-port_port_ -login -username_repo_username_ -database -dbname_db_db_dbname_ -host_username_ssid_password [-db_username_name _n_] [-duration_m_] [-weekly [-count_n_] [-duration_m_] [-duration_m_]] [-comment_comment_comment_] [-comment_comment_comment_] [-snapname-pattern_pattern] [- email_email_subject_subject_subject_subject_subject_subject_subject_subject_subject_subject_subject_subject_subject_subject_subject_subject_실패
+
+

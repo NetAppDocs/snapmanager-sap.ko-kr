@@ -1,0 +1,28 @@
+---
+permalink: unix-installation-cmode/concept-understanding-the-differences-between-snapmirror-and-snapvault.html 
+sidebar: sidebar 
+keywords: snapmirror, disaster, recovery, technology, design, failover, primary, storage, secondary, geographical, remote, site, snapvault, disk-to-disk, replication, design, standard, compliance, governance-related, purpose, snapvault, 
+summary: SnapMirror는 재해 복구 기술로, 지리적으로 원격 사이트의 운영 스토리지에서 2차 스토리지로 페일오버하도록 설계되었습니다. SnapVault는 표준 준수 및 기타 거버넌스 관련 목적을 위해 설계된 D2D 백업 복제 기술입니다. 
+---
+= SnapMirror와 SnapVault 간의 차이점 이해
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror는 재해 복구 기술로, 지리적으로 원격 사이트의 운영 스토리지에서 2차 스토리지로 페일오버하도록 설계되었습니다. SnapVault는 표준 준수 및 기타 거버넌스 관련 목적을 위해 설계된 D2D 백업 복제 기술입니다.
+
+이러한 목표는 백업 통화와 백업 보존 목표 간의 각 기술이 서로 다른 균형을 이루는 것을 나타냅니다.
+
+* SnapMirror는 _ 전용 _ 기본 스토리지에 있는 스냅샷 복사본을 저장합니다. 왜냐하면 재해가 발생할 경우 정상적인 운영 데이터의 최신 버전으로 페일오버할 수 있어야 하기 때문입니다.
++
+예를 들어 10일 동안 운영 데이터의 시간별 복사본을 미러링할 수 있습니다. 페일오버 사용 사례에서 알 수 있듯이, 보조 시스템의 장비는 미러링된 스토리지의 데이터를 효율적으로 지원하기 위해 운영 시스템의 장비와 동일하거나 거의 같아야 합니다.
+
+* 반면, SnapVault는 현재 운영 스토리지에 있는 Snapshot 복사본의 유여부에 관계없이 스냅샷 복사본을 저장합니다. 감사 시 기간별 데이터에 대한 액세스는 현재 데이터에 대한 액세스만큼 중요할 수 있기 때문입니다.
++
+예를 들어, 정부의 회계 규정을 준수하기 위해 데이터의 월별 스냅샷 복사본을 20년 동안 유지하려 할 수 있습니다. 보조 스토리지의 데이터를 제공할 필요가 없으므로 볼트 시스템에서 느리고 저렴한 디스크를 사용할 수 있습니다.
+
+
+
+SnapMirror와 SnapVault가 백업 통화 및 백업 보존에 제공하는 다양한 가중치는 각 볼륨에 대해 255개의 스냅샷 복사본의 제한에서 비롯됩니다. SnapMirror는 최신 복사본을 유지하지만 SnapVault는 가장 오랜 기간 동안 생성된 복사본을 유지합니다.

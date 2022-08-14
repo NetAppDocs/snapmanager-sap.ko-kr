@@ -1,0 +1,21 @@
+---
+permalink: unix-administration/task-authorize-user-access-to-profiles.html 
+sidebar: sidebar 
+keywords: addition, role-based, access, control, snapmanager, enable, password, profile, prevent, unauthorized, authorize, authorizing 
+summary: 'RBAC(역할 기반 액세스 제어) 외에 SnapManager를 사용하면 프로파일에 대한 암호를 설정하여 무단 액세스를 방지할 수 있습니다.' 
+---
+= 프로파일에 대한 액세스를 승인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+RBAC(역할 기반 액세스 제어) 외에 SnapManager를 사용하면 프로파일에 대한 암호를 설정하여 무단 액세스를 방지할 수 있습니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap 자격 증명 세트 -profile-name_profile_name_[-password_password_] *
+
+

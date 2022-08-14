@@ -1,0 +1,83 @@
+---
+permalink: unix-administration/concept-dump-files.html 
+sidebar: sidebar 
+keywords: dump, file, compress, log, contain, snapmanager, environment, file, system, dump 
+summary: 덤프 파일은 SnapManager 및 해당 환경에 대한 정보가 포함된 압축된 로그 파일입니다. 생성된 로그 파일의 유형은 작업, 프로필 및 시스템 덤프 파일입니다. 
+---
+= 파일을 덤프합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+덤프 파일은 SnapManager 및 해당 환경에 대한 정보가 포함된 압축된 로그 파일입니다. 생성된 로그 파일의 유형은 작업, 프로필 및 시스템 덤프 파일입니다.
+
+덤프 명령 또는 그래픽 사용자 인터페이스(GUI)의 * 진단 생성 * 탭을 사용하여 작업, 프로파일 또는 환경에 대한 정보를 수집할 수 있습니다. 시스템 덤프에는 프로파일이 필요하지 않지만 프로파일 및 작업 덤프는 프로파일이 필요합니다.
+
+SnapManager에는 덤프 파일에 다음과 같은 진단 정보가 포함되어 있습니다.
+
+* 수행한 단계
+* 각 단계를 완료하는 데 걸리는 시간입니다
+* 각 단계의 결과
+* 작업 중 발생한 오류(있는 경우
+
+
+
+NOTE: SnapManager 로그 파일 또는 덤프 파일은 루트 사용자 및 루트 사용자 그룹에 속한 다른 사용자에 대해서만 읽기 및 쓰기 권한을 활성화합니다.
+
+SnapManager에는 파일에 다음과 같은 정보도 포함되어 있습니다.
+
+* 운영 체제 버전 및 아키텍처
+* 환경 변수
+* Java 버전
+* SnapManager 버전 및 아키텍처
+* SnapManager 기본 설정
+* SnapManager 메시지
+* Log4j 속성
+* SnapDrive 버전 및 아키텍처
+* SnapDrive 로그 파일
+* Oracle 버전
+* Oracle OPatch 로컬 인벤토리 세부 정보
+* ASM(Automatic Storage Management) 인스턴스 OPatch 로컬 인벤토리 세부 정보
+* 스토리지 시스템 버전입니다
+* Oracle oratab 파일
+* Oracle 리스너 상태입니다
+* Oracle 네트워크 구성 파일('listener.ora' 및 'tnsnames.ora')
+* 리포지터리 데이터베이스 Oracle 버전
+* 타겟 데이터베이스 유형(스탠드, 즉 Real Application Clusters(RAC))
+* 대상 데이터베이스 역할(운영, 물리적 대기 또는 논리적 대기)
+* 타겟 데이터베이스 RMAN(Oracle Recovery Manager) 설정(RMAN 통합 없음, 제어 파일과 RMAN 또는 카탈로그 파일과 RMAN)
+* 타겟 데이터베이스 ASM 인스턴스 버전
+* 타겟 데이터베이스 Oracle 버전
+* 대상 데이터베이스의 SID(시스템 식별자)입니다
+* 리포지토리 데이터베이스 서비스 이름입니다
+* 호스트에 설치된 데이터베이스 인스턴스입니다
+* 프로필 설명자
+* 최대 공유 메모리
+* 스왑 공간 정보
+* 메모리 정보
+* 커널 버전입니다
+* fstab
+* SnapDrive에서 사용하는 프로토콜입니다
+* 다중 경로 환경
+* RAC
+* 지원되는 볼륨 관리자
+* Operations Manager 버전입니다
+* 지원되는 파일 시스템입니다
+* 호스트 유틸리티 버전입니다
+* backint 인터페이스 버전
+* BR 공구 버전
+* 패치 수준
+* '시스템 확인' 명령의 출력
+* 'dconfcheck' 명령의 출력
+
+
+SnapManager 덤프 파일에는 SnapDrive 데이터 수집기 파일과 Oracle 경고 로그 파일도 포함되어 있습니다. 'msap operation' dump와 'msap profile dump' 명령어를 이용하여 Oracle alert log 파일을 수집할 수 있다.
+
+
+NOTE: 시스템 덤프는 Oracle 경고 로그를 포함하지 않지만 프로필 및 작업 덤프는 경고 로그를 포함합니다.
+
+SnapManager 호스트 서버가 실행되고 있지 않더라도 CLI(명령줄 인터페이스) 또는 GUI를 사용하여 덤프 정보에 액세스할 수 있습니다.
+
+해결할 수 없는 문제가 발생하면 이러한 파일을 NetApp 글로벌 서비스로 전송할 수 있습니다.

@@ -1,0 +1,16 @@
+---
+permalink: unix-administration/concept-snapmanager-for-oraclesnapmanager-for-sap-uses-protection-manager-to-protect-a-database-backup.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, protection, manager, install, unix, host, server, respectively, database, administrator, dba, primary, storage, backup 
+summary: 'SnapManager for SAP와 Protection Manager를 각각 UNIX 호스트와 서버에 설치할 경우 SnapManager 데이터베이스 관리자(DBA)가 정책 기반 Oracle 데이터베이스 백업을 보조 스토리지에 구성하고 수행할 수 있도록 합니다. 필요한 경우 보조 스토리지에서 운영 스토리지로 백업된 데이터를 복원합니다.' 
+---
+= SAP용 SnapManager는 Protection Manager를 사용하여 데이터베이스 백업을 보호합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager for SAP와 Protection Manager를 각각 UNIX 호스트와 서버에 설치할 경우 SnapManager 데이터베이스 관리자(DBA)가 정책 기반 Oracle 데이터베이스 백업을 보조 스토리지에 구성하고 수행할 수 있도록 합니다. 필요한 경우 보조 스토리지에서 운영 스토리지로 백업된 데이터를 복원합니다.
+
+다음 예에서는 SnapManager를 사용하는 DBA가 운영 스토리지에 대한 로컬 백업 프로파일과 보조 스토리지에 대한 보호 백업에 대한 다른 프로파일을 생성합니다. 그런 다음 이 DBA는 Protection Manager의 콘솔을 사용 중인 네트워크 스토리지 관리자와 협력하여 운영 스토리지에서 보조 스토리지로 해당 데이터베이스의 정책 기반 백업을 구성합니다.

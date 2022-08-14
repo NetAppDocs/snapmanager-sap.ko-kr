@@ -1,0 +1,18 @@
+---
+permalink: unix-administration/concept-what-resource-pools-are.html 
+sidebar: sidebar 
+keywords: resource, pool, collection, physical, storage, system, volume, lun, provision, assign, aggregate 
+summary: '리소스 풀은 새 볼륨 또는 LUN에 데이터를 포함할 수 있도록 프로비저닝할 수 있는 미사용 물리적 스토리지(예: 스토리지 시스템 또는 애그리게이트)의 모음입니다. 스토리지 시스템을 리소스 풀에 할당할 경우 해당 스토리지 시스템의 모든 애그리게이트를 프로비저닝할 수 있습니다.' 
+---
+= 리소스 풀이란 무엇입니까
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+리소스 풀은 새 볼륨 또는 LUN에 데이터를 포함할 수 있도록 프로비저닝할 수 있는 미사용 물리적 스토리지(예: 스토리지 시스템 또는 애그리게이트)의 모음입니다. 스토리지 시스템을 리소스 풀에 할당할 경우 해당 스토리지 시스템의 모든 애그리게이트를 프로비저닝할 수 있습니다.
+
+스토리지 관리자는 Protection Manager의 콘솔을 사용하여 리소스 풀을 백업 및 미러 복제본에 할당합니다. 그런 다음 프로비저닝 애플리케이션이 리소스 풀의 물리적 리소스 중 볼륨을 자동으로 프로비저닝하여 백업 및 미러 복제본을 포함할 수 있습니다.
+
+보호 프로파일의 경우 SnapManager는 프로파일에 대한 정보를 표시하고 스토리지 리소스 풀이 해당 프로파일에 할당되었는지 여부를 나타냅니다. 그렇지 않은 경우 프로파일은 "규정을 준수하지 않는" 것으로 간주됩니다. 스토리지 리소스 풀이 해당 프로파일의 데이터 세트에 할당된 후에는 프로파일이 "호환"된 것으로 간주됩니다.

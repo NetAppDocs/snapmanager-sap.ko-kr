@@ -1,0 +1,187 @@
+---
+permalink: unix-administration/reference-the-smosmsapclone-create-command.html 
+sidebar: sidebar 
+keywords: clone, create, command, backed-up, database, primary, secondary, storage, smsap 
+summary: clone create 명령을 실행하여 백업된 데이터베이스의 클론을 생성할 수 있습니다. 기본 또는 보조 스토리지에서 백업을 클론 복제할 수 있습니다. 
+---
+= smsap clone create 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"clone create" 명령을 실행하여 백업된 데이터베이스의 클론을 생성할 수 있습니다. 기본 또는 보조 스토리지에서 백업을 클론 복제할 수 있습니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap clone create
+-profile _profile_name_
+[-backup-id _backup_guid_ | -backup-label _backup_label_name_ | -current\]
+-newsid _new_sid_
+[-host _target_host_\]
+[-label _clone_label_]
+pass:quotes[[-comment _string_\]
+-clonespec _full_path_to_clonespec_file_
+[-asminstance -asmusername _asminstance_username_  -asmpassword _asminstance_password_\]\]
+[-syspassword syspassword]] pass:quotes[[-reserve {*yes* | *no* | *inherit*}]
+pass:quotes[[-from-secondary {-copy-id _id_}]
+pass:quotes[[-no-resetlogs | -recover-from-location _path1_ [, _path2_\]\] [-taskspec taskspec\] [-dump]
+[-quiet | -verbose]]
+----
+
+
+== 매개 변수
+
+* ``프로파일_이름_*'
++
+복제할 데이터베이스를 지정합니다. 프로파일에는 데이터베이스의 식별자와 기타 데이터베이스 정보가 들어 있습니다.
+
+* ``bACKUP-id_GUID_*'
++
+지정된 GUID를 사용하여 백업을 복제합니다. GUID는 백업을 생성할 때 SnapManager에 의해 생성됩니다. sap backup list -verbose 명령을 사용하여 각 백업의 GUID를 표시할 수 있습니다.
+
+* ``BACKUP-LABEL_BACKUP_LABEL_NAME_*''
++
+지정된 레이블 이름을 사용하여 백업을 복제하도록 지정합니다.
+
+* ``현재 *’’
++
+데이터베이스의 현재 상태에서 백업 및 클론을 생성하도록 지정합니다.
+
++
+
+NOTE: 데이터베이스가 narchivelog 모드인 경우 SnapManager는 오프라인 백업을 생성합니다.
+
+* ``newsid_new_sid_*'
++
+복제된 데이터베이스에 대한 고유한 새 Oracle 시스템 식별자를 지정합니다. 시스템 식별자 값은 최대 8자입니다. Oracle은 동일한 호스트에서 동일한 시스템 식별자를 갖는 두 개의 데이터베이스를 동시에 실행할 수 없습니다.
+
+* ``HOST_TARGET_HOST_*'
++
+클론을 생성할 호스트를 지정합니다.
+
+* ``레이블_클론_레이블_*'
++
+클론의 레이블을 지정합니다.
+
+* ``소견_문자열 _ *’’
++
+이 클론을 설명할 선택적 주석을 지정합니다. 문자열을 작은따옴표로 묶어야 합니다.
+
++
+
+NOTE: 일부 쉘은 따옴표를 삭제합니다. 셸에 대해 참인 경우 큰따옴표(\)를 백슬래시(\)로 이스케이프해야 합니다. 예를 들어, 다음과 같이 입력해야 할 수 있습니다: `\'이것은 코멘트\''
+
+* ``clonespec_full_path_to_clonespec_file_*'
++
+클론 사양 XML 파일의 경로를 지정합니다. 상대 경로 또는 절대 경로 이름이 될 수 있습니다.
+
+* ``아스미나스’’’
++
+ASM 인스턴스에 로그인하는 데 사용되는 자격 증명을 지정합니다.
+
+* ``아소머네임_asminstance_username_*’’
++
+ASM 인스턴스에 로그인하는 데 사용되는 사용자 이름을 지정합니다.
+
+* ``asmpassword_asminstance_password_*'
++
+ASM 인스턴스에 로그인하는 데 사용되는 암호를 지정합니다.
+
+* '' * -syspassword_syspassword_ *'
++
+시스템 권한이 있는 사용자의 암호를 지정합니다.
+
++
+
+NOTE: 제공된 데이터베이스 자격 증명이 시스템 권한 사용자에 대해 동일하지 않은 경우 시스템 권한 사용자의 암호를 제공해야 합니다.
+
+* ``예비’’’
++
+'-reserve' 옵션을 yes로 설정하면 새 클론 볼륨에 대해 볼륨 보증 공간 예약이 설정됩니다. '-reserve' 옵션을 'no'로 설정하면 새 클론 볼륨에 대해 볼륨 보증 공간 예약이 해제됩니다. '-reserve' 옵션을 ' * inherit * '로 설정하면 새 클론이 부모 스냅샷 복사본의 공간 예약 특성을 상속합니다. 기본 설정은 ' * no * '입니다.
+
++
+다음 표에서는 클론 생성 방법과 클론 생성 작업에 미치는 영향 및 해당 '-reserve' 옵션에 대해 설명합니다. 두 방법 중 하나를 사용하여 LUN을 클론 복제할 수 있습니다.
+
++
+[cols="1a,2a,2a"]
+|===
+| 복제 방법입니다 | 설명 | 결과 
+
+
+ a| 
+LUN 클론 복제
+ a| 
+동일한 볼륨 내에 새 클론 LUN이 생성됩니다.
+ a| 
+LUN에 대한 '-reserve' 옵션이 yes로 설정되어 있으면 볼륨 내의 전체 LUN 크기에 대해 공간이 예약됩니다.
+
+
+
+ a| 
+볼륨 클론 복제
+ a| 
+새 FlexClone이 생성되고 클론 LUN이 새 클론 볼륨 내에 존재합니다. FlexClone 기술을 사용합니다.
+ a| 
+볼륨에 대한 '-reserve' 옵션이 yes로 설정되어 있으면 aggregate 내의 전체 볼륨 크기에 대해 공간이 예약됩니다.
+
+|===
+* ``From-secondary[-copy-id_copy_id_]*'
++
+SnapManager가 보조 스토리지에 보호된 백업 복제본을 클론하도록 지정합니다. 이 옵션을 지정하지 않으면 SnapManager가 운영 스토리지에서 복제본을 복제합니다.
+
++
+'-from-secondary' 옵션을 지정할 때마다 '-copy-id' 옵션을 지정해야 합니다. 보조 스토리지 시스템에 둘 이상의 백업이 있는 경우 -copy -id 옵션을 사용하여 클론 복제에 사용할 보조 스토리지의 백업 복사본을 지정합니다.
+
++
+
+NOTE: 7-Mode에서 작동하는 Data ONTAP를 사용하는 경우 '-copy-id' 옵션에 유효한 값을 지정해야 합니다. 그러나 clustered Data ONTAP을 사용하는 경우에는 '-copy-id' 옵션이 필요하지 않습니다.
+
+* ``resetlogs가 없습니다
++
+데이터베이스 복구를 건너뛰고 DBNEWID 유틸리티를 실행하며 클론을 생성하는 동안 resetlogs를 사용하여 데이터베이스를 열지 않도록 지정합니다.
+
+* ``위치로부터 복구’’’’
++
+SnapManager가 외부 위치에서 아카이브 로그 파일을 가져와 클론 생성에 사용하는 아카이브 로그 백업의 외부 아카이브 로그 위치를 지정합니다.
+
+* ``taskspec*’’
++
+클론 작업의 사전 처리 작업 또는 사후 처리 작업에 대한 작업 사양 XML 파일을 지정합니다. 작업 사양 XML 파일의 전체 경로를 제공해야 합니다.
+
+* ``덤프’’’
++
+클론 생성 작업 후 덤프 파일을 수집하도록 지정합니다.
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본 설정은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+'''
+
+
+== 예
+
+다음 예에서는 이 클론에 대해 생성된 클론 사양을 사용하여 백업을 복제합니다.
+
+[listing]
+----
+smsap clone create -profile SALES1 -backup-label full_backup_sales_May -newsid
+CLONE -label sales1_clone -clonespec /opt/<path>/smsap/clonespecs/sales1_clonespec.xml
+----
+[listing]
+----
+Operation Id [8abc01ec0e794e3f010e794e6e9b0001] succeeded.
+----
+'''

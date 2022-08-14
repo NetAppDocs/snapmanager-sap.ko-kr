@@ -1,0 +1,63 @@
+---
+permalink: windows/concept-error-handling-in-custom-scripts.html 
+sidebar: sidebar 
+keywords: snapmanager, custom, script, return, code, clone, process, influence, standard, output, execution, error, handle 
+summary: SnapManager는 특정 반환 코드를 기반으로 사용자 지정 스크립트를 처리합니다. 예를 들어, 사용자 지정 스크립트가 0, 1, 2 또는 3 값을 반환하면 SnapManager는 클론 프로세스를 계속합니다. 또한 반환 코드는 SnapManager 가 스크립트 실행의 표준 출력을 처리하고 반환하는 방식에 영향을 줍니다. 
+---
+= 사용자 정의 스크립트에서 처리하는 동안 오류가 발생했습니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 특정 반환 코드를 기반으로 사용자 지정 스크립트를 처리합니다. 예를 들어, 사용자 지정 스크립트가 0, 1, 2 또는 3 값을 반환하면 SnapManager는 클론 프로세스를 계속합니다. 또한 반환 코드는 SnapManager 가 스크립트 실행의 표준 출력을 처리하고 반환하는 방식에 영향을 줍니다.
+
+|===
+| 반환 코드 | 설명 | 작업 처리를 계속합니다 
+
+
+ a| 
+0
+ a| 
+스크립트가 완료되었습니다.
+ a| 
+예
+
+
+
+ a| 
+1
+ a| 
+스크립트가 정보 메시지와 함께 성공적으로 완료되었습니다.
+ a| 
+예
+
+
+
+ a| 
+2
+ a| 
+스크립트가 완료되었지만 경고가 포함되어 있습니다
+ a| 
+예
+
+
+
+ a| 
+3
+ a| 
+스크립트가 실패하지만 작업은 계속됩니다.
+ a| 
+예
+
+
+
+ a| 
+4 또는 > 4
+ a| 
+스크립트가 실패하고 작업이 중지됩니다.
+ a| 
+아니요
+
+|===

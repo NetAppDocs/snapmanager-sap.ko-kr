@@ -1,0 +1,48 @@
+---
+permalink: unix-administration/task-delete-clones.html 
+sidebar: sidebar 
+keywords: delete, clone, size, snapshot, copy, backup, guarantee, data, deleting 
+summary: '스냅샷 복사본의 크기가 백업의 10%~20%에 도달하면 클론을 삭제할 수 있습니다. 이렇게 하면 클론에 최신 데이터가 있다는 것도 보장됩니다.' 
+---
+= 클론 삭제
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스냅샷 복사본의 크기가 백업의 10%~20%에 도달하면 클론을 삭제할 수 있습니다. 이렇게 하면 클론에 최신 데이터가 있다는 것도 보장됩니다.
+
+* 이 작업에 대한 정보 *
+
+레이블은 프로파일의 각 클론에 대한 고유 식별자입니다. 클론 레이블 또는 ID를 사용할 수 있지만 SID(시스템 식별자)를 사용하여 클론을 삭제할 수는 없습니다.
+
+
+NOTE: 클론 SID와 클론 레이블이 동일하지 않습니다.
+
+클론을 삭제하는 경우 데이터베이스가 실행 중이어야 합니다. 그렇지 않으면 기존 클론의 파일 및 디렉토리가 삭제되지 않으므로 다른 클론을 생성하기 전에 더 많은 작업이 수행됩니다.
+
+클론이 삭제될 때 클론의 특정 Oracle 매개 변수에 지정된 디렉토리가 제거되고 복제된 데이터베이스에 대한 데이터(아카이브 로그 대상, 배경, 코어 및 사용자 덤프 대상)만 포함해야 합니다. 감사 파일은 삭제되지 않습니다.
+
+
+NOTE: 클론이 다른 작업에 사용되는 경우에는 클론을 삭제할 수 없습니다.
+
+필요에 따라 클론 삭제 작업에 성공하거나 실패한 후 덤프 파일을 수집할 수 있습니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap clone delete -profile_profile_name_[-label_label_|-id_GUID_] [-syspassword_syspassword_]|[login-username_username_-password]_db_password_-port_db_port_][-asminstance-asmusername_password] versmforce [password
+
+
+
+'''
+
+
+== 예
+
+[listing]
+----
+smsap clone delete -profile targetdb1_prof1 -label sales0908_clone1
+----
+'''

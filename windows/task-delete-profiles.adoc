@@ -1,0 +1,21 @@
+---
+permalink: windows/task-delete-profiles.html 
+sidebar: sidebar 
+keywords: delete, profile, successful, incomplete, backup, free, deleting 
+summary: 성공했거나 불완전한 백업이 포함되어 있지 않으면 언제든지 프로필을 삭제할 수 있습니다. 확보되거나 삭제된 백업이 포함된 프로필을 삭제할 수 있습니다. 
+---
+= 프로파일 삭제
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+성공했거나 불완전한 백업이 포함되어 있지 않으면 언제든지 프로필을 삭제할 수 있습니다. 확보되거나 삭제된 백업이 포함된 프로필을 삭제할 수 있습니다.
+
+.단계
+. 프로파일을 삭제하려면 다음 명령을 입력합니다.
++
+'* smssap profile delete-profile_profile_name_*'
+
+

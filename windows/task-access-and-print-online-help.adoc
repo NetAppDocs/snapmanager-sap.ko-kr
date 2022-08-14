@@ -1,0 +1,25 @@
+---
+permalink: windows/task-access-and-print-online-help.html 
+sidebar: sidebar 
+keywords: online, help, instruction, task, snapmanager, graphical, user, interface, windows, wizard, access, print 
+summary: 온라인 도움말은 SnapManager 그래픽 사용자 인터페이스를 사용하여 수행할 수 있는 작업에 대한 지침을 제공합니다. 또한 온라인 도움말에서는 Windows 및 마법사의 필드에 대한 설명을 제공합니다. 
+---
+= 온라인 도움말에 액세스하여 인쇄합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+온라인 도움말은 SnapManager 그래픽 사용자 인터페이스를 사용하여 수행할 수 있는 작업에 대한 지침을 제공합니다. 또한 온라인 도움말에서는 Windows 및 마법사의 필드에 대한 설명을 제공합니다.
+
+.단계
+. 다음 작업 중 하나를 수행합니다.
++
+** 주 창에서 * 도움말 * > * 도움말 목차 * 를 클릭합니다.
+** 창 또는 마법사에서 * 도움말 * 을 클릭하여 해당 창과 관련된 도움말을 표시합니다.
+
+
+. 왼쪽 창의 * 목차 * 를 사용하여 항목을 탐색합니다.
+. 도움말 창 상단의 프린터 아이콘을 클릭하여 개별 주제를 인쇄합니다.
+

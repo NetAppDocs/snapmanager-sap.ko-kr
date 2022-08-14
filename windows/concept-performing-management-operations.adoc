@@ -1,0 +1,16 @@
+---
+permalink: windows/concept-performing-management-operations.html 
+sidebar: sidebar 
+keywords: perform, management, task, set, up, configure, snapmanager, manage, normal, operation, restore, clone 
+summary: SnapManager를 설정하고 구성한 후에 관리 작업을 수행할 수 있습니다. 이러한 작업을 통해 백업, 복원 및 클론 복제 이외의 일반 작업을 관리할 수 있습니다. 
+---
+= 관리 작업을 수행하는 중입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 설정하고 구성한 후에 관리 작업을 수행할 수 있습니다. 이러한 작업을 통해 백업, 복원 및 클론 복제 이외의 일반 작업을 관리할 수 있습니다.
+
+관리자는 그래픽 사용자 인터페이스 또는 명령줄 인터페이스를 사용하여 작업을 수행할 수 있습니다.

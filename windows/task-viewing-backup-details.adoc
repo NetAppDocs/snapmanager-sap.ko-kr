@@ -1,0 +1,75 @@
+---
+permalink: windows/task-viewing-backup-details.html 
+sidebar: sidebar 
+keywords: view, detail, information, backup, profile, smsap, show, command 
+summary: smsap backup show 명령을 사용하여 프로파일의 특정 백업에 대한 세부 정보를 볼 수 있습니다. 
+---
+= 백업 세부 정보 보기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+smsap backup show 명령을 사용하여 프로파일의 특정 백업에 대한 세부 정보를 볼 수 있습니다.
+
+sap backup show 명령은 각 백업에 대해 다음 정보를 표시합니다.
+
+* 백업 ID입니다
+* 백업이 성공했는지 실패했는지 여부
+* 백업 범위(전체, 부분, 온라인 또는 오프라인)
+* 백업 모드
+* 마운트 상태입니다
+* 백업 레이블
+* 설명
+* 작업이 시작되고 종료된 날짜 및 시간입니다
+* 백업 확인 여부에 대한 정보입니다
+* 백업 보존 클래스입니다
+* 데이터베이스 및 호스트 이름입니다
+* 체크포인트 SCN(시스템 변경 번호)
+* 백업 SCN 종료(온라인 백업에만 해당)
+* 데이터베이스의 테이블스페이스 및 데이터 파일이 백업되었습니다
+* 데이터베이스의 컨트롤 파일이 백업되었습니다
+* 데이터베이스의 아카이브 로그가 백업되었습니다
+* 파일이 있는 스토리지 시스템 및 볼륨입니다
+* Snapshot 복사본 및 해당 위치
+* 운영 스토리지 리소스의 상태입니다
+* 백업 보호 상태입니다
+* 백업 모드
+
+
+verbose 옵션을 지정하면 다음과 같은 추가 정보가 표시됩니다.
+
+* 백업에서 생성된 클론이 있는 경우
+* 확인 정보
+* 백업이 마운트된 경우 SnapManager에서 사용 중인 마운트 지점을 표시합니다
+
+
+아카이브 로그 파일 백업의 경우 다음 정보를 제외하고 다른 데이터베이스 백업의 정보와 동일한 정보가 표시됩니다.
+
+* 체크포인트 SCN
+* 백업 SCN 종료
+* 테이블스페이스
+* 제어 파일
+
+
+그러나 아카이브 로그 파일 백업에는 다음과 같은 추가 정보가 포함됩니다.
+
+* 백업의 첫 번째 변경 번호입니다
+* 백업의 다음 변경 번호입니다
+* 스레드 번호
+* 로그 ID를 재설정합니다
+* 성육신
+* 로그 파일 이름입니다
+
+
+.단계
+. 다음 명령을 입력합니다.
++
+'msap backup show-profile profile_name{-label label [data|-archivelogs]|-id id[-quiet|-verbose]'
+
+
+
+* 관련 정보 *
+
+xref:reference-the-smosmsapbackup-show-command.adoc[sap backup show 명령]

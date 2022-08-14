@@ -1,0 +1,158 @@
+---
+permalink: windows/task-creating-backup-schedules.html 
+sidebar: sidebar 
+keywords: schedule, backup, time, frequency, suit, data, environment, creating, create 
+summary: 데이터 및 환경에 적합한 시간과 빈도로 백업을 수행하도록 예약할 수 있습니다. 
+---
+= 백업 스케줄 생성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+데이터 및 환경에 적합한 시간과 빈도로 백업을 수행하도록 예약할 수 있습니다.
+
+SAP용 SnapManager 3.2에서는 아카이브 로그 파일의 백업을 별도로 예약할 수 있습니다. 그러나 아카이브 로그 파일을 구분하기 위해 만든 프로필을 사용해야 합니다.
+
+데이터 파일 및 아카이브 로그 파일의 백업을 동시에 예약한 경우 SnapManager에서 먼저 데이터 파일 백업을 생성합니다.
+
+일정 간격을 -1시간으로만 선택하면 모든 잘라내기 옵션을 사용할 수 있습니다. 일회성 이외의 일정 간격을 선택한 경우, 잘라내기 옵션 - 종료-SCN 및 - 종료-날짜가 지원되지 않고 다음 오류 메시지가 표시됩니다. 지정한 보관 로그 잘라내기 옵션 - 종료-SCN 또는 - 종료-날짜가 시간 간격으로 잘못되었습니다. 스케줄 간격에 대해 -oneonly 옵션을 지정하거나 ALL 또는 -before {-months|-days|-weeks|-hours} 옵션 중 하나를 사용하여 아카이브 로그를 정리하십시오.
+
+Microsoft WSFC(Windows Server Failover Cluster) 및 MSCS(Microsoft Cluster Server) 환경에서 페일오버가 발생하는 경우 서비스(가상) 주소가 활성 호스트에 매핑되고 SnapManager 스케줄이 활성 SnapManager 호스트로 조정되도록 SnapManager for SAP 서버를 다시 시작해야 합니다.
+
+
+NOTE: 동일한 프로필 및 스케줄 이름이 다른 리포지토리에 있는 경우 해당 리포지토리에서 백업 예약 작업이 시작되지 않습니다. 작업이 이미 실행 중입니다. 라는 메시지와 함께 작업이 종료됩니다.
+
+. 다음 명령을 입력합니다. smsap schedule create-profile profile_name {[-full{-online |-offline |-auto} [-retain [-hourly |-weekly |-weekly |-monthly |-limited] [-verify]|[-data [-filesfiles [files]]|[-테이블스페이스[-pathogpatheserablespaces] {-offline | -autonline | -auto} [-weekly]]]punlimited untilSCNuntscn|-until-dateyyyy-mm-dd HH:mm:ss|-before {-months|-weeks|-days|-hours}}- prune-destprune_dest1, prune_destedn2]- schedule-nameding_name[-schedule-commenting_casingforce]- evently-caskedly-casingtime | casingtime-monly-caskoneventiment-monly-castime-castime
++
+|===
+| 원하는 작업 | 그러면... 
+
+
+ a| 
+* 온라인 또는 오프라인 데이터베이스의 백업 예약 *
+ a| 
+오프라인 또는 온라인 데이터베이스의 백업을 예약하려면 -offline 또는 -online 을 지정합니다. 이러한 옵션을 지정하면 -auto를 사용할 수 없습니다.
+
+
+
+ a| 
+* 온라인 또는 오프라인 여부에 관계 없이 SnapManager에서 데이터베이스 예약을 처리할 수 있습니다 *
+ a| 
+자동 을 지정합니다. auto 를 지정하면 -- 오프라인 또는 -온라인 을 사용할 수 없습니다.
+
+
+
+ a| 
+* 데이터 파일 백업 예약 *
+ a| 
+data-files 를 지정하여 쉼표로 구분된 파일을 나열합니다. 예를 들어 파일 이름 F1, F2, f3을 사용합니다.
+
+
+
+ a| 
+* 특정 테이블스페이스의 부분 백업을 예약합니다 *
+ a| 
+테이블스페이스를 쉼표로 구분하여 나열하려면 -테이블스페이스를 지정합니다. 예를 들어 ts1, TS2, TS3를 사용합니다.
+
+
+
+ a| 
+* 아카이브 로그 파일의 백업 예약 *
+ a| 
+다음을 지정합니다.
+
+** 아카이브 로그 파일의 백업 스케줄을 지정하려면 -archivelogs
+** -backup -dest 백업에 포함할 아카이브 로그 파일 대상을 예약합니다
+** -exclude-dest - 백업에서 제외할 아카이브 로그 대상을 스케줄합니다
+
+
+
+
+ a| 
+* 보존 클래스 값을 지정합니다 *
+ a| 
+retain 을 지정하고 다음 보존 클래스 중 하나에 따라 백업을 유지해야 하는지 여부를 지정합니다.
+
+** -hourly
+** 매일
+** 매주
+** - 매월
+** 무제한 SnapManager는 기본적으로 매시간 로 설정됩니다.
+
+
+
+
+ a| 
+* 보관 로그 파일 정리 예약 *
+ a| 
+다음 사항을 지정하십시오.** - prunelogs 백업을 예약하는 동안 아카이브 로그 파일을 정리하려면** - prune - dest 아카이브 로그 파일이 정리되는 아카이브 로그 대상을 지정합니다
+
+
+
+ a| 
+* 스케줄 이름을 포함시키십시오 *
+ a| 
+schedule-name 을 지정합니다.
+
+
+
+ a| 
+* 특정 시간 간격으로 데이터베이스 백업 예약 *
+ a| 
+간격 옵션을 지정하고 다음 중에서 백업을 생성할 시간 간격을 선택합니다.
+
+** -hourly
+** 매일
+** 매주
+** - 매월
+** -1시간에만
+
+
+
+
+ a| 
+* 일정 구성 *
+ a| 
+시승 지정 및 개별 옵션을 설명하는 다음 7개의 부분식을 포함합니다.
+
+** 1은 초를 나타냅니다.
+** 2는 분을 나타냅니다.
+** 3은 시간을 나타냅니다.
+** 4는 한 달의 날짜를 나타냅니다.
+** 5는 월을 나타냅니다.
+** 6은 1주일 동안의 날짜를 나타냅니다.
+** (선택 사항) 7은 연도를 나타냅니다. * 참고: * 시승 및 시작 시간이 서로 다른 백업 스케줄을 지정한 경우 백업 스케줄이 덮어쓰여지고 시작 시간에 의해 트리거됩니다.
+
+
+
+
+ a| 
+* 백업 스케줄에 대한 설명을 추가합니다 *
+ a| 
+specify -schedule -comment 뒤에 설명 문자열을 추가합니다.
+
+
+
+ a| 
+* 스케줄 작업의 시작 시간을 지정합니다 *
+ a| 
+yyyy-mm-dd hh:mm 형식으로 -start-time을 지정합니다.
+
+
+
+ a| 
+* 백업을 예약하는 동안 예약된 백업 작업의 사용자를 변경합니다 *
+ a| 
+runasuser 를 지정합니다. 이 작업은 스케줄을 생성한 사용자(루트 사용자 또는 Oracle 사용자)로 실행됩니다. 그러나 데이터베이스 프로필과 호스트 모두에 대해 유효한 자격 증명이 있는 경우 사용자 고유의 사용자 ID를 사용할 수 있습니다.
+
+
+
+ a| 
+* 사전 작업 및 사후 작업 사양 XML 파일을 사용하여 백업 일정 작업의 사전 작업 또는 사후 작업 활동을 활성화합니다
+ a| 
+taskspec 옵션을 지정하고 백업 스케줄 작업 전후에 사전 처리 또는 사후 처리 작업을 수행하기 위한 작업 사양 XML 파일의 절대 경로를 제공합니다.
+
+|===
+

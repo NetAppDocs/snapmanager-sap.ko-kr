@@ -1,0 +1,74 @@
+---
+permalink: unix-administration/task-use-protection-manager-to-configure-a-secondary-backup-protection-policy.html 
+sidebar: sidebar 
+keywords: configure, configuring, backup, schedule, storage, administrator, protect, protection, manager, secondary, policy 
+summary: 백업 스케줄을 구성한 후 스토리지 관리자는 해당 스케줄이 포함될 보호된 백업 스토리지 정책을 구성합니다. 
+---
+= Protection Manager를 사용하여 보조 백업 보호 정책을 구성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백업 스케줄을 구성한 후 스토리지 관리자는 해당 스케줄이 포함될 보호된 백업 스토리지 정책을 구성합니다.
+
+* 필요한 것 *
+
+보호 정책을 구성하기 전에 스토리지 관리자는 DBA 파트너에게 다음 정보를 제공합니다.
+
+* 2차 스토리지에 대해 지정할 보존 기간
+* 필요한 보조 스토리지 보호 유형입니다
+
+
+* 이 작업에 대한 정보 *
+
+생성된 보호 정책은 DBA 파트너가 SAP용 SnapManager에 나열하여 보호할 데이터에 대한 데이터베이스 프로필에 할당할 수 있습니다.
+
+. Protection Manager의 NetApp 관리 콘솔로 이동합니다.
+. 메뉴 모음에서 * 정책 * > * 보호 * > * 개요 * 를 클릭합니다.
++
+보호 정책 창의 개요 탭이 표시됩니다.
+
+. Add Policy * 를 클릭하여 * Add Protection Policy * 마법사를 시작합니다.
+. 다음 단계를 수행하여 마법사를 완료합니다.
++
+.. 설명 정책 이름을 지정합니다.
++
+이 예에서는 * TechCo Payroll Data:Backup * 을 입력하고 설명을 입력한 후 * Next * 를 클릭합니다.
+
+.. 기본 정책을 선택합니다.
++
+이 예에서는 * 백업 * 을 선택하고 * 다음 * 을 클릭합니다.
+
+.. 기본 데이터 * 노드 정책 속성 시트에서 기본 설정을 적용하고 * 다음 * 을 클릭합니다.
++
+
+NOTE: 이 예에서는 SnapManager에 구성된 로컬 백업 스케줄이 적용됩니다. 이 방법을 사용하여 지정된 모든 로컬 백업 스케줄은 무시됩니다.
+
+.. Primary Data to Backup * 연결 속성 시트에서 백업 일정을 선택합니다.
++
+이 예에서는 백업 스케줄로 오전 1시에 * 급여 토요일 + 매일 오후 7시 * 를 선택한 후 * 다음 * 을 클릭합니다.
+
++
+이 예에서 선택한 스케줄에는 앞서 구성한 주별 및 일별 스케줄이 모두 포함됩니다.
+
+.. 백업 정책 * 속성 시트에서 백업 노드의 이름과 일일, 주별 또는 월별 백업의 보존 시간을 지정합니다.
++
+이 예에서는 일별 백업 보존 기간을 10일로 지정하고 주별 백업 보존 기간은 52주로 지정합니다. 각 속성 시트를 완료한 후 * 다음 * 을 클릭합니다.
+
++
+모든 속성 시트가 완료되면 보호 정책 추가 마법사에 생성할 보호 정책의 요약 시트가 표시됩니다.
+
+
+
+. 변경 사항을 저장하려면 * 마침 * 을 클릭합니다.
+
+
+결과 *
+
+TechCo 급여 데이터: 백업 * 보호 정책은 Protection Manager용으로 구성된 다른 정책에 나열되어 있습니다.
+
+* 완료 후 *
+
+이제 DBA 파트너는 SnapManager for SAP를 사용하여 보호할 데이터에 대한 데이터베이스 프로필을 생성할 때 이 정책을 나열하고 할당할 수 있습니다.

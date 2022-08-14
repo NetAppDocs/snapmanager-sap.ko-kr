@@ -1,0 +1,14 @@
+---
+permalink: windows/concept-snapdrive-on-snapmanager-server.html 
+sidebar: sidebar 
+keywords: snapmanager, snapdrive, windows, snapshot, copies, copy, storage, system, server 
+summary: SnapManager은 SnapDrive for Windows를 사용하여 스토리지 시스템의 스냅샷 복사본을 생성합니다. SnapDrive는 SnapManager와 동일한 서버에 상주합니다. 
+---
+= SnapManager 서버의 SnapDrive입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager은 SnapDrive for Windows를 사용하여 스토리지 시스템의 스냅샷 복사본을 생성합니다. SnapDrive는 SnapManager와 동일한 서버에 상주합니다.

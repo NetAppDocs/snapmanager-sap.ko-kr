@@ -1,0 +1,29 @@
+---
+permalink: windows/task-creating-profile-level-dump-files.html 
+sidebar: sidebar 
+keywords: find, log, information, particular, profile, smsap, dump, command, name, profile-level, creating, create 
+summary: smsap 프로파일 덤프 명령과 프로파일 이름을 사용하여 특정 프로파일에 대한 로그 정보를 찾을 수 있습니다. 
+---
+= 프로파일 수준 덤프 파일을 생성하는 중입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+smsap 프로파일 덤프 명령과 프로파일 이름을 사용하여 특정 프로파일에 대한 로그 정보를 찾을 수 있습니다.
+
+. 'msap profile dump-profileprofile_name' 명령을 입력한다
++
+덤프 파일 위치:
+
++
+[listing]
+----
+Path:\<user-home>\Application Data\NetApp\smsap\3.3.0\smsap_dump_8abc01c814649ebd0114649ec69d0001.jar
+----
++
+
+NOTE: 프로파일을 만드는 동안 오류가 발생하면 smsapsystem dump 명령을 사용합니다. 프로파일을 성공적으로 만든 후에는 smsapoperation dump 및 smsapprofile dump 명령을 사용합니다.
+
+

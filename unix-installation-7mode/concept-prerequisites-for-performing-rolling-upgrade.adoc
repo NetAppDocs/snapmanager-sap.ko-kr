@@ -1,0 +1,52 @@
+---
+permalink: unix-installation-7mode/concept-prerequisites-for-performing-rolling-upgrade.html 
+sidebar: sidebar 
+keywords: perform, roll, upgrade, ensure, environment, requirement, prerequisite, perform 
+summary: 롤링 업그레이드를 수행하기 전에 환경이 특정 요구 사항을 충족하는지 확인해야 합니다. 
+---
+= 롤링 업그레이드를 수행하기 위한 사전 요구 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+롤링 업그레이드를 수행하기 전에 환경이 특정 요구 사항을 충족하는지 확인해야 합니다.
+
+* SnapManager 3.1 이전 버전을 사용하고 있고 SnapManager 3.3 이상으로 롤링 업그레이드를 수행하려는 경우 먼저 3.2로 업그레이드한 다음 최신 버전으로 업그레이드해야 합니다.
++
+SnapManager 3.2에서 SnapManager 3.3 이상으로 직접 업그레이드할 수 있습니다.
+
+* 외부 데이터 보호 또는 데이터 보존을 수행하는 데 사용되는 외부 스크립트를 백업해야 합니다.
+* 업그레이드할 SnapManager 버전을 설치해야 합니다.
++
+
+NOTE: SnapManager 3.1 이전 버전에서 SnapManager 3.3 이상으로 업그레이드하는 경우 먼저 SnapManager 3.2를 설치하고 롤링 업그레이드를 수행해야 합니다. 3.2로 업그레이드한 후 SnapManager 3.3 이상을 설치하고 SnapManager 3.3 이상으로 다른 롤링 업그레이드를 수행할 수 있습니다.
+
+* 업그레이드할 SnapManager 버전에서 지원되는 UNIX용 SnapDrive 버전을 설치해야 합니다.
++
+SnapDrive 설명서에는 SnapDrive 설치에 대한 자세한 내용이 포함되어 있습니다.
+
+* 리포지토리 데이터베이스를 백업해야 합니다.
+* SnapManager 저장소 사용량은 최소여야 합니다.
+* 업그레이드할 호스트가 리포지토리를 사용하는 경우 동일한 리포지토리를 사용하는 다른 호스트에서 SnapManager 작업을 수행하지 않아야 합니다.
++
+다른 호스트에서 예약 또는 실행 중인 작업은 롤링 업그레이드가 완료될 때까지 대기합니다.
+
++
+
+NOTE: 리포지토리의 사용량이 가장 적은 경우(예: 주말 또는 작업이 예약되지 않은 경우) 롤링 업그레이드를 수행하는 것이 좋습니다.
+
+* 동일한 저장소 데이터베이스를 가리키는 프로필은 SnapManager 서버 호스트에서 다른 이름으로 만들어야 합니다.
++
+같은 이름의 프로파일을 사용하는 경우 해당 리포지토리 데이터베이스와 관련된 롤링 업그레이드가 경고 없이 실패합니다.
+
+* 업그레이드 중인 호스트에서 SnapManager 작업을 수행하지 않아야 합니다.
+
+
+
+NOTE: 함께 업그레이드하는 호스트의 백업 수가 증가하면 롤링 업그레이드가 더 오래 실행됩니다. 업그레이드 기간은 지정된 호스트와 연결된 프로필 및 백업 수에 따라 달라질 수 있습니다.
+
+* 관련 정보 *
+
+http://mysupport.netapp.com/["NetApp Support 사이트 관련 문서: mysupport.netapp.com"^]

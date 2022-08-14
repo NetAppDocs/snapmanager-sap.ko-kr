@@ -1,0 +1,85 @@
+---
+permalink: unix-installation-7mode/reference-smsap-isg-snapmanager-architecture.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, component, comprehensive, powerful, backup, restore, recovery, cloning, clone, solution, oracle, database 
+summary: SAP용 SnapManager에는 Oracle 데이터베이스를 위한 포괄적이고 강력한 백업, 복원, 복구 및 복제 솔루션을 제공하기 위해 함께 작동하는 구성 요소가 포함되어 있습니다. 
+---
+= SnapManager 아키텍처
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SAP용 SnapManager에는 Oracle 데이터베이스를 위한 포괄적이고 강력한 백업, 복원, 복구 및 복제 솔루션을 제공하기 위해 함께 작동하는 구성 요소가 포함되어 있습니다.
+
+image::../media/smsap_architecture_7mode.gif[7-Mode용 smssap 아키텍처 다이어그램]
+
+
+
+== UNIX용 SnapDrive
+
+SnapManager를 사용하려면 SnapDrive가 스토리지 시스템과의 접속을 설정해야 합니다. SnapManager를 설치하기 전에 모든 타겟 데이터베이스 호스트에 UNIX용 SnapDrive를 설치해야 합니다.
+
+
+
+== SAP용 SnapManager
+
+모든 타겟 데이터베이스 호스트에 SAP용 SnapManager를 설치해야 합니다.
+
+SnapManager for SAP가 설치된 데이터베이스 호스트에서 CLI(명령줄 인터페이스) 또는 UI를 사용할 수 있습니다. SnapManager에서 지원하는 운영 체제에서 실행 중인 시스템에서 웹 브라우저를 사용하여 SnapManager UI를 원격으로 사용할 수도 있습니다.
+
+
+NOTE: 지원되는 JRE 버전은 1.8입니다.
+
+
+
+== 타겟 데이터베이스
+
+타겟 데이터베이스는 백업, 복원, 복구 및 클론 작업을 수행하여 SnapManager를 사용하여 관리하려는 Oracle 데이터베이스입니다.
+
+타겟 데이터베이스는 독립 실행형 RAC(Real Application Clusters)이거나 Oracle ASM(Automatic Storage Management) 볼륨에 상주할 수 있습니다. 지원되는 Oracle 데이터베이스 버전, 구성, 운영 체제 및 프로토콜에 대한 자세한 내용은 NetApp Interoperability Matrix Tool을 참조하십시오.
+
+
+
+== SnapManager 리포지토리
+
+SnapManager 저장소는 Oracle 데이터베이스에 상주하며 프로필, 백업, 복원, 복구 및 클론에 대한 메타데이터를 저장합니다. 단일 리포지토리에는 여러 데이터베이스 프로파일에서 수행되는 작업에 대한 정보가 포함될 수 있습니다.
+
+SnapManager 리포지토리는 타겟 데이터베이스에 상주할 수 없습니다. SnapManager 작업을 수행하기 전에 SnapManager 저장소 데이터베이스와 타겟 데이터베이스가 온라인 상태여야 합니다.
+
+
+
+== OnCommand 유니파이드 관리자 코어 패키지
+
+OnCommand Unified Manager 핵심 패키지에는 Operations Manager, Protection Manager 및 Provisioning Manager의 기능이 통합되어 있습니다. 프로비저닝, 클론 복제, 백업 및 복구, DR(재해 복구) 정책을 중앙 집중화합니다. 이러한 모든 기능을 통합하면 단일 툴에서 여러 관리 기능을 수행할 수 있습니다.
+
+
+
+== 운영 관리자
+
+Operations Manager는 OnCommand Unified Manager 코어 패키지의 웹 기반 UI(사용자 인터페이스)입니다. 스토리지 및 스토리지 시스템 인프라에 대한 일상적인 스토리지 모니터링, 문제 알림 및 보고에 사용됩니다. SnapManager 통합에서는 운영 관리자의 RBAC 기능을 사용합니다.
+
+
+
+== Protection Manager를 클릭합니다
+
+Protection Manager는 관리자에게 모든 SnapMirror 및 SnapVault 작업을 신속하게 구성하고 제어할 수 있는 사용하기 쉬운 관리 콘솔을 제공합니다. 관리자는 이 애플리케이션을 사용하여 일관된 데이터 보호 정책을 적용하고, 복잡한 데이터 보호 프로세스를 자동화하고, 사용률을 높이기 위해 백업 및 복제 리소스를 풀링할 수 있습니다.
+
+Protection Manager의 인터페이스는 NetApp 관리 소프트웨어 애플리케이션을 위한 클라이언트 플랫폼인 NetApp 관리 콘솔입니다. NetApp 관리 콘솔은 OnCommand 서버가 설치된 서버와 다른 Windows 또는 Linux 시스템에서 실행됩니다. 스토리지, 애플리케이션 및 서버 관리자가 서로 다른 UI 간에 전환할 필요 없이 일상적인 작업을 수행할 수 있습니다. NetApp 관리 콘솔에서 실행되는 애플리케이션은 Protection Manager, Provisioning Manager 및 Performance Advisor입니다.
+
+
+
+== 운영 스토리지 시스템
+
+SnapManager은 운영 NetApp 스토리지 시스템에서 타겟 데이터베이스를 백업합니다.
+
+
+
+== 2차 스토리지 시스템
+
+데이터베이스 프로필에서 데이터 보호를 활성화하면 SnapManager에서 기본 스토리지 시스템에 생성한 백업이 SnapVault 및 SnapMirror 기술을 사용하여 보조 NetApp 스토리지 시스템에 복제됩니다.
+
+* 관련 정보 *
+
+http://mysupport.netapp.com/matrix["NetApp 상호 운용성 매트릭스 툴"^]

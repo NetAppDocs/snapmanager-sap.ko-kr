@@ -1,0 +1,88 @@
+---
+permalink: unix-installation-cmode/task-smsap-isg-configure-the-snapmanager-repository.html 
+sidebar: sidebar 
+keywords: configure, snapmanager, repository, database, instance, metadata 
+summary: 리포지토리 데이터베이스 인스턴스에서 SnapManager 리포지토리를 구성해야 합니다. 리포지토리 데이터베이스는 SnapManager에서 관리하는 데이터베이스에 대한 메타데이터를 저장합니다. 
+---
+= SnapManager 리포지토리를 구성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+리포지토리 데이터베이스 인스턴스에서 SnapManager 리포지토리를 구성해야 합니다. 리포지토리 데이터베이스는 SnapManager에서 관리하는 데이터베이스에 대한 메타데이터를 저장합니다.
+
+
+
+== 필요한 것
+
+* 리포지토리 데이터베이스 인스턴스를 만들어야 합니다.
+* 필요한 권한이 있는 리포지토리 데이터베이스 인스턴스에 대해 Oracle 사용자를 생성해야 합니다.
+* tnsnames.ora 파일에 리포지토리 데이터베이스 인스턴스 세부 정보를 포함해야 합니다.
+
+
+
+
+== 이 작업에 대해
+
+SnapManager 저장소는 SnapManager UI(사용자 인터페이스) 또는 CLI(명령줄 인터페이스)에서 구성할 수 있습니다. 다음 단계에서는 SnapManager UI를 사용하여 리포지토리를 만드는 방법을 보여 줍니다. 원하는 경우 CLI를 사용할 수도 있습니다.
+
+CLI를 사용하여 리포지토리를 생성하는 방법에 대한 자세한 내용은 UNIX_용 _SnapManager 관리 가이드를 참조하십시오.
+
+.단계
+. SnapManager UI의 왼쪽 창에서 * 리포지토리 * 를 마우스 오른쪽 단추로 클릭합니다.
+. Create New Repository * 를 선택하고 * Next * 를 클릭합니다.
+. 리포지터리 데이터베이스 구성 정보 * 창에서 다음 정보를 입력합니다.
++
+|===
+| 이 필드에서... | 수행할 작업... 
+
+
+ a| 
+* 사용자 이름 *
+ a| 
+리포지토리 데이터베이스 인스턴스에 대해 생성한 사용자의 이름을 입력합니다.
+
+
+
+ a| 
+* 암호 *
+ a| 
+암호를 입력합니다.
+
+
+
+ a| 
+* 호스트 *
+ a| 
+리포지토리 데이터베이스 인스턴스가 생성된 호스트의 IP 주소를 입력합니다.
+
+
+
+ a| 
+* 포트 *
+ a| 
+리포지토리 데이터베이스 인스턴스에 연결하는 데 사용되는 포트를 입력합니다. 기본 포트는 1521입니다.
+
+
+
+ a| 
+* 서비스 이름 *
+ a| 
+SnapManager가 저장소 데이터베이스 인스턴스에 연결하는 데 사용하는 이름을 입력합니다. tnsnames.ora 파일에 포함된 세부 정보에 따라 짧은 서비스 이름 또는 정규화된 서비스 이름일 수 있습니다.
+
+|===
+. Perform Repository Add Operation(리포지토리 추가 작업 수행) 창 * 에서 구성 요약을 검토하고 * Add * (추가 *)를 클릭합니다.
++
+작업이 실패하면 * Operation Details * 탭을 클릭하여 작업이 실패한 원인을 확인합니다. 오류 세부 정보는 '/var/log/smsap'에 있는 작업 로그에도 캡처됩니다
+
+. 마침 * 을 클릭합니다.
++
+리포지토리는 * 리포지토리 * 트리 아래의 왼쪽 창에 나열됩니다. 리포지토리가 표시되지 않으면 * 리포지토리 * 를 마우스 오른쪽 단추로 클릭하고 * 새로 고침 * 을 클릭합니다.
+
+
+
+* 관련 정보 *
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP12481453["UNIX용 SnapManager 3.4.1 SAP 관리 가이드"^]

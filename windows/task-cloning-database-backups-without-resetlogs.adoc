@@ -1,0 +1,60 @@
+---
+permalink: windows/task-cloning-database-backups-without-resetlogs.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, flexible, cloning, clone, recover, database, resetlog, data, guard, standby 
+summary: SnapManager를 사용하면 유연한 복제를 수행할 수 있으므로 resetlogs를 사용하여 데이터베이스를 열지 않고도 복제된 데이터베이스를 원하는 시점으로 수동으로 복구할 수 있습니다. 복제된 데이터베이스를 Data Guard 대기 데이터베이스로 수동으로 구성할 수도 있습니다. 
+---
+= resetlogs 없이 데이터베이스 백업 클론 생성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 유연한 복제를 수행할 수 있으므로 resetlogs를 사용하여 데이터베이스를 열지 않고도 복제된 데이터베이스를 원하는 시점으로 수동으로 복구할 수 있습니다. 복제된 데이터베이스를 Data Guard 대기 데이터베이스로 수동으로 구성할 수도 있습니다.
+
+클론을 생성하는 동안 -no-resetlogs 옵션을 선택할 수 있는 경우 SnapManager는 다음과 같은 작업을 수행하여 클론 생성된 데이터베이스를 생성합니다.
+
+. 클론 작업을 시작하기 전에 사전 처리 작업 작업을 실행합니다(지정된 경우)
+. 사용자 지정 SID를 사용하여 복제된 데이터베이스를 만듭니다
+. 복제된 데이터베이스에 대해 실행된 SQL 문을 실행합니다.
++
+마운트 상태에서 실행할 수 있는 SQL 문만 성공적으로 실행됩니다.
+
+. 지정된 경우 후처리 작업 활동을 실행합니다.
+
+
+* 복제된 데이터베이스를 수동으로 복구하려면 어떤 작업을 수행해야 합니까 *
+
+. 마운트된 경로의 아카이브 로그 파일을 사용하여 아카이브 로그 백업을 마운트하고 클론된 데이터베이스를 수동으로 복구합니다.
+. 수동 복구를 수행한 후 복구된 복제된 데이터베이스를 -resetlogs 옵션을 사용하여 엽니다.
+. 필요한 경우 임시 테이블스페이스를 생성합니다.
+. DBNEWID 유틸리티를 실행합니다.
+. 복제된 데이터베이스의 자격 증명에 sysdba 권한을 부여합니다.
+
+
+resetlogs 없음 옵션을 사용하여 데이터베이스 백업을 복제하는 동안 SnapManager는 복제된 데이터베이스를 수동 복구를 위해 마운트된 상태로 둡니다.
+
+
+NOTE: resetlogs 없음 옵션으로 생성된 복제된 데이터베이스는 완전한 데이터베이스가 아닙니다. 따라서 SnapManager에서는 사용자가 작업을 수행하는 것을 제한하지 않지만 이 데이터베이스에서 SnapManager 작업을 수행하면 안 됩니다.
+
+resetlogs 없음 옵션을 지정하지 않으면 SnapManager에서 보관 로그 파일을 적용하고 resetlogs를 사용하여 데이터베이스를 엽니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+smsap clone create -profileprofile_name [-backup-labelbackup_name | -backup-idbackup_id | current] -newsidnew_sid -clonespecall_path_to_clonespeci파일 -no-resetlogs
+
++
+재설정 로그 없음 및 위치 복구 옵션을 모두 지정하려는 경우 SnapManager에서는 이러한 옵션을 함께 지정할 수 없으며 오류 메시지 SMSAP-04084: -no-resetlogs 또는 -recover-from-location 중 하나를 지정해야 합니다.
+
+
+
+
+
+== 예
+
+[listing]
+----
+smsap clone create -profile product -backup-label full_offline -newsid PROD_CLONE -clonespec prod_clonespec.xml -label prod_clone-reserve -no-reset-logs
+----

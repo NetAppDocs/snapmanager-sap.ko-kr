@@ -1,0 +1,72 @@
+---
+permalink: windows/task-scheduling-archive-log-file-pruning.html 
+sidebar: sidebar 
+keywords: create, backup, schedule, pruning, prune, archive, log, file, scheduling 
+summary: 백업을 생성할 때 지정된 시간에 아카이브 로그 파일을 정리하도록 예약할 수 있습니다. 
+---
+= 아카이브 로그 파일 잘라내기 예약
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백업을 생성할 때 지정된 시간에 아카이브 로그 파일을 정리하도록 예약할 수 있습니다.
+
+SnapManager를 사용하면 활성 파일 시스템에서 주기적으로 아카이브 로그 파일을 정리할 수 있습니다.
+
+. 다음 명령을 입력합니다.
++
+smsap schedule create-profile profile_name {[-full{-online |-offline |-auto} [-retain [-hourly |-weekly |-weekly |-monthly |-limited] [-verify]|[-data [-filesfiles [files]]|[-tablespaces]] {-offline | -auto}[-weekly]]는 월 [-comment1]을(으)로 보존 | -common-weekly [-prunelogs{-all|-untilSCuntscn|-before {-dateyyyy-mm-dd HH:ss|-monsweeks|-daysweeks|-hoursdays|-hoursprune} - prune-destprune_destedg1, prprpring_desteding_name[-yyyy-time-commentment-time] - neventeedule - monthequently-time
+
++
+|===
+| 원하는 작업 | 그러면... 
+
+
+ a| 
+* 보관 로그 파일 정리 예약 *
+ a| 
+다음 옵션을 지정합니다.
+
+** -prunelogs 를 사용하여 아카이브 로그 파일의 정리 일정을 예약합니다
+** -prune -dest 아카이브 로그 대상에서 아카이브 로그 파일을 정리하려면 선택합니다
+
+
+
+
+ a| 
+* 스케줄 이름을 포함시키십시오 *
+ a| 
+schedule-name 옵션을 지정합니다.
+
+
+
+ a| 
+* 특정 시간 간격으로 아카이브 로그 파일 정리 예약 *
+ a| 
+간격 옵션을 지정하고 다음 간격 클래스에 따라 아카이브 로그 파일을 정리해야 하는지 여부를 지정합니다.
+
+** -hourly
+** 매일
+** 매주
+** - 매월
+** -1시간에만
+
+
+
+
+ a| 
+* 스케줄 작업에 대한 설명을 추가합니다 *
+ a| 
+schedule -comment 옵션을 지정한 다음 설명 문자열을 지정합니다.
+
+
+
+ a| 
+* 스케줄 작업의 시작 시간을 지정합니다 *
+ a| 
+yyyy-mm-dd hh:mm 형식으로 -start-time 옵션을 지정합니다.
+
+|===
+

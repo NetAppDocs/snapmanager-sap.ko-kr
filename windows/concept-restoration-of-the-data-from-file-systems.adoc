@@ -1,0 +1,21 @@
+---
+permalink: windows/concept-restoration-of-the-data-from-file-systems.html 
+sidebar: sidebar 
+keywords: restore, data, alternate, location, file, system, mount, host, restoration 
+summary: 대체 위치에서 데이터를 복구하기 전에 필요한 파일 시스템을 복구하고 로컬 호스트에 마운트해야 합니다. 
+---
+= 파일 시스템에서 데이터 복구
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+대체 위치에서 데이터를 복구하기 전에 필요한 파일 시스템을 복구하고 로컬 호스트에 마운트해야 합니다.
+
+대체 위치에서 복구 작업을 호출하여 대체 파일 시스템에서 활성 파일 시스템으로 파일을 복사할 수 있습니다.
+
+이 작업을 수행하려면 복구 사양 파일을 생성하여 원래 마운트 지점과 원래 스냅샷 복사본 이름을 복원할 대체 마운트 지점을 지정해야 합니다.
+
+
+NOTE: 동일한 파일 시스템이 단일 백업 작업(예: 데이터 파일의 경우 한 번, 로그 파일의 경우 한 번)에서 여러 번 스냅될 수 있기 때문에 스냅샷 복사본 이름은 필수 구성 요소입니다.

@@ -1,0 +1,56 @@
+---
+permalink: windows/reference-the-smosmsapprofile-dump-command.html 
+sidebar: sidebar 
+keywords: run, profile, dump, command, create, jar, file, diagnostic, information, smsap 
+summary: 프로필 덤프 명령을 실행하여 프로필에 대한 진단 정보가 포함된 .jar 파일을 만들 수 있습니다. 
+---
+= smsap 프로파일 덤프 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+프로필 덤프 명령을 실행하여 프로필에 대한 진단 정보가 들어 있는 .jar 파일을 만들 수 있습니다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap profile dump
+-profile profile_name
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* '*'- profile_profile_name_'
++
+덤프 파일을 생성할 프로파일을 지정합니다. 프로파일에는 데이터베이스의 식별자와 기타 데이터베이스 정보가 들어 있습니다.
+
+* ``조용한’
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* * '-verbose' *
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== 예
+
+다음 예에서는 프로파일 sales1에 대한 덤프를 생성합니다.
+
+[listing]
+----
+smsap profile dump -profile SALES1
+Dump file created
+Path: C:\\userhomedirectory\\netapp\\smsap\\3.3.0\\smsap_dump_SALES1_hostname.jar
+----

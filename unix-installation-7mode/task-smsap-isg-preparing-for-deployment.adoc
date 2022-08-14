@@ -1,0 +1,21 @@
+---
+permalink: unix-installation-7mode/task-smsap-isg-prepare-for-deployment.html 
+sidebar: sidebar 
+keywords: deploy, snapmanager, ensure, storage, system, unix, host, minimum, resource, requirement, preparing, prepare, deployment 
+summary: SnapManager를 구축하기 전에 스토리지 시스템과 UNIX 호스트가 최소 리소스 요구 사항을 충족하는지 확인해야 합니다. 
+---
+= 배포를 준비합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 구축하기 전에 스토리지 시스템과 UNIX 호스트가 최소 리소스 요구 사항을 충족하는지 확인해야 합니다.
+
+.단계
+. 필요한 라이센스가 있는지 확인합니다.
+. 지원되는 구성을 확인합니다.
+. 지원되는 스토리지 유형을 확인합니다.
+. UNIX 호스트가 SnapManager 요구 사항을 충족하는지 확인합니다.
+

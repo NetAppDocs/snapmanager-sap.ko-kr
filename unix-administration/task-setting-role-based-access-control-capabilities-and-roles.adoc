@@ -1,0 +1,278 @@
+---
+permalink: unix-administration/task-set-role-based-access-control-capabilities-and-roles.html 
+sidebar: sidebar 
+keywords: enable, role-based, access, control, rbac, snapmanager, snapdrive, capabilities, capability, setting, role, operation 
+summary: 'SnapDrive를 사용하여 SnapManager에 대해 RBAC(역할 기반 액세스 제어)를 설정한 후 역할에 RBAC 기능과 사용자를 추가하여 SnapManager 작업을 수행할 수 있습니다.' 
+---
+= 역할 기반 액세스 제어 기능 및 역할을 설정합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive를 사용하여 SnapManager에 대해 RBAC(역할 기반 액세스 제어)를 설정한 후 역할에 RBAC 기능과 사용자를 추가하여 SnapManager 작업을 수행할 수 있습니다.
+
+* 필요한 것 *
+
+Data Fabric Manager 서버에서 그룹을 생성한 다음 해당 그룹을 운영 스토리지 시스템과 2차 스토리지 시스템 모두에 추가해야 합니다. 다음 명령을 실행합니다.
+
+* dfm group create_smsap_grp _
+* dfm group add_smsap_grpprimary_storage_system_
+* dfm group add_smsap_grpsecondary_storage_system_
+
+
+* 이 작업에 대한 정보 *
+
+Operations Manager 웹 인터페이스 또는 Data Fabric Manager 서버 CLI(명령줄 인터페이스)를 사용하여 RBAC 기능 및 역할을 수정할 수 있습니다.
+
+다음 표에는 SnapManager 작업을 수행하는 데 필요한 RBAC 기능이 나와 있습니다.
+
+[cols="1a,2a,3a"]
+|===
+| SnapManager 작업 | 데이터 보호가 설정되어 있지 않은 경우 RBAC 기능이 필요합니다 | 데이터 보호가 설정된 경우 RBAC 기능이 필요합니다 
+
+
+ a| 
+프로필 생성 또는 프로필 업데이트
+ a| 
+SD.Storage.Read(smsap_grp)
+ a| 
+SD.Storage.Read(SMSAP '__profile_' 데이터 세트)
+
+
+
+ a| 
+프로파일 보호
+ a| 
+DFM.Database.Write(smsap_grp)
+
+SD.Storage.Read(smsap_grp)
+
+SD.Config.Read(smsap_grp)
+
+SD.Config.Write(smsap_grp)
+
+SD.Config.Delete(smsap_grp)
+
+GlobalDataProtection을 참조하십시오
+ a| 
+없음
+
+
+
+ a| 
+백업 생성
+ a| 
+SD.Storage.Read(smsap_grp)
+
+SD.Snapshot.Write(smsap_grp)
+
+SD.Snapshot.Read(smsap_grp)
+
+sd.Snapshot.Delete(sap_grp)
+ a| 
+SD.Storage.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Write(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Delete(SMSAP "__profile_" 데이터 세트)
+
+
+
+ a| 
+백업 생성(DBVERIFY 사용)
+ a| 
+SD.Storage.Read(smsap_grp)
+
+SD.Snapshot.Write(smsap_grp)
+
+SD.Snapshot.Read(smsap_grp)
+
+sd.Snapshot.Delete(sap_grp)
+
+sd.snapshot.Clone(sap_grp)
+ a| 
+SD.Storage.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Write(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Delete(SMSAP "__profile_" 데이터 세트)
+
+sd.snapshot.Clone (SMSAP '__profile_' 데이터 세트)
+
+
+
+ a| 
+백업 생성(RMAN 사용)
+ a| 
+SD.Storage.Read(smsap_grp)
+
+SD.Snapshot.Write(smsap_grp)
+
+SD.Snapshot.Read(smsap_grp)
+
+sd.Snapshot.Delete(sap_grp)
+
+sd.snapshot.Clone(sap_grp)
+ a| 
+SD.Storage.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Write(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Delete(SMSAP "__profile_" 데이터 세트)
+
+sd.snapshot.Clone (SMSAP '__profile_' 데이터 세트)
+
+
+
+ a| 
+백업 복원
+ a| 
+SD.Storage.Read(smsap_grp)
+
+SD.Snapshot.Write(smsap_grp)
+
+SD.Snapshot.Read(smsap_grp)
+
+sd.Snapshot.Delete(sap_grp)
+
+sd.snapshot.Clone(sap_grp)
+
+SD.Snapshot.Restore(smsap_grp)
+ a| 
+SD.Storage.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Write(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Delete(SMSAP "__profile_" 데이터 세트)
+
+sd.snapshot.Clone (SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Restore(SMSAP '__profile_' 데이터 세트)
+
+
+
+ a| 
+백업 삭제
+ a| 
+sd.Snapshot.Delete(sap_grp)
+ a| 
+SD.Snapshot.Delete(SMSAP "__profile_" 데이터 세트)
+
+
+
+ a| 
+백업 검증
+ a| 
+SD.Storage.Read(smsap_grp)
+
+SD.Snapshot.Read(smsap_grp)
+
+SD.Snapshot.Clone(smsap_grp)
+ a| 
+SD.Storage.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Clone(SMSAP '__profile_' 데이터 세트)
+
+
+
+ a| 
+백업 마운트
+ a| 
+SD.Storage.Read(smsap_grp)
+
+SD.Snapshot.Read(smsap_grp)
+
+SD.Snapshot.Clone(smsap_grp)
+ a| 
+SD.Storage.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Clone(SMSAP '__profile_' 데이터 세트)
+
+
+
+ a| 
+백업 마운트 해제
+ a| 
+SD.Snapshot.Clone(smsap_grp)
+ a| 
+SD.Snapshot.Clone(SMSAP '__profile_' 데이터 세트)
+
+
+
+ a| 
+클론 생성
+ a| 
+SD.Storage.Read(smsap_grp)
+
+SD.Snapshot.Read(smsap_grp)
+
+sd.snapshot.Clone(sap_grp)
+ a| 
+SD.Storage.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Read(SMSAP '__profile_' 데이터 세트)
+
+sd.snapshot.Clone (SMSAP '__profile_' 데이터 세트)
+
+
+
+ a| 
+클론 삭제
+ a| 
+SD.Snapshot.Clone(smsap_grp)
+ a| 
+SD.Snapshot.Clone(SMSAP '__profile_' 데이터 세트)
+
+
+
+ a| 
+클론 분할
+ a| 
+SD.Storage.Read(smsap_grp)
+
+SD.Snapshot.Read(smsap_grp)
+
+sd.snapshot.Clone(sap_grp)
+
+sd.Snapshot.Delete(sap_grp)
+
+SD.Storage.Write(smsap_grp)
+ a| 
+SD.Storage.Read(SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Read(SMSAP '__profile_' 데이터 세트)
+
+sd.snapshot.Clone (SMSAP '__profile_' 데이터 세트)
+
+SD.Snapshot.Delete(SMSAP "__profile_" 데이터 세트)
+
+SD.Storage.Write(SMSAP '__profile_' 데이터 세트)
+
+|===
+RBAC 기능 정의에 대한 자세한 내용은 _OnCommand Unified Manager 운영 관리자 관리 가이드_를 참조하십시오.
+
+.단계
+. Operations Manager 콘솔에 액세스합니다.
+. 설정 메뉴에서 * 역할 * 을 선택합니다.
+. 기존 역할을 선택하거나 새 역할을 생성합니다.
+. 데이터베이스 스토리지 리소스에 작업을 할당하려면 * 기능 추가 * 를 클릭합니다.
+. 역할 설정 편집 페이지에서 역할에 대한 변경 사항을 저장하려면 * 업데이트 * 를 클릭합니다.
+
+
+* 관련 정보 *
+
+http://support.netapp.com/documentation/productsatoz/index.html["OnCommand Unified Manager 운영 관리자 관리 가이드"^]

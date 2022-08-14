@@ -1,0 +1,16 @@
+---
+permalink: unix-administration/concept-verify-backup-status.html 
+sidebar: sidebar 
+keywords: snapmanager, integrity, backup, oracle, backup, verification, operation, verify, status 
+summary: SnapManager는 표준 Oracle 백업 검증 작업을 사용하여 백업의 무결성을 확인할 수 있습니다. 
+---
+= 백업 상태를 확인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 표준 Oracle 백업 검증 작업을 사용하여 백업의 무결성을 확인할 수 있습니다.
+
+DBA(데이터베이스 관리자)는 백업 작업의 일부로 또는 다른 시점에 검증을 수행할 수 있습니다. DBA는 호스트 서버의 로드가 적거나 예약된 유지 보수 기간 동안 사용량이 적은 시간에 Verify 작업을 수행하도록 설정할 수 있습니다.

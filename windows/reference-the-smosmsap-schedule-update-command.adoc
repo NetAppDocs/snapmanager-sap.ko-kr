@@ -1,0 +1,81 @@
+---
+permalink: windows/reference-the-smosmsap-schedule-update-command.html 
+sidebar: sidebar 
+keywords: command, update, schedule, backup, smsap 
+summary: 이 명령은 백업 일정을 업데이트합니다. 
+---
+= smssap schedule update 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령은 백업 일정을 업데이트합니다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap schedule update
+-profile profile_name
+-schedule-name schedule_name
+[-schedule-comment schedule_comment]
+-interval {-hourly | -daily | -weekly | -monthly | -onetimeonly}
+-cronstring cron_string
+-start-time {start_time <yyyy-MM-dd HH:mm>}
+-runasuser runasuser
+[-taskspec taskspec]
+-force
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* '*'- profile_profile_name_'
++
+백업을 예약하려는 데이터베이스와 관련된 프로필의 이름을 지정합니다. 프로파일에는 데이터베이스의 식별자와 기타 데이터베이스 정보가 들어 있습니다.
+
+* * ``schedule-name_schedule_name_'
++
+일정에 대해 제공하는 이름을 지정합니다.
+
+* '*'- schedule-comment_schedule_comment_'
++
+백업 예약에 대해 설명하는 선택적 주석을 지정합니다.
+
+* * ``간격{-hourly|-daily|-weekly|-monthly|-onetime only}' *
++
+백업이 생성되는 시간 간격을 나타냅니다. 백업을 매시간, 매일, 매주, 매월 또는 한 번만 예약할 수 있습니다.
+
+* * ``시승_cron_string_' *
++
+시승(cr데모)을 사용하여 백업을 예약하도록 지정합니다. Cron 식은 CronTrigger의 인스턴스를 구성하는 데 사용됩니다. Cron 식은 실제로 7개의 하위 표현식으로 구성된 문자열입니다.
+
++
+** 1은 초를 나타냅니다
+** 2는 분을 나타냅니다
+** 3은 시간을 나타냅니다
+** 4는 한 달의 날짜를 나타냅니다
+** 5는 월을 나타냅니다
+** 6은 1주일 동안의 날짜를 나타냅니다
+** 7은 연도를 나타냅니다(선택 사항).
+
+
+* * ``start-time_yyyy-mm-dd HH:MM_' *
++
+스케줄 작업의 시작 시간을 지정합니다. 예약 시작 시간은 yyyy-mm-dd HH:mm 형식으로 포함되어야 합니다.
+
+* * ``runasuser_runasuser_' *
++
+백업을 예약하는 동안 예약된 백업 작업의 사용자를 변경하도록 지정합니다.
+
+* '*'-taskspec_taskspec_'
++
+백업 작업의 사전 처리 작업 또는 사후 처리 작업에 사용할 수 있는 작업 사양 XML 파일을 지정합니다. taskspec 옵션을 제공하는 XML 파일의 전체 경로를 제공해야 합니다.
+
+

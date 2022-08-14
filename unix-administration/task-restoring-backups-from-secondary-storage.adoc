@@ -1,0 +1,77 @@
+---
+permalink: unix-administration/task-restore-backups-from-secondary-storage.html 
+sidebar: sidebar 
+keywords: restore, protect, backup, secondary, storage, copy, data, back, primary, storage, restoring 
+summary: 보조 스토리지에서 보호된 백업을 복원하고 데이터를 기본 스토리지로 다시 복사할 방법을 선택할 수 있습니다. 
+---
+= 보조 스토리지에서 백업을 복원합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+보조 스토리지에서 보호된 백업을 복원하고 데이터를 기본 스토리지로 다시 복사할 방법을 선택할 수 있습니다.
+
+* 이 작업에 대한 정보 *
+
+'backup restore' 명령을 '-from-secondary' 옵션과 함께 사용하여 보조 스토리지에서 데이터를 복원할 수 있습니다. `-from-secondary' 옵션을 지정하지 않으면 SnapManager가 운영 스토리지의 스냅샷 복사본에서 데이터를 복원합니다.
+
+운영 스토리지에 백업이 있는 경우에는 '-from-secondary' 옵션을 사용할 수 없습니다. 보조 스토리지에서 백업을 복구하려면 먼저 운영 백업을 해제해야 합니다. 임시 볼륨을 사용하는 경우 '-temp-volume' 옵션을 사용하여 볼륨을 지정해야 합니다.
+
+'-from-secondary' 옵션을 지정할 때마다 '-copy-id' 옵션을 지정해야 합니다. 보조 스토리지 시스템에 둘 이상의 백업이 있는 경우 복원 작업에 사용할 보조 스토리지의 백업 복사본을 지정하는 데 '-copy-id' 옵션이 사용됩니다.
+
+
+NOTE: 7-Mode에서 작동하는 Data ONTAP를 사용하는 경우 '-copy-id' 옵션에 유효한 값을 지정해야 합니다. 그러나 clustered Data ONTAP을 사용하는 경우에는 '-copy-id' 옵션이 필요하지 않습니다.
+
+보조 스토리지에서 데이터를 복구할 때 SnapManager은 먼저 보조 스토리지 시스템에서 운영 스토리지 시스템으로 직접 데이터 복구를 시도합니다(호스트 개입 없음). SnapManager에서 이 유형의 복구를 수행할 수 없는 경우(예: 파일이 파일 시스템의 일부가 아닌 경우) SnapManager는 호스트 측 파일 복사본 복원으로 돌아갑니다. SnapManager에는 보조 스토리지에서 호스트 측 파일 복사 복구를 수행하는 두 가지 방법이 있습니다. SnapManager가 선택하는 방법은 'msap.config' 파일에 설정되어 있다.
+
+* _restore.secondaryAccessPolicy_ = * direct * "인 경우 SnapManager는 보조 스토리지에 있는 데이터를 복제하고 보조 스토리지 시스템에서 호스트로 클론 복제된 데이터를 마운트한 다음 클론 데이터를 활성 환경에 복사합니다.
++
+기본 보조 액세스 정책입니다.
+
+* _restore.secondaryAccessPolicy_= * indirect * "인 경우 SnapManager는 먼저 운영 스토리지의 임시 볼륨에 데이터를 복사하고, 임시 볼륨에서 호스트로 데이터를 마운트한 다음, 임시 볼륨의 데이터를 활성 환경으로 복사합니다.
++
+이 정책은 호스트에서 보조 스토리지 시스템에 직접 액세스할 수 없는 경우에만 사용해야 합니다. 간접 방법을 사용한 복원은 두 개의 데이터 복사본이 생성되기 때문에 직접 방법보다 두 배 더 오래 걸립니다.
+
+
+
+.단계
+. 다음 작업 중 하나를 수행합니다.
++
+[cols="1a,3a"]
+|===
+| 원하는 작업 | 그러면... 
+
+
+ a| 
+선택한 백업이 운영 스토리지에 있는 경우 전체 데이터베이스를 복원합니다
+ a| 
+다음 명령을 입력합니다.
+
+"* smsap 백업 복원 - profile_profile_name_-label_label_-complete-recover-alllogs[-copy-id_id_] *
+
+
+
+ a| 
+선택한 백업이 운영 스토리지에 없는 경우 전체 데이터베이스를 복구합니다
+ a| 
+다음 명령을 입력합니다. "* smsap 백업 restore-profile_profile_name_-label_label_-complete-recover-alllogs-from-secondary [-temp-volume_<temp_volume>_] [-copy -id_id_] *
+
+|===
+
+
+'''
+
+
+== 예
+
+다음 명령을 실행하면 보조 스토리지 시스템에서 보호된 백업이 복구됩니다.
+
+[listing]
+----
+smsap backup restore -profile PAYDB -label daily_monday -complete
+-recover alllogs -from-secondary -copy-id 3042 -temp-volume smsap_scratch_restore_volume
+Operation Id [8abc011215d385920115d38599470001] succeeded.
+----
+'''

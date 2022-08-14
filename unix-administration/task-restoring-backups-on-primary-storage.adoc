@@ -1,0 +1,198 @@
+---
+permalink: unix-administration/task-restore-backups-on-primary-storage.html 
+sidebar: sidebar 
+keywords: backup, restore, command, database, primary, storage, restoring 
+summary: 백업 복원 명령을 사용하여 기본 스토리지에서 데이터베이스 백업을 복원할 수 있습니다. 
+---
+= 기본 스토리지에서 백업을 복원합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"backup restore" 명령을 사용하여 운영 스토리지에 데이터베이스 백업을 복원할 수 있습니다.
+
+* 이 작업에 대한 정보 *
+
+SnapManager는 기본적으로 볼륨 기반 빠른 복원을 수행하고 자격 확인 정보를 제공합니다. 필요한 경우 일부 자격 검사를 재정의할 수 있습니다. 빠른 복원을 사용하여 백업을 수행할 수 없는 경우 빠른 복원 적격성 검사를 사용하지 않도록 설정하고 파일 기반 복원을 수행할 수 있습니다.
+
+'backup restore' 명령 옵션을 사용하여 SnapManager에서 백업의 전체 또는 일부를 복구할지 여부를 지정할 수 있습니다. 또한 SnapManager를 사용하면 단일 사용자 작업에서 백업에서 데이터 파일 또는 테이블스페이스와 함께 제어 파일을 복원할 수 있습니다. 테이블스페이스 및 데이터 파일과 함께 제어 파일을 복원하기 위해 '-complete'와 함께 '-controlfiles'를 포함할 수 있습니다.
+
+다음 옵션 중 하나를 선택하여 백업을 복원할 수 있습니다.
+
+[cols="1a,1a"]
+|===
+| 복원하려는 경우... | 사용... 
+
+
+ a| 
+모든 테이블스페이스와 데이터 파일이 포함된 전체 백업
+ a| 
+'-완료'
+
+
+
+ a| 
+특정 테이블스페이스의 목록입니다
+ a| 
+'-테이블스페이스'
+
+
+
+ a| 
+특정 데이터 파일
+ a| 
+'-파일'
+
+
+
+ a| 
+제어 파일만
+ a| 
+'-제어 파일'
+
+
+
+ a| 
+테이블스페이스, 데이터 파일 및 제어 파일
+ a| 
+'-완료-제어 파일'
+
+|===
+또한 '-restorespec'를 지정하여 대체 위치에서 백업을 복원할 수도 있습니다.
+
+'-recover'를 포함하는 경우 데이터베이스를 다음 상태로 복구할 수 있습니다.
+
+* 데이터베이스에서 발생한 마지막 트랜잭션(모든 로그)
+* 특정 날짜 및 시간입니다
+* 특정 Oracle SCN(시스템 변경 번호)
+* 백업 시간(로그 없음)
+* 복구만
+
+
+
+NOTE: 날짜 및 시간 복구와 SCN 복구는 모두 시점 복구입니다.
+
+SnapManager(3.2 이상)는 아카이브 로그 파일을 사용하여 복구된 데이터베이스 백업을 자동으로 복구하는 기능을 제공합니다. 아카이브 로그 파일을 외부 위치에서 사용할 수 있더라도 '-recover-from-location 옵션'을 지정하면 SnapManager는 외부 위치의 아카이브 로그 파일을 사용하여 복원된 데이터베이스 백업을 복구합니다.
+
+SnapManager는 Oracle에 외부 위치를 제공합니다. 그러나 Oracle은 외부 대상에서 파일을 식별하지 않습니다. 이 동작은 플래시 복구 영역 대상에서 볼 수 있습니다. 이러한 문제는 Oracle의 문제이며 해결 방법은 항상 이러한 데이터베이스 레이아웃에 아카이브 로그 파일을 백업하는 것입니다.
+
+일관되지 않은 SCN 또는 날짜가 제공된 경우, 복구라는 오류 메시지와 함께 마지막으로 복구된 정합성 보장 지점에서 복구가 중지됩니다. 정합성 보장 상태로 수동으로 복구를 수행해야 합니다.
+
+적용된 로그가 없는 경우 복구를 위해 SnapManager는 백업 중에 생성된 마지막 아카이브 로그 파일의 마지막 SCN이 될 때까지 복구됩니다. 이 SCN이 완료될 때까지 데이터베이스가 일관되면 데이터베이스가 성공적으로 열립니다. 이 시점에 데이터베이스의 정합성이 보장되지 않는 경우 SnapManager는 데이터베이스가 이미 일관되어 있는 경우 데이터베이스를 열 수 있는 데이터베이스를 계속 엽니다.
+
+
+NOTE: SnapManager는 아카이브 로그 전용 백업 복구를 지원하지 않습니다.
+
+아카이브 로그가 NFS 마운트 지점에서 디스테이징되는 경우 가 스냅샷 지원 스토리지가 아닌 경우 SnapManager를 사용하면 프로필을 사용하여 복원된 데이터베이스 백업을 복구할 수 있습니다. 스냅샷 기능이 없는 스토리지에서 SnapManager 작업을 수행하기 전에 'msap.config'에서 'archivedLogs.exclude'에 대한 대상을 추가해야 합니다.
+
+프로파일을 만들기 전에 제외 매개 변수를 설정해야 합니다. SnapManager 구성 파일에서 exclude 매개 변수를 설정한 후에만 프로파일을 생성할 수 있습니다.
+
+백업이 이미 마운트되어 있는 경우 SnapManager는 백업을 다시 마운트하지 않으며 이미 마운트된 백업을 사용합니다. 백업이 다른 사용자에 의해 마운트되고 현재 사용자가 이전에 마운트된 백업에 액세스할 수 없는 경우 다른 사용자가 권한을 제공해야 합니다. 모든 아카이브 로그 파일에는 그룹 소유자에 대한 읽기 권한이 있습니다. 백업이 다른 사용자 그룹에 의해 마운트되는 경우 현재 사용자는 권한을 얻지 못할 수 있습니다. 사용자는 마운트된 아카이브 로그 파일에 대한 권한을 수동으로 지정한 다음 복구 또는 복구를 다시 시도할 수 있습니다.
+
+RAC(Real Application Clusters) 환경에서 데이터베이스 백업 복구
+
+RAC 환경에서 데이터베이스 백업을 복구하는 동안 필요한 아카이브 로그 파일을 찾을 수 없을 때 Oracle은 아카이브 로그 파일을 요청하고 RAC 데이터베이스의 다른 스레드 및 변경 번호 간에 전환합니다. SnapManager for SAP는 최선의 노력으로 데이터베이스 복구를 시도합니다. RAC 환경에서 데이터베이스 백업의 성공적인 복구는 백업의 아카이브 로그 파일의 가용성에 따라 달라집니다.
+
+RAC 데이터베이스에 권장되는 복구 메커니즘은 다음과 같습니다.
+
+* 모든 아카이브 로그 파일을 백업에서 사용할 수 있는지 또는 모든 아카이브 로그 파일을 하나의 외부 아카이브 로그 대상에서 사용할 수 있는지 확인합니다.
+* 여러 개의 외부 아카이브 로그 대상이 제공된 경우 모든 스레드에 대한 외부 아카이브 로그 대상을 지정하는 동안 아카이브 로그 파일의 중첩을 제공할 수 있습니다.
++
+예를 들어, 외부 아카이브 로그 위치 - 1 - 100개의 아카이브 로그 파일을 가질 수 있고, 외부 아카이브 로그 위치 - II는 98 - 200개의 아카이브 로그 파일을 가질 수 있으며, 외부 아카이브 로그 위치 - III는 198 - 300개의 아카이브 로그 파일을 가질 수 있습니다.
+
+* 아카이브 로그 파일을 보관하는 동안 모든 아카이브 로그 파일을 삭제하는 대신 SCN 또는 날짜 전까지 아카이브 로그 파일을 삭제하여 백업에 동일한 아카이브 로그 파일을 가질 수 있습니다.
+
+
+덤프 옵션을 선택 매개 변수로 지정하여 복원 작업이 성공하거나 실패한 후 덤프 파일을 수집할 수 있습니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smsap 백업 복원 - profile_profile_name_-label_label_-complete-recover-alllogs [-recover-from-location_path_[_, path2_]] -dump-verbose *
+
++
+* 예 *
+
++
+``smssap backup restore-profile targetdb1_proF1-label full_bkup_sales_w11_08-complete-recover-alllogs-verbose*'
+
+. 다른 시나리오에 대한 데이터를 복원하려면 다음 중 하나를 수행합니다.
++
+[cols="2a,4a"]
+|===
+| 복원하려는 경우... | 명령 예 
+
+
+ a| 
+* 제어 파일 없이 데이터베이스를 완료하고 특정 SCN 번호(3794392)로 복구합니다. 이 경우 현재 제어 파일이 존재하지만 모든 데이터 파일이 손상되거나 손실됩니다. 기존 전체 온라인 백업에서 해당 SCN * 바로 이전의 시점으로 데이터베이스를 복원 및 복구합니다
+ a| 
+``smssap backup restore-profile targetdb1_proF1 - label full_bkup_sales_11/08 - complete-recover - until 3794392 - verbose*'
+
+
+
+ a| 
+* 제어 파일 없이 데이터베이스를 완료하고 최대 날짜 및 시간까지 복구합니다. *
+ a| 
+``smssap backup restore-profile targetdb1_proF1 - label full_bkup_sales_w11_08 - complete-recover - until 2008-09-15:15:29:23 - verbose*'
+
+
+
+ a| 
+* 제어 파일 없이 데이터베이스를 완료하고 최대 데이터와 시간으로 복구합니다. 이 경우 현재 제어 파일이 존재하지만 모든 데이터 파일이 손상되거나 손실되거나 특정 시간 후에 논리적 오류가 발생했습니다. 기존 전체 온라인 백업에서 장애 발생 직전의 날짜 및 시간으로 데이터베이스를 복원 및 복구합니다.*
+ a| 
+"* smssap backup restore-profile targetdb1_proF1 -label full_bkup_sales_w11_08 - complete-recover - until "2008-09-15:15:29:23" - verbose *"
+
+
+
+ a| 
+* 제어 파일이 없는 부분 데이터베이스(하나 이상의 데이터 파일)와 사용 가능한 모든 로그를 사용하여 복구합니다. 이 경우 현재 제어 파일이 존재하지만 하나 이상의 데이터 파일이 손상되거나 손실됩니다. 이러한 데이터 파일을 복원하고 사용 가능한 모든 로그를 사용하여 기존 전체 온라인 백업에서 데이터베이스를 복구합니다. *
+ a| 
+"* smsap backup restore-profile targetdb1_proF1 -label full_bkup_sales_w11_08 -files/oracle/FLA/sapdata1/sr3_1/oracle/FLA/sapdata1/sr3.data2/oracle/fla/sap1/sr3_dataSID -recover -data3
+
+
+
+ a| 
+* 제어 파일이 없는 부분 데이터베이스(하나 이상의 테이블스페이스)를 사용하고 사용 가능한 모든 로그를 사용하여 복구합니다. 이 경우 현재 제어 파일이 존재하지만 하나 이상의 테이블스페이스가 삭제되거나 테이블스페이스에 속한 하나 이상의 데이터 파일이 손상되거나 손실됩니다. 사용 가능한 모든 로그를 사용하여 이러한 테이블스페이스를 복원하고 기존 전체 온라인 백업에서 데이터베이스를 복구합니다. *
+ a| 
+'* smssap backup restore-profile targetdb1_proF1 -label full_bkup_sales_11/08 - 테이블스페이스 users -recover-alllogs -verbose * '
+
+
+
+ a| 
+* 사용 가능한 모든 로그를 사용하여 파일을 제어하고 복구합니다. 이 경우 데이터 파일이 존재하지만 모든 제어 파일이 손상되거나 손실됩니다. 제어 파일만 복구하고 사용 가능한 모든 로그를 사용하여 기존 전체 온라인 백업에서 데이터베이스를 복구합니다. *
+ a| 
+``smssap backup restore-profile targetdb1_proF1-label full_bkup_sales_11/08 - controlfiles-recover-alllogs-verbose*'
+
+
+
+ a| 
+* 제어 파일 없이 데이터베이스를 완료하고 백업 제어 파일과 사용 가능한 모든 로그를 사용하여 복구합니다. 이 경우 모든 데이터 파일이 손상되거나 손실됩니다. 제어 파일만 복구하고 사용 가능한 모든 로그를 사용하여 기존 전체 온라인 백업에서 데이터베이스를 복구합니다. *
+ a| 
+'* smssap backup restore-profile targetdb1_proF1 -label full_bkup_sales_w11_08 - complete-using-backup-controlfile-recover-alllogs-verbose *
+
+
+
+ a| 
+* 외부 아카이브 로그 위치의 아카이브 로그 파일을 사용하여 복원된 데이터베이스를 복구합니다. *
+ a| 
+'* smssap backup restore-profile targetdb1_proF1 -label full_bkup_sales_11/08 - complete-using-backup-controlfile-recover-alllogs-recover-from-location/user1/archive-verbose * '
+
+|===
+. 빠른 복원 적격성 검사를 검토합니다.
++
+* 예 *
+
++
+다음 명령을 입력합니다.
+
++
+``smssap backup restore-profile targetdb1_proF1 - label full_bkup_sales_11/08 - complete-recover-alllogs-recover-from-location/user1/archive-verbose*'
+
+. 적격성 검사에서 필수 검사에 실패한 검사가 없고 특정 조건을 재정의할 수 있는 경우 복원 프로세스를 계속하려면 다음을 입력합니다.
++
+'* 백업 복원 - 고속 재정의 * '
+
+. '-recover-from-location' 옵션을 사용하여 외부 아카이브 로그 위치를 지정합니다.
+

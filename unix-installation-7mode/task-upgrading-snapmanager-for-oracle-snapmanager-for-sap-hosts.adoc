@@ -1,0 +1,90 @@
+---
+permalink: unix-installation-7mode/task-upgrade-snapmanager-for-oracle-snapmanager-for-sap-hosts.html 
+sidebar: sidebar 
+keywords: upgrade, exist, host, version, snapmanager, simultaneous, result, schedule, upgrading 
+summary: 모든 기존 호스트를 업그레이드하여 최신 버전의 SnapManager를 사용할 수 있습니다. 모든 호스트가 동시에 업그레이드됩니다. 그러나 이 경우 해당 시간 동안 모든 SnapManager 호스트와 예약된 작업의 다운타임이 발생할 수 있습니다. 
+---
+= SnapManager 호스트를 업그레이드합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+모든 기존 호스트를 업그레이드하여 최신 버전의 SnapManager를 사용할 수 있습니다. 모든 호스트가 동시에 업그레이드됩니다. 그러나 이 경우 해당 시간 동안 모든 SnapManager 호스트와 예약된 작업의 다운타임이 발생할 수 있습니다.
+
+.단계
+. 호스트 시스템에 루트 사용자로 로그인합니다.
+. CLI(Command-Line Interface)에서 설치 파일을 다운로드한 위치로 이동합니다.
+. 파일을 실행할 수 없는 경우 사용 권한을 변경합니다.(* chmod 544 netapp.smsap**
+. SnapManager 서버를 중지합니다.
++
+'* smsap_server stop*'
+
+. UNIX 호스트에 따라 SnapManager를 설치합니다.
++
+[cols="2a,3a"]
+|===
+| 운영 체제가... | 그런 다음... 
+
+
+ a| 
+* Solaris(SPARC64) *
+ a| 
+'*#./netapp.smsap.SunOS-SPARC64-version_number.bin *'
+
+
+
+ a| 
+* Solaris(x86_64) *
+ a| 
+'*#./netapp.smsap.sunos-x64-version_number.bin *'
+
+
+
+ a| 
+* AIX(PPC64) *
+ a| 
+'*#./netapp.smsap.aix-ppc64-version_number.bin *'
+
+
+
+ a| 
+Linux x86 *
+ a| 
+'*#./netapp.smsap.linux-x86-version_number.bin *
+
+
+
+ a| 
+Linux x64 *
+ a| 
+'*#./netapp.smsap.linux-x64-version_number.bin *'
+
+|===
+. Introduction * 페이지에서 * Enter * 를 눌러 계속합니다.
++
+'기존 SnapManager for SAP Detected' 메시지가 표시됩니다.
+
+. Enter * 를 누릅니다.
+. 명령 프롬프트에서 다음을 수행합니다.
++
+.. 운영 체제 사용자의 기본값을 ' * ora * _sid_'로 변경합니다.
++
+'_sid_'는 SAP 데이터베이스의 시스템 식별자입니다.
+
+.. 운영 체제 그룹에 대한 올바른 값을 입력하거나 * Enter * 를 눌러 기본값을 적용합니다.
+.. 서버 시작 유형에 맞는 값을 입력하거나 * Enter * 를 눌러 기본값을 적용합니다.
+
+
++
+구성 요약이 표시됩니다.
+
+. 계속하려면 * Enter * 를 누르십시오.
++
+기존 SnapManager for SAP 제거가 시작되었다는 메시지가 표시됩니다
+
++
+제거가 완료되고 최신 버전의 SnapManager가 설치됩니다.
+
+

@@ -1,0 +1,39 @@
+---
+permalink: windows/task-configure-e-mail-notification-for-an-existing-profile.html 
+sidebar: sidebar 
+keywords: update, profile, configure, receive, email, notification, completion, database, operation, exist 
+summary: 프로필을 업데이트할 때 데이터베이스 작업이 완료되면 이메일 알림을 받도록 을 구성할 수 있습니다. 
+---
+= 기존 프로필에 대한 이메일 알림을 구성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+프로필을 업데이트할 때 데이터베이스 작업이 완료되면 이메일 알림을 받도록 을 구성할 수 있습니다.
+
+
+
+== 필요한 것
+
+* 경고가 전송되는 이메일 주소를 구성해야 합니다.
+* 알림을 보낼 단일 이메일 주소 또는 여러 이메일 주소를 입력해야 합니다.
++
+여러 주소에 대해 쉼표로 구분된 목록을 사용할 수 있습니다. 쉼표와 다음 이메일 주소 사이에 공백이 없어야 합니다. 필요에 따라 이메일에 제목을 추가할 수도 있습니다.
+
++
+
+NOTE: 큰따옴표 안에 여러 전자 메일 주소 집합을 입력해야 합니다.
+
+
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap profile update -profile_profile_[ -profile -profile -profile -profile -profile -profile -profile -password -profile_password_] [-database -dbname_db_dbname_ -host_db_host_[-sid_sid_] [-login-username_db_username_ -password_db_password] [{tnm_login_name]duration -rman_name] [{nm_name]daily_name]을(매일_rman_duration_nm_name]{m_name]_name]{userm_name]_name]_name=return_name=return_nm_name]{m_name]{m_name=return_name]{m_name]{m_name]_name]_name_name_name_name=duration_name=return_name_name]개_name]개_name]개_name= [-duration_m_]] [-comment_comment_] [-snapname-pattern_pattern_] [[[]]| [[]][-notification [-success-email_email_address1_,_email_address2__subject_subject_subject_subject_] [-failure-email_email_address_1_,_subject_pattern]
+
++
+'성공' 옵션을 사용하면 성공적인 데이터베이스 작업에 대해서만 알림을 받고 실패한 데이터베이스 작업에 대해서만 알림을 받으려면 '실패' 옵션을 사용할 수 있습니다.
+
+

@@ -1,0 +1,32 @@
+---
+permalink: windows/task-change-the-retention-policy-default-behavior.html 
+sidebar: sidebar 
+keywords: backup, expire, retention, policy, snapmanager, delete, set 
+summary: 보존 정책에 따라 백업이 만료되면 SnapManager는 보존 설정을 기반으로 백업을 삭제할지 여부를 결정합니다. 백업 삭제는 기본 동작입니다. 이 기본 동작을 변경하고 보호되지 않는 백업을 해제하도록 선택할 수 있습니다. 
+---
+= 보존 정책 기본 동작을 변경합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+보존 정책에 따라 백업이 만료되면 SnapManager는 보존 설정을 기반으로 백업을 삭제할지 여부를 결정합니다. 백업 삭제는 기본 동작입니다. 이 기본 동작을 변경하고 보호되지 않는 백업을 해제하도록 선택할 수 있습니다.
+
+
+
+== 이 작업에 대해
+
+기본적으로 Snap Manager는 만료 시 백업을 삭제합니다.
+
+.단계
+. 다음 기본 위치에 액세스합니다.
++
+기본 sap 설치 위치\properties\smsap.config
+
+. 'msap.config' 파일을 편집합니다.
+. 'msap.config' 파일의 'stain.alarmerFreeExpiredBackups' 속성을 * true * 로 설정합니다.
++
+예를 들어, ' * retain.al,assemblyExpiredBackups = true *'입니다
+
+

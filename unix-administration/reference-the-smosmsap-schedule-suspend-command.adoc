@@ -1,0 +1,37 @@
+---
+permalink: unix-administration/reference-the-smosmsap-schedule-suspend-command.html 
+sidebar: sidebar 
+keywords: command, suspend, backup, schedule, resume, smsap 
+summary: 이 명령은 백업 스케줄이 재개될 때까지 백업 스케줄을 일시 중단합니다. 
+---
+= smsap schedule suspend 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령은 백업 스케줄이 재개될 때까지 백업 스케줄을 일시 중단합니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap schedule suspend -profile _profile_name_
+-schedule-name _schedule_name_ [-quiet | -verbose\]]
+----
+
+
+== 매개 변수
+
+* '*-profile_profile_name_*'
++
+백업 일정을 일시 중단하려는 데이터베이스와 관련된 프로파일의 이름을 지정합니다. 프로파일에는 데이터베이스의 식별자와 기타 데이터베이스 정보가 들어 있습니다.
+
+* '*-schedule-name_schedule_name_*'
++
+백업 스케줄을 생성하는 동안 제공한 스케줄 이름을 지정합니다.
+
+

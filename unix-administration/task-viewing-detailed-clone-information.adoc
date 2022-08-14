@@ -1,0 +1,39 @@
+---
+permalink: unix-administration/task-view-detailed-clone-information.html 
+sidebar: sidebar 
+keywords: view, detail, information, clone, show, command 
+summary: clone show 명령을 사용하여 특정 클론에 대한 자세한 정보를 볼 수 있습니다. 
+---
+= 자세한 클론 정보를 봅니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"clone show" 명령을 사용하여 특정 클론에 대한 자세한 정보를 볼 수 있습니다.
+
+* 이 작업에 대한 정보 *
+
+"clone show" 명령은 다음 정보를 표시합니다.
+
+* 클론 시스템 식별자 및 클론 ID
+* 클론 작업 상태입니다
+* 클론 생성 시작 및 종료 날짜 또는 시간입니다
+* 클론 레이블
+* 주석 복제
+* 백업 레이블 및 ID
+* 소스 데이터베이스
+* 백업 시작 및 종료 시간입니다
+* 데이터베이스 이름, 테이블스페이스 및 데이터 파일
+* 데이터 파일이 포함된 호스트 이름 및 파일 시스템
+* 스토리지 시스템 볼륨 및 클론을 지원하는 스냅샷 복사본
+* 클론이 운영 스토리지 또는 보조 스토리지의 백업을 사용하여 생성되었는지 여부
+
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap clone show -profile_profile_name_[-label_label_|-id_GUID_] *
+
+

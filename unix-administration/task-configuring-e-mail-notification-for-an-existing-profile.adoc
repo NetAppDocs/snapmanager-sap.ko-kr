@@ -1,0 +1,33 @@
+---
+permalink: unix-administration/task-configure-e-mail-notification-for-an-existing-profile.html 
+sidebar: sidebar 
+keywords: updating, update, profile, configure, receive, email, notification, completion, database, operation, configuring, exist 
+summary: 프로필을 업데이트할 때 데이터베이스 작업이 완료되면 이메일 알림을 받도록 을 구성할 수 있습니다. 
+---
+= 기존 프로필에 대한 이메일 알림을 구성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+프로필을 업데이트할 때 데이터베이스 작업이 완료되면 이메일 알림을 받도록 을 구성할 수 있습니다.
+
+* 필요한 것 *
+
+* 경고가 전송되는 이메일 주소를 구성해야 합니다.
+* 알림을 보낼 단일 이메일 주소 또는 여러 이메일 주소를 입력해야 합니다.
++
+여러 주소에 대해 쉼표로 구분된 목록을 사용할 수 있습니다. 쉼표와 다음 이메일 주소 사이에 공백이 없어야 합니다. 필요에 따라 이메일에 제목을 추가할 수도 있습니다.
+
+
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap profile update -profile_profile_[ -profile -profile -profile -profile -profile -profile -profile -password -profile_password_] [-database -dbname_db_dbname_ -host_db_host_[ -sid_db_sid_] [-login -username_db_username_username_name_name_name _ -port_db_db_port_port_]] [{n<_rman_duration_rman_name]]lman_name]일 단위 이름 _n_][-duration_m_]] [-comment_comment_] [-snapname-pattern_pattern_] [[-protect[-protection-policy_policy_name_]]|[-nobprotect] [-notification[-success-email_email_address 1, email_subject_pattern_] [-subject_subject_subject_subject_subject_subject_subject_email_subject
+
++
+성공 옵션을 사용하면 성공적인 데이터베이스 작업에 대해서만 알림을 받고 실패한 데이터베이스 작업에 대해서만 알림을 받는 실패 옵션을 사용할 수 있습니다.
+
+

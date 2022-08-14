@@ -1,0 +1,104 @@
+---
+permalink: unix-administration/reference-supported-partition-devices.html 
+sidebar: sidebar 
+keywords: partition, device, support, snapmanager 
+summary: SnapManager에서 지원되는 다른 파티션 장치를 알고 있어야 합니다. 
+---
+= 지원되는 파티션 장치
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager에서 지원되는 다른 파티션 장치를 알고 있어야 합니다.
+
+다음 표는 파티션 정보와 다른 운영 체제에서 사용할 수 있는 방법을 제공합니다.
+
+[cols="3a,1a,1a,1a,1a"]
+|===
+| 운영 체제 | 단일 파티션 | 다중 파티션 | 비 분할 장치 | 파일 시스템 또는 원시 디바이스 
+
+
+ a| 
+Red Hat Enterprise Linux 5배
+
+또는
+
+Oracle Enterprise Linux 5배
+ a| 
+예
+ a| 
+아니요
+ a| 
+아니요
+ a| 
+EXT3 *
+
+
+
+ a| 
+Red Hat Enterprise Linux 6x
+
+또는
+
+Oracle Enterprise Linux 6x
+ a| 
+예
+ a| 
+아니요
+ a| 
+아니요
+ a| 
+ext3 또는 ext4 *
+
+
+
+ a| 
+SUSE Linux Enterprise Server 11
+ a| 
+예
+ a| 
+아니요
+ a| 
+아니요
+ a| 
+EXT3 *
+
+
+
+ a| 
+SUSE Linux Enterprise Server 10
+ a| 
+아니요
+ a| 
+아니요
+ a| 
+예
+ a| 
+Ext3 ***
+
+
+
+ a| 
+*
+
+비 MPIO 환경의 경우 다음 명령을 입력합니다.
+
+'fdisk-us-f-L-q/dev/device_name'
+
+MPIO 환경의 경우 다음 명령을 입력합니다.
+
+* 'fdisk-us-f-L-q/dev/device_name'
+* 'kpartx-a-p p /dev/mapper/device_name'
+
+
+
+
+ a| 
+* _ * _ * * _ * _ * * _ * _ *
+
+해당 없음.
+
+|===
+지원되는 운영 체제 버전에 대한 자세한 내용은 상호 운용성 매트릭스 를 참조하십시오.

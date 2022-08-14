@@ -1,0 +1,39 @@
+---
+permalink: windows/concept-how-to-collect-dump-files.html 
+sidebar: sidebar 
+keywords: dump, snapmanager, command, collect, file, successful, fail, operation 
+summary: SnapManager 명령에 -dump를 포함하여 SnapManager 작업이 성공하거나 실패한 후 덤프 파일을 수집할 수 있습니다. 
+---
+= 덤프 파일을 수집하는 방법
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager 명령에 '-dump'를 포함하여 SnapManager 작업이 성공하거나 실패한 후 덤프 파일을 수집할 수 있습니다.
+
+다음 SnapManager 작업에 대한 덤프 파일을 수집할 수 있습니다.
+
+* 프로파일 작성
+* 프로파일을 업데이트하는 중입니다
+* 백업을 생성하는 중입니다
+* 백업을 확인하는 중입니다
+* 백업을 삭제하는 중입니다
+* 백업 가용 시간 단축
+* 백업을 마운트하는 중입니다
+* 백업 마운트 해제
+* 백업 복원 중
+* 클론 생성
+* 클론 삭제
+
+
+
+NOTE: 프로파일을 생성할 때 작업이 성공한 경우에만 덤프 파일을 수집할 수 있습니다. 프로파일을 만드는 동안 오류가 발생하면 'smsap system dump' 명령을 사용해야 합니다. 성공한 프로파일의 경우, 'msap operation dump', 'msap profile dump' 명령어를 사용해 dump 파일을 수집할 수 있다.
+
+* 예 *
+
+[listing]
+----
+ smsap backup create -profile targetdb1_prof1 -auto -full -online -dump
+----

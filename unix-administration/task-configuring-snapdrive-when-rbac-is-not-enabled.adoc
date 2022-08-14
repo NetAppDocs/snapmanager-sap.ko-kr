@@ -1,0 +1,38 @@
+---
+permalink: unix-administration/task-configure-snapdrive-when-rbac-is-not-enabled.html 
+sidebar: sidebar 
+keywords: register, root, user, administrator, datafabric, manager, server, storage, system, snapdrive, data, protection, configuring, configure, rbac 
+summary: 데이터 보호를 설정하려면 DataFabric Manager 서버의 루트 사용자 또는 관리자와 SnapDrive를 사용하여 스토리지 시스템의 루트 사용자를 등록해야 합니다. 
+---
+= RBAC가 설정되어 있지 않은 경우 SnapDrive를 구성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+데이터 보호를 설정하려면 DataFabric Manager 서버의 루트 사용자 또는 관리자와 SnapDrive를 사용하여 스토리지 시스템의 루트 사용자를 등록해야 합니다.
+
+.단계
+. DataFabric Manager 서버를 새로 고쳐 대상 데이터베이스를 통해 스토리지 시스템에서 직접 변경한 내용을 업데이트하려면 다음 명령을 입력합니다.
++
+* 예 *
+
++
+' * DFM host Discover_storage_system_ * '
+
+. DataFabric Manager 서버의 루트 사용자 또는 관리자를 SnapDrive에 등록하려면 다음 명령을 입력합니다.
++
+* 예 *
+
++
+'* SnapDrive config set-DFM_Administratordfm_host_ * '
+
+. SnapDrive를 사용하여 스토리지 시스템의 루트 사용자 또는 관리자를 등록하려면 다음 명령을 입력합니다.
++
+* 예 *
+
++
+'* SnapDrive config set root_storage_system_ * '
+
+

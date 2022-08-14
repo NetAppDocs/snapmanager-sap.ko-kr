@@ -1,0 +1,39 @@
+---
+permalink: windows/task-cloning-a-database-to-an-alternate-host.html 
+sidebar: sidebar 
+keywords: clone, command, database, alternate, host, cloning 
+summary: 클론 생성 명령을 사용하여 대체 호스트에서 데이터베이스 백업을 클론 복제할 수 있습니다. 
+---
+= 대체 호스트에 데이터베이스 클론 생성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+클론 생성 명령을 사용하여 대체 호스트에서 데이터베이스 백업을 클론 복제할 수 있습니다.
+
+* 프로파일을 만들거나 기존 프로파일을 가지고 있습니다.
+* 전체 백업을 생성하거나 기존 데이터베이스 백업을 사용합니다.
+* 클론 사양을 생성하거나 기존 클론 사양을 가지고 있습니다.
+
+
+.단계
+. 데이터베이스를 대체 호스트에 클론 복제하려면 다음 명령을 입력합니다.
++
+'msap clone create-backup-labelbackup_label_name - newsidnew_sid-hosttarget_host -labelclone_label -comment comment_text-profileprofile_name -clonespecall_path_to_clonespecfile'
+
++
+Oracle에서는 동일한 호스트에서 동일한 SID로 두 데이터베이스를 동시에 실행할 수 없습니다. 따라서 각 클론에 대해 새 SID를 제공해야 합니다. 그러나 동일한 SID를 가진 다른 호스트에 데이터베이스를 가질 수 있습니다.
+
+
+
+* 관련 정보 *
+
+xref:task-creating-profiles.adoc[프로파일 작성]
+
+xref:task-cloning-databases-from-backups.adoc[백업에서 데이터베이스 클론 생성]
+
+xref:task-creating-clone-specifications.adoc[클론 사양 생성 중]
+
+xref:reference-the-smosmsapclone-create-command.adoc[smsap clone create 명령]

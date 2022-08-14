@@ -1,0 +1,98 @@
+---
+permalink: unix-administration/reference-the-smosmsapprofile-list-command.html 
+sidebar: sidebar 
+keywords: command, display, list, current, profile, smsap 
+summary: 이 명령은 현재 프로파일 목록을 표시합니다. 
+---
+= smsap 프로파일 목록 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령은 현재 프로파일 목록을 표시합니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap profile list
+[-quiet | -verbose]]
+----
+
+
+== 매개 변수
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+'''
+
+
+== 명령 예
+
+다음 예에서는 기존 프로파일에 해당 세부 정보가 표시됩니다.
+
+[listing]
+----
+smsap profile list -verbose
+Profile name: FGTER
+Repository:
+  Database name: SMSAPREPO
+  SID: SMSAPREPO
+  Host: hotspur
+  Port: 1521
+  Username: swagrahn
+  Password: ********
+Profile name: TEST_RBAC
+Repository:
+  Database name: smsaprep
+  SID: smsaprep
+  Host: elbe.rtp.org.com
+  Port: 1521
+  Username: smsapsaal
+  Password: ********
+Profile name: TEST_RBAC_DP_PROTECT
+Repository:
+  Database name: smsaprep
+  SID: smsaprep
+  Host: elbe.rtp.org.com
+  Port: 1521
+  Username: smsapsaal
+  Password: ********
+Profile name: TEST_HOSTCREDEN_OFF
+Repository:
+  Database name: smsaprep
+  SID: smsaprep
+  Host: elbe.rtp.org.com
+  Port: 1521
+  Username: smsapsaal
+  Password: ********
+Profile name: SMK_PRF
+Repository:
+  Database name: smsaprep
+  SID: smsaprep
+  Host: elbe.rtp.org.com
+  Port: 1521
+  Username: smsapsaal
+  Password: ********
+Profile name: FGLEX
+Repository:
+  Database name: SMSAPREPO
+  SID: SMSAPREPO
+  Host: hotspur
+  Port: 1521
+  Username: swagrahn
+  Password: ********
+----
+'''

@@ -1,0 +1,35 @@
+---
+permalink: windows/task-freeing-backups.html 
+sidebar: sidebar 
+keywords: free, backup, delete, snapshot, copies, copy, deleting, metadata, function, space, smsap 
+summary: 백업을 수행하여 백업 메타데이터를 삭제하지 않고 스냅샷 복사본을 삭제할 수 있습니다. 이 기능을 사용하면 백업이 차지하는 공간이 확보됩니다. smsap backup free 명령을 사용하여 백업을 확보할 수 있습니다. 
+---
+= 백업 가용 시간 단축
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백업을 수행하여 백업 메타데이터를 삭제하지 않고 스냅샷 복사본을 삭제할 수 있습니다. 이 기능을 사용하면 백업이 차지하는 공간이 확보됩니다. smsap backup free 명령을 사용하여 백업을 확보할 수 있습니다.
+
+여유 공간을 확보하기 위해 백업을 사용하려면 다음 사항을 확인해야 합니다.
+
+* 백업이 성공했습니다
+* 백업을 마운트할 수 없습니다
+* 백업에는 클론이 없습니다
+* 무제한 보존 정책을 사용하여 백업을 보존하지 않습니다
+* 백업이 아직 확보되지 않았습니다
+
+
+덤프 옵션을 선택적 매개 변수로 지정하여 백업 가용 작업에 성공하거나 실패한 후 덤프 파일을 수집할 수 있습니다.
+
+. 다음 명령을 입력합니다.
++
+smsap backup free-profile profile_name { -label label [data | -archivelogs]| -id id id | -all} -force [-dump] [-quiet] [-force]
+
+
+
+* 관련 정보 *
+
+xref:reference-the-smosmsapbackup-free-command.adoc[smsap backup free 명령]

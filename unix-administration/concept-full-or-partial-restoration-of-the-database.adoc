@@ -1,0 +1,20 @@
+---
+permalink: unix-administration/concept-full-or-partial-restoration-of-the-database.html 
+sidebar: sidebar 
+keywords: snapmanager, provide, flexibility, restore, full, database, specific, tablespace, control, file, combination, full, partial 
+summary: SnapManager는 전체 데이터베이스, 특정 테이블스페이스, 파일, 제어 파일 또는 이러한 엔터티의 조합을 유연하게 복원할 수 있습니다. SnapManager를 사용하면 파일 기반 복원 프로세스 또는 더 빠른 볼륨 기반 복원 프로세스를 사용하여 데이터를 복원할 수 있습니다. 데이터베이스 관리자는 사용할 프로세스를 선택하거나 SnapManager에서 적절한 프로세스를 결정하도록 할 수 있습니다. 
+---
+= 전체 또는 부분 데이터베이스 복원
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 전체 데이터베이스, 특정 테이블스페이스, 파일, 제어 파일 또는 이러한 엔터티의 조합을 유연하게 복원할 수 있습니다. SnapManager를 사용하면 파일 기반 복원 프로세서를 사용하여 보다 빠른 볼륨 기반 복원 프로세스를 통해 데이터를 복원할 수 있습니다. 데이터베이스 관리자는 사용할 프로세스를 선택하거나 SnapManager에서 적절한 프로세스를 결정하도록 할 수 있습니다.
+
+SnapManager를 사용하면 DBA(데이터베이스 관리자)가 복구 작업을 미리 볼 수 있습니다. 미리 보기 기능을 통해 DBA는 파일별로 각 복구 작업을 볼 수 있습니다.
+
+DBA는 복구 작업을 수행할 때 SnapManager에서 정보를 복구 및 복구하는 수준을 지정할 수 있습니다. 예를 들어 DBA는 데이터를 특정 시점으로 복구 및 복구할 수 있습니다. 복원 지점은 날짜 및 시간 또는 Oracle SCN(시스템 변경 번호)일 수 있습니다.
+
+SnapManager(3.2 이상)을 사용하면 DBA의 개입 없이 데이터베이스 백업을 자동으로 복원 및 복구할 수 있습니다. SnapManager를 사용하여 아카이브 로그 백업을 생성한 다음 이러한 아카이브 로그 백업을 사용하여 데이터베이스 백업을 복원 및 복구할 수 있습니다. 백업의 아카이브 로그 파일이 외부 아카이브 로그 위치에서 관리되더라도 해당 아카이브 로그가 복원된 데이터베이스를 복구하는 데 도움이 되도록 해당 외부 위치를 지정할 수 있습니다.

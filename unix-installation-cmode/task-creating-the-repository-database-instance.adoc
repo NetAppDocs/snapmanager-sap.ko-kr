@@ -1,0 +1,36 @@
+---
+permalink: unix-installation-cmode/task-create-the-repository-database-instance.html 
+sidebar: sidebar 
+keywords: repository, database, instance, oracle, snapmanager, stand-alone, target, create 
+summary: 리포지토리 데이터베이스 인스턴스는 SnapManager 리포지토리를 생성하는 Oracle 데이터베이스입니다. 리포지토리 데이터베이스 인스턴스는 독립 실행형 데이터베이스여야 하며 대상 데이터베이스일 수 없습니다. 
+---
+= 리포지토리 데이터베이스 인스턴스를 만듭니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+리포지토리 데이터베이스 인스턴스는 SnapManager 리포지토리를 생성하는 Oracle 데이터베이스입니다. 리포지토리 데이터베이스 인스턴스는 독립 실행형 데이터베이스여야 하며 대상 데이터베이스일 수 없습니다.
+
+
+
+== 필요한 것
+
+데이터베이스에 액세스하려면 Oracle 데이터베이스와 사용자 계정이 있어야 합니다.
+
+.단계
+. SQL * Plus에 로그인합니다. 'sqlplus'/as sysdba'
+. SnapManager 리포지토리에 대한 새 테이블스페이스를 생성합니다. " * 테이블 테이블 테이블 테이블 테이블 테이블 테이블 공간_이름 데이터 파일′/u01/app/oradata/datafile/tablespace_name.dbf′ size 100M autextend on; * "을 생성합니다
++
+테이블스페이스_이름 은 테이블스페이스의 이름입니다.
+
+. 테이블스페이스의 블록 크기를 확인합니다. ' * 테이블스페이스_이름 선택, DBA_테이블스페이스에서 block_size; *'
++
+SnapManager는 테이블스페이스에 대해 최소 4-K 블록 크기를 필요로 합니다.
+
+
+
+* 관련 정보 *
+
+http://www.netapp.com/us/media/tr-3761.pdf["NetApp 기술 보고서 3761: SnapManager for Oracle: 모범 사례"^]

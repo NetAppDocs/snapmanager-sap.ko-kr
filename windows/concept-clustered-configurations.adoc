@@ -1,0 +1,18 @@
+---
+permalink: windows/concept-clustered-configurations.html 
+sidebar: sidebar 
+keywords: snapmanager, operate, cluster, configuration 
+summary: SnapManager는 클러스터 구성에서 작동합니다. 
+---
+= 클러스터링된 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 클러스터 구성에서 작동합니다.
+
+SnapManager는 SnapDrive 제품 및 호스트 유틸리티 키트가 지원하는 것과 동일한 호스트 클러스터 및 구성을 지원합니다.
+
+SnapManager는 또한 단일 호스트가 단일 스토리지 시스템, 지원되는 호스트 클러스터 및 Data ONTAP 컨트롤러 페일오버를 실행하는 스토리지 시스템에 연결되어 있는 클러스터링되지 않은 구성도 지원합니다.

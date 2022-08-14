@@ -1,0 +1,16 @@
+---
+permalink: unix-administration/concept-track-details-and-produce-reports.html 
+sidebar: sidebar 
+keywords: snapmanager, reduce, level, database, administrator, interface 
+summary: SnapManager는 단일 인터페이스에서 작업을 모니터링하는 방법을 제공하여 데이터베이스 관리자가 여러 작업의 상태를 추적하는 데 필요한 세부 수준의 수준을 줄여 줍니다. 
+---
+= 세부 정보를 추적하고 보고서를 생성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 단일 인터페이스에서 작업을 모니터링하는 방법을 제공하여 데이터베이스 관리자가 여러 작업의 상태를 추적하는 데 필요한 세부 수준의 수준을 줄여 줍니다.
+
+관리자가 백업해야 할 데이터베이스를 지정하면 SnapManager에서 백업할 데이터베이스 파일을 자동으로 식별합니다. SnapManager 리포지토리, 호스트, 프로필, 백업 및 클론에 대한 정보를 표시합니다. 특정 호스트 또는 데이터베이스의 작업을 모니터링할 수 있습니다. 또한 보호된 백업을 식별하고 백업이 처리 중인지 또는 수행되도록 예약되었는지 확인할 수 있습니다.

@@ -1,0 +1,20 @@
+---
+permalink: windows/task-customizing-the-email-subject-for-an-existing-profile.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, customize, email, subject, pattern, exist, profile, applicable, update, customizing 
+summary: SnapManager를 사용하면 해당 프로필을 업데이트하여 기존 프로필에 대한 이메일 제목 패턴을 사용자 지정할 수 있습니다. 이 사용자 지정 제목 패턴은 업데이트된 프로필에만 적용됩니다. 
+---
+= 기존 프로필에 대한 이메일 제목 사용자 지정
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 해당 프로필을 업데이트하여 기존 프로필에 대한 이메일 제목 패턴을 사용자 지정할 수 있습니다. 이 사용자 지정 제목 패턴은 업데이트된 프로필에만 적용됩니다.
+
+. 다음 명령을 입력합니다.
++
+ssmap profile update -profileprofile[-profile-passwordprofile_password] [-database-dbnamedb_dbname -host db_host addressedb_username -password[-login-usernamedb_username -password] password [{-rman_subscidospattern] subscontentname][-emcountage_subscontentname] durename][-subscontidame -subscontidm-subscontentname][-emetm-subscidame] durename][-subscidame -subscid-emetm-subscid-emetm_subscidame] durename][ -subscid-emetm-subscid-emetm_subscid-emetm_subscid-emetm-subscid-emetm_subscid-emetm_subscid-emetm_subscopolname][ -subscopolname][ -subscid-emetm_subscid-emetm_subsc
+
+

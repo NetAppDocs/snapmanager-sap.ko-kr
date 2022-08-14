@@ -1,0 +1,661 @@
+---
+section: windows
+title: Windows용 설치 및 관리
+entries:
+- title: SnapManager for SAP가 무엇인지
+  url: "/windows/concept-what-snapmanager-for-oraclefor-sap-is.html"
+  entries:
+  - title: SAP용 SnapManager의 기능
+    url: "/windows/concept-what-snapmanager-for-oraclesnapmanager-for-sap-does.html"
+  - title: 다른 NetApp 애플리케이션 및 기술과 통합
+    url: "/windows/concept-integration-with-other-netapp-applications-and-technologies.html"
+  - title: SnapManager 사용의 이점
+    url: "/windows/concept-advantages-of-using-snapmanager.html"
+    entries:
+    - title: 스냅샷 복사본을 사용하여 백업을 생성합니다
+      url: "/windows/concept-create-backups-using-snapshot-copies.html"
+    - title: 보관 로그 파일을 제거해야 하는 이유
+      url: "/windows/concept-why-you-should-prune-archive-log-files.html"
+    - title: 아카이브 로그 통합
+      url: "/windows/concept-archive-log-consolidation.html"
+    - title: 전체 또는 부분 데이터베이스 복원
+      url: "/windows/concept-full-or-partial-restoration-of-the-database.html"
+    - title: 백업 상태를 확인합니다
+      url: "/windows/concept-verify-backup-status.html"
+    - title: 데이터베이스 백업 클론
+      url: "/windows/concept-clone-database-backups.html"
+    - title: 세부 정보를 추적하고 보고서를 생성합니다
+      url: "/windows/concept-track-details-and-produce-reports.html"
+  - title: SnapManager for SAP 아키텍처가 무엇인지
+    url: "/windows/concept-what-the-snapmanager-architecture-is.html"
+    entries:
+    - title: SnapManager 호스트
+      url: "/windows/concept-snapmanager-host.html"
+    - title: SnapManager 그래픽 사용자 및 명령줄 인터페이스
+      url: "/windows/concept-snapmanager-graphical-user-and-command-line-interfaces.html"
+    - title: SnapManager 리포지토리
+      url: "/windows/concept-snapmanager-repository.html"
+    - title: SnapManager 서버의 SnapDrive입니다
+      url: "/windows/concept-snapdrive-on-snapmanager-server.html"
+  - title: 리포지토리의 정의
+    url: "/windows/concept-what-repositories-are.html"
+  - title: 프로파일이란 무엇입니까
+    url: "/windows/concept-what-profiles-are.html"
+  - title: SnapManager 작업 상태는 무엇입니까
+    url: "/windows/concept-what-snapmanager-operation-states-are.html"
+  - title: SnapManager의 보안 유지 방법
+    url: "/windows/concept-snapmanager-security.html"
+  - title: 온라인 도움말에 액세스하여 인쇄합니다
+    url: "/windows/task-access-and-print-online-help.html"
+- title: SnapManager for SAP 구축 고려 사항
+  url: "/windows/concept-snapmanager-for-oraclefor-sap-deployment-considerations.html"
+  entries:
+  - title: SnapManager 실행을 위한 요구 사항
+    url: "/windows/concept-requirements-for-running-snapmanager.html"
+    entries:
+    - title: 지원되는 호스트 하드웨어입니다
+      url: "/windows/concept-supported-host-hardware.html"
+    - title: 지원되는 일반 구성
+      url: "/windows/concept-supported-general-configurations.html"
+    - title: 클러스터링된 구성
+      url: "/windows/concept-clustered-configurations.html"
+  - title: 데이터베이스 버전 지원 및 구성 개요
+    url: "/windows/concept-database-version-support-and-configuration-overview.html"
+    entries:
+    - title: 일반 레이아웃 및 구성
+      url: "/windows/concept-general-layout-and-configuration.html"
+    - title: 데이터베이스 볼륨 레이아웃 예
+      url: "/windows/reference-sample-database-volume-layouts.html"
+  - title: SnapManager 작업 시 제한 사항
+    url: "/windows/concept-limitations.html"
+  - title: SnapManager 기능 및 Oracle 기술은 Windows에서 지원되지 않습니다
+    url: "/windows/concept-snapmanager-features-and-oracle-technologies-not-supported-on-windows.html"
+  - title: Clustered Data ONTAP의 SnapManager 제한
+    url: "/windows/concept-snapmanger-limitations-for-clustered-data-ontap.html"
+  - title: Oracle 데이터베이스와 관련된 제한 사항
+    url: "/windows/concept-limitations-related-to-oracle-database.html"
+  - title: 더 이상 사용되지 않는 버전의 Oracle 데이터베이스
+    url: "/windows/concept-deprecated-versions-of-oracle-database.html"
+- title: SAP용 SnapManager 설치
+  url: "/windows/concept-installing-snapmanager-for-oraclesnapmanager-for-sap.html"
+  entries:
+  - title: SAP용 SnapManager 설치 준비 중
+    url: "/windows/concept-preparing-to-install-snapmanager-for-oraclesnapmanager-for-sap.html"
+    entries:
+    - title: 사전 설치 작업
+      url: "/windows/concept-preinstallation-tasks.html"
+    - title: SnapManager for SAP 설치 패키지를 다운로드합니다
+      url: "/windows/task-download-snapmanager-for-oraclesnapmanager-for-sap-installation-package.html"
+  - title: SAP용 SnapManager를 설치합니다
+    url: "/windows/task-install-snapmanager-for-oracle-snapmanager-for-sap.html"
+  - title: SAP BR * Tools와 통합
+    url: "/windows/task-integrate-with-sap-br-tools.html"
+- title: SnapManager 업그레이드 중
+  url: "/windows/concept-upgrading-snapmanager-for-oracle-snapmanager-for-sap.html"
+  entries:
+  - title: SnapManager 업그레이드 준비 중
+    url: "/windows/concept-preparing-to-upgrade-snapmanager-for-oracle-snapmanager-for-sap.html"
+  - title: SnapManager 호스트를 업그레이드합니다
+    url: "/windows/task-upgrade-snapmanager-for-oraclesnapmanager-for-sap-hosts.html"
+  - title: 업그레이드 후 작업
+    url: "/windows/concept-post-upgrade-tasks.html"
+    entries:
+    - title: 기존 리포지토리를 업데이트합니다
+      url: "/windows/task-update-the-existing-repository.html"
+    - title: 백업 보존 클래스를 수정합니다
+      url: "/windows/task-modify-the-backup-retention-class.html"
+  - title: 롤링 업그레이드를 사용하여 SnapManager 호스트 업그레이드
+    url: "/windows/concept-upgrading-snapmanager-hosts-by-using-rolling-upgrade.html"
+    entries:
+    - title: 롤링 업그레이드를 수행하기 위한 사전 요구 사항
+      url: "/windows/concept-prerequisites-for-performing-rolling-upgrade.html"
+    - title: 단일 호스트 또는 여러 호스트에서 롤 업그레이드를 수행합니다
+      url: "/windows/task-perform-roll-upgrade-on-a-single-host-or-multiple-hosts.html"
+    - title: 롤백이란 무엇인가
+      url: "/windows/concept-what-a-rollback-is.html"
+      entries:
+      - title: 롤백 수행을 위한 제한 사항
+        url: "/windows/concept-limitations-for-performing-a-rollback.html"
+      - title: 롤백을 수행하기 위한 사전 요구 사항입니다
+        url: "/windows/concept-prerequisites-for-performing-a-rollback.html"
+      - title: 단일 호스트 또는 여러 호스트에 대해 롤백을 수행합니다
+        url: "/windows/task-perform-a-rollback-on-a-single-host-or-multiple-hosts.html"
+      - title: 롤백 작업 후
+        url: "/windows/task-post-rollback-tasks.html"
+- title: SnapManager 구성
+  url: "/windows/concept-configuring-snapmanager-for-oraclesap.html"
+  entries:
+  - title: SnapManager 구성 매개 변수
+    url: "/windows/reference-snapmanager-configuration-parameters.html"
+    entries:
+    - title: 구성 매개 변수를 편집합니다
+      url: "/windows/task-edit-the-configuration-parameters.html"
+- title: SnapManager for SAP를 시작합니다
+  url: "/windows/task-start-snapmanager-for-oraclefor-sap.html"
+  entries:
+  - title: 백업할 기존 데이터베이스를 식별합니다
+    url: "/windows/task-identify-an-existing-database-to-backup.html"
+  - title: Oracle 수신기 상태를 확인합니다
+    url: "/windows/task-verify-the-oracle-listener-status.html"
+  - title: 리포지토리 데이터베이스에 대한 Oracle 사용자를 생성합니다
+    url: "/windows/task-create-oracle-users-for-the-repository-database.html"
+  - title: 대상 데이터베이스에 대한 Oracle 사용자를 생성합니다
+    url: "/windows/task-create-an-oracle-user-for-the-target-database.html"
+  - title: SnapManager 액세스 중
+    url: "/windows/concept-accessing-snapmanager.html"
+    entries:
+    - title: SnapManager 호스트 서버를 시작합니다
+      url: "/windows/task-start-the-snapmanager-windows-host-server.html"
+      entries:
+      - title: SnapManager 호스트 서버 상태를 확인합니다
+        url: "/windows/task-verify-the-snapmanager-windows-host-server-status.html"
+    - title: SnapManager 명령을 사용합니다
+      url: "/windows/task-use-snapmanager-commands.html"
+    - title: SnapManager GUI를 시작합니다
+      url: "/windows/task-start-the-snapmanager-graphical-user-interface.html"
+    - title: Java Web Start를 사용하여 그래픽 사용자 인터페이스를 다운로드하고 시작합니다
+      url: "/windows/task-download-and-start-the-graphical-user-interface-using-java-web-start-windows.html"
+  - title: 환경을 확인합니다
+    url: "/windows/task-verify-the-environment.html"
+    entries:
+    - title: Windows용 SnapDrive를 확인합니다
+      url: "/windows/task-verify-snapdrive-for-windows.html"
+  - title: 리포지토리를 생성합니다
+    url: "/windows/task-create-repositories.html"
+    entries:
+    - title: 리포지토리 구성 방법
+      url: "/windows/concept-how-to-organize-repositories.html"
+  - title: 작업 수행 순서
+    url: "/windows/task-order-of-performing-operations.html"
+- title: 보안 및 자격 증명 관리
+  url: "/windows/concept-managing-security-and-credentials.html"
+  entries:
+  - title: 사용자 인증이란 무엇입니까
+    url: "/windows/concept-what-user-authentication-is.html"
+  - title: 사용자 지정 스크립트에 대해 암호화된 암호를 저장합니다
+    url: "/windows/task-store-encrypted-passwords-for-custom-scripts.html"
+  - title: 리포지토리에 대한 액세스 권한을 부여합니다
+    url: "/windows/task-authorize-user-access-to-the-repository.html"
+  - title: 프로파일에 대한 액세스를 승인합니다
+    url: "/windows/task-authorize-user-access-to-profiles.html"
+  - title: 사용자 자격 증명을 봅니다
+    url: "/windows/task-view-user-credentials.html"
+  - title: 모든 호스트, 저장소 및 프로필에 대한 사용자 자격 증명을 지웁니다
+    url: "/windows/task-clear-user-credentials-for-all-hosts-repositories-and-profiles.html"
+    entries:
+    - title: 자격 증명 캐시를 지운 후 자격 증명을 설정합니다
+      url: "/windows/task-set-credentials-after-clearing-credential-cache.html"
+  - title: 개별 리소스에 대한 자격 증명을 삭제합니다
+    url: "/windows/task-delete-credentials-for-individual-resources.html"
+    entries:
+    - title: 리포지토리에 대한 사용자 자격 증명을 삭제합니다
+      url: "/windows/task-delete-user-credentials-for-repositories.html"
+    - title: 호스트에 대한 사용자 자격 증명을 삭제합니다
+      url: "/windows/task-delete-user-credentials-for-hosts.html"
+    - title: 프로파일에 대한 사용자 자격 증명을 삭제합니다
+      url: "/windows/task-delete-user-credentials-for-profiles.html"
+- title: 효율적인 백업을 위한 프로필 관리
+  url: "/windows/concept-managing-profiles-for-efficient-backups.html"
+  entries:
+  - title: 프로파일 작성
+    url: "/windows/task-create-profiles.html"
+  - title: 스냅샷 복사본 이름 지정
+    url: "/windows/concept-snapshot-copy-naming.html"
+  - title: 프로파일 이름을 바꿉니다
+    url: "/windows/task-rename-profiles.html"
+  - title: 프로파일 암호를 변경합니다
+    url: "/windows/task-change-profile-passwords.html"
+  - title: 프로파일 암호를 재설정합니다
+    url: "/windows/task-reset-profile-password.html"
+  - title: 프로파일에 대한 액세스를 승인합니다
+    url: "/windows/task-authorize-user-access-to-profiles.html"
+  - title: 프로필을 확인합니다
+    url: "/windows/task-verify-profiles.html"
+  - title: 프로파일을 업데이트합니다
+    url: "/windows/task-update-profiles.html"
+  - title: 프로파일 삭제
+    url: "/windows/task-delete-profiles.html"
+- title: 데이터베이스 백업
+  url: "/windows/concept-database-backup-management.html"
+  entries:
+  - title: SnapManager 데이터베이스 백업의 정의
+    url: "/windows/concept-what-snapmanager-database-backups-are.html"
+  - title: 전체 및 부분 백업이란
+    url: "/windows/concept-what-full-and-partial-backups-are.html"
+    entries:
+    - title: 백업 유형 및 스냅샷 복사본 수
+      url: "/windows/concept-backup-types-and-the-number-of-snapshot-copies.html"
+    - title: 전체 온라인 백업
+      url: "/windows/concept-full-online-backups.html"
+    - title: 부분 온라인 백업
+      url: "/windows/concept-partial-online-backups.html"
+    - title: 백업, 복원 및 복구 작업의 예
+      url: "/windows/reference-examples-of-backup-restore-and-recover-operations.html"
+  - title: 제어 파일 및 아카이브 로그 파일 처리에 대해 설명합니다
+    url: "/windows/concept-about-control-file-and-archive-log-file-handling.html"
+  - title: 데이터베이스 백업 스케줄이란 무엇입니까
+    url: "/windows/concept-what-database-backup-scheduling-is.html"
+  - title: 데이터베이스 백업을 생성합니다
+    url: "/windows/task-create-database-backups.html"
+    entries:
+    - title: 아카이브 로그 파일을 압축합니다
+      url: "/windows/task-prune-archive-log-files.html"
+    - title: 아카이브 로그 백업을 통합합니다
+      url: "/windows/task-consolidate-archive-log-backups.html"
+    - title: 아카이브 로그 파일 잘라내기 예약
+      url: "/windows/task-schedule-archive-log-file-pruning.html"
+  - title: AutoSupport란
+    url: "/windows/concept-what-autosupport-is.html"
+    entries:
+    - title: Clustered Data ONTAP에서 운영 중인 스토리지 시스템을 SnapManager 서버 호스트에 추가합니다
+      url: "/windows/task-add-storage-systems-to-the-snapmanager-server-host.html"
+    - title: SnapManager에서 AutoSupport를 활성화합니다
+      url: "/windows/task-enable-autosupport-in-snapmanager.html"
+    - title: SnapManager에서 AutoSupport를 비활성화합니다
+      url: "/windows/task-disable-autosupport-in-snapmanager.html"
+  - title: 데이터베이스 백업을 확인합니다
+    url: "/windows/task-verify-database-backups.html"
+  - title: 백업 보존 정책을 변경합니다
+    url: "/windows/task-change-the-backup-retention-policy.html"
+    entries:
+    - title: 백업을 영구적으로 보존합니다
+      url: "/windows/task-retain-backups-forever.html"
+    - title: 특정 보존 클래스를 사용하여 백업을 할당합니다
+      url: "/windows/task-assign-backups-with-a-specific-retention-class.html"
+    - title: 보존 정책 기본 동작을 변경합니다
+      url: "/windows/task-change-the-retention-policy-default-behavior.html"
+    - title: 보존 정책 면제 백업을 사용 또는 삭제합니다
+      url: "/windows/task-free-or-delete-retention-policy-exempt-backups.html"
+  - title: 백업 목록을 봅니다
+    url: "/windows/task-view-a-list-of-backups.html"
+  - title: 백업 세부 정보를 봅니다
+    url: "/windows/task-view-backup-details.html"
+  - title: 백업을 마운트합니다
+    url: "/windows/task-mount-backups.html"
+  - title: 백업을 마운트 해제합니다
+    url: "/windows/task-unmount-backups.html"
+  - title: 무료 백업
+    url: "/windows/task-free-backups.html"
+  - title: 백업을 삭제합니다
+    url: "/windows/task-delete-backups.html"
+- title: 데이터베이스 백업 예약
+  url: "/windows/concept-scheduling-database-backups.html"
+  entries:
+  - title: 백업 스케줄을 생성합니다
+    url: "/windows/task-create-backup-schedules.html"
+  - title: 백업 일정을 업데이트합니다
+    url: "/windows/task-update-a-backup-schedule.html"
+  - title: 예약된 작업 목록을 봅니다
+    url: "/windows/task-view-a-list-of-scheduled-operations.html"
+  - title: 백업 일정을 일시 중단합니다
+    url: "/windows/task-suspend-backup-schedules.html"
+  - title: 백업 일정을 다시 시작합니다
+    url: "/windows/task-resume-backup-schedules.html"
+  - title: 백업 일정을 삭제합니다
+    url: "/windows/task-delete-backup-schedules.html"
+- title: 데이터베이스 백업 복원 중
+  url: "/windows/concept-restoring-database-backup.html"
+  entries:
+  - title: 데이터베이스 복원이란 무엇입니까
+    url: "/windows/concept-what-database-restore-is.html"
+    entries:
+    - title: 백업 복구
+      url: "/windows/concept-backup-recovery.html"
+    - title: 복원 프로세스에 필요한 데이터베이스 상태입니다
+      url: "/windows/concept-database-state-needed-for-restore-process.html"
+    - title: 복원 미리 보기 계획은 무엇입니까
+      url: "/windows/concept-restore-preview-plans.html"
+  - title: 백업 복원 정보를 미리 봅니다
+    url: "/windows/task-preview-backup-restore-information.html"
+  - title: 기본 스토리지에서 백업을 복원합니다
+    url: "/windows/task-restore-backups-on-primary-storage.html"
+  - title: 대체 위치에서 파일을 복원합니다
+    url: "/windows/concept-restore-files-from-an-alternate-location.html"
+    entries:
+    - title: 대체 위치에서 백업 복구 개요
+      url: "/windows/concept-restore-backups-from-an-alternate-location-overview.html"
+      entries:
+      - title: 파일에서 데이터 복원
+        url: "/windows/concept-restoration-of-the-data-from-files.html"
+      - title: 파일 시스템에서 데이터 복구
+        url: "/windows/concept-restoration-of-the-data-from-file-systems.html"
+    - title: 복구 사양을 생성합니다
+      url: "/windows/task-create-restore-specifications.html"
+    - title: 대체 위치에서 백업을 복원합니다
+      url: "/windows/task-restore-backups-from-an-alternate-location.html"
+- title: 데이터베이스 백업 복제 중
+  url: "/windows/concept-cloning-database-backup.html"
+  entries:
+  - title: 복제란 무엇인가
+    url: "/windows/concept-what-cloning-is.html"
+  - title: 클론 생성 방법
+    url: "/windows/concept-cloning-methods.html"
+  - title: 클론 사양 생성
+    url: "/windows/task-create-clone-specifications.html"
+    entries:
+    - title: 데이터베이스 클론 생성 및 사용자 지정 플러그인 스크립트 사용
+      url: "/windows/task-clone-databases-and-using-custom-plugin-scripts.html"
+  - title: 백업에서 데이터베이스 클론 생성
+    url: "/windows/task-clone-databases-from-backups.html"
+  - title: 현재 상태의 데이터베이스 클론 생성
+    url: "/windows/task-clone-databases-in-the-current-state.html"
+  - title: 재설정 로그 없이 데이터베이스 백업 복제
+    url: "/windows/task-clone-database-backups-without-resetlogs.html"
+  - title: 데이터베이스를 대체 호스트에 클론 생성할 때의 고려 사항
+    url: "/windows/concept-considerations-for-cloning-a-database-to-an-alternate-host.html"
+    entries:
+    - title: 데이터베이스를 대체 호스트에 클론 복제합니다
+      url: "/windows/task-clone-a-database-to-an-alternate-host.html"
+  - title: 클론 목록을 봅니다
+    url: "/windows/task-view-a-list-of-clones.html"
+  - title: 자세한 클론 정보를 봅니다
+    url: "/windows/task-view-detailed-clone-information.html"
+  - title: 클론 삭제
+    url: "/windows/task-delete-clones.html"
+- title: SnapManager의 데이터 보호 소개
+  url: "/windows/concept-introduction-to-data-protection-in-snapmanager.html"
+  entries:
+  - title: SnapManager가 로컬 스토리지에 백업을 유지하는 방법
+    url: "/windows/concept-how-snapmanager-retains-backups-on-the-local-storage.html"
+  - title: 데이터 보호를 수행할 때의 고려 사항
+    url: "/windows/concept-prerequisites-for-data-protection.html"
+    entries:
+    - title: SnapManager의 데이터 보호에 필요한 라이센스
+      url: "/windows/concept-licenses-required-for-data-protection.html"
+  - title: 사후 스크립트를 사용하여 데이터베이스 백업 보호
+    url: "/windows/concept-protecting-database-backups-by-using-post-scripts.html"
+    entries:
+    - title: 사후 스크립트 예제
+      url: "/windows/reference-sample-post-scripts.html"
+    - title: 사후 스크립트를 만들거나 업데이트합니다
+      url: "/windows/task-create-or-update-post-scripts.html"
+      entries:
+      - title: 후처리 작업 사양 파일을 작성합니다
+        url: "/windows/task-create-post-process-task-specification-file.html"
+        entries:
+        - title: 사후 처리 작업 사양을 사용하여 볼륨을 미러링합니다
+          url: "/windows/task-use-post-processing-task-specification-to-mirror-volumes.html"
+        - title: 볼트 qtree에 후처리 작업 사양을 사용합니다
+          url: "/windows/task-use-post-processing-task-specification-to-vault-qtrees.html"
+- title: 관리 작업을 수행하는 중입니다
+  url: "/windows/concept-performing-management-operations.html"
+  entries:
+  - title: 작업 목록을 봅니다
+    url: "/windows/task-view-a-list-of-operations.html"
+  - title: 작업 세부 정보를 봅니다
+    url: "/windows/task-view-operation-details.html"
+  - title: 대체 호스트에서 명령을 실행합니다
+    url: "/windows/task-issue-commands-from-an-alternate-host.html"
+  - title: SnapManager 소프트웨어 버전을 확인합니다
+    url: "/windows/task-check-the-snapmanager-software-version.html"
+  - title: SnapManager 호스트 서버를 중지합니다
+    url: "/windows/task-stop-the-snapmanager-host-server.html"
+  - title: SnapManager 호스트 서버를 다시 시작합니다
+    url: "/windows/task-restart-the-snapmanager-windows-host-server.html"
+  - title: SnapManager를 제거합니다
+    url: "/windows/task-uninstall-the-software-from-a-windows-host.html"
+- title: 이메일 알림 구성
+  url: "/windows/concept-configuring-e-mail-notification.html"
+  entries:
+  - title: 리포지토리에 대한 메일 서버를 구성합니다
+    url: "/windows/task-configure-mail-server-for-a-repository.html"
+  - title: 새 프로필에 대한 이메일 알림을 구성합니다
+    url: "/windows/task-configure-e-mail-notification-for-a-new-profile.html"
+    entries:
+    - title: 새 프로필에 대한 이메일 제목을 사용자 지정합니다
+      url: "/windows/task-customize-e-mail-subject-for-a-new-profile.html"
+  - title: 기존 프로필에 대한 이메일 알림을 구성합니다
+    url: "/windows/task-configure-e-mail-notification-for-an-existing-profile.html"
+    entries:
+    - title: 기존 프로필의 이메일 제목을 사용자 지정합니다
+      url: "/windows/task-customize-the-email-subject-for-an-existing-profile.html"
+  - title: 여러 프로필에 대한 요약 이메일 알림을 구성합니다
+    url: "/windows/task-configure-summary-e-mail-notification-for-multiple-profiles.html"
+  - title: 요약 e-메일 알림에 새 프로필을 추가합니다
+    url: "/windows/task-add-new-profile-to-summary-notification.html"
+  - title: 요약 e-메일 알림에 기존 프로필을 추가합니다
+    url: "/windows/task-add-existing-profile-to-summary-notification.html"
+  - title: 여러 프로필에 대한 이메일 알림을 비활성화합니다
+    url: "/windows/task-disable-email-notification-for-multiple-profiles.html"
+- title: SnapManager 작업에 대한 작업 사양 파일 및 스크립트를 생성합니다
+  url: "/windows/concept-creating-task-specification-file-and-scripts-for-snapmanager-operations.html"
+  entries:
+  - title: 사전 작업, 사후 작업 및 정책 스크립트를 생성합니다
+    url: "/windows/task-create-pretask-post-task-and-policy-scripts.html"
+    entries:
+    - title: 작업 스크립트의 작업입니다
+      url: "/windows/concept-operations-in-task-scripts.html"
+    - title: 백업 작업에 대한 작업 스크립트에서 사용할 수 있는 변수입니다
+      url: "/windows/concept-variables-available-in-the-task-scripts-for-backup-operation.html"
+    - title: 복원 작업에 대한 작업 스크립트에서 사용할 수 있는 변수입니다
+      url: "/windows/concept-variables-available-in-custom-script-for-restore-operation.html"
+    - title: 클론 작업을 위해 작업 스크립트에서 사용할 수 있는 변수입니다
+      url: "/windows/concept-variables-available-in-the-task-scripts-for-clone-operation.html"
+    - title: 사용자 정의 스크립트에서 처리하는 동안 오류가 발생했습니다
+      url: "/windows/concept-error-handling-in-custom-scripts.html"
+  - title: 샘플 플러그인 스크립트를 봅니다
+    url: "/windows/task-view-sample-plugin-scripts.html"
+  - title: 작업 스크립트를 생성합니다
+    url: "/windows/task-create-task-scripts.html"
+  - title: 작업 스크립트를 저장합니다
+    url: "/windows/task-store-the-task-scripts.html"
+  - title: 플러그인 스크립트의 설치를 확인합니다
+    url: "/windows/task-verify-installation-of-plugin-scripts.html"
+  - title: 작업 사양 파일을 작성합니다
+    url: "/windows/task-create-a-task-specification-file.html"
+  - title: 처방과 사후 스크립트를 사용하여 백업, 복원 및 클론 작업을 수행합니다
+    url: "/windows/task-perform-backup-restore-and-clone-operations-using-prescript-and-post-scripts.html"
+- title: 프로파일과 연결된 스토리지 시스템 이름 및 타겟 데이터베이스 호스트 이름을 업데이트하는 중입니다
+  url: "/windows/concept-updating-storage-controller-name-and-database-hostname-associated-with-a-profile.html"
+  entries:
+  - title: 프로파일과 연결된 스토리지 시스템 이름을 업데이트합니다
+    url: "/windows/task-update-storage-system-name-associated-with-a-profile.html"
+  - title: 프로파일과 연결된 스토리지 시스템 목록을 봅니다
+    url: "/windows/task-view-a-list-of-storage-controllers-associated-with-a-profile.html"
+  - title: 프로파일과 연결된 타겟 데이터베이스 호스트 이름을 업데이트합니다
+    url: "/windows/task-update-target-database-hostname-associated-with-a-profile.html"
+- title: SnapManager 작업 내역 유지
+  url: "/windows/concept-maintaining-history-of-snapmanager-operations.html"
+  entries:
+  - title: SnapManager 작업에 대한 기록을 구성합니다
+    url: "/windows/task-configure-history-for-backup-operation.html"
+  - title: SnapManager 작업 기록 목록을 봅니다
+    url: "/windows/task-view-a-list-of-snapmanager-history-operation-as-a-report.html"
+  - title: 프로필과 관련된 특정 작업의 세부 기록을 봅니다
+    url: "/windows/task-view-the-detailed-history-of-a-specific-operation-associated-with-a-profile.html"
+  - title: SnapManager 작업 기록을 삭제합니다
+    url: "/windows/task-purge-history-of-snapmanager-operation.html"
+  - title: 단일 프로파일 또는 여러 프로파일과 연결된 기록 설정을 제거합니다
+    url: "/windows/task-remove-history-configuration-associated-with-a-single-profile-or-multiple-profiles.html"
+  - title: SnapManager 기록 구성 세부 정보를 봅니다
+    url: "/windows/task-view-snapmanger-history-operation-details.html"
+- title: SAP용 SnapManager와 함께 BR * Tools 사용
+  url: "/windows/concept-using-br-tools-with-snapmanager-for-sap.html"
+  entries:
+  - title: BR * 도구란 무엇입니까
+    url: "/windows/concept-what-br-tools-are.html"
+  - title: BR * Tools의 경로를 설정합니다
+    url: "/windows/task-set-the-path-for-br-tools.html"
+  - title: 스냅샷 복사본에 대한 클라이언트 액세스 사용 안 함
+    url: "/windows/concept-disabling-client-access-to-snapshot-copies.html"
+  - title: BR * Tools 백업에 대한 프로파일 사용
+    url: "/windows/concept-profile-usage-for-br-tools-backups.html"
+  - title: BRBACKUP 및 BRBARCHIVE를 사용하여 생성된 데이터베이스 백업입니다
+    url: "/windows/concept-database-backups-created-using-brbackup-and-brarchive.html"
+  - title: SAP 트랜잭션 DB13을 사용하여 백업을 예약합니다
+    url: "/windows/task-schedule-backups-with-sap-transaction-db13.html"
+  - title: brrestore 및 brrecover를 사용하여 데이터베이스를 복원합니다
+    url: "/windows/concept-database-restore-by-using-brrestore-and-brrecover.html"
+  - title: BR * Tools를 사용하여 파일 백업 및 복원
+    url: "/windows/concept-backing-up-and-restoring-files-using-br-tools.html"
+  - title: 다른 호스트에 백업 복구
+    url: "/windows/concept-restoring-a-backup-to-a-different-host.html"
+- title: SnapManager for SAP 명령 참조
+  url: "/windows/concept-snapmanager-for-oraclefor-sap-command-reference.html"
+  entries:
+  - title: backint register-SLD 명령
+    url: "/windows/reference-the-backint-register-sld-command.html"
+  - title: smsap_server restart 명령
+    url: "/windows/reference-the-smosmsap-server-restart-command.html"
+  - title: smsap_server start 명령
+    url: "/windows/reference-the-smosmsap-server-start-command.html"
+  - title: smsap_server 상태 명령
+    url: "/windows/reference-the-smosmsap-server-status-command.html"
+  - title: smsap_server stop 명령
+    url: "/windows/reference-the-smosmsap-server-stop-command.html"
+  - title: smsap 백업 create 명령
+    url: "/windows/reference-the-smosmsapbackup-create-command.html"
+  - title: smsap 백업 삭제 명령
+    url: "/windows/reference-the-smosmsapbackup-delete-command.html"
+  - title: smsap backup free 명령
+    url: "/windows/reference-the-smosmsapbackup-free-command.html"
+  - title: smsap 백업 목록 명령
+    url: "/windows/reference-the-smosmsapbackup-list-command.html"
+  - title: smsap 백업 마운트 명령
+    url: "/windows/reference-the-smosmsapbackup-mount-command.html"
+  - title: smsap 백업 복원 명령
+    url: "/windows/reference-the-smosmsapbackup-restore-command.html"
+  - title: sap backup show 명령
+    url: "/windows/reference-the-smosmsapbackup-show-command.html"
+  - title: sap 백업 마운트 해제 명령
+    url: "/windows/reference-the-smosmsapbackup-unmount-command.html"
+  - title: sap 백업 업데이트 명령
+    url: "/windows/reference-the-smosmsapbackup-update-command.html"
+  - title: smsap 백업 확인 명령
+    url: "/windows/reference-the-smosmsapbackup-verify-command.html"
+  - title: smsap clone create 명령
+    url: "/windows/reference-the-smosmsapclone-create-command.html"
+  - title: smbap clone delete 명령
+    url: "/windows/reference-the-smosmsapclone-delete-command.html"
+  - title: smsap 클론 목록 명령
+    url: "/windows/reference-the-smosmsapclone-list-command.html"
+  - title: sap clone show 명령
+    url: "/windows/reference-the-smosmsapclone-show-command.html"
+  - title: smssap 클론 템플릿 명령
+    url: "/windows/reference-the-smosmsapclone-template-command.html"
+  - title: smssap clone update 명령
+    url: "/windows/reference-the-smosmsap-clone-update-command.html"
+  - title: smssap 클론 분리 명령
+    url: "/windows/reference-the-smosmsap-clone-detach-command.html"
+  - title: smsap cmdfile 명령
+    url: "/windows/reference-the-smosmsapcmdfile-command.html"
+  - title: smsap 자격 증명 지우기 명령
+    url: "/windows/reference-the-smosmsapcredential-clear-command.html"
+  - title: smsap 자격 증명 삭제 명령
+    url: "/windows/reference-the-smosmsapcredential-delete-command.html"
+  - title: smsap 자격 증명 목록 명령
+    url: "/windows/reference-the-smosmsapcredential-list-command.html"
+  - title: smsap 자격 증명 집합 명령
+    url: "/windows/reference-the-smosmsapcredential-set-command.html"
+  - title: smssap 내역 목록 명령
+    url: "/windows/reference-the-smosmsap-history-list-command.html"
+  - title: sap history operation-show 명령
+    url: "/windows/reference-the-smosmsap-history-operation-show-command.html"
+  - title: smssap history purge 명령
+    url: "/windows/reference-the-smosmsap-history-purge-command.html"
+  - title: smssap history remove 명령
+    url: "/windows/reference-the-smosmsap-history-remove-command.html"
+  - title: smssap history set 명령
+    url: "/windows/reference-the-smosmsap-history-set-command.html"
+  - title: sap history show 명령
+    url: "/windows/reference-the-smo-smsap-history-show-command.html"
+  - title: smsap 도움말 명령
+    url: "/windows/reference-the-smosmsaphelp-command.html"
+  - title: sap notification remove-summary-notification 명령
+    url: "/windows/reference-the-smo-notification-removesummarynotification-command.html"
+  - title: smssap notification update-summary-notification 명령
+    url: "/windows/reference-the-smosmsap-notification-updatesummarynotification-command.html"
+  - title: smsap notification set 명령
+    url: "/windows/reference-the-smosmsap-notification-set-command.html"
+  - title: smsap 작업 덤프 명령
+    url: "/windows/reference-the-smosmsapoperation-dump-command.html"
+  - title: smsap 작업 목록 명령
+    url: "/windows/reference-the-smosmsapoperation-list-command.html"
+  - title: smssap operation show 명령
+    url: "/windows/reference-the-smosmsap-operation-show-command.html"
+  - title: smssap 암호 재설정 명령
+    url: "/windows/reference-the-smosmsap-password-reset-command.html"
+  - title: smssap profile create 명령
+    url: "/windows/reference-the-smosmsapprofile-create-command.html"
+  - title: smssap profile delete 명령
+    url: "/windows/reference-the-smosmsapprofile-delete-command.html"
+  - title: smsap 프로파일 덤프 명령
+    url: "/windows/reference-the-smosmsapprofile-dump-command.html"
+  - title: smsap 프로파일 목록 명령
+    url: "/windows/reference-the-smosmsapprofile-list-command.html"
+  - title: smssap profile show 명령
+    url: "/windows/reference-the-smosmsapprofile-show-command.html"
+  - title: smsap 프로파일 동기화 명령
+    url: "/windows/reference-the-smosmsapprofile-sync-command.html"
+  - title: smssap profile update 명령
+    url: "/windows/reference-the-smosmsapprofile-update-command.html"
+  - title: smsap profile verify 명령
+    url: "/windows/reference-the-smosmsapprofile-verify-command.html"
+  - title: smbap 리포지토리 create 명령
+    url: "/windows/reference-the-smosmsaprepository-create-command.html"
+  - title: smbap 리포지토리 삭제 명령
+    url: "/windows/reference-the-smosmsaprepository-delete-command.html"
+  - title: sap 리포지토리 롤백 명령
+    url: "/windows/reference-the-smosmsap-repository-rollingback-command.html"
+  - title: smsap 리포지토리 Rollingupgrade 명령
+    url: "/windows/reference-the-smosmsap-repository-rollingupgrade.html"
+  - title: smbap repository show 명령
+    url: "/windows/reference-the-smosmsaprepository-show-command.html"
+  - title: smbap 리포지토리 업데이트 명령
+    url: "/windows/reference-the-smosmsaprepository-update-command.html"
+  - title: smssap schedule create 명령
+    url: "/windows/reference-the-smosmsap-schedule-create-command.html"
+  - title: smssap schedule delete 명령
+    url: "/windows/reference-the-smosmsap-schedule-delete-command.html"
+  - title: smsap 스케줄 목록 명령
+    url: "/windows/reference-the-smosmsap-schedule-list-command.html"
+  - title: smsap schedule resume 명령
+    url: "/windows/reference-the-smosmsap-schedule-resume-command.html"
+  - title: smsap schedule suspend 명령
+    url: "/windows/reference-the-smosmsap-schedule-suspend-command.html"
+  - title: smssap schedule update 명령
+    url: "/windows/reference-the-smosmsap-schedule-update-command.html"
+  - title: smsap storage list 명령
+    url: "/windows/reference-the-smosmsap-storage-list-command.html"
+  - title: smsap storage rename 명령
+    url: "/windows/reference-the-smosmsap-storage-rename-command.html"
+  - title: smsap 시스템 덤프 명령
+    url: "/windows/reference-the-smosmsapsystem-dump-command.html"
+  - title: smsap system verify 명령
+    url: "/windows/reference-the-smosmsapsystem-verify-command.html"
+  - title: smssap 버전 명령
+    url: "/windows/reference-the-smosmsapversion-command.html"
+- title: SnapManager 문제 해결
+  url: "/windows/reference-troubleshooting-snapmanager.html"
+  entries:
+  - title: 파일을 덤프합니다
+    url: "/windows/concept-dump-files.html"
+    entries:
+    - title: 작업 수준 덤프 파일을 생성합니다
+      url: "/windows/task-create-operation-level-dump-files.html"
+    - title: 프로파일 수준 덤프 파일을 생성합니다
+      url: "/windows/task-create-profile-level-dump-files.html"
+    - title: 시스템 수준 덤프 파일을 생성합니다
+      url: "/windows/task-create-system-level-dump-files.html"
+    - title: 덤프 파일을 찾는 방법
+      url: "/windows/reference-how-to-locate-dump-files.html"
+    - title: 덤프 파일을 수집하는 방법
+      url: "/windows/concept-how-to-collect-dump-files.html"
+    - title: 추가 로그 정보를 수집하여 디버깅을 용이하게 합니다
+      url: "/windows/concept-collecting-additional-log-information-for-easier-debugging.html"
+  - title: 클론 문제 해결
+    url: "/windows/reference-troubleshooting-clone-issues.html"
+  - title: 그래픽 사용자 인터페이스 문제 해결
+    url: "/windows/reference-troubleshooting-graphical-user-interface-issues.html"
+  - title: 알려진 문제 해결
+    url: "/windows/reference-troubleshooting-known-issues.html"
+  - title: SnapManager에서 여러 병렬 작업을 실행하지 못합니다
+    url: "/windows/reference-running-multiple-parallel-operations-fail-in-snapmanager.html"
+  - title: 프로파일이 생성되지 않은 RAC 노드 중 하나에서 RAC 데이터베이스를 복원할 수 없습니다
+    url: "/windows/reference-unable-to-restore-rac-database-from-one-of-the-rac-nodes-where-the-profile-was-not-created.html"
+  - title: 자세한 정보
+    url: "/windows/reference-where-to-go-for-more-information.html"
+- title: 오류 메시지 분류
+  url: "/windows/reference-error-message-classifications.html"
+- title: 오류 메시지
+  url: "/windows/reference-error-messages.html"

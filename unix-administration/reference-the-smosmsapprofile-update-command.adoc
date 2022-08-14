@@ -1,0 +1,256 @@
+---
+permalink: unix-administration/reference-the-smosmsapprofile-update-command.html 
+sidebar: sidebar 
+keywords: run, profile, update, command, information, exist, smsap 
+summary: 프로파일 업데이트 명령을 실행하여 기존 프로파일의 정보를 업데이트할 수 있습니다. 
+---
+= smssap profile update 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+'profile update' 명령어를 실행하여 기존 프로파일의 정보를 업데이트할 수 있다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap profile update
+-profile profile
+[-new-profile _new_profile_name_\]
+[-profile-password _profile_password_\]
+[-database
+-dbname _db_dbname_
+-host _db_host_
+[-sid _db_sid_\]
+[-login
+[-username _db_username_ -password _db_password_ -port _db_port_\]
+[-asminstance -asmusername _asminstance_username_  -asmpassword _asminstance_password_\]]
+pass:quotes[[{-rman  {-controlfile | {{-login
+-username  _rman_username_
+-password  _rman_password_ }
+[-tnsname  _tnsname_\]}}} |
+-remove-rman\]
+-osaccount _osaccount_
+-osgroup _osgroup_
+[-retain
+[-hourly [-count _n_\] [-duration _m_\]\]
+[-daily [-count _n_\] [-duration _m_\]]
+pass:quotes[[-weekly [-count _n_] pass:quotes[[-duration _m_]]
+pass:quotes[[-monthly [-count _n_] pass:quotes[[-duration _m_]]]]
+pass:quotes[-comment _comment_
+-snapname-pattern _pattern_
+[-protect [-protection-policy _policy_name_\] | [-noprotect\]]
+[-summary-notification]
+[-notification
+[-success
+pass:quotes[-email _email_address1,email_address2_
+-subject _subject_pattern_\]
+[-failure
+-email _email_address1,email_address2_
+-subject _subject_pattern_]
+pass:quotes[[-separate-archivelog-backups
+-retain-archivelog-backups
+-hours  _hours_ |
+-days _days_ |
+-weeks _weeks_ |
+-months _months_
+[-protect [-protection-policy _policy_name_\] | [-noprotect\]]
+[-include-with-online-backups | -no-include-with-online-backups]]
+[-dump]
+[-quiet | -verbose]]
+----
+
+
+== 매개 변수
+
+프로필에 보호 정책이 설정되어 있으면 SnapManager를 사용하여 정책을 변경할 수 없습니다. Protection Manager 콘솔을 사용하여 정책을 변경해야 합니다.
+
+* ``프로파일_프로파일_*'
++
+프로파일의 이름을 지정합니다. 이 이름은 최대 30자까지 지정할 수 있으며 호스트 내에서 고유해야 합니다.
+
+* '' * -profile-password_profile_password_ *'
++
+프로파일의 암호를 지정합니다.
+
+* ``새 프로파일_새 프로파일_프로파일_이름_*'
++
+프로파일에 대해 제공할 수 있는 새 이름을 지정합니다.
+
+* ``데이터베이스’’’
++
+프로필에 설명된 데이터베이스의 세부 정보를 지정합니다. 이 데이터베이스는 백업, 복원 등을 할 데이터베이스입니다.
+
+* ``dbname_db_dbname_*'
++
+프로파일이 설명하는 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 시스템 식별자를 사용할 수 있습니다.
+
+* ``HOST_DB_HOST_*'
++
+데이터베이스가 실행되는 호스트 컴퓨터의 이름 또는 IP 주소를 지정합니다.
+
+* ``sid_db_sid_*'
++
+프로파일이 설명하는 데이터베이스의 시스템 식별자를 지정합니다. 기본적으로 SnapManager에서는 데이터베이스 이름을 시스템 식별자로 사용합니다. 시스템 식별자가 데이터베이스 이름과 다른 경우 '-sid' 옵션을 사용하여 지정해야 합니다.
+
++
+예를 들어 Oracle RAC(Real Application Clusters)를 사용하는 경우 SnapManager가 실행되는 RAC 노드에 있는 RAC 인스턴스의 SID 시스템 식별자를 지정해야 합니다.
+
+* ``로그인 *’’
++
+리포지토리 로그인 세부 정보를 지정합니다.
+
+* ``username_repo_username_*'
++
+리포지토리 데이터베이스에 액세스하는 데 필요한 사용자 이름을 지정합니다.
+
+* ``port_repo_port_*’
++
+리포지토리 데이터베이스에 액세스하는 데 필요한 TCP 포트 번호를 지정합니다.
+
+* ``데이터베이스’’’
++
+프로필에 설명된 데이터베이스의 세부 정보를 지정합니다. 이 데이터베이스는 백업, 복원 또는 클론이 생성될 데이터베이스입니다.
+
+* ``dbname_db_dbname_*'
++
+프로파일이 설명하는 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 시스템 식별자를 사용할 수 있습니다.
+
+* ``HOST_DB_HOST_*'
++
+데이터베이스가 실행되는 호스트 컴퓨터의 이름 또는 IP 주소를 지정합니다.
+
+* ``로그인 *’’
++
+데이터베이스 로그인 정보를 지정합니다.
+
+* ``username_db_username_*'
++
+프로파일이 설명하는 데이터베이스에 액세스하는 데 필요한 사용자 이름을 지정합니다.
+
+* '' * -password_db_password_ *'
++
+프로필에 설명된 데이터베이스에 액세스하는 데 필요한 암호를 지정합니다.
+
+* ``port_db_port_*'
++
+프로파일이 설명하는 데이터베이스에 액세스하는 데 필요한 TCP 포트 번호를 지정합니다.
+
+* ``아스미나스’’’
++
+ASM(Automatic Storage Management) 인스턴스에 로그인하는 데 사용되는 자격 증명을 지정합니다.
+
+* ``아소머네임_asminstance_username_*’’
++
+ASM 인스턴스에 로그인하는 데 사용되는 사용자 이름을 지정합니다.
+
+* ``asmpassword_asminstance_password_*'
++
+ASM 인스턴스에 로그인하는 데 사용되는 암호를 지정합니다.
+
+* ``소산골_소산고 _ *’’
++
+Oracle 데이터베이스 사용자 계정의 이름을 지정합니다. SnapManager는 이 계정을 사용하여 시작 및 종료와 같은 Oracle 작업을 수행합니다. 일반적으로 orasid와 같이 호스트에서 Oracle 소프트웨어를 소유한 사용자입니다.
+
+* ``오스그룹_오스그룹 _ *’
++
+orasid 계정과 연결된 Oracle 데이터베이스 그룹 이름의 이름을 지정합니다.
+
+* ``hourly[-hourly[-count_n_][-duration_m_][-daily[-count_n_][-duration_m_][-weekly[-count_n_][-duration_m_][-duration_m_] *] *
++
+백업의 보존 클래스(시간별, 일별, 주별, 월별)를 지정합니다.
+
++
+각 보존 클래스에 대해 보존 수 또는 보존 기간 또는 둘 모두를 지정할 수 있습니다. 기간은 클래스의 단위(예: 시간별 시간 또는 일별 일 수)입니다. 예를 들어, 사용자가 일일 백업에 대해 보존 기간을 7로 지정하면 보존 수가 0이므로 SnapManager는 프로파일에 대한 일일 백업 수를 제한하지 않지만 SnapManager는 7일 전에 생성된 일일 백업을 자동으로 삭제합니다.
+
+* ``소견’’이라고 말했습니다
++
+프로파일에 대한 설명을 지정합니다.
+
+* ``snapname-pattern_pattern_*'
++
+스냅샷 복사본의 명명 패턴을 지정합니다. 또한 모든 스냅샷 복사본 이름에 고가용성 작업에 대한 HOPS와 같은 사용자 지정 텍스트를 포함할 수도 있습니다. 프로파일을 만들거나 프로파일을 만든 후에 스냅샷 복사본 명명 패턴을 변경할 수 있습니다. 업데이트된 패턴은 아직 발생하지 않은 스냅샷 복사본에만 적용됩니다. 존재하는 스냅샷 복사본에는 이전 Snapname 패턴이 유지됩니다. 패턴 텍스트에 여러 변수를 사용할 수 있습니다.
+
+* ``보호[-protect-policy_policy_name_]|[-nopprotect] *’
++
+백업을 보조 스토리지로 보호할지 여부를 나타냅니다.
+
++
+
+NOTE: 보호 정책 없이 보호 정책을 지정하면 데이터 세트에 보호 정책이 적용되지 않습니다. 프로파일 생성 시 '-protect'가 지정되고 '-protection-policy'가 설정되지 않은 경우 나중에 'msap profile update' 명령으로 설정하거나 Protection Manager의 콘솔을 사용하여 스토리지 관리자가 설정할 수 있습니다.
+
++
+'-nofProtect' 옵션은 프로파일을 보조 스토리지로 보호하지 않도록 지정합니다.
+
+* ``요약-알림 *’’
++
+기존 프로파일에 대해 요약 e-메일 알림을 사용하도록 지정합니다.
+
+* ``알림[-SUCCESS-EMAIL_EMAIL_AMENT_ALENMENT_1, 이메일 주소2_-subject_subject_pattern_]*'
++
+SnapManager 작업이 성공하면 받는 사람이 전자 메일을 받을 수 있도록 기존 프로필에 대한 전자 메일 알림을 활성화합니다. 이메일 알림을 보낼 이메일 주소 또는 여러 이메일 주소를 입력하고 기존 프로필의 이메일 제목 패턴을 입력해야 합니다.
+
++
+프로필을 업데이트하는 동안 제목 텍스트를 변경하거나 사용자 지정 제목 텍스트를 포함할 수 있습니다. 업데이트된 제목은 전송되지 않은 이메일에만 적용됩니다. 이메일 제목에 여러 변수를 사용할 수 있습니다.
+
+* ``알림[-failure-email_email_address 1, 이메일 주소2_-subject_subject_pattern_]*'
++
+SnapManager 작업이 실패할 경우 수신자가 이메일을 받을 수 있도록 기존 프로필에 대한 이메일 알림을 활성화합니다. 이메일 알림을 보낼 이메일 주소 또는 여러 이메일 주소를 입력하고 기존 프로필의 이메일 제목 패턴을 입력해야 합니다.
+
++
+프로필을 업데이트하는 동안 제목 텍스트를 변경하거나 사용자 지정 제목 텍스트를 포함할 수 있습니다. 업데이트된 제목은 전송되지 않은 이메일에만 적용됩니다. 이메일 제목에 여러 변수를 사용할 수 있습니다.
+
+* ``별개 아카이브 백업 *’’
++
+아카이브 로그 백업을 데이터 파일 백업과 분리합니다. 프로파일을 만드는 동안 제공할 수 있는 선택적 매개 변수입니다. 이 옵션을 사용하여 백업을 분리한 후 데이터 파일 전용 백업 또는 아카이브 로그 전용 백업을 생성할 수 있습니다.
+
+* ``보존-archivelog-backups-hours_hours_|-days_days_|-weeks_weeks_|-months_months_*'
++
+아카이브 로그 백업이 아카이브 로그 보존 기간(시간별, 일별, 주별, 월별)을 기준으로 보존되도록 지정합니다.
+
+* ``보호[-protect-policy_policy_name_]|-nob보호하다 *’
++
+아카이브 로그 파일이 아카이브 로그 보호 정책에 따라 보호되도록 지정합니다.
+
++
+'-noProtect' 옵션을 사용하여 아카이브 로그 파일을 보호하지 않도록 지정합니다.
+
+* ``온라인 백업 포함|-온라인 백업 포함 안 함*’’’이라고 밝혔습니다
++
+아카이브 로그 백업이 온라인 데이터베이스 백업과 함께 포함되도록 지정합니다.
+
++
+아카이브 로그 백업이 온라인 데이터베이스 백업과 함께 포함되지 않도록 지정합니다.
+
+* ``덤프’’’
++
+성공적인 프로필 생성 작업 후에 덤프 파일이 수집되도록 지정합니다.
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== 예
+
+다음 예에서는 프로필에 설명된 데이터베이스의 로그인 정보를 변경하고 이 프로필에 대해 이메일 알림을 구성합니다.
+
+[listing]
+----
+smsap profile update -profile SALES1 -database -dbname SALESDB
+ -sid SALESDB -login -username admin2 -password d4jPe7bw -port 1521
+-host server1 -profile-notification -success -e-mail Preston.Davis@org.com -subject success
+Operation Id [8abc01ec0e78ec33010e78ec3b410001] succeeded.
+----

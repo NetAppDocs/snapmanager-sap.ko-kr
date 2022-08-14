@@ -1,0 +1,28 @@
+---
+permalink: unix-administration/task-delete-a-clone-split-operation-cycle-from-a-repository-database.html 
+sidebar: sidebar 
+keywords: delete, clone, split, operation, cycle, entry, repository, database, deleting 
+summary: 리포지토리 데이터베이스에서 클론 분할 작업 주기 항목을 삭제할 수 있습니다. 
+---
+= 리포지토리 데이터베이스에서 클론 분할 작업 주기를 삭제합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+리포지토리 데이터베이스에서 클론 분할 작업 주기 항목을 삭제할 수 있습니다.
+
+.단계
+. 저장소 데이터베이스에서 클론 분할 작업 주기 항목을 삭제하려면 다음 명령을 입력합니다.
++
+"* smssap clone split-delete-profile_profile_[-host_hostname_][-label_split-label_|-id_split-id_][-quiet|-verbose] *
+
+
+
+'''
+[listing]
+----
+smsap clone split-delete -profile p1 -id 8abc01ec0e78f3e2010e78f3fdd00001
+----
+'''

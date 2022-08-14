@@ -1,0 +1,41 @@
+---
+permalink: windows/task-verify-the-oracle-listener-status.html 
+sidebar: sidebar 
+keywords: verify, oracle, listener, lsnrctl, status, command 
+summary: lsnrctl status 명령을 사용하여 Oracle 리스너 상태를 확인할 수 있습니다. 
+---
+= Oracle 수신기 상태를 확인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+'lsnrctl status' 명령을 사용하여 Oracle 리스너 상태를 확인할 수 있습니다.
+
+
+
+== 필요한 것
+
+* 데이터베이스에 연결해야 합니다.
+
+
+
+
+== 이 작업에 대해
+
+수신기 포트 세부 정보는 다음과 같습니다.
+
+* 표준 SAP Oracle 설치는 수신기 포트를 1527로 설정합니다.
+* 관리되는 데이터베이스 수신기 포트를 참조하는 모든 값은 1527이어야 합니다.
+* 리포지터리 데이터베이스 리스너 포트를 참조하는 모든 값은 1521이어야 합니다.
+
+
+Oracle 리스너의 로그는 "%ORACLE_HOME%\network\log"에 있으며 여기서 "ORACLE_HOME은\ORACLE\SID\ORACLE version"입니다.
+
+.단계
+. 명령 프롬프트에서 다음 명령을 입력합니다.
++
+'* lsnrctl status*'
+
+

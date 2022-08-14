@@ -1,0 +1,19 @@
+---
+permalink: windows/concept-snapmanager-repository.html 
+sidebar: sidebar 
+keywords: repository, store, information, snapmanager, operation, time, backup, tablespace, data, data, file, storage, system, clone, snapshot, copies, copy, create 
+summary: 리포지토리는 백업 시간, 테이블스페이스 및 백업된 데이터 파일, 사용된 스토리지 시스템, 생성된 클론, 생성된 스냅샷 복사본 등 다양한 SnapManager 작업과 관련된 정보를 저장합니다. 
+---
+= SnapManager 리포지토리
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+리포지토리는 백업 시간, 테이블스페이스 및 백업된 데이터 파일, 사용된 스토리지 시스템, 생성된 클론, 생성된 스냅샷 복사본 등 다양한 SnapManager 작업과 관련된 정보를 저장합니다.
+
+리포지토리 데이터베이스는 동일한 데이터베이스에 있을 수 없으며 SnapManager가 백업하는 것과 동일한 데이터베이스의 일부일 수도 없습니다. 그 이유는 저장소에 백업 작업 중에 생성된 데이터베이스 Snapshot 복사본의 이름이 저장되기 때문입니다. 리포지토리는 백업할 데이터베이스와 다른 데이터베이스에 만들어야 합니다. 즉, SnapManager 저장소 데이터베이스와 SnapManager에서 관리하는 대상 데이터베이스의 데이터베이스가 두 개 이상 있어야 합니다. SnapManager 서비스를 실행할 때 두 데이터베이스가 모두 실행 중이어야 합니다.
+
+
+NOTE: 저장소 데이터베이스가 다운된 경우 GUI 또는 CLI를 사용하여 SnapManager 작업을 수행할 수 없습니다.

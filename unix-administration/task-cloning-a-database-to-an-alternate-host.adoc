@@ -1,0 +1,31 @@
+---
+permalink: unix-administration/task-clone-a-database-to-an-alternate-host.html 
+sidebar: sidebar 
+keywords: clone, create, command, database, alternate, host, cloning 
+summary: 클론 생성 명령을 사용하여 대체 호스트에서 데이터베이스 백업을 클론 복제할 수 있습니다. 
+---
+= 데이터베이스를 대체 호스트에 클론 복제합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"clone create" 명령을 사용하여 대체 호스트에서 데이터베이스 백업을 복제할 수 있습니다.
+
+* 필요한 것 *
+
+* 프로파일을 만들거나 기존 프로파일을 가지고 있습니다.
+* 전체 백업을 생성하거나 기존 데이터베이스 백업을 사용합니다.
+* 클론 사양을 생성하거나 기존 클론 사양을 가지고 있습니다.
+
+
+.단계
+. 데이터베이스를 대체 호스트에 클론 복제하려면 다음 명령을 입력합니다.
++
+'* smssap 클론 create-backup-label_backup_label_name_-newsid_new_sid_-host_target_host_-label_clone_label_-comment_comment_text_-profile_name_-clonespec_full_path_to_clionfile_*'
+
++
+Oracle에서는 동일한 호스트에서 동일한 SID로 두 데이터베이스를 동시에 실행할 수 없습니다. 따라서 각 클론에 대해 새 SID를 제공해야 합니다. 그러나 동일한 SID를 가진 다른 호스트에 데이터베이스를 가질 수 있습니다.
+
+

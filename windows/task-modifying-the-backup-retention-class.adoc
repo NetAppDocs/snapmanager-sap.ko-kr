@@ -1,0 +1,60 @@
+---
+permalink: windows/task-modifying-the-backup-retention-class.html 
+sidebar: sidebar 
+keywords: upgrading, upgrade, snapmanager, default, backup, retention, class, exist, modify 
+summary: 업그레이드 후 SnapManager는 기본 백업 보존 클래스를 기존 백업에 할당합니다. 백업 요구 사항에 맞게 기본 보존 클래스 값을 수정할 수 있습니다. 
+---
+= 백업 보존 클래스 수정
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+업그레이드 후 SnapManager는 기본 백업 보존 클래스를 기존 백업에 할당합니다. 백업 요구 사항에 맞게 기본 보존 클래스 값을 수정할 수 있습니다.
+
+기존 백업에 할당된 기본 백업 보존 클래스는 다음과 같습니다.
+
+|===
+| 백업 유형 | 업그레이드 후 보존 클래스 할당 
+
+
+ a| 
+영구 보존할 백업입니다
+ a| 
+무제한
+
+
+
+ a| 
+기타 백업
+ a| 
+매일
+
+|===
+* 참고: * 보존 클래스를 변경하지 않고 영구 보존되는 백업을 삭제할 수 있습니다.
+
+SnapManager 3.0 이상으로 업그레이드하면 다음 두 값 중 더 큰 값이 기존 프로파일에 할당됩니다.
+
+* 프로파일의 이전 보존 수입니다
+* smsap.config 파일에 지정된 대로 일일 백업의 보존 수와 기간에 대한 기본값입니다
++
+.. smsap.config 파일에서 retain.hourly.count 및 retain.hourly.duration 에 할당된 값을 수정합니다.
++
+smsap.config 파일은 기본 설치 위치/properties/smsap.config에 있습니다.
+
++
+다음 값을 입력할 수 있습니다.
+
++
+*** hourly.count=12
+*** hourly.duration=2
+
+
+
+
+
+
+* 관련 정보 *
+
+xref:reference-snapmanager-configuration-parameters.adoc[SnapManager 구성 매개 변수]

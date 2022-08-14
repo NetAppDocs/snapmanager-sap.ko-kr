@@ -1,0 +1,50 @@
+---
+permalink: unix-administration/reference-the-smosmsaphelp-command.html 
+sidebar: sidebar 
+keywords: run, help, command, display, information, snapmanager, command, option, supply, valid, command, name, syntax, smsap 
+summary: help 명령을 실행하여 SnapManager 명령 및 해당 옵션에 대한 정보를 표시할 수 있습니다. 명령 이름을 제공하지 않으면 유효한 명령 목록이 표시됩니다. 명령 이름을 제공하면 해당 명령에 대한 구문이 표시됩니다. 
+---
+= smsap 도움말 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager 명령과 옵션에 대한 정보를 표시하기 위해 help 명령을 실행할 수 있습니다. 명령 이름을 제공하지 않으면 유효한 명령 목록이 표시됩니다. 명령 이름을 제공하면 해당 명령에 대한 구문이 표시됩니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap help
+[_backup_|_cmdfile_|_clone_|_credential_|_help_|_operation_|_profile_|_protection-policy_|_repository_|_system_|_version_|_plugin_|_diag_|_history_|_schedule_|_notification_|_storage_|_get_]]
+[-quiet | -verbose]]
+----
+
+
+== 매개 변수
+
+다음은 이 명령에 사용할 수 있는 명령 이름입니다.
+
+* '백업'
+* "복제"
+* 'cmdlet'
+* 자격 증명
+* 다이그
+* "내려가세요
+* 알림
+* 도와주세요
+* 역사
+* '작동'을 선택합니다
+* '플러그인'입니다
+* 프로필
+* 보호 정책
+* 일시적
+* 스케줄
+* '스토리지'입니다
+* '시스템'
+* '내전'
+

@@ -1,0 +1,52 @@
+---
+permalink: unix-installation-cmode/reference-smsap-isg-where-to-go-next.html 
+sidebar: sidebar 
+keywords: install, snapmanager, successful, create, backup, perform, restore, recovery, clone, operation, addition, information, feature, operation, history, where, to, go, next 
+summary: SnapManager를 설치하고 백업을 성공적으로 생성한 후 SnapManager를 사용하여 복원, 복구 및 클론 생성 작업을 수행할 수 있습니다. 또한 예약, SnapManager 운영 관리, 운영 기록 유지 관리 등과 같은 다른 SnapManager 기능에 대한 정보도 필요할 수 있습니다. 
+---
+= 다음 단계로 넘어갑니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 설치하고 백업을 성공적으로 생성한 후 SnapManager를 사용하여 복원, 복구 및 클론 생성 작업을 수행할 수 있습니다. 또한 예약, SnapManager 운영 관리, 운영 기록 유지 관리 등과 같은 다른 SnapManager 기능에 대한 정보도 필요할 수 있습니다.
+
+이러한 기능에 대한 자세한 내용과 SnapManager에 대한 릴리스 관련 정보는 다음 문서에서 확인할 수 있습니다. 이 모든 정보는 에서 확인할 수 있습니다 http://mysupport.netapp.com["NetApp 지원"^].
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMP12481453["UNIX용 SnapManager 3.4.1 SAP 관리 가이드"^]
++
+에서는 SAP용 SnapManager 관리를 구성하는 방법에 대해 설명합니다. 데이터베이스 구성, 백업, 복원, 클론 복제, 2차 보호 수행 방법, CLI 명령에 대한 설명
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMP12481455["SAP용 SnapManager 3.4 릴리즈 노트"^]
++
+SAP용 SnapManager의 새로운 기능, 해결된 문제, 중요한 주의 사항, 알려진 문제 및 제한 사항에 대해 설명합니다.
+
+* _SnapManager for SAP 온라인 도움말 _
++
+에서는 SnapManager UI를 사용하여 서로 다른 SnapManager 작업을 수행하는 단계별 절차를 설명합니다.
+
++
+
+NOTE: 온라인 도움말_은 SnapManager UI와 통합되어 있으며 지원 사이트에서 사용할 수 없습니다.
+
+* http://www.netapp.com/us/media/tr-3761.pdf["NetApp 기술 보고서 3761: SnapManager for Oracle: 모범 사례"^]
++
+Oracle용 SnapManager Best Practice에 대해 설명합니다.
+
+* http://www.netapp.com/us/media/tr-3633.pdf["NetApp 기술 보고서 3633: NetApp 스토리지의 Oracle 데이터베이스 모범 사례"^]
++
+NetApp 스토리지 시스템에서 Oracle 데이터베이스를 구성하는 모범 사례를 설명합니다.
+
+* http://www.netapp.com/us/media/tr-3442.pdf["NetApp 기술 보고서 3442: SAP with Oracle on UNIX and NFS and NetApp Storage 를 참조하십시오"^]
++
+SAP 솔루션을 지원하기 위해 NetApp 스토리지를 구축하는 모범 사례를 설명합니다.
+
+
+
+* 관련 정보 *
+
+http://mysupport.netapp.com["NetApp 지원"^]
+
+http://mysupport.netapp.com/documentation/productsatoz/index.html["NetApp 설명서: 제품 라이브러리 A-Z"^]

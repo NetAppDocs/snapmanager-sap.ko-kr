@@ -1,0 +1,47 @@
+---
+permalink: unix-administration/reference-the-smosmsap-clone-detach-command.html 
+sidebar: sidebar 
+keywords: split, clone, volume, parent, data, ontap, detach, snapmanager, smsap, command 
+summary: 클론 복제된 볼륨을 Data ONTAP의 상위 볼륨에서 분할한 후 SnapManager에서 클론 분리 명령을 실행하여 볼륨이 더 이상 클론이 없음을 SnapManager에 알릴 수 있습니다. 
+---
+= smssap 클론 분리 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+클론 복제된 볼륨을 Data ONTAP의 상위 볼륨에서 분할한 후 SnapManager에서 클론 분리 명령을 실행하여 볼륨이 더 이상 클론이 없음을 SnapManager에 알릴 수 있습니다.
+
+
+
+== 구문
+
+'msap clone detach-profile_profile_name_-label_clone_label_'
+
+
+
+== 매개 변수
+
+* '*-profile_profile_name_*'
++
+클론이 생성되는 프로파일 이름을 지정합니다.
+
+* '*-label_clone_label_ *'
++
+클론 작업에서 생성된 이름을 지정합니다.
+
+
+
+'''
+
+
+== 예
+
+다음 명령을 실행하면 클론이 분리됩니다.
+
+[listing]
+----
+smsap clone detach -profile SALES1 -label sales1_clone
+----
+'''

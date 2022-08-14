@@ -1,0 +1,76 @@
+---
+permalink: unix-administration/task-update-target-database-hostname-associated-with-a-profile.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, ability, update, host, name, target, database, profile 
+summary: 'SAP용 SnapManager(3.2 이상)는 SnapManager 프로필에서 타겟 데이터베이스의 호스트 이름을 업데이트하는 기능을 제공합니다.' 
+---
+= 프로파일과 연결된 타겟 데이터베이스 호스트 이름을 업데이트합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SAP용 SnapManager(3.2 이상)는 SnapManager 프로필에서 타겟 데이터베이스의 호스트 이름을 업데이트하는 기능을 제공합니다.
+
+* 필요한 것 *
+
+* 로컬 사용자의 홈 디렉토리는 프로파일 대 리포지토리 매핑을 알고 있어야 합니다.
+* SnapManager 그래픽 사용자 인터페이스(GUI) 세션을 닫아야 합니다.
+* RAC(Real Application Clusters) 환경에서는 프로파일에 지정된 호스트에서 사용할 수 있는 클론 또는 마운트된 백업을 삭제하고 마운트 해제해야 합니다.
+
+
+* 이 작업에 대한 정보 *
+
+CLI만 사용하여 새 호스트 이름으로 프로필을 업데이트할 수 있습니다.
+
+* 프로파일에서 타겟 데이터베이스 호스트 이름을 변경할 수 없는 시나리오 *
+
+프로파일에서 타겟 데이터베이스 호스트 이름을 변경할 수 없는 시나리오는 다음과 같습니다.
+
+* SnapManager GUI를 사용하여 타겟 데이터베이스 호스트 이름 변경
+* 프로파일의 타겟 데이터베이스 호스트 이름을 업데이트한 후 리포지토리 데이터베이스의 롤백
+* 단일 명령을 실행하여 새 타겟 데이터베이스 호스트 이름에 대한 여러 프로파일을 업데이트합니다
+* SnapManager 작업이 실행 중일 때 타겟 데이터베이스 호스트 이름을 변경합니다
+* SnapManager가 Solaris에 설치되어 있고 SVM 스택이 있는 호스트 마운트 파일 시스템을 사용하여 데이터베이스 LUN(논리 유닛 번호)이 생성되는 경우 대상 데이터베이스 호스트 이름을 변경합니다.
+
+
+
+NOTE: 프로필에서 타겟 데이터베이스 호스트 이름을 업데이트하면 대상 데이터베이스 호스트 이름만 변경됩니다. 프로파일에 설정된 다른 모든 구성 매개 변수가 유지됩니다.
+
+보호 지원 프로파일에서 새 타겟 데이터베이스 호스트 이름을 업데이트하면 업데이트된 프로필에 대해 동일한 데이터 세트 및 보호 정책이 유지됩니다.
+
+대상 호스트의 호스트 이름을 변경한 후에는 새로 보호된 프로파일을 생성하기 전에 기존의 모든 보호된 프로파일에 대한 호스트 이름을 업데이트해야 합니다. 프로파일의 호스트 이름을 업데이트하려면 'msap profile update' 명령어를 실행한다.
+
+타겟 데이터베이스 호스트 이름을 업데이트한 후에는 새 호스트에서 클론 또는 마운트된 백업을 사용할 수 없는 경우 클론을 삭제 또는 분할하거나 백업을 마운트 해제할 수 없습니다. 이러한 시나리오에서는 새 호스트에서 SnapManager 작업을 실행하면 이전 호스트에서 장애가 발생할 뿐만 아니라 오래된 항목도 발생합니다. SnapManager 작업을 수행하려면 'profile update'를 사용하여 이전 호스트 이름으로 되돌려야 합니다.
+
+. 다음 명령을 입력합니다.
++
+"* smssap profile update -profile_profile_[ -profile -profile -profile -profile -profile -profile -profile -password -profile_password_] [-database -dbname_db_dbname_ -host_db_host_[-sid_sid_] [-login-username_db_username_ -password_db_password_name] [{tnsm_rman_name] duration -rman_name] ssilm_name] lman_name] [{nekly_name]username_name]username_name]username_name]username_name]username_name]username_name]username_name]username_name=odly_name]{osm_remove_name] [-duration_m_]] [-comment_comment_] [-snapname-pattern_pattern_] [- protect[-protection-policy_policy_policy_name_]|[- nobprotect_notify]][-summary-notification_archiving_days][-notification_archiving_subject_days][-email_archiveparynays_archiving_subject_archiving_subject_archiving_subject_subject_subject_subject_subject_subject_days].days].days].days].days].days][-subject_archiveparynks_archiveparynks_archiveparynks_archiving_subject_subject_subject_archiving_subject_archiving_subject_subject_subject_subject
+
++
+이 명령의 다른 옵션은 다음과 같습니다.
+
++
+`[-force][-nop프롬프트]'
+
++
+`[-quiet|-verbose]'
+
++
+[cols="1a,2a"]
+|===
+| 원하는 작업 | 그러면... 
+
+
+ a| 
+* 대상 데이터베이스 호스트 이름 변경 *
+ a| 
+'specify-host_new_db_host_'
+
+|===
+. 프로파일의 대상 데이터베이스 호스트 이름을 보려면 다음 명령을 입력합니다.
++
+'* smssap profile show * '
+
+

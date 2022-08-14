@@ -1,0 +1,32 @@
+---
+permalink: unix-administration/task-create-operation-level-dump-files.html 
+sidebar: sidebar 
+keywords: smsap, operation, dump, command, name, id, fail, log, information, level, information, host, environment 
+summary: 실패한 작업의 이름 또는 ID와 함께 smsap 작업 덤프 명령을 사용하여 특정 작업에 대한 로그 정보를 가져올 수 있습니다. 특정 작업, 프로필, 호스트 또는 환경에 대한 정보를 수집하기 위해 서로 다른 로그 수준을 지정할 수 있습니다. 
+---
+= 작업 수준 덤프 파일을 생성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+실패한 작업의 이름이나 ID와 함께 'msap operation' dump 명령을 사용하여 특정 작업에 대한 로그 정보를 얻을 수 있습니다. 특정 작업, 프로필, 호스트 또는 환경에 대한 정보를 수집하기 위해 서로 다른 로그 수준을 지정할 수 있습니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+'* smssap 작업 dump-id_GUID_*'
+
+
+
+
+NOTE: sap operation dump 명령은 smsap profile dump 명령으로 제공되는 정보 집합을 제공하며, 이 명령은 smsap system dump 명령으로 제공되는 정보 집합을 제공합니다.
+
+덤프 파일 위치:
+
+[listing]
+----
+Path:/<user-home>
+/.netapp/smsap/3.3.0/smsap_dump_8abc01c814649ebd0114649ec69d0001.jar
+----

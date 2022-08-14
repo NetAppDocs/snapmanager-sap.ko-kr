@@ -1,0 +1,69 @@
+---
+permalink: unix-administration/reference-the-smosmsapoperation-dump-command.html 
+sidebar: sidebar 
+keywords: run, operation, dump, command, create, jar, file, contain, diagnostic, information, smsap 
+summary: 작업 덤프 명령을 실행하여 작업에 대한 진단 정보가 포함된 jar 파일을 생성할 수 있습니다. 
+---
+= smsap 작업 덤프 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+'operation' dump 명령을 실행하여 작업에 대한 진단 정보가 포함된 jar 파일을 생성할 수 있습니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap operation dump
+-profile _profile_name_
+[-label _label_name_ | -id _guid_]
+[-quiet | -verbose]]
+----
+
+
+== 매개 변수
+
+* '*-profile_profile_name_*'
++
+덤프 파일을 생성할 프로파일을 지정합니다. 프로파일에는 데이터베이스의 식별자와 기타 데이터베이스 정보가 들어 있습니다.
+
+* '*-label_label_name_*'
++
+작업에 대한 덤프 파일을 생성하고 지정된 레이블을 할당합니다.
+
+* '*-id_GUID_*'
++
+지정된 GUID를 사용하여 작업에 대한 덤프 파일을 생성합니다. GUID는 작업이 시작될 때 SnapManager에 의해 생성됩니다.
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+'''
+
+
+== 예
+
+다음 예에서는 백업에 대한 덤프 파일을 생성합니다.
+
+[listing]
+----
+smsap operation dump -profile SALES1
+-id 8abc01ec0e78f3e2010e78f3fdd00001
+----
+[listing]
+----
+Dump file created Path:/userhomedirectory/.netapp/smsap/3.3/smsap_dump_8abc01ec0e78f3e2010e78f3fdd00001.jar
+----
+'''

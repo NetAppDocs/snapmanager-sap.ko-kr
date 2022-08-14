@@ -1,0 +1,91 @@
+---
+permalink: unix-administration/reference-the-smosmsaprepository-create-command.html 
+sidebar: sidebar 
+keywords: command, create, repository, store, database, profile, associate, credentials, block, size, adequate, smsap 
+summary: 이 명령은 데이터베이스 프로필 및 관련 자격 증명을 저장할 저장소를 만듭니다. 이 명령은 또한 블록 크기가 적절한지 확인합니다. 
+---
+= smbap 리포지토리 create 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== 구문
+
+이 명령은 데이터베이스 프로필 및 관련 자격 증명을 저장할 저장소를 만듭니다. 이 명령은 또한 블록 크기가 적절한지 확인합니다.
+
+[listing]
+----
+smsap repository create
+-repository
+-port repo_port
+-dbname repo_service_name
+-host repo_host
+-login -username repo_username
+[-force] [-noprompt]
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* ``리포지터리 *’’
++
+'_-repository_' 다음에 나오는 옵션은 리포지터리의 데이터베이스 세부 정보를 지정합니다
+
+* ``port_repo_port_*’
++
+리포지토리를 저장하는 데이터베이스에 액세스하는 데 사용되는 TCP 포트 번호를 지정합니다.
+
+* ``dbname_repo_service_name_*'
++
+리포지토리를 저장하는 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 SID를 사용합니다.
+
+* ``숙주_repo_host_*'
++
+리포지토리 데이터베이스가 실행되는 호스트 컴퓨터의 이름 또는 IP 주소를 지정합니다.
+
+* ``로그인 *’’
++
+리포지토리 로그인 세부 정보를 시작합니다.
+
+* ``username_repo_username_*'
++
+리포지토리를 저장하는 데이터베이스에 액세스하는 데 필요한 사용자 이름을 지정합니다.
+
+* ``힘내다’’고 말했습니다
++
+리포지토리를 강제로 생성하려고 합니다. 이 옵션을 사용하면 SnapManager에서 리포지토리를 생성하기 전에 리포지토리를 백업하라는 메시지를 표시합니다.
+
+* ``공자’’’’라고 말했습니다
++
+는 '-force' 옵션을 사용할 경우 리포지토리를 생성하기 전에 리포지토리를 백업하라는 메시지를 표시하지 않습니다. '-nop프롬프트' 옵션을 사용하면 프롬프트가 나타나지 않으므로 스크립트를 사용하여 리포지토리를 더 쉽게 만들 수 있습니다.
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== 명령 예
+
+다음 예에서는 호스트 Hotspur의 데이터베이스 SMSAPREPO에 리포지토리를 생성합니다.
+
+[listing]
+----
+smsap repository create -repository -port 1521 -dbname SMSAPREPO -host hotspur -login -username grabal21 -verbose
+SMSAP-09202 [INFO ]: Creating new schema as grabal21 on jdbc:oracle:thin:@//hotspur:1521/SMSAPREPO.
+SMSAP-09205 [INFO ]: Schema generation complete.
+SMSAP-09209 [INFO ]: Performing repository version INSERT.
+SMSAP-09210 [INFO ]: Repository created with version: 30
+SMSAP-13037 [INFO ]: Successfully completed operation: Repository Create
+SMSAP-13049 [INFO ]: Elapsed Time: 0:00:08.844
+----

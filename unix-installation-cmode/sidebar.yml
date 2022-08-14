@@ -1,0 +1,111 @@
+---
+section: unix-installation-cmode
+title: Clustered Data ONTAP용 UNIX의 설치 및 설정
+entries:
+- title: 제품 개요
+  url: "/unix-installation-cmode/reference-smsap-isg-product-overview.html"
+  entries:
+  - title: SnapManager 아키텍처
+    url: "/unix-installation-cmode/reference-smsap-isg-snapmanager-architecture.html"
+- title: 구축 워크플로우
+  url: "/unix-installation-cmode/reference-smsap-isg-deployment-workflow.html"
+- title: 배포를 준비합니다
+  url: "/unix-installation-cmode/task-smsap-isg-prepare-for-deployment.html"
+  entries:
+  - title: SnapManager 라이센스
+    url: "/unix-installation-cmode/reference-smsap-isg-snapmanager-licensing.html"
+  - title: 지원되는 구성
+    url: "/unix-installation-cmode/reference-supported-configurations.html"
+  - title: 지원되는 스토리지 유형입니다
+    url: "/unix-installation-cmode/reference-supported-storage-types.html"
+  - title: UNIX 호스트 요구 사항
+    url: "/unix-installation-cmode/reference-smsap-isg-host-requirements.html"
+- title: 데이터베이스를 구성합니다
+  url: "/unix-installation-cmode/task-smsap-isg-configure-databases.html"
+  entries:
+  - title: 대상 데이터베이스를 구성합니다
+    url: "/unix-installation-cmode/task-smsap-isg-configure-the-target-database.html"
+  - title: 대상 데이터베이스에 대한 Oracle 데이터베이스 사용자를 생성합니다
+    url: "/unix-installation-cmode/task-create-an-oracle-user-for-the-target-database.html"
+  - title: 리포지토리 데이터베이스 인스턴스를 만듭니다
+    url: "/unix-installation-cmode/task-create-the-repository-database-instance.html"
+  - title: 리포지토리 데이터베이스 인스턴스에 대한 Oracle 사용자를 생성합니다
+    url: "/unix-installation-cmode/task-create-an-oracle-user-for-the-repository-database-instance.html"
+  - title: Oracle 수신기 구성을 확인합니다
+    url: "/unix-installation-cmode/task-verify-the-oracle-listener-configuration.html"
+- title: SnapManager를 설치합니다
+  url: "/unix-installation-cmode/task-smsap-isg-install-snapmanager.html"
+  entries:
+  - title: SAP BR * Tools와 통합
+    url: "/unix-installation-cmode/task-smsap-isg-integrate-with-sap-br-tools.html"
+- title: SnapManager를 설정합니다
+  url: "/unix-installation-cmode/task-set-up-snapmanager.html"
+  entries:
+  - title: SnapManager 서버를 시작합니다
+    url: "/unix-installation-cmode/task-smsap-isg-start-the-snapmanager-server.html"
+  - title: SnapManager 사용자 인터페이스에 액세스합니다
+    url: "/unix-installation-cmode/task-smsap-isg-access-the-snapmanager-user-interface.html"
+  - title: SnapManager 리포지토리를 구성합니다
+    url: "/unix-installation-cmode/task-smsap-isg-configure-the-snapmanager-repository.html"
+- title: SnapMirror 및 SnapVault 복제를 위한 스토리지 시스템 준비
+  url: "/unix-installation-cmode/reference-prepare-storage-systems-for-snapmirror-and-snapvault-replication.html"
+  entries:
+  - title: SnapMirror와 SnapVault 간의 차이점 이해
+    url: "/unix-installation-cmode/concept-understanding-the-differences-between-snapmirror-and-snapvault.html"
+  - title: SnapMirror 복제를 위한 스토리지 시스템 준비
+    url: "/unix-installation-cmode/task-prepare-storage-systems-for-snapmirror-replication.html"
+  - title: SnapVault 복제를 위한 스토리지 시스템 준비
+    url: "/unix-installation-cmode/task-prepare-storage-systems-for-snapvault-replication.html"
+- title: 데이터베이스 백업 및 확인
+  url: "/unix-installation-cmode/concept-backing-up-and-verifying-your-databases.html"
+  entries:
+  - title: SnapManager 백업 개요
+    url: "/unix-installation-cmode/concept-smsap-isg-snapmanager-backup-overview.html"
+  - title: 백업 전략 정의
+    url: "/unix-installation-cmode/concept-smsap-isg-defining-a-backup-strategy.html"
+  - title: 데이터베이스에 대한 프로필을 만듭니다
+    url: "/unix-installation-cmode/task-smsap-isg-create-a-profile-for-your-database.html"
+  - title: 데이터베이스를 백업합니다
+    url: "/unix-installation-cmode/task-smsap-isg-back-up-your-database.html"
+  - title: 데이터베이스 백업을 확인합니다
+    url: "/unix-installation-cmode/task-smsap-isg-verify-database-backups.html"
+  - title: 반복 백업을 예약합니다
+    url: "/unix-installation-cmode/task-smsap-isg-schedule-recurring-backups.html"
+- title: UNIX 호스트에서 소프트웨어를 제거합니다
+  url: "/unix-installation-cmode/task-smsap-isg-uninstall-the-software-from-a-unix-host.html"
+- title: SnapManager 업그레이드 중
+  url: "/unix-installation-cmode/concept-upgrading-snapmanager-for-oracle-snapmanager-for-sap.html"
+  entries:
+  - title: SnapManager 업그레이드 준비 중
+    url: "/unix-installation-cmode/concept-preparing-to-upgrade-snapmanager-for-oracle-snapmanager-for-sap.html"
+  - title: SnapManager 호스트를 업그레이드합니다
+    url: "/unix-installation-cmode/task-upgrade-snapmanager-for-oracle-snapmanager-for-sap-hosts.html"
+  - title: 업그레이드 후 작업
+    url: "/unix-installation-cmode/concept-post-upgrade-tasks.html"
+    entries:
+    - title: 기존 리포지토리를 업데이트합니다
+      url: "/unix-installation-cmode/task-update-the-existing-repository.html"
+    - title: 백업 보존 클래스를 수정합니다
+      url: "/unix-installation-cmode/task-modify-the-backup-retention-class.html"
+    - title: 복원 프로세스 유형
+      url: "/unix-installation-cmode/concept-restore-process-identification.html"
+  - title: 롤링 업그레이드를 사용하여 SnapManager 호스트 업그레이드
+    url: "/unix-installation-cmode/concept-upgrading-snapmanager-hosts-by-using-rolling-upgrade.html"
+    entries:
+    - title: 롤링 업그레이드를 수행하기 위한 사전 요구 사항
+      url: "/unix-installation-cmode/concept-prerequisites-for-performing-rolling-upgrade.html"
+    - title: 단일 호스트 또는 여러 호스트에서 롤링 업그레이드를 수행합니다
+      url: "/unix-installation-cmode/task-perform-rolling-upgrade-on-a-single-host-or-multiple-hosts.html"
+    - title: 롤백이란 무엇인가
+      url: "/unix-installation-cmode/concept-what-a-rollback-is.html"
+      entries:
+      - title: 롤백 수행을 위한 제한 사항
+        url: "/unix-installation-cmode/concept-limitations-for-performing-a-rollback.html"
+      - title: 롤백을 수행하기 위한 사전 요구 사항입니다
+        url: "/unix-installation-cmode/concept-prerequisites-for-performing-a-rollback.html"
+      - title: 단일 호스트 또는 여러 호스트에 대해 롤백을 수행합니다
+        url: "/unix-installation-cmode/task-perform-a-rollback-on-a-single-host-or-multiple-hosts.html"
+      - title: 롤백 작업 후
+        url: "/unix-installation-cmode/task-post-rollback-tasks.html"
+- title: 다음 단계로 넘어갑니다
+  url: "/unix-installation-cmode/reference-smsap-isg-where-to-go-next.html"

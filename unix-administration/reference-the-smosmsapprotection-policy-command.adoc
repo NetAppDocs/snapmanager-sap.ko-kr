@@ -1,0 +1,69 @@
+---
+permalink: unix-administration/reference-the-smosmsapprotection-policy-command.html 
+sidebar: sidebar 
+keywords: run, protection-policy, command, list, policies, applied, apply, profile, protection, policy, exist, update, manager, smsap 
+summary: PROFILE-POLICY 명령을 실행하여 프로파일에 적용할 수 있는 보호 정책을 나열할 수 있습니다. 새 프로필이 생성되거나 기존 프로필이 업데이트될 때 보호 정책을 적용할 수 있습니다. Protection Manager 콘솔을 사용하여 프로파일에 대한 보호 정책을 설정할 수도 있습니다. 
+---
+= smsap protection-policy 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"protection-policy" 명령을 실행하여 프로파일에 적용할 수 있는 보호 정책을 나열할 수 있습니다. 새 프로필이 생성되거나 기존 프로필이 업데이트될 때 보호 정책을 적용할 수 있습니다. Protection Manager 콘솔을 사용하여 프로파일에 대한 보호 정책을 설정할 수도 있습니다.
+
+
+
+== 구문
+
+[listing]
+----
+
+        smsap protection-policy list
+----
+
+NOTE: 이 명령을 사용하려면 서버에 Protection Manager 및 SnapDrive가 설치되어 있어야 합니다.
+
+
+
+== 매개 변수
+
+* ``목록 *’’
++
+프로파일에 설정할 수 있는 보호 정책 목록을 표시합니다.
+
+
+
+
+
+== 예
+
+다음 예에서는 프로파일로 설정할 수 있는 보호 정책을 보여 줍니다.
+
+[listing]
+----
+smsap protection-policy list
+----
+[listing]
+----
+
+Back up
+Back up, then mirror
+Chain of two mirrors
+DR Back up
+DR Back up, then mirror
+DR Mirror
+DR Mirror and back up
+DR Mirror and mirror
+DR Mirror, then back up
+DR Mirror, then mirror
+Local backups only
+Mirror
+Mirror and back up
+Mirror to two destinations
+Mirror, then back up
+No protection
+Partial-volume Mirror
+Remote backups only
+----

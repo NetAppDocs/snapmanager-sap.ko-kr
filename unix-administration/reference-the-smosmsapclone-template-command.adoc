@@ -1,0 +1,65 @@
+---
+permalink: unix-administration/reference-the-smosmsapclone-template-command.html 
+sidebar: sidebar 
+keywords: command, create, clone, specification, template, smsap 
+summary: 이 명령을 사용하여 클론 사양 템플릿을 생성할 수 있습니다. 
+---
+= smssap 클론 템플릿 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령을 사용하여 클론 사양 템플릿을 생성할 수 있습니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap clone template
+-profile _name_
+[-backup-id _guid_  | -backup-label _backup_name_\]
+[-quiet | -verbose]]
+----
+
+
+== 매개 변수
+
+* ``프로파일_이름_*'
++
+클론 지정을 생성할 데이터베이스를 지정합니다. 프로파일에는 데이터베이스의 식별자와 기타 데이터베이스 정보가 들어 있습니다.
+
+* ``bACKUP-id_GUID_*'
++
+지정된 GUID를 사용하여 백업에서 클론 사양을 생성합니다. GUID는 백업을 생성할 때 SnapManager에 의해 생성됩니다. smbap 백업 목록 명령을 사용하여 각 백업의 GUID를 표시합니다.
+
+* ``BACKUP-LABEL_BACKUP_LABEL_NAME_*''
++
+지정된 백업 레이블을 사용하여 백업에서 클론 사양을 생성합니다.
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+'''
+
+
+== 명령 예
+
+다음 예에서는 full_backup_sales_may라는 레이블이 붙은 백업에서 클론 사양 템플릿을 생성합니다. smbap 클론 템플릿 명령이 완료되면 클론 사양 템플릿이 완료됩니다.
+
+[listing]
+----
+smsap clone template -profile SALES1 -backup-label full_backup_sales_May
+Operation Id [8abc01ec0e79004b010e79006da60001] succeeded.
+----
+'''

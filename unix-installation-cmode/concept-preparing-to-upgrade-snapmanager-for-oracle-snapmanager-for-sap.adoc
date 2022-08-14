@@ -1,0 +1,26 @@
+---
+permalink: unix-installation-cmode/concept-preparing-to-upgrade-snapmanager-for-oracle-snapmanager-for-sap.html 
+sidebar: sidebar 
+keywords: environment, upgrade, snapmanager, software, hardware, browser, database, operate, system, requirement, information, interoperability, matrix, prepare 
+summary: SnapManager를 업그레이드하려는 환경은 특정 소프트웨어, 하드웨어, 브라우저, 데이터베이스 및 운영 체제 요구 사항을 충족해야 합니다. 요구사항에 대한 최신 정보는 상호 운용성 매트릭스 를 참조하십시오. 
+---
+= SnapManager 업그레이드 준비 중
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 업그레이드하려는 환경은 특정 소프트웨어, 하드웨어, 브라우저, 데이터베이스 및 운영 체제 요구 사항을 충족해야 합니다. 요구 사항에 대한 최신 정보는 를 참조하십시오 http://support.netapp.com/NOW/products/interoperability/["상호 운용성 매트릭스"^].
+
+업그레이드하기 전에 다음 작업을 수행해야 합니다.
+
+* 필요한 사전 설치 작업을 완료합니다.
+* 최신 SnapManager for SAP 설치 패키지를 다운로드합니다.
+* 모든 타겟 호스트에 UNIX용 SnapDrive의 적절한 버전을 설치하고 구성합니다.
+* 기존 SnapManager for SAP 리포지토리 데이터베이스의 백업을 생성합니다.
+
+
+* 관련 정보 *
+
+http://support.netapp.com/NOW/products/interoperability/["상호 운용성 매트릭스"^]

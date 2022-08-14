@@ -1,0 +1,29 @@
+---
+permalink: windows/concept-protecting-database-backups-by-using-post-scripts.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, protect, database, backup, postscript, snapmirror, snapvault, establish, primary, secondary, storage, system, default, post-process, activity, cli, gui 
+summary: SnapManager를 사용하면 운영 스토리지 시스템과 2차 스토리지 시스템 간에 SnapMirror 또는 SnapVault 관계가 설정된 경우 사후 스크립트를 사용하여 데이터베이스 백업을 보호할 수 있습니다. SnapManager CLI 및 GUI에서 백업 작업의 사후 처리 작업에 기본 사후 스크립트를 사용할 수 있습니다. 
+---
+= 사후 스크립트를 사용하여 데이터베이스 백업 보호
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 운영 스토리지 시스템과 2차 스토리지 시스템 간에 SnapMirror 또는 SnapVault 관계가 설정된 경우 사후 스크립트를 사용하여 데이터베이스 백업을 보호할 수 있습니다. SnapManager CLI 및 GUI에서 백업 작업의 사후 처리 작업에 기본 사후 스크립트를 사용할 수 있습니다.
+
+다음 기본 postscript는 dDefault_install_directory\plugins\backup\create\post에서 사용할 수 있습니다.
+
+* 7-Mode에서 작동하는 Data ONTAP를 사용하는 경우 SnapMirror PostScript, MMirror_the_backup.cmd입니다
+* 7-Mode에서 Data ONTAP를 사용하는 경우 SnapVault PostScript인 Vault_the_backup.cmd입니다
+* clustered Data ONTAP을 사용하는 경우 SnapMirror PostScript인 MMirror_the_backup_cDOT.cmd입니다
+* SnapVault PS, 볼트_더_백업_cDOT.cmd는 clustered Data ONTAP을 사용하는 경우
+
+
+자세한 내용은 "default_install_directory\plugins"에서 사용할 수 있는 readme.txt를 참조하십시오.
+
+SnapManager 3.1 이전 버전에서는 클론 작업을 위한 전처리 또는 사후 처리 스크립트만 제공합니다. SnapManager 3.2 이상은 백업 및 복원 작업을 위한 전처리 및 후처리 스크립트를 제공합니다. 이러한 스크립트를 사용하여 백업 또는 복원 작업 전후에 실행할 수 있습니다.
+
+
+NOTE: 이 스크립트는 참조용으로만 제공됩니다. SnapDrive 7.0 이상 버전에서 테스트되었지만 일부 환경에서는 작동하지 않을 수 있습니다. 2차 보호 요구 사항에 따라 스크립트를 사용자 지정해야 합니다. 이 스크립트는 6.2 이전 버전의 SnapDrive에서는 작동하지 않습니다.

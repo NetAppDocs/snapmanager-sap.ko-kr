@@ -1,0 +1,62 @@
+---
+permalink: windows/concept-integration-with-other-netapp-applications-and-technologies.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, stand-alone, product, integrate, feature, netapp, enable, backup, amount, space, integration, application, technology, technologies 
+summary: SAP용 SnapManager는 다른 NetApp 제품의 기능을 통합하여 최소한의 공간만 필요로 하는 신속한 백업을 지원하는 독립 실행형 제품입니다. 
+---
+= 다른 NetApp 애플리케이션 및 기술과 통합
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SAP용 SnapManager는 다른 NetApp 제품의 기능을 통합하여 최소한의 공간만 필요로 하는 신속한 백업을 지원하는 독립 실행형 제품입니다.
+
+SnapManager은 다음과 같은 NetApp 애플리케이션 및 기술과 통합됩니다.
+
+|===
+| 응용 프로그램 및 기술 | 설명 
+
+
+ a| 
+SnapDrive
+ a| 
+SnapManager은 SnapDrive를 사용하여 스토리지의 스냅샷 복사본을 생성합니다. Snapshot 복사본은 백업이 D2D 백업보다 공간 효율적이고 빠르게 생성되도록 보장합니다.
+
+
+
+ a| 
+FlexClone(Data ONTAP의 라이센스 기능)
+ a| 
+SnapManager은 FlexClone 기능을 사용하여 빠르고 공간 효율적인 백업 클론을 생성합니다.
+
+
+
+ a| 
+스냅샷(Data ONTAP의 기능)
+ a| 
+스냅샷 기술은 데이터베이스의 시점 복사본을 생성합니다.
+
+
+
+ a| 
+SnapRestore(Data ONTAP의 라이센스 기능)
+ a| 
+SnapManager는 SnapRestore를 사용하여 데이터베이스를 복구하는 평균 시간을 줄여 줍니다. SnapRestore는 개별 파일을 수 테라바이트의 볼륨으로 복구하므로 작업을 신속하게 재개할 수 있습니다.
+
+
+
+ a| 
+SnapVault(Data ONTAP의 라이센스 기능)
+ a| 
+SnapVault는 디스크 기반 백업을 활용하여 안정적이고 오버헤드가 낮은 데이터베이스 백업 및 복구를 수행합니다.
+
+
+
+ a| 
+SnapMirror(Data ONTAP의 라이센스 기능)
+ a| 
+SnapMirror는 간편하고 안정적이며 비용 효율적인 방식으로 글로벌 네트워크에서 데이터베이스 데이터를 고속으로 복제합니다.
+
+|===

@@ -1,0 +1,36 @@
+---
+permalink: unix-installation-7mode/task-smsap-isg-start-the-snapmanager-server.html 
+sidebar: sidebar 
+keywords: start, snapmanager, server, target, database, host 
+summary: 대상 데이터베이스 호스트에서 SnapManager 서버를 시작해야 합니다. 
+---
+= SnapManager 서버를 시작합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+대상 데이터베이스 호스트에서 SnapManager 서버를 시작해야 합니다.
+
+.단계
+. 타겟 데이터베이스 호스트에 로그인하고 SnapManager 서버를 시작합니다.
++
+'* smsap_server start*'
+
++
+'SnapManager 서버가 PID PID PID_NUMBER_를 사용하여 SECURE PORT_PORT_NUMBER에서 시작되었습니다.'라는 메시지가 표시됩니다.
+
++
+
+NOTE: 기본 포트는 _27214_입니다.
+
+
+
+* 완료 후 *
+
+SnapManager가 올바르게 실행 중인지 확인할 수 있습니다.
+
+'* smsap_server verify*'
+
+'Operation ID_Operation_ID_NUMBER_SUCEED' 메시지가 출력된다.

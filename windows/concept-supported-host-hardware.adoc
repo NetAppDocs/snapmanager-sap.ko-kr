@@ -1,0 +1,45 @@
+---
+permalink: windows/concept-supported-host-hardware.html 
+sidebar: sidebar 
+keywords: memory, disk, space, cpu, requirement, support, host, hardware 
+summary: 메모리, 디스크 공간 및 CPU 요구 사항을 고려합니다. 
+---
+= 지원되는 호스트 하드웨어입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+메모리, 디스크 공간 및 CPU 요구 사항을 고려합니다.
+
+SnapManager를 구성하려면 다음 구성이 필요합니다.
+
+|===
+| 하드웨어 기능 | 하드웨어 요구 사항 
+
+
+ a| 
+메모리
+ a| 
+SnapManager 서버에는 128MB의 메모리가 필요합니다.
+
+그래픽 사용자 인터페이스를 실행하려면 최소 512MB RAM이 필요합니다.
+
+SnapManager 서버가 실행하는 각 작업에는 실행 중에 48MB의 추가 메모리가 필요합니다.
+
+
+
+ a| 
+디스크 공간
+ a| 
+그래픽 사용자 애플리케이션에 사용할 수 있는 디스크 공간 128MB(최소)
+
+
+
+ a| 
+CPU 속도
+ a| 
+1.0GHz 프로세서 속도(최소)
+
+|===

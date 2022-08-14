@@ -1,0 +1,60 @@
+---
+permalink: windows/task-cloning-databases-from-backups.html 
+sidebar: sidebar 
+keywords: clone, database, backup, create, command, cloning 
+summary: clone create 명령을 사용하여 백업에서 데이터베이스를 복제할 수 있습니다. 
+---
+= 백업에서 데이터베이스 클론 생성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clone create 명령을 사용하여 백업에서 데이터베이스를 복제할 수 있습니다.
+
+먼저 데이터베이스에 대한 클론 지정 파일을 생성해야 합니다. SnapManager는 이 사양 파일의 정보를 기반으로 클론을 생성합니다.
+
+데이터베이스를 복제한 후 클라이언트 컴퓨터의 tnsnames.ora 파일을 복제된 새 데이터베이스 연결 정보로 업데이트할 수 있습니다. tnsnames.ora 파일은 전체 데이터베이스 정보를 지정하지 않고 Oracle 인스턴스에 연결하는 데 사용됩니다. SnapManager는 tnsnames.ora 파일을 업데이트하지 않습니다.
+
+include-with-online-backups로 생성된 프로파일을 사용하는 경우 SnapManager는 항상 아카이브 로그 파일을 포함한 백업을 생성합니다. SnapManager에서는 전체 데이터베이스 백업만 복제할 수 있습니다.
+
+SnapManager(3.2 이상)를 사용하면 데이터 파일과 아카이브 로그 파일이 포함된 백업을 복제할 수 있습니다.
+
+아카이브 로그를 외부 위치에서 사용할 수 있는 경우 클론 생성 중에 외부 위치를 지정하여 복제된 데이터베이스를 정합성 보장 상태로 복구할 수 있습니다. Oracle에서 외부 위치에 액세스할 수 있는지 확인해야 합니다. 아카이브 로그 전용 백업의 클론 생성은 지원되지 않습니다.
+
+아카이브 로그 백업이 온라인 부분 백업과 함께 생성되지만 이 백업을 사용하여 데이터베이스 클론을 생성할 수는 없습니다.
+
+복제된 데이터베이스를 정합성 보장 상태로 복구하기 위해 외부 아카이브 로그 위치를 지정하는 경우 외부 위치 이름을 대문자로 완전히 포함해야 합니다. Oracle 데이터베이스는 대상 경로를 대문자로 변환하고 외부 대상 경로, 폴더 이름 및 하위 폴더 이름이 대문자여야 하므로 파일 시스템에서 모든 폴더와 하위 폴더의 이름은 대문자여야 합니다. 외부 아카이브 로그 대상 경로를 소문자로 지정하면 데이터베이스에서 지정된 경로를 식별하지 못하고 복제된 데이터베이스를 복구하지 못할 수 있습니다.
+
+독립 실행형 데이터베이스에만 외부 아카이브 로그 파일 위치에서 데이터베이스 백업을 복제할 수 있습니다.
+
+덤프 옵션을 선택적 매개 변수로 지정하여 성공한 클론 생성 작업 또는 실패한 클론 생성 작업 후 덤프 파일을 수집할 수 있습니다.
+
+* 아카이브 로그 백업 없이 데이터 파일 백업 클로닝 *
+
+데이터 파일 백업에 아카이브 로그 백업이 포함되지 않은 경우 SnapManager for SAP는 백업 중에 기록된 SCN(시스템 변경 번호)을 기반으로 데이터베이스를 복제합니다. 복제된 데이터베이스를 복구할 수 없는 경우 SnapManager for SAP가 계속해서 데이터베이스를 복제하고 마지막으로 클론을 생성하더라도 스레드 <number> 및 복구 완료에 필요한 <scn> 변경 필요 오류 메시지가 표시됩니다.
+
+아카이브 로그 백업을 포함하지 않고 데이터 파일 백업을 사용하여 클론을 생성할 경우 SnapManager는 백업 중에 기록된 마지막 아카이브 로그 SCN이 될 때까지 복제된 데이터베이스를 복구합니다.
+
+. 클론 사양 파일을 생성합니다.
+. 클론을 생성하려면 "+smsap clone create-backup-labelbackup_name -newidsid_labelclone_label -profileprofile_name -clonespecall_path_to_clonspecipfile [-taskspec] [-recover-from-location] path1\[,<path2\dump...+] 명령을 입력합니다
+
+
+* 관련 정보 *
+
+xref:task-cloning-databases-in-the-current-state.adoc[현재 상태의 데이터베이스 클론 생성]
+
+xref:concept-considerations-for-cloning-a-database-to-an-alternate-host.adoc[데이터베이스를 대체 호스트에 클론 생성할 때의 고려 사항]
+
+xref:task-creating-clone-specifications.adoc[클론 사양 생성 중]
+
+xref:reference-the-smosmsapclone-create-command.adoc[smsap clone create 명령]
+
+xref:task-creating-pretask-post-task-and-policy-scripts.adoc[사전 작업, 사후 작업 및 정책 스크립트 생성]
+
+xref:concept-variables-available-in-the-task-scripts-for-clone-operation.adoc[클론 작업을 위해 작업 스크립트에서 사용할 수 있는 변수입니다]
+
+xref:task-creating-task-scripts.adoc[작업 스크립트 작성]
+
+xref:task-storing-the-task-scripts.adoc[작업 스크립트 저장]

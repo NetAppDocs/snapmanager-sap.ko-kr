@@ -1,0 +1,30 @@
+---
+permalink: unix-administration/task-enable-role-based-access-control.html 
+sidebar: sidebar 
+keywords: snapmanager, role-based, access, control, rbac, enable, snapdrive, installation, disable, default, operation 
+summary: 'SnapDrive 역할 기반 액세스 제어(RBAC)는 SnapManager를 사용하여 설정됩니다. SnapDrive를 설치하면 RBAC가 기본적으로 사용되지 않습니다. SnapDrive에서 RBAC를 사용하도록 설정한 후 SnapManager는 RBAC가 활성화된 상태로 작업을 수행합니다.' 
+---
+= 역할 기반 액세스 제어를 설정합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive 역할 기반 액세스 제어(RBAC)는 SnapManager를 사용하여 설정됩니다. SnapDrive를 설치하면 RBAC가 기본적으로 사용되지 않습니다. SnapDrive에서 RBAC를 사용하도록 설정한 후 SnapManager는 RBAC가 활성화된 상태로 작업을 수행합니다.
+
+* 이 작업에 대한 정보 *
+
+SnapDrive의 'scapdrive.config' 파일은 RBAC를 사용하는 여러 옵션을 설정합니다.
+
+SnapDrive 설명서에는 SnapDrive에 대한 자세한 내용이 수록되어 있습니다.
+
+.단계
+. 편집기에서 'napdrive.conf' 파일을 엽니다.
+. RBAC-method 파라미터의 값을 * native * 에서 * DFM * 로 변경하여 RBAC를 사용하도록 설정합니다.
++
+이 매개 변수의 기본값은 RBAC를 사용하지 않도록 설정하는 ' * native * '입니다.
+
+
+
+http://mysupport.netapp.com/["NetApp Support 사이트에 문서화"^]

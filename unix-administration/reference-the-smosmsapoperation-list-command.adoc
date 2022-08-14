@@ -1,0 +1,72 @@
+---
+permalink: unix-administration/reference-the-smosmsapoperation-list-command.html 
+sidebar: sidebar 
+keywords: command, list, summary, information, operation, profile, smsap 
+summary: 이 명령은 지정된 프로파일에 대해 기록된 모든 작업의 요약 정보를 나열합니다. 
+---
+= smsap 작업 목록 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령은 지정된 프로파일에 대해 기록된 모든 작업의 요약 정보를 나열합니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap operation list
+-profile _profile_name_
+[-delimiter _character_]]
+[-quiet | -verbose]]
+----
+
+
+== 매개 변수
+
+* '*-profile_profile_name_*'
++
+프로파일의 이름을 지정합니다. 이 이름은 최대 30자까지 지정할 수 있으며 호스트 내에서 고유해야 합니다.
+
+* '*-delimiter_character_ * '
++
+(선택 사항) 이 매개 변수를 지정하면 명령은 각 행을 별도의 줄에 나열하며 해당 행의 특성은 지정된 문자로 구분됩니다.
+
+* ``조용하다’’고 말했습니다
++
+(선택 사항) 콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+(선택 사항) 콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+'''
+
+
+== 명령 예
+
+다음 예제에서는 지정된 프로필에 대해 기록된 모든 작업의 요약 정보를 보여 줍니다.
+
+[listing]
+----
+smsap operation list -profile myprofile
+----
+[listing]
+----
+Start Date Status Operation ID Type Host
+-------------------- ---------- -------------------------------- ------------------ --
+2007-07-16 16:03:57 SUCCESS 8abc01c813d0a1530113d0a15c5f0005 Profile Create Host3
+2007-07-16 16:04:55 FAILED 8abc01c813d0a2370113d0a241230001 Backup Host3
+2007-07-16 16:50:56 SUCCESS 8abc01c813d0cc580113d0cc60ad0001 Profile Update Host3
+2007-07-30 15:44:30 SUCCESS 8abc01c81418a88e011418a8973e0001 Remove Backup Host3
+2007-08-10 14:31:27 SUCCESS 8abc01c814510ba20114510bac320001 Backup Host3
+2007-08-10 14:34:43 SUCCESS 8abc01c814510e9f0114510ea98f0001 Mount Host3
+2007-08-10 14:51:59 SUCCESS 8abc01c814511e6e0114511e78d40001 Unmount Host3
+----
+'''

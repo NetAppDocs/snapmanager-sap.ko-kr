@@ -1,0 +1,32 @@
+---
+permalink: unix-administration/task-customize-the-email-subject-for-an-existing-profile.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, customize, email, subject, pattern, exist, profile, updating, update, applicable, update, customizing 
+summary: SnapManager를 사용하면 해당 프로필을 업데이트하여 기존 프로필에 대한 이메일 제목 패턴을 사용자 지정할 수 있습니다. 이 사용자 지정 제목 패턴은 업데이트된 프로필에만 적용됩니다. 
+---
+= 기존 프로필의 이메일 제목을 사용자 지정합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 해당 프로필을 업데이트하여 기존 프로필에 대한 이메일 제목 패턴을 사용자 지정할 수 있습니다. 이 사용자 지정 제목 패턴은 업데이트된 프로필에만 적용됩니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap profile update -profile_profile_[ -profile -profile -profile -profile -profile -profile -password -profile_password_] [-database -dbname_db_dbname_ -host_db_host_[-sid_sid_] [-login-username_db_username_ -password_db_password_port_port_]] [{rman_name -rman_name]duration_name=osm_name] [-monthly [-count_n_] [-duration_m_]] [-comment_comment_] [-snapname-pattern_pattern_pattern_] [- protect [-protection-policy_policy_name_]] | [- notify]] [-notification [-성공-email_email_2_-subject_pattern] [-snapcomment_subject_subject_subject_subject_subject_subject_pattern
+
+
+
+'''
+다음 예제는 이메일 제목 패턴을 보여줍니다.
+
+[listing]
+----
+
+smsap profile update -profile sales1 -profile-password sales1 -repository -dbname repo2 -host 10.72.197.133 -port 1521 -login -username admin2 -database -dbname DB1 -host 10.72.197.142 -sid DB1
+-osaccount oracle -osgroup dba -profile-notification -success -email admin@org.com -subject {profile}_{operation-name}_{db-sid}_{db-host}_{start-date}_{end-date}_{status}
+----
+'''

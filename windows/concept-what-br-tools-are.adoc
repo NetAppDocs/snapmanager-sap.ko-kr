@@ -1,0 +1,212 @@
+---
+permalink: windows/concept-what-br-tools-are.html 
+sidebar: sidebar 
+keywords: information, sap, storage, system, brtools, br, tools 
+summary: 스토리지 시스템에서 SAP를 사용하는 데 필요한 정보를 찾을 수 있습니다. 
+---
+= BR * 도구란 무엇입니까
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 시스템에서 SAP를 사용하는 데 필요한 정보를 찾을 수 있습니다.
+
+명령 구문을 포함하여 BR * Tools 사용에 대한 일반적인 정보는 Oracle Database Administration용 온라인 BR * Tools와 같은 SAP 설명서를 참조하십시오.
+
+
+
+== 프로파일 요구 사항
+
+BR * Tools에서 작동하려면 SAP용 SnapManager 프로파일의 이름을 올바르게 지정해야 합니다. 기본적으로 backint는 BR * Tools 명령을 실행하는 사용자 ID로 결정되는 리포지토리에서 SAP SID와 동일한 이름을 가진 프로파일을 사용합니다.
+
+SAP SID가 사용자 환경에서 고유하지 않은 경우 다른 프로파일 이름을 사용해야 합니다. 자세한 내용은 BR * Tools Backups _ 의 프로파일 사용 을 참조하십시오.
+
+SnapManager for SAP가 설치한 'C:\Program Files\NetApp\SnapManager for SAP\bin\backint' 파일에 대한 BR * Tools 디렉토리의 링크가 있어야 합니다. 링크 만들기에 대한 자세한 내용은 _SAP BR * Tools_와 통합 을 참조하십시오.
+
+BR * Tools 7.00 이전 버전에서 생성된 백업은 확인할 수 없습니다. 확인을 완료하려면 테이블스페이스 또는 데이터 파일의 블록 크기가 필요합니다. 그러나 BR * Tools 7.00 이전 버전에서는 이 기능을 제공하지 않습니다.
+
+
+
+== BR * Tools와 SnapManager for SAP 인터페이스 결합에 대해 설명합니다
+
+BR * Tools와 SnapManager for SAP GUI(그래픽 사용자 인터페이스) 또는 CLI(명령줄 인터페이스)를 함께 사용하여 다음 작업을 수행할 수 있습니다.
+
+|===
+| 작동 | 사용할 수 있는 인터페이스입니다 
+
+
+ a| 
+BRBACKUP을 사용하여 생성된 데이터베이스 백업(데이터 파일, 제어 파일 또는 온라인 redo 로그 파일을 포함하는 백업)을 나열, 복원, 복구 및 삭제합니다
+ a| 
+SAP CLI 및 GUI용 SnapManager
+
+[NOTE]
+====
+BR * Tools는 BR * Tools를 사용하여 생성된 백업만 나열하고 복원할 수 있습니다.
+
+====
+
+
+ a| 
+BRBACKUP으로 생성된 다른 파일 세트의 백업을 나열하고 삭제합니다
+ a| 
+SAP CLI 및 GUI용 SnapManager
+
+
+
+ a| 
+BRBACKUP으로 생성된 다른 파일 세트의 클론 백업
+ a| 
+BRBACKUP 명령을 사용하여 수행된 전체 온라인 또는 오프라인 백업은 SAP CLI 또는 GUI용 SnapManager를 사용하여 복제할 수 있습니다.
+
+|===
+
+
+== BR * Tools CLI에서 SAP용 SnapManager를 사용할 수 있는 옵션
+
+BR * Tools CLI에서 사용할 수 있는 옵션은 다음과 같습니다.
+
+|===
+| 옵션을 선택합니다 | 수행할 수 있는 작업입니다 
+
+
+ a| 
+인스턴스 관리
+ a| 
+파일 시스템 및 데이터베이스 테이블의 모든 작업을 기록하고 백업 로그 및 프로필을 백업 미디어에 저장합니다.
+
+
+
+ a| 
+공간 관리
+ a| 
+포괄적인 볼륨 관리가 가능합니다. 공간 관리에 제공된 기능을 사용하려면 BRBACKUP 또는 BRBARCHIVE로 볼륨을 초기화하여 SAP 전용 레이블이 포함되도록 해야 합니다.
+
+
+
+ a| 
+백업 및 데이터베이스 복사본
+ a| 
+데이터베이스 백업을 생성하고, 오프라인 redo 로그(아카이브 로그)를 수행하고, 백업을 확인합니다.
+
+
+
+ a| 
+복원 및 복구
+ a| 
+백업 복원 및 복구.
+
+
+
+ a| 
+데이터베이스 통계
+ a| 
+테이블 및 인덱스의 통계를 유지 관리합니다.
+
+|===
+
+
+== BR * Tools GUI에서 유사한 기능을 사용할 수 있습니다
+
+BR * Tools GUI에서 다음 작업을 수행할 수 있습니다.
+
+|===
+| 마법사 유형입니다 | 수행할 수 있는 작업입니다 
+
+
+ a| 
+리포지토리 생성 마법사
+ a| 
+데이터베이스에 리포지토리를 만듭니다.
+
+
+
+ a| 
+프로파일 마법사
+ a| 
+리포지토리에서 프로파일을 만듭니다.
+
+
+
+ a| 
+백업 마법사
+ a| 
+프로필의 백업을 생성합니다.
+
+
+
+ a| 
+복원 및 복구 마법사
+ a| 
+프로파일 백업을 복원 및 복구합니다.
+
+
+
+ a| 
+SnapManager 클론 삭제 마법사
+ a| 
+백업의 클론을 삭제합니다.
+
+
+
+ a| 
+SnapManager 백업 삭제 마법사
+ a| 
+프로파일 백업을 삭제합니다.
+
+|===
+
+
+== BR * Tools를 사용하여 생성된 백업 클론 복제에 대해 설명합니다
+
+BRBACKUP * 명령을 사용하여 수행한 전체 온라인 또는 오프라인 백업은 SAP CLI 또는 GUI용 SnapManager를 사용하여 복제할 수 있습니다.
+
+BRBACKUP 명령을 사용하여 생성된 데이터베이스 백업의 클론을 생성하려면 'smsap.config' 파일에서 구성 매개 변수 'brbackup.enable.clonable.backups'를 * TRUE * 로 설정한 다음 SnapManager for SAP 서버를 다시 시작해야 합니다. brbackup.enable.clonable.backups=true 명령을 입력합니다
+
+BRBACKUP * 명령을 사용하여 생성된 온라인 백업의 경우 SAP용 SnapManager를 사용하면 SAP CLI 또는 GUI용 SnapManager에서 변경하지 않고 백업을 복제할 수 있습니다.
+
+오프라인 백업이 수행되면 * BRBACKUP * 명령을 생성한 경우, 다음 단계를 수행한 후 SAP용 SnapManager를 사용하여 SnapManager for SAP CLI 또는 GUI에서 백업을 복제할 수 있습니다.
+
+.단계
+. smsap.config 파일에 다음 구성 변수를 추가합니다.
++
+아래 표시된 변수의 값은 기본값입니다. 이러한 값을 기본값으로 설정하려면 이 값을 그대로 유지할 수 있습니다.
+
++
+** brbackup.oracle.maxdataf파일=254
+** brbackup.oracle.maxloghistory=1168
+** brbackup.oracle.maxinstances=50
+** brbackup.oracle.maxlogfiles=255
+** brbackup.oracle.maxlog멤버=3
+** "brbackup.oracle.character_set=UTF8`
+
+
+. 'smsap.config' 파일에서 이러한 기본 구성 매개 변수 값을 변경하려면 SQL 명령 프롬프트에서 다음 명령을 실행합니다.
++
+'* 데이터베이스 백업 제어 파일을 변경하여 파일 * 으로 추적
+
++
+파일은 사용자 정의 이름일 수 있으며 SQL* Plus가 호출되는 동일한 디렉터리에 만들어집니다.
+
+. file_을 열어 이 값을 'msap.config' 파일의 해당 설정 변수로 설정합니다.
+. SnapManager 서버를 다시 시작합니다.
+
+
+
+
+== BR * Tools로 생성된 백업 삭제에 대해 설명합니다
+
+BR * 도구는 백업을 삭제하지 않습니다. SAP용 SnapManager 백업은 스냅샷 복사본을 기반으로 하므로 보존할 수 있는 백업 수에 제한이 있습니다. 백업이 더 이상 필요하지 않을 때 삭제되도록 해야 합니다.
+
+NetApp 스토리지 시스템에서 각 볼륨의 스냅샷 복사본은 최대 255개까지 지정할 수 있습니다. 볼륨이 한계에 도달하면 백업이 실패합니다. BRBACKUP으로 백업을 수행하면 일반적으로 영향을 받는 각 볼륨의 스냅샷 복사본이 2개씩 생성됩니다.
+
+최대 255개의 스냅샷 복사본이 도달하지 않도록 하려면 다음과 같은 방법으로 백업을 관리할 수 있습니다.
+
+* BR * Tools 작업에 사용되는 프로파일의 유지 옵션을 설정할 수 있습니다.
++
+그러면 SnapManager for SAP가 필요에 따라 이전 백업을 자동으로 삭제합니다.
+
+* SnapManager for SAP CLI 또는 GUI를 사용하여 더 이상 필요하지 않은 백업을 수동으로 삭제할 수 있습니다.
+

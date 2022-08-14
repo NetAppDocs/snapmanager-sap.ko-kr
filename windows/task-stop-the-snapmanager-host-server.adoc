@@ -1,0 +1,21 @@
+---
+permalink: windows/task-stop-the-snapmanager-host-server.html 
+sidebar: sidebar 
+keywords: finish, snapmanager, stop, server, host 
+summary: SnapManager 사용을 마치면 서버를 중지할 수 있습니다. 
+---
+= SnapManager 호스트 서버를 중지합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager 사용을 마치면 서버를 중지할 수 있습니다.
+
+.단계
+. 서버를 중지하려면 루트 사용자로 다음 명령을 입력합니다.
++
+'* smsap_server stop*'
+
+

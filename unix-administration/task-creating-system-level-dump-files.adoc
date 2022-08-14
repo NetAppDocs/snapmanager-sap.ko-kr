@@ -1,0 +1,29 @@
+---
+permalink: unix-administration/task-create-system-level-dump-files.html 
+sidebar: sidebar 
+keywords: smsap, system, dump, command, log, information, snapmanager, environment, log, level, collect, operation, profile, creating, create, system-level, file 
+summary: smbap system dump 명령을 사용하여 SnapManager 호스트 및 환경에 대한 로그 정보를 얻을 수 있습니다. 특정 작업, 프로필 또는 호스트 및 환경에 대한 정보를 수집하기 위해 서로 다른 로그 수준을 지정할 수 있습니다. 
+---
+= 시스템 수준 덤프 파일을 생성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+'smsap system dump' 명령을 사용하여 SnapManager 호스트 및 환경에 대한 로그 정보를 얻을 수 있습니다. 특정 작업, 프로필 또는 호스트 및 환경에 대한 정보를 수집하기 위해 서로 다른 로그 수준을 지정할 수 있습니다.
+
+.단계
+. 다음 명령을 입력합니다.
++
+'* smssap 시스템 덤프 * '
+
++
+결과 덤프
+
++
+[listing]
+----
+Path:/<user-home>/.netapp/smsap/3.3.0/smsap_dump_server_host.jar
+----
+

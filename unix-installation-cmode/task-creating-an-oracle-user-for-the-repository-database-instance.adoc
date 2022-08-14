@@ -1,0 +1,26 @@
+---
+permalink: unix-installation-cmode/task-create-an-oracle-user-for-the-repository-database-instance.html 
+sidebar: sidebar 
+keywords: oracle, user, require, log, access, repository, database, instance, create, user, connect, resource, privilege, create 
+summary: Oracle 사용자는 리포지터리 데이터베이스 인스턴스에 로그인하고 액세스해야 합니다. 연결 및 리소스 권한이 있는 이 사용자를 생성해야 합니다. 
+---
+= 리포지토리 데이터베이스 인스턴스에 대한 Oracle 사용자를 생성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Oracle 사용자는 리포지터리 데이터베이스 인스턴스에 로그인하고 액세스해야 합니다. 이 사용자는 _connect_and_resource_privileges를 사용하여 생성해야 합니다.
+
+.단계
+. SQL * Plus에 로그인합니다. 'sqlplus'/as sysdba'
+. 새 사용자를 생성하고 해당 사용자에게 관리자 암호를 할당합니다: ' * create useruser_name identified by admin_password default tablespace_name quota unlimited on tablespace_name; *'
++
+** user_name은 리포지터리 데이터베이스에 대해 만들고 있는 사용자의 이름입니다.
+** 'admin_password'는 사용자에게 할당할 암호입니다.
+** tablespace_name은 리포지터리 데이터베이스에 대해 생성된 테이블스페이스의 이름입니다.
+
+
+. 새 Oracle 사용자에게 '* 연결 허용, 사용자_이름 리소스 리소스 * ' * '을(를) 할당합니다
+

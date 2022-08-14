@@ -1,0 +1,51 @@
+---
+permalink: windows/task-creating-restore-specifications.html 
+sidebar: sidebar 
+keywords: restore, specification, file, sml, contain, original, alternate, location, snapmanager, location, creating, create 
+summary: 복구 사양 파일은 파일을 복원할 수 있는 원본 및 대체 위치가 포함된 XML 파일입니다. SnapManager는 이 사양 파일을 사용하여 지정된 위치에서 파일을 복원합니다. 
+---
+= 복구 사양 생성 중
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+복구 사양 파일은 파일을 복원할 수 있는 원본 및 대체 위치가 포함된 XML 파일입니다. SnapManager는 이 사양 파일을 사용하여 지정된 위치에서 파일을 복원합니다.
+
+텍스트 편집기를 사용하여 복원 사양 파일을 만들 수 있습니다. 파일에 .xml 확장명을 사용해야 합니다.
+
+. 텍스트 파일을 엽니다.
+. '+<restore-specification xmlns='를 입력합니다"http://www.netapp.com">+`[]
+. 다음 예에 표시된 형식을 사용하여 파일 매핑 정보를 입력합니다.
++
+[listing]
+----
+<file-mapping>
+    <original-location>E:\disks\sysaux.dbf</original-location>
+    <alternate-location>E:\disks\sysaux.dbf</alternate-location>
+</file-mapping>
+----
++
+파일 매핑은 파일이 복원되는 위치를 지정합니다. 원래 위치는 백업 시 액티브 파일 시스템의 파일 위치입니다. 대체 위치는 파일이 복원되는 위치입니다.
+
+. 예제에 표시된 형식을 사용하여 마운트된 파일 시스템 매핑 정보를 입력합니다.
++
+[listing]
+----
+<mountpoint-mapping>
+     <original-location>E:\disks\sysaux.dbf</original-location>
+     <snapname>snapname</snapname>
+     <alternate-location>E:\disks\sysaux.dbf</alternate-location>
+</mountpoint-mapping>
+----
++
+마운트 지점은 디렉토리 경로 C:\myfs를 참조합니다. 마운트 지점 매핑은 파일이 복구되는 마운트 지점을 지정합니다. 원래 위치는 백업 시 액티브 파일 시스템에 있는 마운트 지점의 위치입니다. 대체 위치는 원래 위치의 파일이 복원되는 마운트 위치입니다. snapname은 원본 파일이 백업된 스냅샷 복사본의 이름입니다.
+
++
+
+NOTE: 스냅샷 복사본 이름은 단일 백업 작업(예: 데이터 파일의 경우 한 번, 로그의 경우 한 번)에서 동일한 파일 시스템을 여러 번 사용할 수 있으므로 필수 구성 요소입니다.
+
+. '</restore-specification>'을 입력합니다
+. 파일을 .xml 파일로 저장하고 설정을 닫습니다.
+

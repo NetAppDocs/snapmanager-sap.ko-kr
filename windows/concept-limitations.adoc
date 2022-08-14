@@ -1,0 +1,163 @@
+---
+permalink: windows/concept-limitations.html 
+sidebar: sidebar 
+keywords: aware, scenario, limitation, environment, work, snapmanager 
+summary: 환경에 영향을 줄 수 있는 시나리오 및 제한 사항을 알고 있어야 합니다. 
+---
+= SnapManager 작업 시 제한 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+환경에 영향을 줄 수 있는 시나리오 및 제한 사항을 알고 있어야 합니다.
+
+* 데이터베이스 레이아웃 및 플랫폼과 관련된 제한 사항 *
+
+* SnapManager는 파일 시스템의 제어 파일을 지원하며 원시 디바이스의 제어 파일은 지원하지 않습니다.
+* SnapManager는 MSCS(Microsoft 클러스터링) 환경에서 작동하지만 MSCS 구성(활성 또는 수동)의 상태를 인식하지 못하고 MSCS 클러스터의 대기 서버로 리포지토리의 활성 관리를 전송하지 않습니다.
+* 리포지토리 데이터베이스는 둘 이상의 IP 주소를 사용하여 액세스할 수 있는 호스트에 있을 수 있습니다.
++
+둘 이상의 IP 주소를 사용하여 리포지토리에 액세스하는 경우 각 IP 주소에 대해 스케줄 파일이 생성됩니다. IP 주소 중 하나(예: IP1) 아래에 프로필(예: 프로필 A)에 대한 일정 백업이 생성된 경우 해당 IP 주소에 대한 일정 파일만 업데이트됩니다. 다른 IP 주소(예: IP2)에서 프로파일 A에 액세스할 경우 IP2의 스케줄 파일에 IP1에서 생성된 스케줄에 대한 항목이 없기 때문에 예약된 백업이 나열되지 않습니다.
+
++
+해당 IP 주소 및 스케줄 파일에서 스케줄이 트리거될 때까지 기다리거나 서버를 다시 시작할 수 있습니다.
+
+
+
+* SnapManager 구성과 관련된 제한 사항 *
+
+* SnapManager는 다음과 같은 요구 사항이 있는 MultiStore 스토리지 시스템의 데이터베이스를 지원합니다.
++
+** MultiStore 스토리지 시스템에 대한 암호를 설정하려면 SnapDrive를 구성해야 합니다.
+** 기본 볼륨이 동일한 MultiStore 스토리지 시스템에 없는 경우 SnapDrive는 MultiStore 스토리지 시스템의 qtree에 있는 LUN 또는 파일의 스냅샷 복사본을 생성할 수 없습니다.
+
+
+* SnapManager는 단일 클라이언트(둘 다 CLI 또는 GUI)의 서로 다른 포트에서 실행되는 두 SnapManager 서버에 대한 액세스를 지원하지 않습니다.
++
+포트 번호는 타겟 호스트와 원격 호스트에서 동일해야 합니다.
+
+* SnapManager 작업이 실패하고 리포지토리 데이터베이스가 다운된 경우 GUI에 액세스할 수 없습니다.
++
+SnapManager 작업을 수행할 때 저장소 데이터베이스가 실행 중인지 확인해야 합니다.
+
+* SnapManager는 LPM(Live Partition Mobility) 및 LAM(Live Application Mobility)을 지원하지 않습니다.
+* SnapManager는 Oracle Wallet Manager 및 TDE(Transparent Data Encryption)를 지원하지 않습니다.
+* MetroCluster는 RDM(Raw Device Mapping) 환경에서 MetroCluster 구성을 지원하지 않습니다. SnapManager 구성은 아직 VSC(가상 스토리지 콘솔)에서 지원되지 않기 때문입니다.
+
+
+* 프로파일 관리와 관련된 제한 사항 *
+
+* 아카이브 로그 백업을 분리하기 위해 프로파일을 업데이트하는 경우 호스트에서 롤백 작업을 수행할 수 없습니다.
+* GUI에서 프로파일을 활성화하여 아카이브 로그 백업을 만들고 나중에 다중 프로파일 업데이트 창 또는 프로파일 업데이트 창을 사용하여 프로파일을 업데이트하려고 하면 해당 프로파일을 수정하여 전체 백업을 만들 수 없습니다.
+* 다중 프로필 업데이트 창에서 여러 프로필을 업데이트하고 일부 프로필에 * Backup Archivelogs Seively * 옵션이 활성화되어 있고 다른 프로필에 옵션이 비활성화되어 있는 경우 * Backup Archivelogs Seively * 옵션이 비활성화됩니다.
+* 여러 프로필을 업데이트하고 일부 프로필에 * Backup Archivelogs Seively * 옵션이 활성화되어 있고 다른 프로필에 옵션이 비활성화되어 있는 경우, 다중 프로필 업데이트 창의 * Backup Archivelogs Seively * 옵션이 비활성화됩니다.
+* 프로파일의 이름을 바꾸면 호스트를 롤백할 수 없습니다.
+
+
+* 롤링 업그레이드 또는 롤백 작업과 관련된 제한 사항 *
+
+* 리포지토리의 호스트에서 롤백 작업을 수행하지 않고 호스트에 대한 이전 버전의 SnapManager를 설치하려고 하면 다음을 수행할 수 없을 수 있습니다.
++
+** 호스트에 대한 이전 또는 이후 버전의 SnapManager에서 만든 프로파일을 봅니다.
+** 이전 또는 이후 버전의 SnapManager에서 생성한 백업이나 클론에 액세스합니다.
+** 호스트에서 롤링 업그레이드 또는 롤백 작업을 수행합니다.
+
+
+* 아카이브 로그 백업을 생성하기 위해 프로파일을 분리한 후에는 관련 호스트 리포지토리에서 롤백 작업을 수행할 수 없습니다.
+
+
+* 백업 작업과 관련된 제한 사항 *
+
+* 복구 중에 백업이 이미 마운트되어 있는 경우 SnapManager는 백업을 다시 마운트하지 않고 이미 마운트된 백업을 사용합니다.
++
+다른 사용자가 백업을 마운트하고 이전에 마운트된 백업에 액세스할 수 없는 경우 다른 사용자가 권한을 제공해야 합니다.
+
++
+모든 아카이브 로그 파일에는 그룹에 할당된 사용자에 대한 읽기 권한이 있습니다. 백업이 다른 사용자 그룹에 의해 마운트되는 경우 아카이브 로그 파일에 대한 액세스 권한이 없을 수 있습니다. 사용자는 마운트된 아카이브 로그 파일에 대한 권한을 수동으로 지정한 다음 복구 또는 복구 작업을 다시 시도할 수 있습니다.
+
+* SnapManager는 데이터베이스 백업의 스냅샷 복사본 중 하나가 보조 스토리지 시스템으로 전송되더라도 백업 상태를 "보호"로 설정합니다.
+* 예약된 백업에 대해서는 SnapManager 3.2 이상에서만 작업 사양 파일을 사용할 수 있습니다.
+* 리포지토리 데이터베이스가 둘 이상의 IP 주소를 가리키고 있고 각 IP 주소의 호스트 이름이 다른 경우 한 IP 주소에 대해 백업 예약 작업이 성공하지만 다른 IP 주소에 대해서는 실패합니다.
+* ONTAP 환경에서 SnapManager은 소스 볼륨에 대해 여러 보조 대상을 지원하지 않습니다.
+
+
+* 복원 작업과 관련된 제한 사항 *
+
+* SnapManager는 Windows에서 빠른 복원 또는 볼륨 기반 복원 작업을 사용하여 데이터베이스 백업 복원을 지원하지 않습니다.
++
+SnapManager 3.3은 SnapManager CLI에서 빠른 복원 작업을 수행하려고 할 때 오류 메시지를 표시합니다.
+
+
+
+* 클론 작업과 관련된 제한 사항 *
+
+* SnapManager 3.3 이상은 SnapManager 3.2 이전 릴리즈에서 생성한 클론 사양 XML 파일 사용을 지원하지 않습니다.
+* 임시 테이블스페이스가 데이터 파일 위치와 다른 위치에 있는 경우 클론 작업은 데이터 파일 위치에 테이블스페이스를 생성합니다.
++
+그러나 임시 테이블스페이스가 데이터 파일 위치와 다른 위치에 있는 OVF(Oracle Managed Files)인 경우 클론 작업은 데이터 파일 위치에 테이블스페이스를 생성하지 않습니다. OMF는 SnapManager에서 관리하지 않습니다.
+
+* '-resetlogs' 옵션을 선택하면 SnapManager에서 RAC 데이터베이스를 복제하지 못합니다.
+
+
+* 아카이브 로그 파일 및 백업과 관련된 제한 사항 *
+
+* SnapManager는 플래시 복구 영역 대상에서 아카이브 로그 파일 정리를 지원하지 않습니다.
+* SnapManager는 대기 대상에서 아카이브 로그 파일 정리를 지원하지 않습니다.
+* 아카이브 로그 백업은 보존 기간 및 기본 시간별 보존 클래스에 따라 보존됩니다.
++
+SnapManager CLI 또는 GUI를 사용하여 아카이브 로그 백업 보존 클래스를 수정할 경우 아카이브 로그 백업은 보존 기간을 기준으로 보존되므로 수정된 보존 클래스는 백업에 고려되지 않습니다.
+
+* 아카이브 로그 대상에서 아카이브 로그 파일을 삭제하는 경우 아카이브 로그 백업에는 누락된 아카이브 로그 파일보다 오래된 아카이브 로그 파일이 포함되지 않습니다.
++
+최신 아카이브 로그 파일이 누락된 경우 아카이브 로그 백업 작업이 실패합니다.
+
+* 보관 로그 대상에서 보관 로그 파일을 삭제하면 보관 로그 파일을 가지치기는 실패합니다.
+* SnapManager는 아카이브 로그 대상에서 아카이브 로그 파일을 삭제하거나 아카이브 로그 파일이 손상된 경우에도 아카이브 로그 백업을 통합합니다.
+
+
+* 대상 데이터베이스 호스트 이름 변경과 관련된 제한 사항 *
+
+타겟 데이터베이스 호스트 이름을 변경할 때는 다음 SnapManager 작업이 지원되지 않습니다.
+
+* SnapManager GUI에서 타겟 데이터베이스 호스트 이름 변경
+* 프로파일의 타겟 데이터베이스 호스트 이름을 업데이트한 후 리포지토리 데이터베이스의 롤백.
+* 새 타겟 데이터베이스 호스트 이름에 대해 여러 프로파일을 동시에 업데이트합니다.
+* SnapManager 작업이 실행 중일 때 타겟 데이터베이스 호스트 이름을 변경합니다.
+
+
+* SnapManager CLI 또는 GUI * 와 관련된 제한 사항
+
+* SnapManager GUI에서 생성된 profile create 작업에 대한 SnapManager CLI 명령에는 history 설정 옵션이 없다.
++
+SnapManager CLI에서는 'profile create' 명령을 사용하여 기록 보존 설정을 구성할 수 없습니다.
+
+* Windows 클라이언트에서 사용할 수 있는 JRE(Java Runtime Environment)가 없는 경우 SnapManager는 Mozilla Firefox에서 GUI를 표시하지 않습니다.
+* SnapManager 3.3은 Windows Server 2008 및 Windows 7의 Microsoft Internet Explorer 6에서 SnapManager GUI를 표시하지 않습니다.
+* SnapManager CLI를 사용하여 타겟 데이터베이스 호스트 이름을 업데이트하는 동안 열려 있는 SnapManager GUI 세션이 하나 이상 있으면 열려 있는 모든 SnapManager GUI 세션이 응답하지 않습니다.
+* Windows에 SnapManager를 설치하고 UNIX에서 CLI를 시작하면 Windows에서 지원되지 않는 기능이 표시됩니다.
+
+
+* SnapMirror 및 SnapVault * 과 관련된 제한 사항
+
+* 일부 시나리오에서는 볼륨에 SnapVault 관계가 설정된 경우 첫 번째 스냅샷 복사본과 연결된 마지막 백업을 삭제할 수 없습니다.
++
+관계를 끊은 경우에만 백업을 삭제할 수 있습니다. 이 문제는 기본 스냅샷 복사본에 대한 ONTAP 제한 사항 때문입니다. SnapMirror 관계에서 기본 스냅샷 복사본은 SnapMirror 엔진에 의해 생성되고 SnapVault 관계에서 기본 스냅샷 복사본은 SnapManager를 사용하여 생성되는 백업입니다. 각 업데이트에 대해 기본 스냅샷 복사본이 SnapManager를 사용하여 생성한 최신 백업을 가리킵니다.
+
+
+
+* Data Guard 대기 데이터베이스와 관련된 제한 사항 *
+
+* SnapManager는 논리적 Data Guard 대기 데이터베이스를 지원하지 않습니다.
+* SnapManager는 Active Data Guard 대기 데이터베이스를 지원하지 않습니다.
+* SnapManager에서는 Data Guard 대기 데이터베이스의 온라인 백업을 허용하지 않습니다.
+* SnapManager에서는 Data Guard 대기 데이터베이스의 부분 백업을 허용하지 않습니다.
+* SnapManager에서는 Data Guard 대기 데이터베이스 복원을 허용하지 않습니다.
+* SnapManager에서는 Data Guard 대기 데이터베이스에 대한 아카이브 로그 파일을 정리할 수 없습니다.
+* SnapManager는 Data Guard Broker를 지원하지 않습니다.
+
+
+* 관련 정보 *
+
+http://mysupport.netapp.com/["NetApp Support 사이트에 문서화"^]

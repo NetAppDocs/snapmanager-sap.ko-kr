@@ -1,0 +1,300 @@
+---
+permalink: windows/task-create-clone-specifications.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, clone, specification, xml, file, map, option, parameter, clone, operation, information, create 
+summary: SnapManager for SAP는 클론 작업에 사용할 매핑, 옵션 및 매개 변수가 포함된 클론 사양 XML 파일을 사용합니다. SnapManager는 이 정보를 사용하여 클론 파일을 저장할 위치와 진단 정보, 제어 파일, 매개 변수 등을 처리하는 방법을 결정합니다. 
+---
+= 클론 사양 생성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager for SAP는 클론 작업에 사용할 매핑, 옵션 및 매개 변수가 포함된 클론 사양 XML 파일을 사용합니다. SnapManager는 이 정보를 사용하여 클론 파일을 저장할 위치와 진단 정보, 제어 파일, 매개 변수 등을 처리하는 방법을 결정합니다.
+
+
+
+== 이 작업에 대해
+
+SnapManager 그래픽 사용자 인터페이스(GUI), 명령줄 인터페이스(CLI) 또는 텍스트 편집기를 사용하여 클론 사양 파일을 생성할 수 있습니다.
+
+텍스트 편집기를 사용하여 클론 지정 파일을 생성할 때는 이를 '.xml' 파일로 저장해야 합니다. 이 XML 파일을 다른 클론 작업에 사용할 수 있습니다.
+
+클론 사양 템플릿을 생성한 다음 사용자 지정할 수도 있습니다. 'smsap clone template' 명령어를 사용하거나 GUI에서 Clone Wizard를 사용할 수 있다.
+
+SnapManager for SAP는 생성한 모든 클론 사양 템플릿에 버전 문자열을 추가합니다. SnapManager for SAP는 버전 문자열이 없는 모든 클론 사양 파일의 최신 버전을 가정합니다.
+
+원격 클론 생성을 수행하려면 클론 사양 파일에서 데이터 파일의 기본 위치, 재실행 로그 파일 및 제어 파일을 변경하지 마십시오. 기본 위치를 변경하면 SnapManager에서 클론을 생성하지 못하거나 스냅샷 기능을 지원하지 않는 데이터베이스에 클론을 생성하지 못합니다. 따라서 프로파일 자동 생성이 실패합니다.
+
+
+NOTE: 마운트 지점 및 ASM 디스크 그룹 정보는 GUI에서 편집할 수 있지만 파일 위치는 변경하지 않고 파일 이름만 변경할 수 있습니다.
+
+동일하거나 다른 매개 변수 및 값 조합으로 작업을 여러 번 실행할 수 있습니다.
+
+SAP는 데이터베이스 구성에 특정 Oracle 설정을 사용합니다. 이러한 설정은 "$ORACLE_HOME\database"에 있는 "init<SID>.ora"에서 찾을 수 있습니다. 이러한 항목은 클론 사양에 포함해야 합니다.
+
+.단계
+. 다음 예제와 같이 텍스트 파일을 열고 텍스트를 입력합니다.
++
+* 예 *
+
++
+[listing]
+----
+<clone-specification xmlns="http://www.example.com>
+     <storage-specification/>
+     <database-specification/>
+ </clone-specification>
+----
+. 스토리지 사양 구성 요소에서 데이터 파일의 마운트 지점을 입력합니다.
++
+스토리지 사양에는 데이터 파일 마운트 지점 및 원시 디바이스와 같이 클론에 대해 생성된 새 스토리지의 위치가 나열됩니다. 이러한 항목은 소스에서 대상으로 매핑되어야 합니다.
+
++
+다음 예에서는 NFS 연결 스토리지의 단일 NFS 마운트 지점을 보여 줍니다.
+
++
+* 예 *
+
++
+[listing]
+----
+<mountpoint>
+      <source>\oracle\<SOURCE SID>_sapdata</source>
+      <destination>\oracle\<TARGET SID>_sapdata</destination>
+</mountpoint>
+----
+. 데이터베이스 사양 구성 요소에서 제어 파일 정보를 클론에 대해 생성하려는 제어 파일 목록으로 식별합니다.
++
+데이터베이스 사양에서는 제어 파일, 재실행 로그, 아카이브 로그, Oracle 매개 변수 등과 같은 클론의 데이터베이스 옵션을 지정합니다.
+
++
+다음 예제에서는 클론 사양에 사용하는 제어 파일 구문을 보여 줍니다.
+
++
+* 예 *
+
++
+[listing]
+----
+<controlfiles>
+     <file>\oracle\<TARGET SID>\origlogA\cntrl\cntrl<TARGET SID>.dbf</file>
+     <file>\oracle\<TARGET SID>\origlogB\cntrl\cntrl<TARGET SID>.dbf</file>
+     <file>\oracle\<TARGET SID>\sapdata1\cntrl\cntrl<TARGET SID>.dbf</file>
+</controlfiles>
+----
+. 클론의 redo 로그 구조를 지정합니다.
++
+다음 예에서는 클론 생성을 위한 redo 로그 디렉토리 구조를 표시합니다.
+
++
+* 예 *
+
++
+[listing]
+----
+<redologs>
+     <redogroup>
+        <file>E:\oracle\<TARGET SID>\origlogA\log_g11m1.dbf</file>
+        <file>E:\oracle\<TARGET SID>\mirrlogA\log_g11m2.dbf</file>
+        <number>1</number>
+        <size unit="M">100</size>
+     </redogroup>
+     <redogroup>
+        <file>E:\oracle\<TARGET SID>\origlogB\log_g12m1.dbf</file>
+        <file>E:\oracle\<TARGET SID>\mirrlogB\log_g12m2.dbf</file>
+        <number>2</number>
+        <size unit="M">100</size>
+     </redogroup>
+     <redogroup>
+        <file>E:\oracle\<TARGET SID>\origlogA\log_g13m1.dbf</file>
+        <file>E:\oracle\<TARGET SID>\mirrlogA\log_g13m2.dbf</file>
+        <number>3</number>
+        <size unit="M">100</size>
+     </redogroup>
+     <redogroup>
+        <file>E:\oracle\<TARGET SID>\origlogB\log_g14m1.dbf</file>
+        <file>E:\oracle\<TARGET SID>\mirrlogB\log_g14m2.dbf</file>
+        <number>4</number>
+        <size unit="M">100</size>
+     </redogroup>
+</redologs>
+----
+. 복제된 데이터베이스의 다른 값으로 설정해야 하는 Oracle 매개 변수를 지정합니다. Oracle 10을 사용하는 경우 다음 매개 변수를 지정해야 합니다.
++
+** 백그라운드 덤프
+** 코어 덤프
+** 사용자 덤프
+** * 선택 사항: * 아카이브 로그
++
+
+NOTE: 매개 변수 값이 올바르게 설정되지 않으면 클론 작업이 중지되고 오류 메시지가 표시됩니다.
+
+
+
+
+
+아카이브 로그가 저장되는 위치를 지정하지 않으면 SnapManager가 "narchivelog" 모드로 클론을 생성합니다. SnapManager는 이 매개 변수 정보를 클론의 "init.ora" 파일에 복사합니다.
+
+다음 예제에서는 클론 사양에 사용하는 매개 변수 구문을 보여 줍니다.
+
+* 예 *
+
+[listing]
+----
+<parameters>
+     <parameter>
+          <name>log_archive_dest</name>
+          <value>LOCATION=>E:\oracle\<TARGET SID>\oraarch</value>
+     </parameter>
+     <parameter>
+          <name>background_dump_dest</name>
+          <value>E:\oracle\<TARGET SID>\saptrace\background</value>
+     </parameter>
+     <parameter>
+          <name>core_dump_dest</name>
+          <value>E:\oracle\<TARGET SID>\saptrace\background</value>
+     </parameter>
+     <parameter>
+     <name>user_dump_dest</name>
+     <value>E:\oracle\<TARGET SID>\saptrace\usertrace</value>
+     </parameter>
+</parameters>
+----
+매개 변수 요소 내의 기본 요소를 사용하여 기본값을 사용할 수 있습니다. 다음 예에서는 기본 요소가 지정되기 때문에 "OS_AUTHENTICATION_PREFIX" 매개 변수가 기본값을 사용합니다.
+
+* 예 *
+
+[listing]
+----
+<parameters>
+     <parameter>
+          <name>os_authent_prefix</name>
+          <default></default>
+     </parameter>
+</parameters>
+----
+빈 요소를 사용하여 매개 변수의 값으로 빈 문자열을 지정할 수 있습니다. 다음 예에서는 "OS_AUTHENTICATION_PREFIX"가 빈 문자열로 설정됩니다.
+
+* 예 *
+
+[listing]
+----
+<parameters>
+     <parameter>
+          <name>os_authent_prefix</name>
+          <value></value>
+     </parameter>
+</parameters>
+----
+[NOTE]
+====
+요소를 지정하지 않고 소스 데이터베이스의 init.ora 파일에서 매개 변수에 값을 사용할 수 있습니다.
+
+====
+* 예 *
+
+매개 변수에 여러 값이 있는 경우 쉼표로 구분된 매개 변수 값을 제공할 수 있습니다. 예를 들어 데이터 파일을 한 위치에서 다른 위치로 이동하려면 db_file_name_convert" 매개 변수를 사용하고 다음 예제와 같이 쉼표로 구분된 데이터 파일 경로를 지정할 수 있습니다.
+
+* 예 *
+
+로그 파일을 한 위치에서 다른 위치로 이동하려면 다음 예제와 같이 "log_file_name_convert" 매개 변수를 사용하여 로그 파일 경로를 쉼표로 구분하여 지정할 수 있습니다.
+
+. 선택 사항: 클론이 온라인 상태일 때 실행할 임의 SQL 문을 지정합니다.
+
+
+SQL 문을 사용하여 복제된 데이터베이스에서 '임시 파일'을 다시 만드는 등의 작업을 수행할 수 있습니다.
+
+[NOTE]
+====
+SQL 문 끝에 세미콜론이 포함되지 않도록 해야 합니다.
+
+====
+다음은 클론 작업의 일부로 실행하는 샘플 SQL 문입니다.
+
+[listing]
+----
+<sql-statements>
+   <sql-statement>
+     ALTER TABLESPACE TEMP ADD
+     TEMPFILE 'E:\path\clonename\temp_user01.dbf'
+     SIZE 41943040 REUSE AUTOEXTEND ON NEXT 655360
+     MAXSIZE 32767M
+   </sql-statement>
+</sql-statements>
+----
+
+
+== 클론 사양 예
+
+다음 예에서는 Windows 환경의 스토리지 및 데이터베이스 사양 구성 요소를 비롯한 클론 사양 구조를 보여 줍니다.
+
+[listing]
+----
+<clone-specification xmlns="http://www.example.com>
+
+<storage-specification>
+    <storage-mapping>
+        <mountpoint>
+            <source>D:\oracle\<SOURCE SID>_sapdata</source>
+            <destination>D:\oracle\<TARGET SID>_sapdata</destination>
+        </mountpoint>
+    </storage-mapping>
+</storage-specification>
+
+<database-specification>
+    <controlfiles>
+        <file>D:\oracle\<TARGET SID>\origlogA\cntrl\cntrl<TARGET SID>.dbf</file>
+        <file>D:\oracle\<TARGET SID>\origlogB\cntrl\cntrl<TARGET SID>.dbf</file>
+        <file>D:\oracle\<TARGET SID>\sapdata1\cntrl\cntrl<TARGET SID>.dbf</file>
+     </controlfiles>
+
+     <redologs>
+        <redogroup>
+            <file>D:\oracle\<TARGET SID>\origlogA\log_g11m1.dbf</file>
+            <file>D:\oracle\<TARGET SID>\mirrlogA\log_g11m2.dbf</file>
+            <number>1</number>
+            <size unit="M">100</size>
+        </redogroup>
+        <redogroup>
+            <file>D:\oracle\<TARGET SID>\origlogB\log_g12m1.dbf</file>
+            <file>D:\oracle\<TARGET SID>\mirrlogB\log_g12m2.dbf</file>
+            <number>2</number>
+            <size unit="M">100</size>
+        </redogroup>
+        <redogroup>
+            <file>D:\oracle\<TARGET SID>\origlogA\log_g13m1.dbf</file>
+            <file>D:\oracle\<TARGET SID>\mirrlogA\log_g13m2.dbf</file>
+            <number>3</number>
+            <size unit="M">100</size>
+        </redogroup>
+        <redogroup>
+            <file>D:\oracle\<TARGET SID>\origlogB\log_g14m1.dbf</file>
+            <file>D:\oracle\<TARGET SID>\mirrlogB\log_g14m2.dbf</file>
+            <number>4</number>
+            <size unit="M">100</size>
+       </redogroup>
+    </redologs>
+
+    <parameters>
+        <parameter>
+            <name>log_archive_dest</name>
+            <value>LOCATION=>D:\oracle\<TARGET SID>\oraarch</value>
+        </parameter>
+        <parameter>
+            <name>background_dump_dest</name>
+            <value>D:\oracle\<TARGET SID>\saptrace\background</value>
+        </parameter>
+        <parameter>
+            <name>core_dump_dest</name>
+            <value>D:\oracle\<TARGET SID>\saptrace\background</value>
+        </parameter>
+        <parameter>
+            <name>user_dump_dest</name>
+            <value>D:\oracle\<TARGET SID>\saptrace\usertrace</value>
+        </parameter>
+    </parameters>
+  </database-specification>
+</clone-specification>
+----

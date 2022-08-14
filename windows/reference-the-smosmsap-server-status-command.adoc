@@ -1,0 +1,51 @@
+---
+permalink: windows/reference-the-smosmsap-server-status-command.html 
+sidebar: sidebar 
+keywords: run, smsap_server, smsap, server, status, command, snapmanager, host 
+summary: smbap_server 상태 명령을 실행하여 SnapManager 호스트 서버의 상태를 확인할 수 있습니다. 
+---
+= smsap_server 상태 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+'smsap_server status' 명령을 실행하여 SnapManager 호스트 서버의 상태를 확인할 수 있습니다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap_server status
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* ``조용한’
++
+오류 메시지만 콘솔에 표시되도록 지정합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* * '-verbose' *
++
+오류, 경고 및 정보 메시지가 콘솔에 표시되도록 지정합니다.
+
+
+
+
+
+== 예
+
+다음 예는 호스트 서버의 상태를 표시합니다.
+
+[listing]
+----
+smsap_server status
+SMSAP-17104: SnapManager Server version 3.3.1 is running on secure port 25204 with PID 11250
+and has 0 operations in progress.
+----

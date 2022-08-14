@@ -1,0 +1,99 @@
+---
+permalink: windows/reference-troubleshooting-clone-issues.html 
+sidebar: sidebar 
+keywords: information, clone, operation, resolve, troubleshoot, issue 
+summary: 클론 작업 중에 발생할 수 있는 정보와 이러한 문제를 해결하는 방법을 찾을 수 있습니다. 
+---
+= 클론 문제 해결
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+클론 작업 중에 발생할 수 있는 정보와 이러한 문제를 해결하는 방법을 찾을 수 있습니다.
+
+|===
+| 증상 | 설명 | 해결 방법 
+
+
+ a| 
+아카이브 대상이 Use_DB_RECOVERY_FILE_DEST로 설정된 경우 클론 작업이 실패합니다.
+ a| 
+아카이브 대상이 use_DB_RECOVERY_FILE_DEST를 참조하는 경우 FRA(Flash Recovery Area)가 아카이브 로그를 능동적으로 관리합니다. SnapManager는 클론 또는 복구 작업 중에 FRA 위치를 사용하지 않으므로 작업이 실패합니다.
+ a| 
+FRA 위치 대신 아카이브 대상을 실제 아카이브 로그 위치로 변경합니다.
+
+
+
+ a| 
+"작업을 수행할 수 없습니다. 클론 생성"이라는 오류 메시지와 함께 클론 작업이 실패합니다. 근본 원인:Oracle-00001:SQL 실행 오류: [ALTER DATABASE OPEN RESETLOGS;]. ORA-01195: 파일 1의 온라인 백업이 일관성을 위해 더 많은 복구가 필요합니다." 명령을 반환했습니다.
+ a| 
+이 문제는 Oracle 리스너가 데이터베이스에 연결하지 못할 때 발생합니다.
+ a| 
+SnapManager GUI를 사용하여 백업을 복제하는 경우 다음 작업을 수행합니다.
+
+. 리포지토리 트리에서 * 리포지토리 * > * 호스트 * > * 프로필 * 을 클릭하여 백업을 표시합니다.
+. 복제할 백업을 마우스 오른쪽 버튼으로 클릭하고 * Clone * 을 선택합니다.
+. 클론 초기화 페이지에서 필수 값을 입력하고 클론 사양 방법을 선택합니다.
+. 클론 사양 페이지에서 * Parameters * 를 선택합니다.
+. 매개변수 * 탭을 클릭합니다.
+. Parameter Name * 필드에 이름을 "local_listener"로 입력하고 * OK * 를 클릭합니다.
+. local_listener 행의 * Override Default * 확인란을 선택합니다.
+. 임의의 파라미터를 클릭한 후 local_listener 파라미터를 더블 클릭하고 ''(address=(protocol=tcp) (host=<your_host_name>) (port=<port#>)')' 값을 입력합니다
+. 파일에 저장 * 을 클릭합니다.
+. Next * 를 클릭하고 클론 생성 마법사를 계속합니다.
+
+
+CLI를 사용하여 백업을 복제하는 경우 클론 사양 파일의 * <parameters> * 태그에 다음 정보를 포함해야 합니다.
+
+[listing]
+----
+
+<parameters>
+  <parameter>
+  <name>local_listener</name>
+  <value>(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<hostname>)(PORT=<port#>)))</value>
+  </parameter>
+</parameters>
+----
+
+
+ a| 
+사용 중인 마운트 지점이 이미 사용 중이라는 오류 메시지와 함께 클론 작업이 실패합니다.
+ a| 
+SnapManager에서는 기존 마운트 지점에 클론을 마운트할 수 없습니다. 불완전한 클론이 마운트 지점을 제거하지 않았습니다.
+ a| 
+클론에서 사용할 다른 마운트 지점을 지정하거나 문제가 있는 마운트 지점을 마운트 해제합니다.
+
+
+
+ a| 
+데이터 파일의 확장자가 .dbf가 없다는 오류 메시지와 함께 클론 작업이 실패합니다.
+ a| 
+일부 버전의 Oracle NID 유틸리티는 파일이 .dbf 확장명을 사용하지 않는 한 데이터 파일에서 작동하지 않습니다.
+ a| 
+* 데이터 파일 이름을 변경하여 .dbf 확장명을 지정합니다.
+* 백업 작업을 반복합니다.
+* 새 백업의 클론을 생성합니다.
+
+
+
+
+ a| 
+충족되지 않은 요구 사항으로 인해 클론 작업이 실패합니다.
+ a| 
+클론을 생성하려고 하지만 일부 사전 요구 사항이 충족되지 않았습니다.
+ a| 
+사전 요구 사항을 충족하려면 _ 클론 생성 _ 에 설명된 대로 진행하십시오.
+
+
+
+ a| 
+SAP용 SnapManager가 Oracle 10gR2(10.2.0.5)의 물리적 Oracle Data Guard 대기 데이터베이스를 복제하지 못합니다.
+ a| 
+SnapManager for SAP는 Oracle Data Guard 서비스를 사용하여 생성된 Oracle 10gR2(10.2.0.5) 물리적 대기 데이터베이스의 오프라인 백업을 수행하는 동안 관리 복구 모드를 비활성화하지 않습니다. 이 문제로 인해 오프라인 백업이 일관되지 않습니다. SnapManager for SAP가 오프라인 백업의 클론을 생성하려고 할 때 클론 복제된 데이터베이스에서 복구를 수행하려고 시도하지 않습니다. 백업이 일관되지 않기 때문에 복제된 데이터베이스를 복구해야 하므로 SAP가 클론을 성공적으로 생성하지 못합니다.
+ a| 
+Oracle 데이터베이스를 Oracle 11gR1(11.1.0.7 패치)으로 업그레이드합니다.
+
+|===

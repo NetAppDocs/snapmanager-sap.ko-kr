@@ -1,0 +1,80 @@
+---
+permalink: windows/task-order-of-performing-operations.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, perform, operation, create, profile, backup, clone, order 
+summary: SnapManager를 사용하면 프로필 생성, 백업 수행, 백업 클론 생성 등의 다양한 작업을 수행할 수 있습니다. 이러한 작업은 특정 순서로 수행해야 합니다. 
+---
+= 작업 수행 순서
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 프로필 생성, 백업 수행, 백업 클론 생성 등의 다양한 작업을 수행할 수 있습니다. 이러한 작업은 특정 순서로 수행해야 합니다.
+
+.단계
+. 'msap profile create' 명령을 사용하여 기존 리포지토리에 프로파일을 만듭니다.
++
+
+NOTE: 타겟 데이터베이스에 지정된 Oracle 사용자는 sysdba 권한을 가지고 있어야 합니다.
+
++
+* 예 *
+
++
+다음 예에서는 프로파일을 만드는 명령을 보여 줍니다.
+
++
+[listing]
+----
+smsap profile create -profile prof1 -profile-password prof1cred
+-repository -dbname HR1 -login -username admin -host server1 -port 1527
+-database -dbname SID -host db_server1 -port 1527
+----
+. 'msap backup create' 명령을 사용하여 기존 프로파일에 대한 백업을 생성합니다.
++
+* 예 *
+
++
+다음 예제에서는 백업을 생성하는 명령을 보여 줍니다.
+
++
+[listing]
+----
+smsap backup create -profile prof1 -full -offline -label full_backup_prof1 -force
+----
+. 'msap backup restore' 명령을 사용하여 기본 스토리지에서 데이터베이스 백업을 복원 및 복구합니다.
++
+* 예 *
+
++
+다음 예제에서는 백업을 복원하는 명령을 보여 줍니다.
+
++
+[listing]
+----
+smsap backup restore -profile prof1 -label full_backup_prof1
+-complete -recover -alllogs
+----
+. 'smsap clone template' 명령어를 이용하여 Clone Specification을 생성한다.
++
+그래픽 사용자 인터페이스(GUI)의 클론 마법사를 사용하여 템플릿 클론 사양을 생성할 수 있습니다. 텍스트 편집기를 사용하여 클론 사양 파일을 생성할 수도 있습니다.
+
+. 'msap clone create' 명령을 사용하여 기존 백업을 사용하여 데이터베이스를 복제합니다.
++
+클론의 스토리지 및 데이터베이스 사양을 지정하려면 기존 클론 사양이 있거나 클론 사양을 생성해야 합니다.
+
++
+* 예 *
+
++
+다음 예에서는 클론을 생성하는 명령을 보여 줍니다.
+
++
+[listing]
+----
+smsap clone create -profile prof1 -backup-label full_backup_prof1
+-newsid clone1 -label prof1_clone -clonespec C:\\clone_spec\\prof1_clonespec.xml
+----
+

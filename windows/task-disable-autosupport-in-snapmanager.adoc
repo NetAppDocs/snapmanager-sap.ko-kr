@@ -1,0 +1,32 @@
+---
+permalink: windows/task-disable-autosupport-in-snapmanager.html 
+sidebar: sidebar 
+keywords: disable, autosupport, storage, system, receive, message, snapmanager, backup, operation 
+summary: 스토리지 시스템이 성공적인 백업 작업에 대해 SnapManager 서버로부터 메시지를 수신하지 않도록 하려면 AutoSupport를 해제해야 합니다. 
+---
+= SnapManager에서 AutoSupport를 비활성화합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 시스템이 성공적인 백업 작업에 대해 SnapManager 서버로부터 메시지를 수신하지 않도록 하려면 AutoSupport를 해제해야 합니다.
+
+
+
+== 이 작업에 대해
+
+기본적으로 구성 파일에 'auto_support.on' 매개 변수가 없으면 AutoSupport가 활성화됩니다. 이 시나리오에서는 구성 파일에 'auto_support.on' 매개 변수를 추가하고 값을 * false * 로 설정해야 합니다.
+
+.단계
+. SnapManager 서버를 중지합니다.
+. 'msap.config' 설정 파일에서 auto_support.on 파라미터의 값을 false로 설정합니다.
++
+* 예 *
+
++
+auto_support.on=false입니다
+
+. SnapManager 서버를 다시 시작합니다.
+

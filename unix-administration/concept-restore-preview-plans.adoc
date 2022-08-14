@@ -1,0 +1,93 @@
+---
+permalink: unix-administration/concept-restore-preview-plans.html 
+sidebar: sidebar 
+keywords: snapmanager, restore, plan, before, after, operation, preview, review, analyze 
+summary: SnapManager는 복구 작업이 완료되기 전과 완료된 후에 복구 계획을 제공합니다. 복원 계획은 다양한 복원 방법과 관련된 미리 보기, 검토 및 분석에 사용됩니다. 
+---
+= 복원 미리 보기 계획은 무엇입니까
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 복구 작업이 완료되기 전과 완료된 후에 복구 계획을 제공합니다. 복원 계획은 다양한 복원 방법과 관련된 미리 보기, 검토 및 분석에 사용됩니다.
+
+
+
+== 복구 계획의 구조
+
+복원 계획은 다음 두 섹션으로 구성됩니다.
+
+* 미리 보기/검토: 이 섹션에서는 SnapManager가 각 파일을 복원(또는 복원)하는 방법에 대해 설명합니다.
+* 분석: 이 섹션에서는 복원 작업 중에 일부 복원 메커니즘이 사용되지 않은 이유를 설명합니다.
+
+
+
+
+== Preview/Review(미리 보기/검토) 섹션
+
+이 섹션에서는 각 파일의 복원 방법을 보여 줍니다. 복원 작업 전에 복원 계획을 볼 때 이를 미리 보기라고 합니다. 복원 작업이 완료된 후 이 작업을 볼 때 이를 검토라고 합니다.
+
+다음 미리 보기 예에서는 빠른 볼륨 기반 복원, 스토리지 측 파일 시스템 복원 및 스토리지 측 시스템 복원 방법을 사용하여 파일을 복원하는 방법을 보여 줍니다. 동일한 복원 방법을 사용하여 모든 파일이 복원되지 않는 이유를 확인하려면 분석 섹션을 참조하십시오.
+
+[listing]
+----
+Preview:
+The following files will be restored completely via: fast restore
++DG1/rac6/users.dbf
+
+The following files will be restored completely via: storage side file system restore
++DG2/rac6/sysaux.dbf
++DG2/rac6/system.dbf
+The following files will be restored completely via: storage side system restore
++DG2/rac6/undotbs1.dbf
++DG2/rac6/undotbs2.dbf
+----
+각 복원 방법에는 해당 복원 방법을 사용하여 복원할 수 있는 파일에 대한 정보가 들어 있는 하위 섹션이 하나 있습니다. 하위 섹션은 스토리지 방법 효율성의 감소 수준에 따라 정렬됩니다. 위의 예에서 빠른 복구 방법은 스토리지 파일 시스템 복구 방법보다 더 효율적이며 먼저 표시됩니다.
+
+여러 복구 방법을 사용하여 한 파일을 복원할 수 있습니다. 파일 시스템에 사용되는 기본 LUN(Logical Unit Number)이 서로 다른 스토리지 시스템 볼륨에 분산되어 있고 일부 볼륨이 볼륨 복원에 적합한 반면 다른 복구 방법은 사용할 수 없는 경우 여러 복원 방법이 사용됩니다. 여러 복원 방법을 사용하여 동일한 파일을 복원하는 경우 미리 보기 섹션은 다음과 유사합니다.
+
+[listing]
+----
+The following files will be restored via a combination of:
+[fast restore, storage side file system restore. storage side system restore]
+----
+
+
+== 분석 섹션
+
+Analysis(분석) 섹션에서는 일부 복원 메커니즘이 사용되지 않거나 사용되지 않는 이유를 설명합니다. 이 정보를 사용하여 보다 효율적인 복원 메커니즘을 지원하는 데 필요한 사항을 결정할 수 있습니다.
+
+다음 예제에서는 분석 섹션을 보여 줍니다.
+
+[listing]
+----
+Analysis:
+
+The following reasons prevent certain files from being
+restored completely via: fast restore
+   * LUNs present in snapshot of volume fas960:
+        /vol/rac_6_asm_disks may not be consistent when reverted:
+        [fas960:/vol/rac6_asm_disks/DG4D1.lun]
+     Mapped LUNs in volume fas960:/vol/rac_6_asm_disks
+        not part of the restore scope will be reverted: [DG4D1.lun]
+
+Files to restore:
+     +DG2/rac6/sysaux.dbf
+     +DG2/rac6/system.dbf
+     +DG2/rac6/undotbs1.dbf
+     +DG2/rac6/undotbs2.dbf
+
+* Reasons denoted with an asterisk (*) are overridable.
+----
+이 예제에서는 명령줄 인터페이스(CLI)에서 '-fast-override'를 사용하거나 그래픽 사용자 인터페이스(GUI)에서 * Override * 를 선택하여 첫 번째 오류를 재정의할 수 있습니다. 볼륨에서 매핑된 LUN에 대한 두 번째 장애는 필수 항목이며 재정의할 수 없습니다.
+
+다음을 수행하여 검사를 해결할 수 있습니다.
+
+* 필수 검사 실패를 해결하려면 검사를 통과하도록 환경을 변경하십시오.
+* 재정의 가능한 검사 오류를 해결하려면 환경을 변경하거나 검사를 재정의할 수 있습니다.
++
+그러나 검사를 무시하면 원치 않는 결과가 발생할 수 있으므로 주의해야 합니다.
+
+

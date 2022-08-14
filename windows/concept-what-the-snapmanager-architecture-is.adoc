@@ -1,0 +1,29 @@
+---
+permalink: windows/concept-what-the-snapmanager-architecture-is.html 
+sidebar: sidebar 
+keywords: snapmanager, sap, architecture, component, host, client, repository, primary, secondary, storage, system, netapp, product, architecture 
+summary: SAP용 SnapManager 아키텍처에는 SnapManager for SAP 호스트, 클라이언트, 저장소와 같은 여러 구성 요소가 포함되어 있습니다. 기타 구성 요소에는 운영 및 2차 스토리지 시스템 및 기타 NetApp 제품이 있습니다. 
+---
+= SnapManager for SAP 아키텍처가 무엇인지
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SAP용 SnapManager 아키텍처에는 SnapManager for SAP 호스트, 클라이언트, 저장소와 같은 여러 구성 요소가 포함되어 있습니다. 기타 구성 요소에는 운영 및 2차 스토리지 시스템 및 기타 NetApp 제품이 있습니다.
+
+SnapManager for SAP 아키텍처에는 다음과 같은 아키텍처 구성 요소가 포함되어 있습니다.
+
+* SnapManager 호스트
+* SnapManager 그래픽 사용자 인터페이스 또는 명령줄 인터페이스
+* SnapManager 리포지토리
+* SAP backint 인터페이스용 SnapManager
+* 운영 스토리지 시스템
+* 2차 스토리지 시스템
+* Windows용 SnapDrive
+
+
+다음 이미지는 SAP용 SnapManager 및 관련 구성 요소의 아키텍처를 보여 줍니다.
+
+image::../media/scrn_en_drw_smsap_architecture.gif[Oracle 아키텍처용 SnapManager]

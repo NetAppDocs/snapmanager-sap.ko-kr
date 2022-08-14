@@ -1,0 +1,85 @@
+---
+permalink: unix-installation-cmode/task-smsap-isg-install-snapmanager.html 
+sidebar: sidebar 
+keywords: install, snapmanager, host, database, backup, run 
+summary: 백업할 데이터베이스가 실행 중인 각 호스트에 SnapManager를 설치해야 합니다. 
+---
+= SnapManager를 설치합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백업할 데이터베이스가 실행 중인 각 호스트에 SnapManager를 설치해야 합니다.
+
+
+
+== 필요한 것
+
+데이터베이스 호스트에 UNIX용 SnapDrive를 설치하고 스토리지 시스템에 대한 접속을 설정해야 합니다.
+
+SnapDrive를 설치하고 스토리지 시스템에 대한 접속을 설정하는 방법에 대한 자세한 내용은 UNIX용 SnapDrive 설명서를 참조하십시오.
+
+
+
+== 이 작업에 대해
+
+데이터베이스 호스트당 하나의 SnapManager 인스턴스를 설치해야 합니다. RAC(Real Application Cluster) 데이터베이스를 사용하고 있고 RAC 데이터베이스를 백업하려면 RAC 데이터베이스의 모든 호스트에 SnapManager를 설치해야 합니다.
+
+.단계
+. SnapManager 지원 사이트에서 UNIX용 SAP 설치 패키지를 다운로드하여 호스트 시스템에 복사하십시오.
++
+http://mysupport.netapp.com/NOW/cgi-bin/software["NetApp 다운로드: 소프트웨어"^]
+
+. 데이터베이스 호스트에 루트 사용자로 로그인합니다.
+. 명령 프롬프트에서 설치 패키지를 복사한 디렉토리로 이동합니다.
+. 설치 패키지를 실행 가능한 파일('chmod 755install_package.bin')로 만듭니다
+. SnapManager:'./install_package.bin'을 설치합니다
+. Enter 키를 눌러 계속합니다.
+. 다음 단계를 수행하십시오.
++
+.. 운영 체제 사용자의 기본값을 * ora *'id로 변경합니다. 여기서 'id'는 데이터베이스의 시스템 식별자입니다.
+.. Enter 키를 눌러 운영 체제 그룹의 기본값을 적용합니다.
++
+그룹의 기본값은 _dba_입니다.
+
+.. 시작프로그램 유형의 기본값을 그대로 사용하려면 Enter 키를 누릅니다.
+
+
++
+구성 요약이 표시됩니다.
+
+. 구성 요약을 검토하고 Enter 키를 눌러 계속합니다.
++
+SnapManager for SAP와 필요한 Java Runtime Environment(JRE)가 설치되고 'msap_setup' 스크립트가 자동으로 실행됩니다.
+
++
+SAP용 SnapManager는 '/opt/netapp/smsap'에 설치됩니다
+
+
+
+
+
+== 작업을 마친 후
+
+다음 단계를 수행하여 설치가 성공적으로 완료되었는지 확인할 수 있습니다.
+
+. 'smsap_server start' 명령을 실행하여 for SnapManager 서버를 시작합니다
++
+SnapManager 서버용 가 실행 중이라는 메시지가 표시됩니다.
+
+. 'smsap system verify' 명령을 입력하여 시스템의 SnapManager for SAP가 올바르게 실행 중인지 확인합니다
++
+Operation ID number Succeeded 메시지가 표시됩니다
+
++
+number는 작업 ID 번호입니다.
+
+
+
+* 관련 정보 *
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=30050["NetApp 설명서: UNIX용 SnapDrive"^]
+
+http://mysupport.netapp.com/["NetApp Support 사이트 관련 문서: mysupport.netapp.com"^]

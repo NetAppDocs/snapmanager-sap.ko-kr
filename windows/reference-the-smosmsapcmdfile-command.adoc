@@ -1,0 +1,48 @@
+---
+permalink: windows/reference-the-smosmsapcmdfile-command.html 
+sidebar: sidebar 
+keywords: cmdfile, command, shell, host, character, number, line, smsap 
+summary: 호스트의 셸에서 명령줄에 표시할 수 있는 문자 수가 제한되면 cmdlet 명령을 사용하여 명령을 실행할 수 있습니다. 
+---
+= smsap cmdfile 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+호스트의 셸에서 명령줄에 표시할 수 있는 문자 수가 제한되면 "cmdfile" 명령을 사용하여 명령을 실행할 수 있습니다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap cmdfile
+-file file_name
+[-quiet | -verbose]
+----
+명령어를 텍스트 파일에 포함하고, 'msap cmdfile' 명령어를 사용해 명령어를 실행할 수 있다. 텍스트 파일에는 하나의 명령만 추가할 수 있습니다. 명령 구문에 smsap을 포함해서는 안 됩니다.
+
+
+NOTE: 'msap cmdfile' 명령은 'msap pfile' 명령을 대체합니다. 'msap cmdlet'은 'msap pfile' 명령과 호환되지 않습니다.
+
+
+
+== 매개 변수
+
+* * ``file_file_name_'
++
+실행할 명령이 포함된 텍스트 파일의 경로를 지정합니다.
+
+* ``조용한’
++
+오류 메시지만 콘솔에 표시되도록 지정합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* * '-verbose' *
++
+오류, 경고 및 정보 메시지가 콘솔에 표시되도록 지정합니다.
+
+

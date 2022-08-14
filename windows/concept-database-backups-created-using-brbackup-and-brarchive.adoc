@@ -1,0 +1,49 @@
+---
+permalink: windows/concept-database-backups-created-using-brbackup-and-brarchive.html 
+sidebar: sidebar 
+keywords: brbackup, command, create, backup, database, snapshot, copy, storage, system, host, command-line, interface, cli, graphical, user, interface, gui, offline, redo, log, file, brarchive 
+summary: 'BRBACKUP 명령은 스토리지 시스템의 스냅샷 복사본을 사용하여 SAP 데이터베이스의 백업을 생성합니다. SAP 호스트의 CLI(명령줄 인터페이스) 또는 BR * Tools CLI 또는 GUI(그래픽 사용자 인터페이스)에서 BRBACKUP 명령을 실행할 수 있습니다. 오프라인 redo 로그 파일을 백업하려면 brarchive 명령을 사용합니다.' 
+---
+= BRBACKUP 및 BRBARCHIVE를 사용하여 생성된 데이터베이스 백업입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"BRBACKUP" 명령은 스토리지 시스템의 스냅샷 복사본을 사용하여 SAP 데이터베이스의 백업을 생성합니다. SAP 호스트의 CLI(명령줄 인터페이스) 또는 BR * Tools CLI 또는 GUI(그래픽 사용자 인터페이스)에서 'BRBACKUP' 명령을 실행할 수 있습니다. 오프라인 redo 로그 파일을 백업하려면 brarchive 명령을 사용합니다.
+
+BRBACKUP은 SAP 데이터베이스의 데이터 파일, 제어 파일, 온라인 redo 로그 파일을 백업합니다. SAP 로그 파일, 커널 파일, 'BRBACKUP' 및 'sap_DIR' 옵션을 사용한 전송 요청, 'brrestore'를 사용한 복구 등의 다른 SAP 구성 파일을 백업해야 합니다.
+
+'sqlnet.ora'의 '_SQLNET.authentication_services_' 매개 변수 값이 * none * 으로 설정되어 있으면 Oracle 데이터베이스 사용자(시스템)에 sysoper 권한이 있는지 확인합니다. 이 시스템은 Oracle 데이터베이스를 생성하는 동안 생성된 기본 사용자입니다. SYSOPER 권한을 활성화하려면 '시스템에 sysoper 부여;' 명령을 실행합니다
+
+BR * Tools 명령 또는 SnapManager 명령을 사용하여 아카이브 로그 파일을 관리해야 합니다.
+
+다음 작업과 관련하여 아카이브 로그 백업을 관리하기 위해 SnapManager 프로파일과 BR * Tools 명령을 함께 사용하면 안 됩니다.
+
+* SnapManager 프로파일(아카이브 로그 백업을 분리하는 옵션을 사용하여 생성)을 사용하여 'BRBACKUP' 및 'brarchive' 명령을 사용하여 데이터 파일과 아카이브 로그 파일의 개별 백업 생성
+* SnapManager 프로파일을 사용하여 백업을 생성하는 동안 아카이브 로그 파일을 정리합니다
+
+
+
+NOTE: SnapManager는 SnapManager for SAP 프로파일과 아카이브 로그 파일을 관리하기 위한 BR * Tools 명령을 함께 사용할 때 경고 또는 오류 메시지를 표시하지 않습니다.
+
+아카이브 로그 백업을 구분하는 옵션을 사용하지 않고 프로파일을 만들어야 하며 일반적인 BR * Tools 작업에 이 프로파일을 사용해야 합니다.
+
+brrestore를 사용하여 백업을 복원할 수 있습니다. 데이터베이스 백업(백업에는 데이터 파일, 제어 파일 또는 온라인 redo 로그 파일 포함)의 경우 '-m all' 또는 '-m full' 옵션과 함께 BRBACKUP을 사용하여 생성한 경우 SnapManager CLI 또는 GUI를 사용하여 백업을 복원할 수도 있습니다.
+
+SnapManager의 백업 처리 방법에 대한 자세한 내용은 _ 데이터베이스 백업 _ 을(를) 참조하십시오.
+
+"BRBACKUP" 및 "brarchive" 명령에 대한 구체적인 지침과 구문은 SAP 설명서를 참조하십시오. 스토리지 시스템에서 BRBACKUP 및 brarchive 명령을 사용하기 전에 다음 조건이 충족되는지 확인하십시오.
+
+* SnapManager 프로필 이름이 SAP 데이터베이스 시스템 식별자와 다른 경우 SnapManager 프로필 이름이 포함된 매개 변수 파일의 이름을 지정합니다.
++
+다음 방법 중 하나를 사용하여 이 작업을 수행할 수 있습니다.
+
++
+** BRBACKUP 명령으로 '-r' 옵션을 사용하여 백업 유틸리티 매개변수 파일('initSID.utl')을 지정합니다.
+** 초기화 파일('initSID.sap')에 파라미터 파일을 지정합니다. 자세한 내용은 _ BR * Tools Backups _ 에 대한 프로파일 지정 을 참조하십시오.
+
+
+* 환경에 적합한 경우 테이프와 같은 다른 미디어를 사용하여 SAP 데이터의 추가 백업을 생성합니다. 스냅샷 복사본은 신속한 백업 및 복원을 위한 것입니다. 백업 중인 데이터와 동일한 물리적 미디어에 저장되며 다른 스토리지 장치로 복사되지 않는 한 재해 복구용으로 사용할 수 없습니다.
+

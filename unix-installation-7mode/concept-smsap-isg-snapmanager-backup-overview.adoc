@@ -1,0 +1,16 @@
+---
+permalink: unix-installation-7mode/concept-smsap-isg-snapmanager-backup-overview.html 
+sidebar: sidebar 
+keywords: snapmanager, netapp, snapshot, technology, create, backup, database, dbverify, utility, integrity, overview 
+summary: SnapManager은 NetApp 스냅샷 기술을 사용하여 데이터베이스 백업을 생성합니다. DBVERIFY 유틸리티를 사용하거나 SnapManager를 사용하여 백업의 무결성을 확인할 수 있습니다. 
+---
+= SnapManager 백업 개요
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager은 NetApp 스냅샷 기술을 사용하여 데이터베이스 백업을 생성합니다. DBVERIFY 유틸리티를 사용하거나 SnapManager를 사용하여 백업의 무결성을 확인할 수 있습니다.
+
+SnapManager는 데이터 파일, 제어 파일 및 아카이브 로그 파일이 포함된 볼륨의 스냅샷 복사본을 생성하여 데이터베이스를 백업합니다. 이 스냅샷 복사본은 SnapManager에서 데이터베이스를 복원하는 데 사용할 수 있는 백업 세트로 구성되어 있습니다.

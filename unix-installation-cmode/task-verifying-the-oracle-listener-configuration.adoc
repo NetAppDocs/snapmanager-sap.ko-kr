@@ -1,0 +1,27 @@
+---
+permalink: unix-installation-cmode/task-verify-the-oracle-listener-configuration.html 
+sidebar: sidebar 
+keywords: listener, process, listen, client, connection, request, receive, income, connection, request, traffic, database, target, repository, status, command, configuration, verify, oracle 
+summary: 수신기는 클라이언트 연결 요청을 수신하는 프로세스입니다. 수신 클라이언트 연결 요청을 수신하고 데이터베이스에 대한 이러한 요청의 트래픽을 관리합니다. 대상 데이터베이스 또는 저장소 데이터베이스 인스턴스에 연결하기 전에 status 명령을 사용하여 수신기 구성을 확인할 수 있습니다. 
+---
+= Oracle 수신기 구성을 확인합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+수신기는 클라이언트 연결 요청을 수신하는 프로세스입니다. 수신 클라이언트 연결 요청을 수신하고 데이터베이스에 대한 이러한 요청의 트래픽을 관리합니다. 대상 데이터베이스나 저장소 데이터베이스 인스턴스에 연결하기 전에 '상태' 명령을 사용하여 수신기 구성을 확인할 수 있습니다.
+
+
+
+== 이 작업에 대해
+
+'Status' 명령은 수신기 구성 설정 요약, 수신 프로토콜 주소, 해당 수신기에 등록된 서비스 요약 등을 포함하여 특정 수신기에 대한 기본 상태 정보를 표시합니다.
+
+.단계
+. 명령 프롬프트에 '* lsnrctl status*' 명령을 입력합니다
++
+수신기 포트에 할당된 기본값은 1521입니다.
+
+

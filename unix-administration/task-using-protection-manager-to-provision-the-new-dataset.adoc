@@ -1,0 +1,49 @@
+---
+permalink: unix-administration/task-use-protection-manager-to-provision-the-new-dataset.html 
+sidebar: sidebar 
+keywords: smsap_paydb, dataset, create, storage, administrator, protection, manager, assign, system, resource, provision, backup, node 
+summary: sap_padb 데이터 세트가 생성된 후 스토리지 관리자는 Protection Manager를 사용하여 데이터 세트의 백업 노드를 프로비저닝하는 스토리지 시스템 리소스를 할당합니다. 
+---
+= Protection Manager를 사용하여 새 데이터 세트를 프로비저닝합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+sap_padb 데이터 세트가 생성된 후 스토리지 관리자는 Protection Manager를 사용하여 데이터 세트의 백업 노드를 프로비저닝하는 스토리지 시스템 리소스를 할당합니다.
+
+* 필요한 것 *
+
+새로 생성된 데이터 세트를 프로비저닝하기 전에 스토리지 관리자는 프로필에 지정된 데이터 세트의 이름을 DBA 파트너와 상의합니다.
+
+이 경우 데이터 세트 이름은 smsap_prod01.sample.com_P01 입니다.
+
+.단계
+. Protection Manager의 NetApp 관리 콘솔로 이동합니다.
+. 메뉴 표시줄에서 * Data * > * Datasets * > * Overview * 를 클릭합니다.
++
+Datasets 창의 Datasets 탭에는 SnapManager를 통해 방금 만든 데이터 세트가 포함된 데이터 세트 목록이 표시됩니다.
+
+. smsap_prod01.sample.com_p01* 데이터 세트를 찾아 선택합니다.
++
+이 데이터 세트를 선택하면 그래프 영역에 백업 노드가 프로비저닝되지 않은 상태로 sap_P01 데이터 세트가 표시됩니다. 적합성 상태는 부적합 으로 표시됩니다.
+
+. smsap_P01 데이터 세트가 강조 표시된 상태에서 * Edit * 를 클릭합니다.
++
+Protection Manager의 NetApp Management Console에 * smsap_prod01.sample.com_p01* 데이터 세트에 대한 Edit Dataset 창이 표시됩니다. 창의 탐색 창에는 데이터 세트의 운영 노드, 백업 연결 및 백업 노드에 대한 구성 옵션이 표시됩니다.
+
+. 탐색 창에서 데이터 세트의 백업 노드에 대한 옵션을 찾아 * provisioning/resource pools * 를 선택합니다.
++
+Edit Dataset 창에는 기본 프로비저닝 정책에 대한 설정과 사용 가능한 리소스 풀 목록이 표시됩니다.
+
+. 이 예에서는 * P01_BACKUP_RESOURCE * 리소스 풀을 선택하고 * > * 를 클릭합니다.
++
+선택한 리소스 풀이 "이 노드에 대한 리소스 풀" 필드에 나열됩니다.
+
+. 변경 사항을 저장하려면 * 마침 * 을 클릭합니다.
+
+
+결과 *
+
+Protection Manager는 보조 백업 노드에 padb_backup_resource 리소스 풀의 리소스를 자동으로 프로비저닝합니다.

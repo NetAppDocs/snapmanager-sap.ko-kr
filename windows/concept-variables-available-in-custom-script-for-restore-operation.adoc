@@ -1,0 +1,226 @@
+---
+permalink: windows/concept-variables-available-in-custom-script-for-restore-operation.html 
+sidebar: sidebar 
+keywords: snapmanager, context, information, form, environment, variable, restore, operation, perform, script, original, host, backup, restore 
+summary: SnapManager 수행 중인 복원 작업과 관련된 환경 변수의 형식으로 컨텍스트 정보를 제공합니다. 예를 들어 스크립트는 원래 호스트의 이름과 복원되는 백업의 레이블을 검색할 수 있습니다. 
+---
+= 복원 작업에 대한 작업 스크립트에서 사용할 수 있는 변수입니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager 수행 중인 복원 작업과 관련된 환경 변수의 형식으로 컨텍스트 정보를 제공합니다. 예를 들어 스크립트는 원래 호스트의 이름과 복원되는 백업의 레이블을 검색할 수 있습니다.
+
+다음 표에는 스크립트에 사용할 수 있는 환경 변수가 나와 있습니다.
+
+|===
+| 변수 | 설명 | 형식 
+
+
+ a| 
+'_sm_operation_ID_'
+ a| 
+현재 작업의 ID를 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_profile_name_'
+ a| 
+사용된 프로파일의 이름을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_host_'
+ a| 
+데이터베이스의 호스트 이름을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_os_user_'
+ a| 
+데이터베이스의 운영 체제(OS) 소유자를 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_os_group_'
+ a| 
+데이터베이스의 OS 그룹을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_backup_type_'
+ a| 
+백업 유형을 지정합니다(온라인, 오프라인 또는 자동).
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_backup_label_'
+ a| 
+백업 레이블을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_SM_BACKUP_ID_'
+ a| 
+백업 ID를 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_backup_profile_'
+ a| 
+백업에 사용되는 프로파일을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_recovery_type_'
+ a| 
+복구 구성 정보를 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_SM_VOLUME_RESTORE_MODE_'
+ a| 
+볼륨 복원 구성을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_target_filer_name_'
+ a| 
+타겟 스토리지 시스템 이름을 지정합니다
+
+[NOTE]
+====
+스토리지 시스템을 두 개 이상 사용하는 경우 스토리지 시스템 이름은 쉼표로 구분해야 합니다.
+
+==== a| 
+문자열
+
+
+
+ a| 
+'_SM_TARGET_VOLUME_NAME_'
+ a| 
+타겟 볼륨 이름을 지정합니다
+
+[NOTE]
+====
+타겟 볼륨 이름 앞에 스토리지 디바이스 이름(예: SM_TARGET_파일러_NAME/SM_TARGET_VOLUME_NAME)이 붙어야 합니다.
+
+==== a| 
+문자열
+
+
+
+ a| 
+'_sm_host_file_system_'
+ a| 
+호스트 파일 시스템을 지정합니다
+ a| 
+문자열
+
+
+
+ a| 
+'_sm_snapshot_names_'
+ a| 
+스냅샷 목록을 지정합니다
+
+[NOTE]
+====
+스냅샷 복사본의 이름 앞에는 스토리지 시스템 이름과 볼륨 이름이 붙어야 합니다. 스냅샷 복사본의 이름은 쉼표로 구분됩니다.
+
+==== a| 
+문자열 배열
+
+
+
+ a| 
+'_sm_archive_logs_directory_'
+ a| 
+아카이브 로그 디렉터리를 지정합니다
+
+[NOTE]
+====
+아카이브 로그가 둘 이상의 디렉토리에 있는 경우 해당 디렉토리의 이름은 쉼표로 구분됩니다.
+
+==== a| 
+문자열 배열
+
+
+
+ a| 
+'_sm_redo_logs_directory_'
+ a| 
+REDO 로그 디렉터리를 지정합니다
+
+[NOTE]
+====
+REDO 로그가 둘 이상의 디렉토리에 있으면 해당 디렉토리의 이름은 쉼표로 구분됩니다.
+
+==== a| 
+문자열 배열
+
+
+
+ a| 
+'_sm_control_files_directory_'
+ a| 
+제어 파일 디렉터리를 지정합니다
+
+[NOTE]
+====
+제어 파일이 둘 이상의 디렉터리에 있는 경우 해당 디렉터리의 이름은 쉼표로 구분됩니다.
+
+==== a| 
+문자열 배열
+
+
+
+ a| 
+'_sm_data_files_directory_'
+ a| 
+데이터 파일 디렉터리를 지정합니다
+
+[NOTE]
+====
+데이터 파일이 둘 이상의 디렉터리에 있는 경우 해당 디렉터리의 이름은 쉼표로 구분됩니다.
+
+==== a| 
+문자열 배열
+
+|===

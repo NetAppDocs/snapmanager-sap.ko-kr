@@ -1,0 +1,240 @@
+---
+permalink: unix-administration/reference-the-smosmsap-clone-split-command.html 
+sidebar: sidebar 
+keywords: run, clone, split, command, independent, original, snapmanager, smsap, operation, profile 
+summary: 클론 분할 명령을 실행하여 클론을 분할할 수 있습니다. 분할된 클론은 원래 클론과 독립됩니다. SnapManager는 클론 분할 작업 후에 새 프로파일을 생성하며 이 프로파일을 사용하여 분할 클론을 관리할 수 있습니다. 
+---
+= smsap 클론 분할 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+"clone split" 명령을 실행하여 클론을 분할할 수 있습니다. 분할된 클론은 원래 클론과 독립됩니다. SnapManager는 클론 분할 작업 후에 새 프로파일을 생성하며 이 프로파일을 사용하여 분할 클론을 관리할 수 있습니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap clone split
+-profile _clone-profile_
+[-host hostname\]
+{-label _clone-label_ | -id _clone-id_} [-split-label _split-operation_label_\]
+[-comment _comment_\]
+-new-profile _new-profile-name_ [-profile-password _new-profile_password_\]
+-repository -dbname _repo_service_name_
+-host _repo_host_
+-port _repo_port_
+-login -username _repo_username_
+-database -dbname _db_dbname_
+-host _db_host_ [-sid _db_sid_\] [-login -username _db_username_ -password _db_password_
+-port _db_port_\]
+[-rman {{-controlfile | {-login -username _rman_username_
+-password _rman_password_} -tnsname _rman_tnsname_}}\]
+-osaccount _osaccount_
+-osgroup _osgroup_
+[-retain
+[-hourly [-count _n_\] [-duration  _m_\]\]
+[-daily [-count _n_\] [-duration _m_\]\]
+[-weekly  [-count _n_\] [-duration _m_\]\]
+[-monthly [-count _n_\] [-duration _m_\]\] \]
+[-profile-comment _profile-comment_\]
+[-snapname-pattern _pattern_\]
+[-protect [-protection-policy _policy_name_\]\] | [-noprotect\]\]
+[-summary-notification
+[-notification
+[-success -email _email_address1,email_address2_
+-subject subject-pattern\]
+[failure -email _email_address1,email_address2_
+-subject _subject-pattern_\] \]
+[-separate-archivelog-backups
+-retain-archivelog-backups -hours  _hours_ |
+-days _days_ |
+-weeks _weeks_ |
+-months _months_
+[-protect [-protection-policy _policy_name_ | -noprotect\]
+[-include-with-online-backups | -no-include-with-online-backups\]\]
+[-dump\]
+[-quiet | -verbose\]]
+----
+
+
+== 매개 변수
+
+* '*-profile_clone-profile_ *'
++
+클론이 생성되는 프로파일 이름을 지정합니다.
+
+* '*-host_hostname_ *'
++
+클론이 존재하는 호스트 이름을 지정합니다.
+
+* '* label_clone-label_ * '
++
+클론 작업에서 생성된 레이블 이름을 지정합니다.
+
+* '*-id_clone-id_ *'
++
+클론 작업에서 생성된 고유 ID를 지정합니다.
+
+* '*-분할 라벨 분할-_operation_label_*'
++
+클론 작업에서 생성된 레이블 이름을 지정합니다.
+
+* '*-new-profile_new-profile_name_ *'
++
+성공적인 분할 작업 후 SnapManager가 생성할 새 프로파일 이름을 지정합니다.
+
+* '*-profile-password_new-profile_password_ *'
++
+프로파일의 암호를 지정합니다.
+
+* '*-repository*'
++
+리포지토리의 데이터베이스 세부 정보를 지정합니다.
+
+* '*-dbname_repo_service_name_ *'
++
+리포지토리를 저장하는 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 시스템 식별자를 사용할 수 있습니다.
+
+* '*-host_repo_host_ *'
++
+리포지토리 데이터베이스가 있는 호스트 컴퓨터의 이름 또는 IP 주소를 지정합니다.
+
+* '*-port_repo_port_ *'
++
+리포지토리 데이터베이스가 있는 호스트에 액세스하는 데 사용되는 TCP(Transmission Control Protocol) 포트 번호를 지정합니다.
+
+* ' * - 로그인 * '
++
+리포지토리 로그인 세부 정보를 지정합니다. 이는 선택 사항입니다. 지정되지 않은 경우 SnapManager는 기본적으로 OS 인증 연결 모드로 설정됩니다.
+
+* '*-username_repo_username_ *'
++
+저장소 데이터베이스가 있는 호스트에 액세스하는 데 필요한 사용자 이름을 지정합니다.
+
+* ' * - 데이터베이스 * '
++
+백업, 복원 또는 복제할 데이터베이스의 세부 정보를 지정합니다.
+
+* '*-dbname_db_dbname_ *'
++
+프로파일이 설명하는 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 시스템 식별자를 사용할 수 있습니다.
+
+* '*-host_db_host_ *'
++
+데이터베이스가 있는 호스트 컴퓨터의 이름 또는 IP 주소를 지정합니다.
+
+* '*-sid_db_sid_ *'
++
+프로파일이 설명하는 데이터베이스의 시스템 식별자를 지정합니다. 기본적으로 SnapManager에서는 데이터베이스 이름을 시스템 식별자로 사용합니다. 시스템 식별자가 데이터베이스 이름과 다른 경우 '-sid' 옵션을 사용하여 지정해야 합니다.
+
+* ' * - 로그인 * '
++
+데이터베이스 로그인 정보를 지정합니다.
+
+* '*-username_db_username_ *'
++
+프로파일이 설명하는 데이터베이스에 액세스하는 데 필요한 사용자 이름을 지정합니다.
+
+* '*-password_db_password_ *'
++
+프로필에 설명된 데이터베이스에 액세스하는 데 필요한 암호를 지정합니다.
+
+* '*-osaccount_osaccount_ *'
++
+Oracle 데이터베이스 사용자 계정의 이름을 지정합니다. SnapManager는 이 계정을 사용하여 시작 및 종료와 같은 Oracle 작업을 수행합니다. 일반적으로 orasid와 같이 호스트에서 Oracle 소프트웨어를 소유한 사용자입니다.
+
+* '*-osgroup_osgroup_*'
++
+orasid 계정과 연결된 Oracle 데이터베이스 그룹 이름의 이름을 지정합니다.
+
++
+
+NOTE: UNIX의 경우 '-osaccount' 및 '-osgroup' 변수가 필요하지만 Windows에서 실행되는 데이터베이스의 경우 허용되지 않습니다.
+
+* ``hourly[-hourly[-count n][-duration m][-daily[-count n][-duration m]][-weekly[-count n][-duration m]][-monthly[-count n][-duration m]] *
++
+백업의 보존 정책을 지정합니다.
+
++
+각 보존 클래스에 대해 보존 수 또는 보존 기간을 지정하거나 둘 다 지정할 수 있습니다. 기간은 클래스의 단위(예: 시간별 시간, 일별 일)입니다. 예를 들어 일일 백업에 대해 보존 기간을 7로 지정하면 보존 수가 0이므로 SnapManager는 프로파일에 대한 일일 백업 수를 제한하지 않지만 SnapManager는 7일 전에 생성된 일일 백업을 자동으로 삭제합니다.
+
+* '*-profile-comment_profile-comment_*'
++
+프로파일 도메인을 설명하는 프로파일에 대한 설명을 지정합니다.
+
+* '*-snapname-pattern_pattern_*'
++
+스냅샷 복사본의 명명 패턴을 지정합니다. 또한 모든 스냅샷 복사본 이름에 고가용성 작업에 대한 HOPS와 같은 사용자 지정 텍스트를 포함할 수도 있습니다. 프로파일을 만들거나 프로파일을 만든 후에 스냅샷 복사본 명명 패턴을 변경할 수 있습니다. 업데이트된 패턴은 아직 생성되지 않은 스냅샷 복사본에만 적용됩니다. 존재하는 스냅샷 복사본에는 이전 Snapname 패턴이 유지됩니다. 패턴 텍스트에 여러 변수를 사용할 수 있습니다.
+
+* '*-protect-protection-policy_policy_name_ *'
++
+백업을 보조 스토리지로 보호할지 여부를 지정합니다.
+
++
+
+NOTE: 보호 정책 없이 보호 정책을 지정하면 데이터 세트에 보호 정책이 적용되지 않습니다. 프로파일 생성 시 '-protect'가 지정되고 '-protection-policy'가 설정되지 않은 경우 나중에 'msap profile update' 명령으로 설정하거나 Protection Manager의 콘솔을 사용하여 스토리지 관리자가 설정할 수 있습니다.
+
+* '*-summary-notification *'
++
+리포지토리 데이터베이스에서 여러 프로필에 대한 요약 전자 메일 알림을 구성하는 세부 정보를 지정합니다. SnapManager에서 이 이메일을 생성합니다.
+
+* '*-알림 * '
++
+새 프로필에 대한 이메일 알림을 구성하기 위한 세부 정보를 지정합니다. SnapManager에서 이 이메일을 생성합니다. 이메일 알림을 통해 데이터베이스 관리자는 이 프로필을 사용하여 수행한 데이터베이스 작업의 성공 또는 실패 상태에 대한 이메일을 받을 수 있습니다.
+
+* ``성공’’’
++
+SnapManager 작업이 성공할 때 프로파일에 대해 전자 메일 알림을 사용하도록 지정합니다.
+
+* '*-email_email 주소 1 이메일 주소 2_ *'
++
+받는 사람의 전자 메일 주소를 지정합니다.
+
+* '*-subject_subject-pattern_ *'
++
+이메일 제목을 지정합니다.
+
+* ``실패’’
++
+SnapManager 작업이 실패한 경우 프로파일에 대해 e-메일 알림을 사용하도록 지정합니다.
+
+* '*-separate-archivelog-backups *'
++
+아카이브 로그 백업이 데이터 파일 백업과 분리되도록 지정합니다. 이것은 프로파일을 만드는 동안 제공할 수 있는 선택적 매개 변수입니다. 이 옵션을 사용하여 백업을 분리한 후에는 데이터 파일 전용 백업 또는 아카이브 로그 전용 백업을 생성할 수 있습니다.
+
+* '*-retain-archivelog-backups-hours_hours_|-days_days_|-weeks_weeks_|-months_months_ *'
++
+아카이브 로그 백업이 아카이브 로그 보존 기간(시간별, 일별, 주별 또는 월별)을 기준으로 보존되도록 지정합니다.
+
+* "* protect[-protection-policy_policy_name_]|-noprotect*"
++
+아카이브 로그 파일이 아카이브 로그 보호 정책에 따라 보호되도록 지정합니다.
+
++
+'-noProtect' 옵션을 사용하여 아카이브 로그 파일을 보호하지 않도록 지정합니다.
+
+* '*-include-with-online-backups|-no-include-with-online-backups *'
++
+아카이브 로그 백업이 온라인 데이터베이스 백업과 함께 포함되도록 지정합니다.
+
++
+아카이브 로그 백업이 온라인 데이터베이스 백업과 함께 포함되지 않도록 지정합니다.
+
+* '*-dump*'
++
+성공적인 프로필 생성 작업 후에 덤프 파일이 수집되지 않도록 지정합니다.
+
+* ``조용한’’’
++
+콘솔에 오류 메시지만 표시합니다. 기본 설정에 오류 및 경고 메시지가 표시됩니다.
+
+* '*-verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+

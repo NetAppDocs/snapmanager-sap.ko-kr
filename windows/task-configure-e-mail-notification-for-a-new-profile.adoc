@@ -1,0 +1,65 @@
+---
+permalink: windows/task-configure-e-mail-notification-for-a-new-profile.html 
+sidebar: sidebar 
+keywords: create, profile, configure, receive, email, notification, completion, database, operation, profile 
+summary: 새 프로필을 만드는 경우 데이터베이스 작업이 완료되면 이메일 알림을 받도록 을 구성할 수 있습니다. 
+---
+= 새 프로필에 대한 이메일 알림을 구성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+새 프로필을 만드는 경우 데이터베이스 작업이 완료되면 이메일 알림을 받도록 을 구성할 수 있습니다.
+
+
+
+== 필요한 것
+
+* 경고가 전송되는 이메일 주소를 구성해야 합니다.
+* 여러 전자 메일 주소에 대해 쉼표로 구분된 목록을 사용해야 합니다.
++
+쉼표와 다음 이메일 주소 사이에 공백이 없어야 합니다.
+
++
+
+NOTE: 전자 메일 주소 집합을 큰따옴표로 묶어야 합니다.
+
+
+
+.단계
+. 다음 명령을 입력합니다.
++
+"* smssap profile create -profile_profile_[-profile-profile-password -password -password -dbname_repo_service_name_-host_repo_host_-port_port_ -login -username_repo_username_ -database -dbname_db_db_dbname_ -host_password [-tndb_password [-count_n_] [-duration_m_] [-weekly [-count_n_] [-duration_m_] [-duration_m_]] [-comment_comment_comment_] [-comment_comment_comment_] [-snapname-pattern_pattern_] [-protect [-notification [-email_email_email_email_email_email_subject_subject_email_subject_subject
+
++
+이 명령의 다른 옵션은 다음과 같습니다.
+
++
+['-force']
+
++
+['quiet'|'-verbose']
+
++
+
+NOTE: SnapManager는 이메일 주소에 대해 최대 1000자를 지원합니다.
+
++
+별도의 아카이브 로그 백업을 생성하기 위해 프로파일을 사용하여 데이터 파일과 아카이브 로그 파일의 백업을 함께 생성하고 데이터 파일 백업을 만들지 못하면 데이터 백업 및 아카이브 로그 백업 대신 데이터 백업과 함께 이메일 알림이 작업 이름으로 전송됩니다. 데이터 파일 및 아카이브 로그 파일 백업 작업이 성공하면 다음과 같이 출력이 표시됩니다.
+
++
+[listing]
+----
+
+Profile Name    : PROF_31
+Operation Name 	: Data Backup and Archive Logs Backup
+Database SID   	: TENDB1
+Database Host 	 : repo1.rtp.org.com
+Start Date 	    : Fri Sep 23 13:37:21 EDT 2011
+End Date 	      : Fri Sep 23 13:45:24 EDT 2011
+Status 	        : SUCCESS
+Error messages 	:
+----
+

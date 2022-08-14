@@ -1,0 +1,25 @@
+---
+permalink: windows/task-retaining-backups-forever.html 
+sidebar: sidebar 
+keywords: specify, backup, ineligible, deletion, retention, policy, indefinite, retain, forever 
+summary: 백업을 무기한 유지하기 위해 보존 정책에 따라 백업을 삭제할 수 없게 지정할 수 있습니다. 
+---
+= 백업을 영구적으로 유지합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백업을 무기한 유지하기 위해 보존 정책에 따라 백업을 삭제할 수 없게 지정할 수 있습니다.
+
+.단계
+. 백업을 무제한 보존하도록 지정하려면 다음 명령을 입력합니다.
++
+'msap backup update-profileprofile_name{-labellabel [data|-archivelogs]|-iDID}-retain-unlimited'
+
+
+
+* 관련 정보 *
+
+xref:reference-the-smosmsapbackup-update-command.adoc[sap 백업 업데이트 명령]

@@ -1,0 +1,57 @@
+---
+permalink: windows/task-creating-task-scripts.html 
+sidebar: sidebar 
+keywords: pretask, post-task, policy, task, script, backup, restore, clone, operation, environment, variable, parameter, snapmanager, sample, creating, create 
+summary: 백업, 복원 및 클론 작업을 위한 사전 작업, 사후 작업 및 정책 작업 스크립트를 작성하고, 스크립트를 작성하고, 매개 변수에 사전 정의된 환경 변수를 포함할 수 있습니다. 새 스크립트를 만들거나 SnapManager 샘플 스크립트 중 하나를 수정할 수 있습니다. 
+---
+= 작업 스크립트 작성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+백업, 복원 및 클론 작업을 위한 사전 작업, 사후 작업 및 정책 작업 스크립트를 작성하고, 스크립트를 작성하고, 매개 변수에 사전 정의된 환경 변수를 포함할 수 있습니다. 새 스크립트를 만들거나 SnapManager 샘플 스크립트 중 하나를 수정할 수 있습니다.
+
+스크립트 작성을 시작하기 전에 다음 사항을 확인하십시오.
+
+* SnapManager 작업의 컨텍스트에서 스크립트를 실행하려면 특정 방식으로 스크립트를 구성해야 합니다.
+* 예상 작업, 사용 가능한 입력 매개 변수 및 반환 코드 규칙을 기반으로 스크립트를 만들어야 합니다.
+* 로그 메시지를 포함하고 메시지를 사용자 정의 로그 파일로 리디렉션해야 합니다.
++
+.. 예제 스크립트를 사용자 지정하여 작업 스크립트를 만듭니다.
++
+다음을 수행합니다.
+
++
+... 다음 설치 디렉터리에서 샘플 스크립트를 찾습니다.
++
+default_install_directory>\plugins\examples\backup\create
+
++
+default_install_directory>\plugins\examples\clone\create
+
+... 스크립트 편집기에서 스크립트를 엽니다.
+... 다른 이름으로 스크립트를 저장합니다.
+
+
+.. 필요에 따라 함수, 변수 및 매개 변수를 수정합니다.
+.. 다음 디렉토리 중 하나에 스크립트를 저장합니다.
++
+* 백업 작업 스크립트 *
+
++
+*** default_install_directory>\plugins\backup\create\pre: 백업 작업이 수행되기 전에 스크립트를 실행합니다. 필요에 따라 백업 생성을 지정할 때 사용합니다.
+*** default_install_directory>\plugins\backup\create\post: 백업 작업이 발생한 후 스크립트를 실행합니다. 필요에 따라 백업 생성을 지정할 때 사용합니다.
+*** default_install_directory>\plugins\backup\create\policy: 백업 작업이 수행되기 전에 항상 스크립트를 실행합니다. SnapManager는 항상 리포지토리의 모든 백업에 이 스크립트를 사용합니다. * 복원 작업 스크립트 *
+*** default_install_directory>\plugins\restore\create\pre: 백업 작업이 수행되기 전에 스크립트를 실행합니다. 필요에 따라 백업 생성을 지정할 때 사용합니다.
+*** default_install_directory>\plugins\restore\create\post: 백업 작업이 발생한 후 스크립트를 실행합니다. 필요에 따라 백업 생성을 지정할 때 사용합니다.
+*** default_install_directory>\plugins\restore\create\policy: 백업 작업이 수행되기 전에 항상 스크립트를 실행합니다. SnapManager는 항상 리포지토리의 모든 백업에 이 스크립트를 사용합니다. * 복제 작업 스크립트 *
+*** default_install_directory>\plugins\clone\create\pre: 백업 작업이 수행되기 전에 스크립트를 실행합니다. 필요에 따라 백업 생성을 지정할 때 사용합니다.
+*** default_install_directory>\plugins\clone\create\post: 백업 작업이 발생한 후 스크립트를 실행합니다. 필요에 따라 백업 생성을 지정할 때 사용합니다.
+*** default_install_directory>\plugins\clone\create\policy: 백업 작업이 수행되기 전에 항상 스크립트를 실행합니다. SnapManager는 항상 리포지토리의 모든 백업에 이 스크립트를 사용합니다.
+
+
+
+
+

@@ -1,0 +1,25 @@
+---
+permalink: unix-administration/concept-restore-backups-from-an-alternate-location-overview.html 
+sidebar: sidebar 
+keywords: restore, database, backup, alternate, location, overview 
+summary: 다른 위치에서 데이터베이스 백업을 복원하려면 다음 주요 단계를 사용합니다. 각 단계는 이 섹션에서 자세히 설명합니다. 
+---
+= 대체 위치에서 백업 복구 개요
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+다른 위치에서 데이터베이스 백업을 복원하려면 다음 주요 단계를 사용합니다. 각 단계는 이 섹션에서 자세히 설명합니다.
+
+* 데이터베이스 레이아웃 및 복원해야 할 사항에 따라 다음 중 하나를 수행합니다.
++
+** 테이프, SnapVault, SnapMirror 또는 기타 모든 미디어에서 데이터베이스 호스트에 마운트된 파일 시스템으로 필요한 데이터 파일을 복원합니다.
+** 필요한 파일 시스템을 복구하고 데이터베이스 호스트에 마운트합니다.
+** 로컬 호스트에 있는 필수 원시 디바이스에 연결합니다.
+
+
+* SnapManager에서 대체 위치에서 원래 위치로 복원하는 데 필요한 매핑을 포함하는 복원 사양 XML(Extensible Markup Language) 파일을 만듭니다. SnapManager에서 액세스할 수 있는 위치에 파일을 저장합니다.
+* SnapManager를 사용하여 복구 사양 XML 파일을 사용하여 데이터를 복원 및 복구합니다.
+

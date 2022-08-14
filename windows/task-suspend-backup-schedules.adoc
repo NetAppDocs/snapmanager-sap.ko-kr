@@ -1,0 +1,27 @@
+---
+permalink: windows/task-suspend-backup-schedules.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, suspend, backup, schedule, resume 
+summary: SnapManager를 사용하면 백업 스케줄이 재개될 때까지 백업 스케줄을 일시 중지할 수 있습니다. 
+---
+= 백업 일정을 일시 중단합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 백업 스케줄이 재개될 때까지 백업 스케줄을 일시 중지할 수 있습니다.
+
+
+
+== 이 작업에 대해
+
+활성 스케줄을 일시 중지할 수 있습니다. 이미 일시 중단된 백업 스케줄을 일시 중단하려고 하면 "'일시 중지 할 수 없습니다: schedule <schedulename> already in suspend state""라는 오류 메시지가 나타날 수 있습니다.
+
+.단계
+. 백업 일정을 일시적으로 중단하려면 다음 명령을 입력합니다.
++
+"* smssap schedule suspend-profile_profile_name_-schedule-name_schedulename_[-quiet|-verbose] *
+
+

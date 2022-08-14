@@ -1,0 +1,71 @@
+---
+permalink: windows/reference-the-smo-notification-removesummarynotification-command.html 
+sidebar: sidebar 
+keywords: command, disable, summary, notification, profile, repository, database, remove-summary-notification, smsap 
+summary: 이 명령은 리포지토리 데이터베이스의 여러 프로필에 대한 요약 알림을 비활성화합니다. 
+---
+= sap notification remove-summary-notification 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 명령은 리포지토리 데이터베이스의 여러 프로필에 대한 요약 알림을 비활성화합니다.
+
+
+
+== 구문
+
+[listing]
+----
+
+smsap notification remove-summary-notification
+-repository
+-dbname repo_service_name
+-port repo_port
+-host repo_host
+-login -username repo_username
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* * ``리포지토리’ *
++
+리포지터리 다음에 나오는 옵션은 리포지터리의 데이터베이스 세부 사항을 지정합니다.
+
+* '*'-port_repo_port_'
++
+리포지토리를 저장하는 데이터베이스에 액세스하는 데 사용되는 TCP 포트 번호를 지정합니다.
+
+* * ``dbname_repo_service_name_'
++
+리포지토리를 저장하는 데이터베이스의 이름을 지정합니다. 글로벌 이름 또는 SID를 사용합니다.
+
+* '*'-host_repo_host_'
++
+리포지토리 데이터베이스가 실행되는 호스트 컴퓨터의 이름 또는 IP 주소를 지정합니다.
+
+* * ``login_repo_username_' *
++
+리포지토리를 저장하는 데이터베이스에 액세스하는 데 필요한 로그인 이름을 지정합니다.
+
+* ``조용한’
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* * '-verbose' *
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+다음 예제에서는 저장소 데이터베이스의 여러 프로필에 대한 요약 알림을 비활성화합니다.
+
+[listing]
+----
+
+smsap notification remove-summary-notification –repository –port 1521 –dbname repo2 –host 10.72.197.133 –login -username oba5
+----

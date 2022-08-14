@@ -1,0 +1,16 @@
+---
+permalink: unix-administration/concept-restoration-of-the-data-from-raw-devices.html 
+sidebar: sidebar 
+keywords: restore, alternate, location, connect, necessary, raw, device, exist, local, host, restoration 
+summary: 대체 위치에서 복구하기 전에 로컬 호스트에 있는 필요한 원시 디바이스에 접속해야 합니다. 
+---
+= 원시 장치에서 데이터 복원
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+대체 위치에서 복구하기 전에 로컬 호스트에 있는 필요한 원시 디바이스에 접속해야 합니다.
+
+대체 위치 작업에서 복구를 호출하여 대체 원시 디바이스의 데이터 블록을 활성 원시 디바이스로 복사할 수 있습니다. 이 작업을 수행하려면 복구 사양을 생성하여 원래 원시 디바이스를 복원할 대체 원시 디바이스를 지정해야 합니다.

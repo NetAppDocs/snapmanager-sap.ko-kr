@@ -1,0 +1,29 @@
+---
+permalink: windows/reference-running-multiple-parallel-operations-fail-in-snapmanager.html 
+sidebar: sidebar 
+keywords: multiple, run, parallel, operation, seperate, database, reside, storage, system, igroup, lun, associate, delete, snapmanager, display, error, message 
+summary: 동일한 스토리지 시스템에 상주하는 개별 데이터베이스에서 여러 개의 병렬 작업을 실행할 경우 작업 중 하나로 인해 두 데이터베이스와 연결된 LUN의 igroup이 삭제될 수 있습니다. 나중에 다른 작업에서 삭제된 igroup을 사용하려고 시도하면 SnapManager에 오류 메시지가 표시됩니다. 
+---
+= SnapManager에서 여러 병렬 작업을 실행하지 못합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+동일한 스토리지 시스템에 상주하는 개별 데이터베이스에서 여러 개의 병렬 작업을 실행할 경우 작업 중 하나로 인해 두 데이터베이스와 연결된 LUN의 igroup이 삭제될 수 있습니다. 나중에 다른 작업에서 삭제된 igroup을 사용하려고 시도하면 SnapManager에 오류 메시지가 표시됩니다.
+
+예를 들어 백업 삭제 및 백업 생성 작업을 서로 다른 데이터베이스에서 거의 동시에 실행하는 경우 백업 생성 작업이 실패합니다. 다음 순차적 단계에서는 서로 다른 데이터베이스에 대해 거의 동시에 백업 삭제 및 백업 생성 작업을 실행할 때 수행되는 작업을 보여 줍니다.
+
+.단계
+. 백업 삭제 명령을 실행합니다.
+. 'backup create' 명령을 실행합니다.
+. 'backup create' 명령은 이미 존재하는 igroup을 식별하며 LUN 매핑에 동일한 igroup을 사용합니다.
+. 'backup delete' 명령은 동일한 igroup에 매핑된 백업 LUN을 삭제합니다.
+. 그런 다음 'backup delete' 명령을 실행하면 igroup과 연결된 LUN이 없으므로 igroup이 삭제됩니다.
+. 'backup create' 명령은 백업을 생성하고 존재하지 않는 igroup에 매핑하려고 하므로 작업이 실패합니다.
+
+
+* 해야 할 일 *
+
+다음 명령을 사용하여 데이터베이스에서 사용하는 각 스토리지 시스템에 대한 igroup을 작성해야 합니다: "* sdcli igroup create*"

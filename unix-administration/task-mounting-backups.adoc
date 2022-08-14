@@ -1,0 +1,37 @@
+---
+permalink: unix-administration/task-mount-backups.html 
+sidebar: sidebar 
+keywords: snapmanager, automatic, handle, mount, backup, available, host, scenario, external, tool, oracle, recovery, manager, rman, access, file 
+summary: 'SnapManager는 호스트에서 사용할 수 있도록 백업 마운트를 자동으로 처리합니다. Oracle RMAN(Recovery Manager)과 같은 외부 툴을 사용하여 백업의 파일에 액세스하는 시나리오에서도 백업을 마운트할 수 있습니다.' 
+---
+= 백업을 마운트합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager는 호스트에서 사용할 수 있도록 백업 마운트를 자동으로 처리합니다. Oracle RMAN(Recovery Manager)과 같은 외부 툴을 사용하여 백업의 파일에 액세스하는 시나리오에서도 백업을 마운트할 수 있습니다.
+
+* 이 작업에 대한 정보 *
+
+'msap backup mount' 명령은 백업을 구성하는 스냅샷 복사본이 마운트된 경로 목록을 표시합니다.
+
+'-from-secondary' 옵션을 사용하여 보조 스토리지에서 백업을 마운트할 수 있습니다. 이 옵션을 사용하지 않으면 SnapManager가 운영 스토리지에서 백업을 마운트합니다.
+
+'-from-secondary' 옵션을 지정할 때마다 '-copy-id' 옵션을 지정해야 합니다. 보조 스토리지 시스템에 둘 이상의 백업이 있는 경우 백업 마운트에 사용할 보조 스토리지의 백업 복제본을 지정하는 데 '-copy-id' 옵션이 사용됩니다. 6
+
+
+NOTE: 7-Mode에서 작동하는 Data ONTAP를 사용하는 경우 '-copy-id' 옵션에 유효한 값을 지정해야 합니다. 그러나 clustered Data ONTAP을 사용하는 경우에는 '-copy-id' 옵션이 필요하지 않습니다.
+
+데이터베이스 백업을 원격 호스트에 마운트하는 경우 ASM(Automatic Storage Management) 자격 증명이 두 호스트 모두에서 동일한지 확인해야 합니다.
+
+
+NOTE: 백업 마운트 작업에 성공하거나 실패한 후 덤프 파일을 선택적으로 수집할 수 있습니다.
+
+.단계
+. 백업을 마운트하려면 다음 명령을 입력합니다.
++
+"* smssap 백업 마운트 -profile_profile_name label_[data|-archivelogs]|-id_id_} [-host_-host_] [-from-secondary [-copy -id_id_] [-dump] [-quiet|-verbose] *
+
+

@@ -1,0 +1,199 @@
+---
+permalink: unix-administration/reference-the-smosmsapbackup-restore-command.html 
+sidebar: sidebar 
+keywords: run, backup, restore, command, database, portion, recover, information, smsap 
+summary: 백업 복원 명령을 실행하여 데이터베이스 또는 데이터베이스 일부의 백업을 복원한 다음 선택적으로 데이터베이스 정보를 복구할 수 있습니다. 
+---
+= smsap 백업 복원 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+'backup restore' 명령을 실행하여 데이터베이스 또는 데이터베이스의 일부를 복구한 다음 선택적으로 데이터베이스 정보를 복구할 수 있습니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap backup restore
+-profile _profile_name_
+[-label _label_ | -id _id_\]
+[-files files [_files..._\] |
+-tablespaces _tablespaces [tablespaces...\]_\] |
+-complete | -controlfiles\]
+[-recover {-alllogs | -nologs | -until _until_} [-using-backup-controlfile\] \]
+[-restorespec _restorespec_ | -from-secondary [-temp-volume _temp_volume_\] [-copy-id _id_\]\]
+[-preview\]
+[-fast {-require | -override | -fallback | -off}\]
+[-recover-from-location _path1_ [_, path2_\]\] [-taskspec _taskspec_\][-dump\]
+[-force\]
+[-quiet | -verbose\]]
+----
+
+
+== 매개 변수
+
+* '*-profile_profile_name_*'
++
+복원할 데이터베이스를 지정합니다. 프로파일에는 데이터베이스의 식별자와 기타 데이터베이스 정보가 들어 있습니다.
+
+* '*-label_name_*'
++
+지정된 레이블을 사용하여 백업을 복원합니다.
+
+* '*-id_GUID_*'
++
+지정된 GUID로 백업을 복원합니다. GUID는 백업을 생성할 때 SnapManager에 의해 생성됩니다. smsap 백업 목록 명령을 사용하여 각 백업의 GUID를 표시할 수 있습니다.
+
+* * 모든 파일 또는 지정된 파일 * 을 선택합니다
++
+선택적으로 다음 옵션 중 하나를 사용할 수 있습니다.
+
++
+** '-complete' 백업의 모든 데이터 파일을 복원합니다.
+** '-tablespaces_list_': 백업에서 지정된 테이블스페이서만 복원합니다.
++
+목록의 이름을 구분하려면 공백을 사용해야 합니다.
+
+** '-files_list_': 백업에서 지정된 데이터 파일만 복원합니다.
++
+목록의 이름을 구분하려면 공백을 사용해야 합니다. 데이터베이스가 실행 중인 경우 SnapManager는 파일이 포함된 테이블스페이스가 오프라인 상태인지 확인합니다.
+
+
+
+* '*-제어 파일 *'
++
+제어 파일을 복원합니다. SnapManager를 사용하면 한 번의 작업으로 백업에서 데이터 파일과 함께 제어 파일을 복원할 수 있습니다. '-controlfiles' 옵션은 ' 완료 ', '-테이블스페이스', '-files' 등의 다른 복원 범위 매개변수와 독립적입니다.
+
+* '*-recover * '
++
+데이터베이스를 복원한 후 복구합니다. 또한 다음 옵션 중 하나를 사용하여 SnapManager에서 데이터베이스를 복구할 지점을 지정해야 합니다.
+
++
+** '-nologs': 데이터베이스를 백업 시간으로 복구하고 로그를 적용하지 않습니다.
++
+이 매개 변수를 온라인 또는 오프라인 백업에 사용할 수 있습니다.
+
+** '-alllogs': 데이터베이스를 마지막 트랜잭션 또는 커밋으로 복구하고 필요한 모든 로그를 적용합니다.
+** '-종료일': 데이터베이스를 지정된 날짜 및 시간까지 복구합니다.
++
+year-month-date:hour:minute:second(_yyyy-mm-dd:hh:mm:ss_) 형식을 사용해야 합니다. 시간의 경우 데이터베이스 설정에 따라 12시간 또는 24시간 형식을 사용합니다.
+
+** '-SCN 시까지': 지정된 SCN(시스템 변경 번호)에 도달할 때까지 데이터 파일을 롤포워드합니다.
+** '-backup-controlfile 사용: 백업 제어 파일을 사용하여 데이터베이스를 복구합니다.
+
+
+* '*-restorespec*'
++
+각 원래 스냅샷 복사본의 매핑을 액티브 파일 시스템에 제공하여 데이터를 액티브 파일 시스템으로 복원하고 지정된 데이터에서 복원할 수 있습니다. 옵션을 지정하지 않으면 SnapManager가 운영 스토리지의 스냅샷 복사본에 있는 데이터를 복원합니다. 다음 옵션 중 하나를 지정할 수 있습니다.
+
++
+** '-restorespec': 복원할 데이터와 복원 형식을 지정합니다.
+** '-from-secondary': 보조 스토리지에서 데이터를 복원합니다.
++
+운영 스토리지에 백업이 있는 경우 이 옵션을 사용할 수 없습니다. 보조 스토리지에서 백업을 복구하려면 먼저 운영 백업을 해제해야 합니다. 임시 볼륨을 사용하는 경우 '-temp-volume' 옵션을 사용하여 볼륨을 지정해야 합니다.
+
++
+'-from-secondary' 옵션을 지정할 때마다 '-copy-id' 옵션을 지정해야 합니다. 보조 스토리지 시스템에 둘 이상의 백업이 있는 경우 복원 작업에 사용할 보조 스토리지의 백업 복사본을 지정하는 데 '-copy-id' 옵션이 사용됩니다.
+
++
+
+NOTE: 7-Mode에서 작동하는 Data ONTAP를 사용하는 경우 '-copy-id' 옵션에 유효한 값을 지정해야 합니다. 그러나 clustered Data ONTAP을 사용하는 경우에는 '-copy-id' 옵션이 필요하지 않습니다
+
++
+보조 스토리지에서 복구할 때 SnapManager은 먼저 보조 스토리지 시스템에서 운영 스토리지 시스템으로 직접 데이터를 복구하려고 시도합니다(호스트 개입 없음). SnapManager에서 이 유형의 복구를 수행할 수 없는 경우(예: 파일이 파일 시스템의 일부가 아닌 경우) SnapManager는 호스트 측 파일 복사본 복원으로 돌아갑니다. SnapManager에는 보조 스토리지에서 호스트 측 파일 복사 복구를 수행하는 두 가지 방법이 있습니다. SnapManager가 선택하는 방법은 'msap.config' 파일에 설정되어 있다.
+
+** 직접: SnapManager는 2차 스토리지의 데이터를 클론 복제하고, 2차 스토리지 시스템에서 호스트로 클론 복제된 데이터를 마운트한 다음 클론 데이터를 활성 환경에 복사합니다.
++
+기본 보조 액세스 정책입니다.
+
+** 간접: SnapManager는 먼저 데이터를 운영 스토리지의 임시 볼륨에 복사하고, 임시 볼륨에서 호스트로 데이터를 마운트한 다음, 임시 볼륨의 데이터를 활성 환경에 복사합니다.
++
+이 정책은 호스트에서 보조 스토리지 시스템에 직접 액세스할 수 없는 경우에만 사용해야 합니다. 간접 방법을 사용한 복원은 데이터의 두 복사본이 만들어지기 때문에 직접 보조 액세스 정책보다 두 배 더 오래 걸립니다.
+
+
+
++
+직접 또는 간접 방법의 사용 여부는 'msap.config' 설정 파일의 '_restore.secondaryAccessPolicy_` 파라미터 값으로 결정된다.
+
+* '*-preview * '
++
+다음 정보를 표시합니다.
+
++
+** 각 파일을 복구하는 데 사용되는 복구 메커니즘(빠른 복구, 스토리지 측 파일 시스템 복구, 스토리지 측 파일 복구 또는 호스트 측 파일 복사 복구)은 무엇입니까
+** '-preview' 옵션을 사용하는 경우 '-verbose' 옵션을 지정할 때 각 파일을 복원하는 데 보다 효율적인 메커니즘을 사용하지 않은 이유는 무엇입니까?
+** '-force' 옵션은 명령에 영향을 주지 않습니다.
+** '-recover' 옵션은 명령에 영향을 주지 않습니다.
+** 빠른(fast) 옵션(-Require, -override, -fallback 또는 -off)은 출력에 큰 영향을 미칩니다. 복구 작업을 미리 보려면 데이터베이스를 마운트해야 합니다. 복구 계획을 미리 보고 현재 데이터베이스가 마운트되어 있지 않은 경우 SnapManager에서 데이터베이스를 마운트합니다. 데이터베이스를 마운트할 수 없는 경우 명령이 실패하고 SnapManager는 데이터베이스를 원래 상태로 되돌립니다.
+
+
++
+'-preview' 옵션은 최대 20개의 파일을 표시합니다. 'msap.config' 파일에 표시할 최대 파일 개수를 설정할 수 있습니다.
+
+* '*-fast * '
++
+복원 작업에 사용할 프로세스를 선택할 수 있습니다. 모든 필수 복원 자격 조건이 충족되는 경우 SnapManager에서 다른 복원 프로세스 대신 볼륨 기반 빠른 복원 프로세스를 사용하도록 강제할 수 있습니다. 볼륨 복원을 수행할 수 없는 경우 이 프로세스를 사용하여 SnapManager에서 빠른 복원 프로세스를 사용하여 자격 검사 및 복원 작업을 수행하지 않도록 할 수도 있습니다.
+
++
+'-fast' 옵션에는 다음 매개변수가 포함됩니다.
+
++
+** '-Require': 모든 복구 자격 조건이 충족되면 SnapManager에서 볼륨 복원을 수행하도록 할 수 있습니다.
++
+`-fast' 옵션을 지정했지만 '-fast'에 대한 매개 변수를 지정하지 않으면 SnapManager는 '-Require' 매개 변수를 기본값으로 사용합니다.
+
+** '-override': 비필수 자격 검사를 무시하고 볼륨 기반 빠른 복원 프로세스를 수행할 수 있습니다.
+** '-fallback': SnapManager에서 결정한 방법을 사용하여 데이터베이스를 복원할 수 있습니다.
++
+fast 옵션을 지정하지 않으면 SnapManager는 기본 'backup restore-fast fallback' 옵션을 사용합니다.
+
+** '-off': 자격 확인을 수행하는 데 필요한 시간을 피할 수 있습니다.
+
+
+* '*-recover-from-location * '
++
+아카이브 로그 파일의 외부 아카이브 로그 위치를 지정합니다. SnapManager는 외부 위치에서 아카이브 로그 파일을 가져와 복구 프로세스에 사용합니다.
+
+* '* - taskspec*'
++
+복구 작업의 전처리 작업 또는 사후 처리 작업을 위한 작업 사양 XML 파일을 지정합니다. 작업 사양 XML 파일의 전체 경로를 제공해야 합니다.
+
+* '*-dump*'
++
+복구 작업 후 덤프 파일을 수집하도록 지정합니다.
+
+* '*-force * '
++
+필요한 경우 데이터베이스 상태를 현재 상태보다 낮은 상태로 변경합니다. RAC(Real Application Clusters)의 경우 SnapManager가 RAC 인스턴스의 상태를 더 낮은 상태로 변경해야 하는 경우 '-force' 옵션을 포함해야 합니다.
+
++
+기본적으로 SnapManager는 작업 중에 데이터베이스 상태를 더 높은 상태로 변경할 수 있습니다. 이 옵션은 SnapManager에서 데이터베이스를 높은 상태로 변경하는 데 필요하지 않습니다.
+
+* ``조용한’’’
++
+콘솔에 오류 메시지만 표시합니다. 기본 설정은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '*-verbose * '
++
+콘솔에 오류, 경고 및 정보 메시지를 표시합니다. 이 옵션을 사용하여 보다 효율적인 복원 프로세스를 사용하여 파일을 복원할 수 없는 이유를 확인할 수 있습니다.
+
+
+
+'''
+
+
+== 예
+
+다음 예제에서는 컨트롤 파일과 함께 데이터베이스를 복원합니다.
+
+[listing]
+----
+smsap backup restore -profile SALES1 -label full_backup_sales_May
+-complete -controlfiles -force
+----
+'''

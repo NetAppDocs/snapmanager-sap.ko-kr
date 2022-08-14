@@ -1,0 +1,38 @@
+---
+permalink: unix-installation-7mode/task-create-an-oracle-user-for-the-target-database.html 
+sidebar: sidebar 
+keywords: oracle, database, user, require, log, in, snapmanager, operation, create, user, sysdba, privilege, target, creating, target 
+summary: Oracle 데이터베이스 사용자는 데이터베이스에 로그인하고 SnapManager 작업을 수행해야 합니다. 대상 데이터베이스에 대한 sysdba 권한을 가진 사용자가 없는 경우 sysdba 권한으로 이 사용자를 생성해야 합니다. 
+---
+= 대상 데이터베이스에 대한 Oracle 데이터베이스 사용자를 생성합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Oracle 데이터베이스 사용자는 데이터베이스에 로그인하고 SnapManager 작업을 수행해야 합니다. 대상 데이터베이스에 대해 _sysdba_권한을 가진 사용자가 없는 경우 _sysdba_권한으로 이 사용자를 생성해야 합니다.
+
+* 이 작업에 대한 정보 *
+
+SnapManager는 타겟 데이터베이스에 대해 존재하는 _sysdba_권한으로 모든 Oracle 사용자를 사용할 수 있습니다. 예를 들어, SnapManager는 default_sys_user를 사용할 수 있습니다. 그러나 사용자가 있더라도 타겟 데이터베이스에 대한 새 사용자를 생성하고 _sysdba_권한을 할당할 수 있습니다.
+
+또한 OS(운영 체제)를 통해 Oracle 데이터베이스가 OS에서 유지 관리하는 자격 증명을 사용하여 사용자가 데이터베이스에 로그인하고 SnapManager 작업을 수행할 수 있도록 인증하는 OS 인증 방법을 사용할 수도 있습니다. OS에서 인증된 경우 사용자 이름 또는 암호를 지정하지 않고 Oracle 데이터베이스에 연결할 수 있습니다.
+
+.단계
+. SQL * Plus에 로그인:
++
+'* sqlplus'/as sysdba'*'
+
+. 관리자 암호를 사용하여 새 사용자 만들기:
++
+' * 사용자_사용자_이름_을(를) _admin_암호;_ * 로 작성합니다
+
++
+'_user_name_'은(는) 작성 중인 사용자의 이름이고, 사용자에게 할당하려는 암호는 _admin_password_'입니다.
+
+. 새 Oracle 사용자에게 sysdba 권한을 할당합니다.
++
+' * sysdba를 _user_name;_ *'에게 부여합니다
+
+

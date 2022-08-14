@@ -1,0 +1,49 @@
+---
+permalink: unix-administration/reference-the-smosmsapversion-command.html 
+sidebar: sidebar 
+keywords: run, version, command, snapmanager, run, local, host, smsap 
+summary: version 명령을 실행하여 로컬 호스트에서 실행 중인 SnapManager 버전을 확인할 수 있습니다. 
+---
+= smssap 버전 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+rsion 명령을 실행하여 로컬 호스트에서 실행 중인 SnapManager 버전을 확인할 수 있습니다.
+
+
+
+== 구문
+
+[listing]
+----
+smsap version
+[-quiet | -verbose]
+----
+
+
+== 매개 변수
+
+* ``조용하다’’고 말했습니다
++
+콘솔에 오류 메시지만 표시합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+각 프로필의 작성 날짜 및 내용을 표시합니다. 또한 콘솔에 오류, 경고 및 정보 메시지를 표시합니다.
+
+
+
+
+
+== version 명령의 예
+
+다음 예제는 SnapManager의 버전을 표시합니다.
+
+[listing]
+----
+smsap version
+SnapManager for SAP Version: 3.3.1
+----

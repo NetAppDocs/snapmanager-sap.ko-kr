@@ -1,0 +1,39 @@
+---
+permalink: windows/concept-snapmanager-for-oraclefor-sap-command-reference.html 
+sidebar: sidebar 
+keywords: snapmanager, command, reference, valid, syntax, parameter, argument, example, sap 
+summary: SnapManager 명령 참조에는 명령과 함께 제공해야 하는 유효한 사용 구문, 옵션, 매개 변수 및 인수가 포함되어 있습니다. 
+---
+= SnapManager for SAP 명령 참조
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager 명령 참조에는 명령과 함께 제공해야 하는 유효한 사용 구문, 옵션, 매개 변수 및 인수가 포함되어 있습니다.
+
+명령 사용에는 다음과 같은 문제가 적용됩니다.
+
+* 명령은 대/소문자를 구분합니다.
+* SnapManager는 최대 200자, 레이블은 최대 80자까지 입력할 수 있습니다.
+* 호스트의 셸에서 명령줄에 표시할 수 있는 문자 수가 제한되면 "cmdfile" 명령을 사용할 수 있습니다.
+* 프로파일 이름이나 라벨 이름에 공백을 사용하지 마십시오.
+* 클론 사양에서 클론 위치에 공백을 사용하지 마십시오.
+
+
+SnapManager는 콘솔에 세 가지 수준의 메시지를 표시할 수 있습니다.
+
+* 오류 메시지
+* 경고 메시지
+* 정보 메시지입니다
+
+
+메시지를 표시할 방법을 지정할 수 있습니다. 아무것도 지정하지 않으면 SnapManager는 오류 메시지 및 경고만 콘솔에 표시합니다. SnapManager가 콘솔에 표시하는 출력 양을 제어하려면 다음 명령줄 옵션 중 하나를 사용합니다.
+
+* `-quiet ': 콘솔에 오류 메시지만 표시합니다.
+* '-verbose': 오류, 경고 및 정보 메시지를 콘솔에 표시합니다.
+
+
+
+NOTE: 기본 동작 또는 디스플레이에 대해 지정하는 세부 수준에 관계없이 SnapManager는 항상 모든 메시지 유형을 로그 파일에 씁니다.

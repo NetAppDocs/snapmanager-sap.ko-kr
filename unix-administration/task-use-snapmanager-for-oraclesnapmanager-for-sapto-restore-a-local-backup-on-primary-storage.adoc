@@ -1,0 +1,54 @@
+---
+permalink: unix-administration/task-use-snapmanager-for-oraclesnapmanager-for-sapto-restore-a-local-backup-on-primary-storage.html 
+sidebar: sidebar 
+keywords: restore, local, backup, exist, primary, storage, entire, process, perform, snapmanager, sap 
+summary: 기본 스토리지에 있는 로컬 백업을 복구할 수 있습니다. 전체 프로세스는 SAP용 SnapManager를 사용하여 수행됩니다. 
+---
+= SnapManager for SAP를 사용하여 운영 스토리지에 로컬 백업을 복구합니다
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+기본 스토리지에 있는 로컬 백업을 복구할 수 있습니다. 전체 프로세스는 SAP용 SnapManager를 사용하여 수행됩니다.
+
+* 이 작업에 대한 정보 *
+
+백업 복원 프로세스에 대한 정보를 미리 볼 수도 있습니다. 이 작업을 수행하면 백업 복구 자격에 대한 정보를 볼 수 있습니다. SnapManager는 백업의 데이터를 분석하여 볼륨 기반 복원이나 파일 기반 복원 방법을 사용하여 복원 프로세스를 완료할 수 있는지 여부를 결정합니다.
+
+복원 미리 보기에는 다음 정보가 표시됩니다.
+
+* 각 파일을 복구하는 데 사용되는 복구 메커니즘(빠른 복구, 스토리지 측 파일 시스템 복구, 스토리지 측 파일 복구 또는 호스트 측 파일 복사 복구)은 무엇입니까?
+* 각 파일을 복원하는 데 더 효율적인 메커니즘이 사용되지 않은 이유
+
+
+복원 계획의 미리 보기에서는 SnapManager가 아무것도 복원하지 않습니다. 미리보기에 최대 20개의 파일이 표시됩니다.
+
+데이터 파일 복원을 미리 보고 싶지만 데이터베이스가 마운트되지 않은 경우 SnapManager에서 데이터베이스를 마운트합니다. 데이터베이스를 마운트할 수 없는 경우 작업이 실패하고 SnapManager는 데이터베이스를 원래 상태로 되돌립니다.
+
+.단계
+. 리포지터리 * 트리에서 복원할 백업을 마우스 오른쪽 단추로 클릭하고 * 복원 * 을 선택합니다.
+. 복원 및 복구 마법사 시작 페이지에서 * 다음 * 을 클릭합니다.
+. Restore Configuration Information * 페이지에서 * Complete Datafile/Tablespace Restore with Control Files * 를 선택합니다.
+. 필요한 경우 * 데이터베이스 종료 허용 * 을 클릭합니다.
++
+SnapManager 필요한 경우 데이터베이스 상태를 변경합니다. 예를 들어, 데이터베이스가 오프라인이고 온라인 상태가 되어야 하는 경우 SnapManager는 데이터베이스를 온라인 상태로 만듭니다.
+
+. 복구 구성 정보 * 페이지에서 * 모든 로그 * 를 클릭합니다.
++
+SnapManager는 데이터베이스를 마지막 트랜잭션으로 복원 및 복구하고 필요한 모든 로그를 적용합니다.
+
+. Restore Source Location Configuration * 페이지에서 기본 백업에 대한 정보를 확인하고 * Next * 를 클릭합니다.
++
+백업이 운영 스토리지에만 있는 경우 SnapManager는 운영 스토리지에서 백업을 복원합니다.
+
+. 볼륨 복원 구성 정보 * 페이지에서 * 볼륨 복원 시도 * 를 선택하여 볼륨 복원 방법을 시도합니다.
+. 파일 기반 복원으로 폴백 * 을 클릭합니다.
++
+따라서 볼륨 복원 방법을 사용할 수 없는 경우 SnapManager에서 파일 기반 복원 방법을 사용할 수 있습니다.
+
+. 빠른 복원에 대한 적격성 검사 및 필수 및 재정의 가능 검사에 대한 정보를 보려면 * Preview * 를 클릭합니다.
+. 작업 수행 * 페이지에서 입력한 정보를 확인하고 * 복원 * 을 클릭합니다.
+. 프로세스에 대한 세부 정보를 보려면 * 공정 세부 정보 * 를 클릭합니다.
+

@@ -1,0 +1,24 @@
+---
+permalink: windows/task-adding-storage-systems-to-the-snapmanager-server-host.html 
+sidebar: sidebar 
+keywords: add, storage, operate, operating, cluster, data, ontap, snapmanager, server, host, autosupport, system 
+summary: AutoSupport를 설정하려면 clustered Data ONTAP에서 작동하는 스토리지 시스템을 SnapManager 서버 호스트에 추가해야 합니다. SnapManager 3.3 이전 버전에서는 AutoSupport가 7-Mode로 운영되는 스토리지 시스템에서만 지원되었습니다. 
+---
+= Clustered Data ONTAP에서 운영 중인 스토리지 시스템을 SnapManager 서버 호스트에 추가
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AutoSupport를 설정하려면 clustered Data ONTAP에서 작동하는 스토리지 시스템을 SnapManager 서버 호스트에 추가해야 합니다. SnapManager 3.3 이전 버전에서는 AutoSupport가 7-Mode로 운영되는 스토리지 시스템에서만 지원되었습니다.
+
+. SnapManager 서버 호스트에 관리 스토리지 가상 머신(SVM, 이전 명칭 Vserver)과 clustered Data ONTAP에서 작동하는 SVM(Sdcli transport_protocol set-f AdminVserver_name 또는 Vserver_NAME-TYPE HTTP-USER admin)을 추가합니다
++
+다음 명령을 입력하십시오. 메시지가 표시됩니다.
+
+. SVM을 생성하는 동안 제공한 암호를 입력합니다.
++
+명령을 성공적으로 실행한 후 새 전송 프로토콜이 설정되었습니다. 메시지가 표시됩니다.
+
+

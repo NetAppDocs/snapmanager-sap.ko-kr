@@ -1,0 +1,41 @@
+---
+permalink: windows/task-renaming-profiles.html 
+sidebar: sidebar 
+keywords: snapmanager, enable, rename, profile, update, capabilities, capability, perform, renaming, retain 
+summary: SnapManager를 사용하면 프로파일을 업데이트할 때 프로파일의 이름을 바꿀 수 있습니다. 프로파일에 설정된 SnapManager 기능과 이름을 바꾸기 전에 수행할 수 있는 작업은 이름이 변경된 프로파일에 대해 유지됩니다. 
+---
+= 프로파일 이름 바꾸기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapManager를 사용하면 프로파일을 업데이트할 때 프로파일의 이름을 바꿀 수 있습니다. 프로파일에 설정된 SnapManager 기능과 이름을 바꾸기 전에 수행할 수 있는 작업은 이름이 변경된 프로파일에 대해 유지됩니다.
+
+* 프로파일의 이름을 바꾸는 동안 프로파일에서 실행 중인 SnapManager 작업이 없는지 확인해야 합니다.
+
+
+SnapManager CLI(명령줄 인터페이스)와 GUI(그래픽 사용자 인터페이스)에서 프로파일의 이름을 바꿀 수 있습니다. 프로필을 업데이트하는 동안 SnapManager는 리포지토리에서 프로필 이름을 확인하고 업데이트합니다.
+
+
+NOTE: SnapManager는 다중 프로파일 업데이트 창에서 프로파일 이름을 바꾸는 기능을 지원하지 않습니다.
+
+새 프로파일 이름을 제공하면 클라이언트 측 자격 증명 캐시에 새 프로파일 이름이 추가되고 이전 프로파일 이름이 제거됩니다. 클라이언트에서 프로파일의 이름을 바꾸면 해당 클라이언트의 자격 증명 캐시만 업데이트됩니다. 새 자격 증명 캐시를 새 프로파일 이름으로 업데이트하려면 각 클라이언트에서 sap 프로파일 동기화 명령을 실행해야 합니다.
+
+smsap 자격 증명 세트 명령을 사용하여 프로필의 암호를 설정할 수 있습니다.
+
+프로필 이름이 스냅샷 복사본 명명 패턴에 포함되어 있는 경우 프로필 이름을 바꾸면 프로필의 새 이름이 업데이트됩니다. 프로파일에서 수행되는 모든 SnapManager 작업은 새 프로파일 이름을 사용합니다. 이전 프로필로 생성된 백업은 계속해서 이전 프로파일 이름을 가지고 있으며 다른 SnapManager 작업을 수행하는 데 사용됩니다.
+
+SnapManager 서버 호스트의 롤링 업그레이드를 수행하는 경우 프로파일의 이름을 바꾸기 전에 전체 업그레이드를 수행해야 합니다.
+
+프로파일의 새 이름은 요청이 수행된 SnapManager 클라이언트에서만 업데이트됩니다. SnapManager 서버에 연결된 SnapManager 클라이언트는 프로파일 이름의 변경에 대한 알림을 받지 않습니다. 작업 로그를 확인하여 프로파일 이름의 변경에 대해 알 수 있습니다.
+
+
+NOTE: 프로파일의 이름을 바꿀 때 예약된 백업 작업이 시작되면 예약된 작업이 실패합니다.
+
+. 다음 명령을 입력합니다.
++
+'msap profile update-profileprofile[-new-profilenew_profile_name]'
+
+

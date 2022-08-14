@@ -1,0 +1,71 @@
+---
+permalink: unix-administration/reference-the-smosmsapcmdfile-command.html 
+sidebar: sidebar 
+keywords: cmdfile, command, shell, host, limit, number, character, smsap, line 
+summary: 호스트의 셸에서 명령줄에 표시할 수 있는 문자 수가 제한되면 cmdlet 명령을 사용하여 명령을 실행할 수 있습니다. 
+---
+= smsap cmdfile 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+호스트의 셸에서 명령줄에 표시할 수 있는 문자 수가 제한되면 "cmdfile" 명령을 사용하여 명령을 실행할 수 있습니다.
+
+
+
+== 구문
+
+[listing, subs="+macros"]
+----
+pass:quotes[smsap cmdfile
+-file _file_name_
+[-quiet | -verbose\]]
+----
+명령어를 텍스트 파일에 포함하고, 'msap cmdfile' 명령어를 사용해 명령어를 실행할 수 있다. 텍스트 파일에는 하나의 명령만 추가할 수 있습니다. 명령 구문에 smsap을 포함해서는 안 됩니다.
+
+
+NOTE: 'msap cmdfile' 명령은 'msap pfile' 명령을 대체합니다. 'msap cmdlet'은 'msap pfile' 명령과 호환되지 않습니다.
+
+
+
+== 매개 변수
+
+* ``파일_파일_이름_*'
++
+실행할 명령이 포함된 텍스트 파일의 경로를 지정합니다.
+
+* ``조용하다’’고 말했습니다
++
+오류 메시지만 콘솔에 표시되도록 지정합니다. 기본값은 오류 및 경고 메시지를 표시하는 것입니다.
+
+* '' * - verbose * '
++
+오류, 경고 및 정보 메시지가 콘솔에 표시되도록 지정합니다.
+
+
+
+'''
+
+
+== 예
+
+이 예에서는 /tmp에 있는 command.txt에 profile create 명령을 포함하여 프로파일을 만듭니다. 그런 다음 'smsap cmdfile' 명령을 실행할 수 있습니다.
+
+텍스트 파일에는 다음 정보가 포함되어 있습니다.
+
+[listing]
+----
+profile create -profile SALES1 -repository -dbname SNAPMGRR
+-login -username server1_user -password ontap -port 1521 -host server1
+-database -dbname SMSMSAP -sid SMSMSAP -login -username sys -password oracle -port 1521
+-host Host2 -osaccount oracle -osgroup db2
+----
+이제 'command.txt' 파일을 사용하여 'smsap cmdfile' 명령을 실행하여 프로파일을 만들 수 있습니다.
+
+[listing]
+----
+smsap cmdfile -file /tmp/command.txt
+----
+'''
