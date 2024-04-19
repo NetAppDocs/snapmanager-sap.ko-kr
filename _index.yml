@@ -1,0 +1,35 @@
+---
+indexpage:
+  title: SAP용 SnapManager 문서
+  summary: SnapManager for SAP는 데이터베이스의 백업, 복구 및 클론 복제와 관련된 복잡하고 시간이 많이 소요되는 수동 프로세스를
+    자동화 및 단순화합니다. SnapManager with ONTAP SnapMirror 기술을 사용하여 다른 볼륨에 백업 복사본을 만들고 ONTAP
+    SnapVault 기술을 사용하여 백업을 디스크에 효율적으로 아카이브할 수 있습니다.
+  keywords: snapmanager, sap, installation, setup, deployment, workflow, configuration,product.
+  lead: SnapManager for SAP는 데이터베이스의 백업, 복구 및 클론 복제와 관련된 복잡하고 시간이 많이 소요되는 수동 프로세스를
+    자동화 및 단순화합니다. SnapManager with ONTAP SnapMirror 기술을 사용하여 다른 볼륨에 백업 복사본을 만들고 ONTAP
+    SnapVault 기술을 사용하여 백업을 디스크에 효율적으로 아카이브할 수 있습니다.
+  tiles:
+  - title: 시작하십시오
+    links:
+    - title: 제품 개요
+      url: "/unix-installation-cmode/reference-smsap-isg-product-overview.html"
+    - title: 릴리스 정보
+      url: reference-releasenotes.html
+  - title: 관리
+    links:
+    - title: UNIX용 SnapManager 구성
+      url: "/unix-administration/concept-configuring-snapmanager-for-oraclesap.html"
+    - title: Windows용 SnapManager 구성
+      url: "/windows/concept-configuring-snapmanager-for-oraclesap.html"
+  - title: 설치 및 설정
+    links:
+    - title: 구축 워크플로우(7-Mode)
+      url: "/unix-installation-7mode/reference-smsap-isg-deployment-workflow.html"
+    - title: 구축 워크플로우(클러스터 모드)
+      url: "/unix-installation-cmode/reference-smsap-isg-deployment-workflow.html"
+  - title: 더 많은 리소스
+    links:
+    - title: NetApp 지원
+      url: https://mysupport.netapp.com/site/global/dashboard
+    - title: NetApp 커뮤니티
+      url: https://community.netapp.com/
